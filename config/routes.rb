@@ -1,5 +1,5 @@
 Energybattle::Application.routes.draw do
-<<<<<<< HEAD
+
 
   resources :readings
 
@@ -8,8 +8,6 @@ Energybattle::Application.routes.draw do
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
 
-=======
->>>>>>> 6b076323e60077828a9474b360097bb10f99dd47
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
