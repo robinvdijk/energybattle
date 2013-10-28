@@ -32,8 +32,20 @@ describe "Readings" do
   end
 
   describe "show all readings" do
-    before { visit root_path }
+    before do
+      visit invoeren_path
+      fill_in 'reading_amount', :with => "12"
+      click_button "Meterstand opslaan"
+      visit meterstanden_path
+    end
     it { should have_title(full_title('Mijn meterstanden')) }
+
+    it "should list each reading" do
+      Reading.all.each do |reading|
+        expect(page).to have_content(reading.amount)
+      end
+      save_and_open_page
+    end
   end
 end
 
