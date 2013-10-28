@@ -43,7 +43,10 @@ group :test do
   gem 'guard-livereload'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
+<<<<<<< HEAD
   gem 'launchy'
+=======
+>>>>>>> 6b076323e60077828a9474b360097bb10f99dd47
 end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'

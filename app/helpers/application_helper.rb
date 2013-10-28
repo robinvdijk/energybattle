@@ -1,4 +1,5 @@
 module ApplicationHelper
+<<<<<<< HEAD
 
 	def full_title(page_title)
 	  base_title = "Energy Battle"
@@ -8,4 +9,6 @@ module ApplicationHelper
 	    "#{page_title} | #{base_title}"
 	  end
 	end
+=======
+>>>>>>> 6b076323e60077828a9474b360097bb10f99dd47
 end
