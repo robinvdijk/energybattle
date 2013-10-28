@@ -1,0 +1,5 @@
+<%= form_for(@reading) do |f| %>
+	<%= f.label :amount, 'Huidige Meterstand:' %>
+	<%= f.text_field :amount %> kWh<br/>
+	<%= f.submit "Meterstand opslaan" %>
+<% end %>
