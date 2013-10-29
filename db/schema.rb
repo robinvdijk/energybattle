@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20131029132428) do
   end
 
   create_table "single_battles", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "host_id"
     t.integer  "opponent_id"
     t.integer  "winner_id"
     t.string   "theme"

@@ -1,7 +1,12 @@
 FactoryGirl.define do
   factory :single_battle do
-    sequence(:opponent_id) { |n| :user_id + n}
-    winner_id = :user_id
+    host_id 1
+    opponent_id { Faker::Number.digit }
+    winner_id { Faker::Number.digit }
     theme "energy"
+
+    factory :invalid_single_battle do
+      opponent_id nil
+    end
   end
 end

@@ -3,12 +3,11 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  resources :users do
-    resources :single_battles
-  end
+  resources :users
+  resources :single_battles
 
 
-  root 'single_battle#index'
+  root 'single_battles#index'
 
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'

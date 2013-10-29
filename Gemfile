@@ -35,6 +35,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
+  gem 'faker'
 end
 
 group :test do
@@ -45,7 +46,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
   gem 'launchy'
-  gem 'faker'
 end
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'

@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe SingleBattle do
   it 'has a valid factory' do
-    expect(create(:user_with_single_battle)).to be_valid
+    expect(create(:single_battle)).to be_valid
   end
 
-  it "is invalid without a user_id" do
-    expect(build(:single_battle, user_id: nil)).to have(1).errors_on(:user_id)
+  it "is invalid without a host_id" do
+    expect(build(:single_battle, host_id: nil)).to have(1).errors_on(:host_id)
   end
 
   it "is invalid without a opponent_id" do
@@ -17,9 +17,9 @@ describe SingleBattle do
     expect(build(:single_battle, winner_id: nil)).to have(1).errors_on(:winner_id)
   end
 
-  it "'s host_id == user_id" do
-    battle = build(:user_with_single_battle).single_battles.first
-    user = battle.user.id
-    expect(battle.user_id).to eq user
+  it "'s host_id == user.id" do
+    user = build(:user)
+    battle = build(:single_battle, host_id: user.id)
+    expect(battle.host_id).to eq user.id
   end
 end
