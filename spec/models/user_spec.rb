@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe User do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it 'has many single_battles' do
+    expect(create(:user_with_single_battle).single_battles.count).to eq 1
+  end
 end

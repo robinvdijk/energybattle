@@ -61,8 +61,11 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.0)
     formatador (0.2.4)
+    growl (1.0.3)
     guard (2.2.1)
       formatador (>= 0.2.4)
       listen (~> 2.1)
@@ -197,6 +200,8 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   database_cleaner
   factory_girl_rails (= 4.2.1)
+  faker
+  growl
   guard-livereload
   guard-rspec
   jbuilder (~> 1.2)

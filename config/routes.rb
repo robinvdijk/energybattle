@@ -3,7 +3,12 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  root 'readings#index'
+  resources :users do
+    resources :single_battles
+  end
+
+
+  root 'single_battle#index'
 
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
@@ -48,7 +53,7 @@ Energybattle::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
