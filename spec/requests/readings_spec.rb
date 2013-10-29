@@ -8,7 +8,7 @@ describe "Readings" do
 
   describe "page information" do
       before { visit invoeren_path }
-      it { should have_title(full_title('Nieuwe meterstand invoeren')) }
+      it { should have_title(full_title('Nieuwe meterstand inen')) }
   end
 
   describe "fill out meter readings" do
