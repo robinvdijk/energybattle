@@ -13,10 +13,6 @@ describe SingleBattle do
     expect(build(:single_battle, opponent_id: nil)).to have(1).errors_on(:opponent_id)
   end
 
-  it "is invalid without a winner_id" do
-    expect(build(:single_battle, winner_id: nil)).to have(1).errors_on(:winner_id)
-  end
-
   it "'s host_id == user.id" do
     user = build(:user)
     battle = build(:single_battle, host_id: user.id)

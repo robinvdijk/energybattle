@@ -7,6 +7,7 @@ class SingleBattlesController < ApplicationController
 
   def show
     @single_battle = SingleBattle.find(params[:id])
+    @host = User.find(@single_battle.host_id)
   end
 
   def new
@@ -15,8 +16,10 @@ class SingleBattlesController < ApplicationController
 
   def create
     @single_battle = SingleBattle.new(single_battle_params)
+    @single_battle.host_id = 3
+    @single_battle.opponent_id = rand(25)
     if @single_battle.save
-      redirect_to @single_battle
+      redirect_to single_battles_path
     else
       render "new"
     end
