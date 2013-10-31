@@ -18,7 +18,7 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
-      create_team_relation
+      team_relation
       redirect_to battles_path
     else
       render "new"
