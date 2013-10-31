@@ -6,11 +6,11 @@ Energybattle::Application.routes.draw do
   resources :team_relations
 
   resources :users
-  resources :single_battles do
+  resources :battles do
     put :create_team_relations, on: :collection, as: :team_relations
   end
 
-  # put "/single_battles/:id/create_team_relations" => "single_battles#create_team_relations"
+  # put "/battles/:id/create_team_relations" => "battles#create_team_relations"
 
 
   root "readings#index"

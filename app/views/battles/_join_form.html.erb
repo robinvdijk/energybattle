@@ -2,8 +2,8 @@
 <div id="grijs-vlak">
 	<div id="blauw-vlak">
 		<div id="form">
-				<%= form_for @single_battle do |f| %>
-			<% if @single_battle.host_id == @current_user.id %>
+				<%= form_for @battle do |f| %>
+			<% if @battle.host_id == @current_user.id %>
 				<%= f.label :theme, "Theme" %>
 				<%= f.select :theme, options_for_select([["Energy", "energy"], ["Dirt", "dirt"]]) %>
 				<%= f.submit "Save battle options"%>
@@ -19,7 +19,7 @@
 	</div>
 	<div id="rood-vlak">
 		<div class='member'>
-			<%= button_to "Join", { controller: "single_battles" , method: :team_relation } %>
+			<%= button_to "Join", { controller: "battles" , method: :team_relation } %>
 		</div>
 	</div>
 

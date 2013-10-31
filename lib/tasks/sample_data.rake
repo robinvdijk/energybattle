@@ -2,7 +2,7 @@ namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
     make_users
-    make_single_battles
+    make_battles
   end
 end
 
@@ -16,9 +16,9 @@ def make_users
   end
 end
 
-def make_single_battles
+def make_battles
   users = User.all
   1.times do
-    users.each { |user| SingleBattle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy") }
+    users.each { |user| Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy") }
   end
 end

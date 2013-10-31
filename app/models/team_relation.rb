@@ -1,5 +1,5 @@
 class TeamRelation < ActiveRecord::Base
-  belongs_to :single_battle
+  belongs_to :battle
   belongs_to :user
-  validates :single_battle_id, presence: true
+  validates :battle_id, presence: true
 end
