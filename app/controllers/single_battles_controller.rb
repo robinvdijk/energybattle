@@ -3,6 +3,10 @@ class SingleBattlesController < TeamRelationsController
   before_action :current_user, only: [:new, :create, :show, :edit, :update]
   before_action :find_host, only: [:edit, :update]
 
+
+
+  haaloooooooo
+
   def index
     @single_battles = SingleBattle.all
   end
