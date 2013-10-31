@@ -8,11 +8,7 @@
 	</div>
 	<div id="rood-vlak">
 		<div class='member'>
-			<% if @single_battle.opponent_id == :nil %>
-			<% else %>
-				<%= @opponent.first_name %>
-				<%= @opponent.email %>
-			<% end %>
+			<%= button_to "Join", { controller: "single_battles" , method: :create_team_relation } %>
 		</div>
 	</div>
 </div>

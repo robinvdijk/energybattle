@@ -1,13 +1,12 @@
 class TeamRelationsController < ApplicationController
-  def create_team_relation
-    @team_relation = TeamRelation.new
-  end
+
+  helper_method :create_team_relation
 
   def destroy
 
   end
 
-  def initialize_team_a
+  def team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
     r.single_battle_id = @single_battle.id

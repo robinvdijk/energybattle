@@ -1,11 +1,7 @@
 class SingleBattlesController < TeamRelationsController
   before_action :set_single_battle, only: [:show, :edit, :update, :destroy]
   before_action :current_user, only: [:new, :create, :show, :edit, :update]
-  before_action :find_host, only: [:edit, :update]
-
-
-
-  haaloooooooo
+  before_action :find_host, only: [:show, :edit, :update]
 
   def index
     @single_battles = SingleBattle.all
@@ -22,8 +18,7 @@ class SingleBattlesController < TeamRelationsController
   def create
     @single_battle = SingleBattle.new(single_battle_params)
     if @single_battle.save
-      initialize_team_a
-      initialize_team_b
+      create_team_relation
       redirect_to single_battles_path
     else
       render "new"
@@ -46,6 +41,13 @@ class SingleBattlesController < TeamRelationsController
   def destroy
     @single_battle.destroy
     redirect_to single_battle_path
+  end
+
+  def team_relation
+    r = TeamRelation.new
+    r.user_id = @current_user.id
+    r.single_battle_id = @single_battle.id
+    r.save
   end
 
   def set_single_battle

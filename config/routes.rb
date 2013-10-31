@@ -3,10 +3,14 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  resources :users
-  resources :single_battles
+  resources :team_relations
 
-  resources :teamrelations
+  resources :users
+  resources :single_battles do
+    put :create_team_relations, on: :collection, as: :team_relations
+  end
+
+  # put "/single_battles/:id/create_team_relations" => "single_battles#create_team_relations"
 
 
   root "readings#index"
