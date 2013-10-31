@@ -34,6 +34,8 @@ end
 group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
+  gem 'growl'
+  gem 'faker'
 end
 
 group :test do

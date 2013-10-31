@@ -1,0 +1,20 @@
+<h1>Creer Single-player battle</h1>
+<div id="grijs-vlak">
+	<div id="blauw-vlak">
+		<div id="form">
+			<%= form_for @single_battle do |f| %>
+			<%= f.hidden_field :host_id, value: @current_user.id %>
+			<%= f.label :theme, "Theme" %>
+			<%= f.select :theme, options_for_select([["Energy", "energy"], ["Dirt", "dirt"]]) %>
+			<%= f.submit "Plaats in overzicht"%>
+			<% end %>
+		</div>
+		<div class='member'>
+			<% u = User.find(3) %>
+			<%= u.first_name %>
+			<%= u.email %>
+		</div>
+	</div>
+	<div id="rood-vlak"></div>
+
+</div>

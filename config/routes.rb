@@ -3,7 +3,19 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  root 'readings#index'
+  resources :team_relations
+
+  resources :users
+  resources :single_battles do
+    put :create_team_relations, on: :collection, as: :team_relations
+  end
+
+  # put "/single_battles/:id/create_team_relations" => "single_battles#create_team_relations"
+
+
+  root "readings#index"
+
+  match '/theme', to: 'static_pages#theme', via: 'get'
 
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
@@ -48,7 +60,7 @@ Energybattle::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'
