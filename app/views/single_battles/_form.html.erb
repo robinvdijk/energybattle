@@ -10,9 +10,8 @@
 			<% end %>
 		</div>
 		<div class='member'>
-			<% u = User.find(3) %>
-			<%= u.first_name %>
-			<%= u.email %>
+			<%= @current_user.first_name %>
+			<%= @current_user.email %>
 		</div>
 	</div>
 	<div id="rood-vlak"></div>

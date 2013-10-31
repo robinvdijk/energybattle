@@ -3,17 +3,14 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
+  resources :users
+  resources :single_battles
+
   resources :team_relations
 
-  resources :users
-  resources :single_battles do
-    put :create_team_relations, on: :collection, as: :team_relations
-  end
+  root "single_battles#index"
 
-  # put "/single_battles/:id/create_team_relations" => "single_battles#create_team_relations"
-
-
-  root "readings#index"
+  # post 'single_battles/team_relation', to: 'single_battles#team_relation', as: "team_relation"
 
   match '/theme', to: 'static_pages#theme', via: 'get'
 
