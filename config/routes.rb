@@ -6,8 +6,12 @@ Energybattle::Application.routes.draw do
   resources :users
   resources :single_battles
 
+  resources :teamrelations
 
-  root 'single_battles#index'
+
+  root "readings#index"
+
+  match '/theme', to: 'static_pages#theme', via: 'get'
 
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'

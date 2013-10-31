@@ -1,5 +1,7 @@
-class SingleBattlesController < ApplicationController
+class SingleBattlesController < TeamRelationsController
   before_action :set_single_battle, only: [:show, :edit, :update, :destroy]
+  before_action :current_user, only: [:new, :create, :show, :edit, :update]
+  before_action :find_host, only: [:edit, :update]
 
   def index
     @single_battles = SingleBattle.all
@@ -7,7 +9,6 @@ class SingleBattlesController < ApplicationController
 
   def show
     @single_battle = SingleBattle.find(params[:id])
-    @host = User.find(@single_battle.host_id)
   end
 
   def new
@@ -16,9 +17,9 @@ class SingleBattlesController < ApplicationController
 
   def create
     @single_battle = SingleBattle.new(single_battle_params)
-    @single_battle.host_id = 3
-    @single_battle.opponent_id = rand(25)
     if @single_battle.save
+      initialize_team_a
+      initialize_team_b
       redirect_to single_battles_path
     else
       render "new"
@@ -32,7 +33,7 @@ class SingleBattlesController < ApplicationController
   def update
     @single_battle = SingleBattle.find(params[:id])
     if @single_battle.update_attributes(single_battle_params)
-      redirect_to @single_battle
+      render "edit"
     else
       render "edit"
     end

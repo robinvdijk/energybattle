@@ -1,4 +1,4 @@
-<h1>Single-player battle</h1><%= @single_battle.host_id %>
+<h1>Single-player battle</h1>
 <div id="grijs-vlak">
 	<div id="blauw-vlak">
 		<div class='member'>
@@ -6,5 +6,13 @@
 			<%= @host.email %>
 		</div>
 	</div>
-	<div id="rood-vlak"></div>
+	<div id="rood-vlak">
+		<div class='member'>
+			<% if @single_battle.opponent_id == :nil %>
+			<% else %>
+				<%= @opponent.first_name %>
+				<%= @opponent.email %>
+			<% end %>
+		</div>
+	</div>
 </div>
