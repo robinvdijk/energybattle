@@ -1,5 +1,5 @@
 <div class="invite">
-	<%= form_tag new_single_battle_path, :method => 'get', :id => "user_search" do %>
+	<%= form_tag new_battle_path, :method => 'get', :id => "user_search" do %>
 	  <p>
 	    Zoek mensen<%= text_field_tag :search, params[:search] %>
 	  </p>

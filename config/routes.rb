@@ -4,7 +4,7 @@ Energybattle::Application.routes.draw do
   resources :readings
 
   resources :users
-  resources :single_battles
+  resources :battles
 
   resources :team_relations do
     member do
@@ -12,9 +12,9 @@ Energybattle::Application.routes.draw do
     end
   end
 
-  root "single_battles#index"
+  root "battles#index"
 
-  # post 'single_battles/team_relation', to: 'single_battles#team_relation', as: "team_relation"
+  # post 'battles/team_relation', to: 'battles#team_relation', as: "team_relation"
 
   match '/theme', to: 'static_pages#theme', via: 'get'
 

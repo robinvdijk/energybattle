@@ -1,5 +1,5 @@
 <%= form_for TeamRelation.new do |f| %>
-	<div><%=f.hidden_field :single_battle_id, value: @single_battle.id %></div>
+	<div><%=f.hidden_field :battle_id, value: @battle.id %></div>
 	<%= f.hidden_field :user_id, value: @current_user.id %>
 	<%= f.hidden_field :team, value: "host_team" %>
 	<%= f.submit "Join" %>

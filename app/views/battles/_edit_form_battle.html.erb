@@ -1,4 +1,4 @@
-<%= form_for @single_battle do |f| %>
+<%= form_for @battle do |f| %>
 	<%= f.label :theme, "Theme" %>
 	<%= f.select :theme, options_for_select([["Energy", "energy"], ["Dirt", "dirt"]]) %>
 	<%= f.submit "Save battle options"%>

@@ -2,11 +2,11 @@
 <div class="container">
 	<div class="quarter_of_container">
 		<h1>Instellingen</h1>
-		<p>Thema: <%= @single_battle.theme%></p>
+		<p>Thema: <%= @battle.theme%></p>
 	</div>
 	<div class="quarter_of_container">
 		<h1>Team 1</h1>
-		<div class="members">
+		<div class="pusher">
 			<% @host_team_members.each do |team|%>
 				<div class="member">
 					<%= team.user.first_name %>
@@ -25,7 +25,7 @@
 
 	<div class="quarter_of_container">
 		<h1>Team 2</h1>
-		<div class="members">
+		<div class="pusher">
 			<% @opponent_team_members.each do |team|%>
 				<div class="member">
 					<%= team.user.first_name %>

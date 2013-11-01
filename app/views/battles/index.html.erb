@@ -1,0 +1,5 @@
+<% @battles.each do |s| %>
+<li><%= link_to s.theme, battle_path(s) %></li>
+<% end %>
+
+<button><%= link_to "Nieuwe battle", new_battle_path %></button>

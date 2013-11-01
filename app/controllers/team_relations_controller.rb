@@ -24,7 +24,7 @@ class TeamRelationsController < ApplicationController
   def host_team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
-    r.single_battle_id = @single_battle.id
+    r.battle_id = @battle.id
     r.team = "host_team"
     r.save
   end
@@ -32,14 +32,14 @@ class TeamRelationsController < ApplicationController
   def opponent_team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
-    r.single_battle_id = @single_battle.id
+    r.battle_id = @battle.id
     r.team = "opponent_team"
     r.save
   end
 
   # def initialize_team_b
   #   r = TeamRelation.new
-  #   r.single_battle_id = @single_battle.id
+  #   r.battle_id = @battle.id
   #   r.save
   # end
 
@@ -68,15 +68,15 @@ class TeamRelationsController < ApplicationController
   end
 
   def find_host_team_members
-    @host_team_members = TeamRelation.where(single_battle_id: @single_battle.id, team: "host_team").load
+    @host_team_members = TeamRelation.where(battle_id: @battle.id, team: "host_team").load
   end
 
   def find_opponent_team_members
-    @opponent_team_members = TeamRelation.where(single_battle_id: @single_battle.id, team: "opponent_team").load
+    @opponent_team_members = TeamRelation.where(battle_id: @battle.id, team: "opponent_team").load
   end
 
   def team_relation_params
-    params.require(:team_relation).permit(:user_id, :single_battle_id, :team)
+    params.require(:team_relation).permit(:user_id, :battle_id, :team)
   end
 
 end

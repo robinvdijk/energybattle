@@ -12,7 +12,7 @@ module ApplicationHelper
   def host_team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
-    r.single_battle_id = @single_battle.id
+    r.battle_id = @battle.id
     r.team = "host_team"
     r.save
   end
@@ -20,7 +20,7 @@ module ApplicationHelper
   def opponent_team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
-    r.single_battle_id = @single_battle.id
+    r.battle_id = @battle.id
     r.team = "opponent_team"
     r.save
   end
