@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131031143839) do
+ActiveRecord::Schema.define(version: 20131101174423) do
 
   create_table "battles", force: true do |t|
     t.integer  "host_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20131031143839) do
     t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "status"
   end
 
   create_table "readings", force: true do |t|

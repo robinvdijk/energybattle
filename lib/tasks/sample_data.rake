@@ -19,7 +19,7 @@ end
 def make_battles
   users = User.all
   1.times do |n|
-    users.each { |user| Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "Energy") }
+    users.each { |user| Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "Energy", status: "Pending") }
     users.each { |user| TeamRelation.create!(user_id: user.id, battle_id: user.id, team: "host_team")}
   end
 end

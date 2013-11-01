@@ -4,7 +4,12 @@ Energybattle::Application.routes.draw do
   resources :readings
 
   resources :users
-  resources :battles
+  resources :battles do
+    member do
+      patch :prepare
+      patch :start
+    end
+  end
 
   resources :team_relations do
     member do

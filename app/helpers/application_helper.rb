@@ -9,6 +9,10 @@ module ApplicationHelper
 	  end
 	end
 
+  def find_host(host_id_of_battle)
+    @host = User.where(id: host_id_of_battle).first
+  end
+
   def host_team_relation
     r = TeamRelation.new
     r.user_id = @current_user.id
