@@ -25,7 +25,11 @@ module ApplicationHelper
     r.save
   end
 
-  def all_inviteable_users
-    @users = User.all
+  def inviteable_users
+    if params[:search].blank?
+      @users = User.all :conditions => (@current_user ? ["id != ?", @current_user.id] : [])
+    else
+      @users = User.search(params[:search]).all :conditions => (@current_user ? ["id != ?", @current_user.id] : [])
+    end
   end
 end

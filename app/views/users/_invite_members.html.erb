@@ -1,8 +1,6 @@
-<div class="invite">
-	<% all_inviteable_users.each do |user| %>
-		<div class="member">
-			<%= user.first_name %>
-			<%= link_to "Invite", '#' %>
-		</div>
-	<% end %>
-</div>
+<% inviteable_users.each do |user| %>
+	<div class="member">
+		<%= user.first_name %>
+		<%= link_to "Invite", '#' %>
+	</div>
+<% end %>

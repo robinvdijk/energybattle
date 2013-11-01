@@ -22,7 +22,7 @@ class SingleBattlesController < TeamRelationsController
     @single_battle = SingleBattle.new(single_battle_params)
     if @single_battle.save
       host_team_relation
-      redirect_to single_battles_path
+      redirect_to @single_battle
     else
       render "new"
     end
@@ -35,9 +35,9 @@ class SingleBattlesController < TeamRelationsController
   def update
     @single_battle = SingleBattle.find(params[:id])
     if @single_battle.update_attributes(single_battle_params)
-      render "edit"
+      redirect_to :back
     else
-      render "edit"
+      redirect_to :back
     end
   end
 

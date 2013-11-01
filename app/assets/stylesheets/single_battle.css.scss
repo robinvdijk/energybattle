@@ -4,7 +4,7 @@ h1 {
 	margin-top:10px;
 }
 
-#container {
+.container {
 	width:960px;
 	margin:auto;
 }
@@ -12,13 +12,13 @@ h1 {
 .quarter_of_container {
 	background-color:darkgray;
 	width:24.85%;
-	height:400px;
+	height:450px;
 	float:left;
 	margin:auto;
 	border-left:1px solid black;
 }
 
-.members {
+.pusher {
 	height:80%;
 }
 
@@ -30,21 +30,13 @@ h1 {
 	border-radius:7px;
 }
 
-#form {
-	float:right;
-	margin:10px;
-}
-
-#submit {
-	float:right;
-}
-
 .join_button {
 	margin-left:100px;
 }
 
 .invite {
-	height:340px;
+	position:relative;
+	height:85%;
 	overflow:scroll;
 	margin-bottom:10px;
 }
