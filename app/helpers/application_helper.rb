@@ -24,4 +24,8 @@ module ApplicationHelper
     r.team = "opponent_team"
     r.save
   end
+
+  def all_inviteable_users
+    @users = User.all
+  end
 end

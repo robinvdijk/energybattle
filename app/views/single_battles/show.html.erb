@@ -1,23 +1,57 @@
-<h1>Single-player battle</h1>
-<div id="grijs-vlak">
-	<div id="blauw-vlak">
-		<% @host_team_members.each do |o|%>
-			<div class="member">
-				<%= o.user.first_name %>
-				<%= o.user.email %>
-				<%= link_to "Leave", o, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"} %>
-			</div>
+<h1>Battle</h1>
+<div id="container">
+	<div class="quarter_of_container">
+		<h1>Instellingen</h1>
+		<%= form_for @single_battle do |f| %>
+	<% if @single_battle.host_id == @current_user.id %>
+		<%= f.label :theme, "Theme" %>
+		<%= f.select :theme, options_for_select([["Energy", "energy"], ["Dirt", "dirt"]]) %>
+		<%= f.submit "Save battle options"%>
+	<% else %>
+		<p>Thema: <%= @single_battle.theme%></p>
+	<% end %>
 		<% end %>
 	</div>
-	<div id="rood-vlak">
-		<% @opponent_team_members.each do |o|%>
-			<div class="member">
-				<%= o.user.first_name %>
-				<%= o.user.email %>
-				<%= link_to "Leave", o, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"} %>
-			</div>
+	<div class="quarter_of_container">
+		<h1>Team 1</h1>
+		<div class="members">
+			<% @host_team_members.each do |team|%>
+				<div class="member">
+					<%= team.user.first_name %>
+					<%= team.user.email %>
+					<% unless team.user.id != @current_user.id %>
+						<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"} %>
+						<%= link_to "Switch teams", switch_team_relation_path(team), method: :patch %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<% if user_in_one_team %>
+			<div class="join_button"><%= render "team_relation/host_team_form" %></div>
 		<% end %>
 	</div>
-	<div class="join_opponent"><%= render "team_relation/opponent_team_form" %></div>
-	<div class="join_host"><%= render "team_relation/host_team_form" %></div>
+
+	<div class="quarter_of_container">
+		<h1>Team 2</h1>
+		<div class="members">
+			<% @opponent_team_members.each do |team|%>
+				<div class="member">
+					<%= team.user.first_name %>
+					<%= team.user.email %>
+					<% unless team.user.id != @current_user.id %>
+						<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"} %>
+						<%= link_to "Switch teams", switch_team_relation_path(team), method: :patch %>
+					<% end %>
+				</div>
+			<% end %>
+		</div>
+		<% if user_in_one_team %>
+			<div class="join_button"><%= render "team_relation/opponent_team_form" %></div>
+		<% end %>
+	</div>
+
+	<div class="quarter_of_container">
+		<h1>Uitnodigen</h1>
+		<%= render 'users/invite_members' %>
+	</div>
 </div>

@@ -6,7 +6,11 @@ Energybattle::Application.routes.draw do
   resources :users
   resources :single_battles
 
-  resources :team_relations
+  resources :team_relations do
+    member do
+      patch :switch
+    end
+  end
 
   root "single_battles#index"
 

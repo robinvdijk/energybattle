@@ -1,37 +1,33 @@
 h1 {
-	width:400px;
-	margin:auto;
+	text-align:center;
 	margin-bottom:10px;
 	margin-top:10px;
 }
 
-#grijs-vlak {
-	background-color:gray;
+#container {
 	width:960px;
 	margin:auto;
 }
 
-#blauw-vlak {
-	background-color:blue;
-	width:50%;
+.quarter_of_container {
+	background-color:darkgray;
+	width:24.85%;
 	height:400px;
 	float:left;
 	margin:auto;
+	border-left:1px solid black;
 }
 
-#rood-vlak {
-	background-color:red;
-	width:50%;
-	float:right;
-	height:400px;
-	margin:auto;
+.members {
+	height:80%;
 }
 
 .member {
-	background-color:green;
+	background-color:gray;
 	padding:15px;
 	margin:5px;
 	color:white;
+	border-radius:7px;
 }
 
 #form {
@@ -43,10 +39,20 @@ h1 {
 	float:right;
 }
 
-.join_host {
-	float:left;
+.join_button {
+	margin-left:100px;
 }
 
-.join_opponent {
-	float:right;
+.invite {
+	height:340px;
+	overflow:scroll;
+	margin-bottom:10px;
+}
+
+.invite_members {
+	background-color:green;
+	margin:3px;
+	padding:3px;
+	border-radius:3px;
+	width:100px;
 }

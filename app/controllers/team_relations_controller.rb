@@ -1,6 +1,6 @@
 class TeamRelationsController < ApplicationController
 
-  helper_method :team_relation
+  helper_method :user_in_one_team
 
   def destroy
     @team_relation = TeamRelation.find(params[:id])
@@ -42,6 +42,30 @@ class TeamRelationsController < ApplicationController
   #   r.single_battle_id = @single_battle.id
   #   r.save
   # end
+
+  def update
+    @team_relation = TeamRelation.find(params[:id])
+    if @team_relation = update_attributes(team_relation_params)
+      redirect_to :back
+    else
+      redirect_to :back
+    end
+  end
+
+  def switch
+    @team_relation = TeamRelation.find(params[:id])
+    if @team_relation.team == "host_team"
+      @team_relation.update_attributes(team: "opponent_team")
+      redirect_to :back
+    else
+      @team_relation.update_attributes(team: "host_team")
+      redirect_to :back
+    end
+  end
+
+  def user_in_one_team
+    TeamRelation.where(user_id: @current_user.id).count == 3
+  end
 
   def find_host_team_members
     @host_team_members = TeamRelation.where(single_battle_id: @single_battle.id, team: "host_team").load

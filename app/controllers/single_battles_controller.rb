@@ -4,6 +4,8 @@ class SingleBattlesController < TeamRelationsController
   # before_action :find_host, only: [:show, :edit, :update]
   before_action :find_host_team_members, :find_opponent_team_members, only: [:show]
 
+  helper_method :user_in_one_team
+
   def index
     @single_battles = SingleBattle.all
   end
@@ -37,6 +39,10 @@ class SingleBattlesController < TeamRelationsController
     else
       render "edit"
     end
+  end
+
+  def user_in_one_team
+    TeamRelation.where(user_id: @current_user.id, single_battle_id: @single_battle.id).count == 0
   end
 
   def destroy
