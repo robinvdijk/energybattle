@@ -1,35 +1,26 @@
 <h1><%= @battle.status %> Battle</h1>
-<div class="container">
-	<div class="quarter_of_container">
-		<% if @battle.status == "Pending" %>
-			<div class="pusher">
-				<h1>Instellingen</h1>
-				<p>Thema: <%= @battle.theme%></p>
-			</div>
-			<% unless @battle.host_id != @current_user.id %>
-				<%= link_to "Wijzig instellingen", edit_battle_path(@battle) %>
-			<% end %>
-		<% elsif @battle.status == "Prepare" %>
-			<%= render "prepare_battle" %>
-		<% else %>
-		<% end %>
-	</div>
-	<div class="quarter_of_container">
-		<h1>Team 1</h1>
-		<%= render "host_team" %>
-	</div>
-	<div class="quarter_of_container">
-		<h1>Team 2</h1>
-		<%= render "opponent_team" %>
-	</div>
-	<div class="quarter_of_container">
-		<% if @battle.status == "Pending" %>
-			<%= render "invite_team" %>
-		<% elsif @battle.status == "Prepare" %>
-			<%= render "prepare_battle" %>
-		<% else %>
-		<% end %>
-	</div>
-	<%= render "status_button" %>
-	<%= link_to "Terug naar battle overzicht", root_path %>
+<div class="quarter_of_container">
+	<% if @battle.status == "Pending" %>
+		<%= render "settings_battle" %>
+	<% elsif @battle.status == "Prepare" %>
+		<%= render "upload_readings" %>
+	<% else %>
+	<% end %>
 </div>
+<div class="quarter_of_container">
+	<h1>Team 1</h1>
+	<%= render "team_members", team: "host" %>
+</div>
+<div class="quarter_of_container">
+	<h1>Team 2</h1>
+	<%= render "team_members", team: "opponent" %>
+</div>
+<div class="quarter_of_container">
+	<% if @battle.status == "Pending" %>
+		<%= render "invite_team" %>
+	<% elsif @battle.status == "Prepare" %>
+		<%= render "upload_readings" %>
+	<% else %>
+	<% end %>
+</div>
+<%= render "status_button" %>

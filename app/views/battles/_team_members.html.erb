@@ -1,6 +1,6 @@
 <% if @battle.status == "Pending" %>
 	<div class="pusher">
-		<% find_team_members("host").each do |team|%>
+		<% find_team_members(team).each do |team|%>
 			<div class="member">
 				<%= team.user.first_name %>
 				<%= team.user.email %>
@@ -10,13 +10,13 @@
 				<% end %>
 			</div>
 		<% end %>
-		</div>
-		<% if user_in_one_team %>
-			<div class="join_button"><%= render "team_relation/host_team_button" %></div>
-		<% end %>
+	</div>
+	<% if user_in_one_team %>
+		<div class="join_button"><%= render "team_relation/join_team", team: "#{team}_team"%></div>
+	<% end %>
 <% elsif @battle.status == "Prepare" %>
 	<div class="pusher">
-		<% find_team_members("host").each do |team|%>
+		<% find_team_members(team).each do |team|%>
 			<div class="member">
 				<%= team.user.first_name %>
 				<%= team.user.email %>

@@ -1,0 +1,7 @@
+<div class="pusher">
+	<h1>Instellingen</h1>
+	<p>Thema: <%= @battle.theme%></p>
+</div>
+<% unless @battle.host_id != @current_user.id %>
+	<%= link_to "Wijzig instellingen", edit_battle_path(@battle) %>
+<% end %>

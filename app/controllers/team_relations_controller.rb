@@ -1,6 +1,5 @@
 class TeamRelationsController < ApplicationController
   before_action :set_team_relation, only: [:destroy, :switch]
-
   helper_method :user_in_one_team, :find_team_members
 
   def new
@@ -24,7 +23,6 @@ class TeamRelationsController < ApplicationController
     if @team_relation.battle.host_id == @team_relation.user_id
       @team_relation.battle.destroy
       @team_relation.destroy
-      flash[:success] = "Battle verwijderd"
       redirect_to battles_path
     else
       @team_relation.destroy
