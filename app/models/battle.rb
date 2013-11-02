@@ -11,4 +11,8 @@ class Battle < ActiveRecord::Base
     r.team = "host_team"
     r.save
   end
+
+  def status?(value)
+    self.status == value
+  end
 end

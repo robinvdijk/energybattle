@@ -1,11 +1,7 @@
 <h1><%= @battle.status %> Battle</h1>
 <div class="quarter_of_container">
-	<% if @battle.status == "Pending" %>
-		<%= render "settings_battle" %>
-	<% elsif @battle.status == "Prepare" %>
-		<%= render "upload_readings" %>
-	<% else %>
-	<% end %>
+	<%= render "settings_battle" if @battle.status?("Pending") %>
+	<%= render "upload_readings" if @battle.status?("Prepare") %>
 </div>
 <div class="quarter_of_container">
 	<h1>Team 1</h1>
@@ -16,11 +12,7 @@
 	<%= render "team_members", team: "opponent" %>
 </div>
 <div class="quarter_of_container">
-	<% if @battle.status == "Pending" %>
-		<%= render "invite_team" %>
-	<% elsif @battle.status == "Prepare" %>
-		<%= render "upload_readings" %>
-	<% else %>
-	<% end %>
+	<%= render "invite_team" if @battle.status?("Pending")%>
+	<%= render "upload_readings" if @battle.status?("Prepare")%>
 </div>
-<%= render "status_button" %>
+<%= render "status_button" if current_user_is_host %>

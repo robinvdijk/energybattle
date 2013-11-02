@@ -5,5 +5,4 @@ class User < ActiveRecord::Base
   def self.search(search)
     search.present? and where('first_name LIKE ?', "%#{search}%")
   end
-
 end
