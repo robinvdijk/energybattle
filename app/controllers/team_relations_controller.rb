@@ -1,12 +1,7 @@
 class TeamRelationsController < ApplicationController
+  before_action :set_team_relation, only: [:destroy, :switch]
 
-  helper_method :user_in_one_team
-
-  def destroy
-    @team_relation = TeamRelation.find(params[:id])
-    @team_relation.destroy
-    redirect_to :back
-  end
+  helper_method :user_in_one_team, :find_team_members
 
   def new
     @team_relation = TeamRelation.new
@@ -16,63 +11,46 @@ class TeamRelationsController < ApplicationController
     @team_relation = TeamRelation.new(team_relation_params)
     if @team_relation.save
       redirect_to :back
-    else
+    end
+  end
+
+  def update
+    unless @team_relation != update_attributes(team_relation_params)
       redirect_to :back
     end
   end
 
-  def host_team_relation
-    r = TeamRelation.new
-    r.user_id = @current_user.id
-    r.battle_id = @battle.id
-    r.team = "host_team"
-    r.save
-  end
-
-  def opponent_team_relation
-    r = TeamRelation.new
-    r.user_id = @current_user.id
-    r.battle_id = @battle.id
-    r.team = "opponent_team"
-    r.save
-  end
-
-  # def initialize_team_b
-  #   r = TeamRelation.new
-  #   r.battle_id = @battle.id
-  #   r.save
-  # end
-
-  def update
-    @team_relation = TeamRelation.find(params[:id])
-    if @team_relation = update_attributes(team_relation_params)
-      redirect_to :back
+  def destroy
+    if @team_relation.battle.host_id == @team_relation.user_id
+      @team_relation.battle.destroy
+      @team_relation.destroy
+      flash[:success] = "Battle verwijderd"
+      redirect_to battles_path
     else
+      @team_relation.destroy
       redirect_to :back
     end
   end
 
   def switch
-    @team_relation = TeamRelation.find(params[:id])
     if @team_relation.team == "host_team"
       @team_relation.update_attributes(team: "opponent_team")
-      redirect_to :back
     else
       @team_relation.update_attributes(team: "host_team")
-      redirect_to :back
     end
+    redirect_to :back
   end
 
   def user_in_one_team
-    TeamRelation.where(user_id: @current_user.id).count == 3
+    TeamRelation.where(user_id: @current_user.id, battle_id: @battle.id).load.count == 0
   end
 
-  def find_host_team_members
-    @host_team_members = TeamRelation.where(battle_id: @battle.id, team: "host_team").load
+  def find_team_members(team)
+    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team").load
   end
 
-  def find_opponent_team_members
-    @opponent_team_members = TeamRelation.where(battle_id: @battle.id, team: "opponent_team").load
+  def set_team_relation
+    @team_relation = TeamRelation.find(params[:id])
   end
 
   def team_relation_params
