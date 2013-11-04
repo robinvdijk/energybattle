@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :battle do
-    host_id 1
+    host_id 2
     opponent_id { Faker::Number.digit }
     winner_id { Faker::Number.digit }
-    theme "energy"
+    theme "Energy"
+    status "Pending"
 
     factory :invalid_battle do
       opponent_id nil

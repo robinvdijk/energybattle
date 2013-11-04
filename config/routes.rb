@@ -7,9 +7,7 @@ Energybattle::Application.routes.draw do
   resources :battles
 
   resources :team_relations do
-    member do
-      patch :switch
-    end
+    patch :switch, on: :member
   end
 
   root "battles#index"

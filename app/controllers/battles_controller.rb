@@ -17,9 +17,11 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
+      flash[:notice] = "Nieuwe battle aangemaakt"
       redirect_to @battle
     else
-      render 'new'
+      flash[:alert] = "Er missen een aantal instellingen"
+      render :new
     end
   end
 
@@ -39,11 +41,12 @@ class BattlesController < TeamRelationsController
     redirect_to battle_path
   end
 
-  def set_battle
-    @battle = Battle.find(params[:id])
-  end
+private
+    def set_battle
+      @battle = Battle.find(params[:id])
+    end
 
-  def battle_params
-    params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :status)
-  end
+    def battle_params
+      params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :status)
+    end
 end

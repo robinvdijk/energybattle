@@ -44,7 +44,7 @@ describe "Readings" do
       Reading.all.each do |reading|
         expect(page).to have_content(reading.amount)
       end
-      save_and_open_page
+
     end
   end
 end

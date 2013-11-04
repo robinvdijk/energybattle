@@ -1,5 +1,5 @@
 <div class="pusher">
-	<h1>Instellingen</h1>
+	<div class="subheading">Instellingen</div>
 	<p>Thema: <%= @battle.theme%></p>
 </div>
 <%= link_to "Wijzig instellingen", edit_battle_path(@battle) if current_user_is_host %>

@@ -1,10 +1,12 @@
 class Battle < ActiveRecord::Base
   has_many :users, through: :team_relations
   validates :host_id, presence: true
+  validates :status, presence: true
+  validates :theme, presence: true
 
-  after_create :host_team_relation
+  after_create :create_host_team_relation
 
-  def host_team_relation
+  def create_host_team_relation
     r = TeamRelation.new
     r.user_id = self.host_id
     r.battle_id = self.id
