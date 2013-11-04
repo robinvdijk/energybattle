@@ -1,0 +1,12 @@
+<%= form_for TeamRelation.new do |f| %>
+	<%= f.hidden_field :battle_id, value: @battle.id %>
+	<%= f.hidden_field :user_id, value: user.id %>
+	<%= f.submit "Invite", class: "invite_button" %>
+	<p> Jou team <%= f.radio_button :team, "host_team" %></p>
+	<p> Ander team <%= f.radio_button :team, "opponent_team" %></p>
+	<p>
+		Accepted:
+		Wel<%= f.radio_button :accepted, :true %>
+		Niet <%= f.radio_button :accepted, :false %>
+	</p>
+<% end %>

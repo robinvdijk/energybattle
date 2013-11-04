@@ -11,6 +11,7 @@ class Battle < ActiveRecord::Base
     r.user_id = self.host_id
     r.battle_id = self.id
     r.team = "host_team"
+    r.accepted = true
     r.save
   end
 
