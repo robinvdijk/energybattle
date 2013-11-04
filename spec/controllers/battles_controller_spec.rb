@@ -1,38 +1,43 @@
 require 'spec_helper'
 
-describe TeamRelationsController do
-  describe 'GET #index' do
-      it 'populates an array of all team_relations' do
-        host_team = create(:team_relation, team: host_team)
-        get :index
-        expect(assings(:team_relations)).to eq([host_team])
-      end
+describe BattlesController do
+  before :each do
+      request.env["HTTP_REFERER"] = ""
+      current_user = create(:user)
+  end
 
-      it 'renders the :index view' do
-        get :index
-        expect(response).to render_template :index
-      end
+  describe 'GET #index' do
+    it 'populates an array of battles with the id' do
+      energy = create(:battle, theme: "Energy")
+      dirt = create(:battle, theme: "Dirt")
+      get :index
+      expect(assigns(:battles)).to eq([energy,dirt])
+    end
+
+    it 'renders the :index view' do
+      get :index
+      expect(response).to render_template :index
     end
   end     # GET #index
 
   describe 'GET #show' do
-    it 'assigns the requested message to @team_relation' do
-      team_relation = create(:team_relation)
-      get :show, id: team_relation
-      expect(assings(:team_relation)).to eq team_relation
+    it 'assigns the requested message to @battle' do
+      battle = create(:battle)
+      get :show, id: battle
+      expect(assigns(:battle)).to eq battle
     end
 
     it 'renders the :show template' do
-      team_relation = create(:team_relation)
-      get :show, id: team_relation
-      expect(response).to render_teamplate :show
+     battle = create(:battle)
+     get :show, id: battle
+     expect(response).to render_template :show
     end
   end     # GET #show
 
   describe 'GET #new' do
-    it 'assigns a new team_relation to @team_relation' do
+    it 'assigns a new battle to @battle' do
       get :new
-      expect(assings(:team_relation)).to be_a_new(TeamRelation)
+      expect(assigns(:battle)).to be_a_new(Battle)
     end
 
     it 'renders the :new template' do
@@ -43,90 +48,98 @@ describe TeamRelationsController do
 
   describe 'POST #create' do
     context 'with valid attributes' do
-      it 'saves the new team_relation in the database' do
+      it 'saves the new battle in the database' do
         expect do
-          (post :create, team_relation: attributes_for(:team_relation)).to change(TeamRelation, :count).by(1)
+          (post :create, battle: attributes_for(:battle)).to change(Battle, :count).by(1)
         end
       end
 
-      it 'redirects to team_relations#show' do
-        post :create, team_relation attributes_for(:team_relation)
-        expect(response).to redirect_to team_relation_path(assings[:team_relation])
+      it 'redirects to battles#show'do
+        post :create, battle: attributes_for(:battle)
+        expect(response).to redirect_to battle_path(assigns[:battle])
       end
     end
 
     context 'with invalid attributes' do
-      it 'does not save the new team_relation in the database' do
+      it 'does not save the new battle in the database' do
         expect do
-          (post :create, team_relation: attributes_for(:invalid_team_relation)).to_not change(TeamRelation, :count).by(1)
+          (post :create, battle: attributes_for(:invalid_battle)).to_not change(Battle, :count).by(1)
         end
       end
-
       it 're-renders the :new template' do
-        post :create, team_relation: attributes_for(:invalid_team_relation)
+        post :create, battle: attributes_for(:invalid_battle)
         get :new
-        expect(response).to render_remplate :new
+        expect(response).to render_template :new
       end
     end
   end     # POST #create
 
   describe 'GET #edit' do
-    it 'assigns the requested team_relation to @team_relation' do
-      team_relation = create(:team_relation)
-      get :edit, id: team_relation
-      expect(assigns(:team_relation)).to eq team_relation
+    it 'assigns the requested battle to @battle' do
+      battle = create(:battle)
+      get :edit, id: battle
+      expect(assigns(:battle)).to eq battle
     end
 
     it 'renders the :edit template' do
-      team_relation = create(:team_relation)
-      get :edit, id: team_relation
+      battle = create(:battle)
+      get :edit, id: battle
       expect(response).to render_template :edit
     end
   end     # GET #edit
 
-  describe 'PUT #update' do
+  describe 'PATCH #update' do
     context 'with valid attributes' do
-      it 'updates the team_relation in the database' do
-        team_relation = create(:team_relation)
-        patch :update, id: team_relation, team_relation: attributes_for(:team_relation, team:host_team)
-        team_relation.reload
-        expect(team_relation.team).to eq host_team
+      it 'updates the battle in the database' do
+        battle = create(:battle)
+        patch :update, id: battle, battle: attributes_for(:battle)
+        expect(assigns(:battle)).to eq battle
       end
 
-      it 'redirects to the updated team_relation' do
-        team_relation = create(:team_relation)
-        patch :update, id: team_relation, team_relation: attributes_for(:team_relation)
-        expect(response).to redirect_to team_relation
+      it 'changes battles attributes' do
+        battle = create(:battle)
+        patch :update, id: battle, battle: attributes_for(:battle, theme:"Dirt")
+        battle.reload
+        expect(battle.theme).to eq("Dirt")
+      end
+
+      it 'redirects to the updated battle' do
+        battle = create(:battle)
+        patch :update, id: battle, battle: attributes_for(:battle)
+        expect(response).to redirect_to battle
       end
     end
 
     context 'with invalid attributes' do
-      it 'does not update the team_relation' do
-        team_relation = create(:team_relation)
-        patch :update, id: team_relation, team_relation: attributes_for(:team_relation, team: nil)
-        team_relation.reload
-        expect(team_relation.team).to_not eq(:nil)
+      it 'does not update the battle' do
+        battle = create(:battle)
+        patch :update, id: battle, battle: attributes_for(:battle, host_id: nil)
+        battle.reload
+        expect(battle.host_id).to_not eq(:nil)
       end
-
       it 're-renders the #edit template' do
-        team_relation = create(:team_relation)
-        patch :update, id: team_relation, team_relation: attributes_for(:invalid_team_relation)
-        get :edit, id: team_relation
-        exepct(response).to render_template :edit
+        battle = create(:battle)
+        patch :update, id: battle, battle: attributes_for(:invalid_battle)
+        get :edit, id: battle
+        expect(response).to render_template :edit
       end
     end
   end     # PUT #update
 
   describe 'DELETE #destroy' do
-    it 'deletes the team_relation from the database' do
-      expect{
-        delete :destroy, id: @team_relation
-      }.to change(TeamRelation, :count).by(-1)
+    before(:each) do
+      @battle = create(:battle)
     end
 
-    it "redirects to battles#index" do
-      delete :destroy, id: @team_relation
-      expect(response).to redirect_to team_relation_path
+    it 'deletes the battle from the database' do
+      expect{
+        delete :destroy, id: @battle
+      }.to change(Battle, :count).by(-1)
+    end
+
+    it "redirects to battle#index" do
+      delete :destroy, id: @battle
+      expect(response).to redirect_to battle_path
     end
   end     # DELETE #destroy
-end    # TeamRelationsController
+end    # BattleController
