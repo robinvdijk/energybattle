@@ -129,6 +129,7 @@ describe BattlesController do
   describe 'DELETE #destroy' do
     before(:each) do
       @battle = create(:battle)
+      @team_relation = create(:team_relation)
     end
 
     it 'deletes the battle from the database' do
