@@ -1,5 +1,6 @@
-<%= form_for(@reading) do |f| %>
+<%= form_for(@reading, :html => {:multipart => true}) do |f| %>
 	<%= f.label :amount, 'Huidige Meterstand:' %>
 	<%= f.text_field :amount %> kWh<br/>
+	<%= f.file_field :meter %>
 	<%= f.submit "Meterstand opslaan" %>
 <% end %>

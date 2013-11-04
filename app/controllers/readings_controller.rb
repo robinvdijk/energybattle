@@ -1,19 +1,30 @@
 class ReadingsController < ApplicationController
+  before_action :higher_value
+
   def index
     @readings = Reading.all
   end
 
   def new
-  	@reading = Reading.new
+    @reading = Reading.new
   end
 
   def create
-  	@reading = Reading.new(reading_params)
-  	if @reading.save
-  		redirect_to meterstanden_path
-  	else
-  		render 'new'
-  	end
+    @reading = Reading.new(reading_params)
+    if Reading.any?  
+      if @reading.amount >= @reading_value
+        @reading.save
+        redirect_to meterstanden_path
+      else
+        render 'new'
+      end
+    else
+      if @reading.save
+        redirect_to meterstanden_path
+      else
+        render 'new'
+      end
+    end
   end
 
   def show
@@ -23,6 +34,14 @@ class ReadingsController < ApplicationController
   private
 
   def reading_params
-  	params.require(:reading).permit(:amount)
+    params.require(:reading).permit(:amount, :meter)
+  end
+
+  def higher_value
+    if Reading.any?
+      @reading_value = Reading.order("created_at").last.amount
+    else
+      @reading_value = nil
+    end
   end
 end
