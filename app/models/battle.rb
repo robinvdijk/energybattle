@@ -3,3 +3,5 @@ class Battle < ActiveRecord::Base
 
   validates :host_id, presence: true
 end
+
+

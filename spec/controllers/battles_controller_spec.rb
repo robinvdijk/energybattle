@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe SingleBattlesController do
+describe BattlesController do
   describe 'GET #index' do
     it 'populates an array of battles with the id' do
       energy = create(:battle, theme: "Energy")
@@ -140,4 +140,24 @@ describe SingleBattlesController do
       expect(response).to redirect_to battle_path
     end
   end     # DELETE #destroy
-end    # SingleBattleController
+  
+  
+  # describe 'Pass Params' do
+ #    before(:each) do
+ #      @battle = create(:battle)
+ #    end
+ #    
+ #    it 'should pass correct params' do
+ #      
+ #      
+ #    end
+ #  end
+ #    
+  
+  
+  
+  
+  
+  
+  
+end    # BattleController
