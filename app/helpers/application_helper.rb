@@ -1,5 +1,4 @@
 module ApplicationHelper
-
 	def full_title(page_title)
 	  base_title = "Energy Battle"
 	  if page_title.empty?
@@ -7,5 +6,5 @@ module ApplicationHelper
 	  else
 	    "#{page_title} | #{base_title}"
 	  end
-	end
+  end
 end

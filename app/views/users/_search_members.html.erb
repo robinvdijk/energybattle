@@ -1,0 +1,6 @@
+<div class="invite">
+	<%= form_tag battle_path(@battle), :method => 'get', :id => "user_search" do %>
+	  <p>Zoek mensen<%= text_field_tag :search, params[:search] %></p>
+	  <div id="inviteable_members"><%= render 'users/invite_members' %></div>
+	<% end %>
+</div>

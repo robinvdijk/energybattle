@@ -1,0 +1,19 @@
+<h1><%= @battle.status %> Battle</h1>
+<div class="quarter_of_container">
+	<%= render "settings_battle" if @battle.status?("Pending") %>
+	<%= render "readings/upload_readings" if @battle.status?("Prepare") %>
+</div>
+<div class="quarter_of_container">
+	<div class="subheading">Team 1</div>
+	<%= render "team_members", team: "host" %>
+</div>
+<div class="quarter_of_container">
+	<div class="subheading">Team 2</div>
+	<%= render "team_members", team: "opponent" %>
+</div>
+<div class="quarter_of_container">
+	<%= render "invite_team" if @battle.status?("Pending")%>
+	<%= render "readings/upload_readings" if @battle.status?("Prepare")%>
+</div>
+<%= render "status_button" if current_user_is_host %>
+<%= link_to "Terug naar battle overzicht", root_path %>
