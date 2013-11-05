@@ -1,5 +1,19 @@
-<% @battles.each do |s| %>
-<li><%= link_to s.theme, edit_battle_path(s) %></li>
-<% end %>
-
-<button><%= link_to "Nieuwe battle", new_battle_path %></button>
+<table cellpadding="5" cellspacing="5">
+<thead>
+  <tr>
+	  <th>Thema</th>
+	  <th>Status</th>
+	  <th>Host name</th>
+  </tr>
+</thead>
+<tbody>
+	<% @battles.each do |s| %>
+		<tr>
+			<td><%= link_to s.theme, battle_path(s) %></td>
+			<td><%= s.status %></td>
+			<td><%= find_host(s.host_id).first_name %></td>
+		</tr>
+	<% end %>
+</tbody>
+<table>
+<%= link_to "Nieuwe battle", new_battle_path %>

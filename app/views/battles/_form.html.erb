@@ -3,29 +3,7 @@
 	
 	<div id="form">
 		<h2>Battle Settings</h2>
-		<%= form_for @battle do |f| %>
-			<%= f.hidden_field :host_id, value: @current_user.id %>
-			
-			<%= f.label :title, "Titel" %>
-			<%= f.text_area :title %>
-			
-			<%= f.label :start_date, "Begin Datum/Tijd" %><br>
-			<%= f.datetime_select :start_date %><br>
-			
-			<%= f.label :duration, "Tijd" %>
-			<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %><br>
-			
-			<%= f.label :player_limit, "Max. aantal spelers" %><br>
-			<%= f.number_field :player_limit %><br>
-			
-			<%= f.label :theme, "Theme" %><br>
-			<%= f.select :theme, options_for_select([params[:theme], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br>
-			
-			<%= f.label :game_type, "Game" %><br>
-			<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br><br>
-			
-			<%= f.submit "Plaats in overzicht"%>
-		<% end %>
+		
 		
 	</div>
 	

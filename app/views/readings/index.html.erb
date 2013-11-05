@@ -1,5 +1,5 @@
 <% provide(:title, "Mijn meterstanden") %>
-<h1>Mijn meterstanden</h1>
+<div class="subheading">Mijn meterstanden</div>
 
 <% @readings.each do |f| %>
 	<%= f.created_at.to_date %>: <%= f.amount %> kWh<br/>

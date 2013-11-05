@@ -1,17 +1,10 @@
 source 'https://rubygems.org'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 ruby '2.0.0'
-
 gem 'rails', '4.0.0'
 
-# Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
-
-# Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
-
-# Use CoffeeScript for .js.coffee assets and views
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'bourbon'
@@ -23,12 +16,11 @@ gem 'neat'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
-
-# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+gem 'bcrypt-ruby', '~> 3.0.1'
+
 group :doc do
-  # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
 end
 
@@ -42,12 +34,14 @@ end
 group :test do
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
+  gem 'capybara-screenshot'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
   gem 'launchy'
 end
+
 
 group :assets do
   
@@ -64,3 +58,4 @@ gem 'bcrypt-ruby', '~> 3.0.1'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+

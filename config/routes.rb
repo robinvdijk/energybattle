@@ -3,21 +3,18 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  resources :team_relations
-
   resources :users
-  resources :battles do
-    put :create_team_relations, on: :collection, as: :team_relations
+
+  resources :battles
+
+  resources :team_relations do
+    patch :switch, on: :member
   end
 
-  # put "/battles/:id/create_team_relations" => "battles#create_team_relations"
-
-
-  root "readings#index"
+  root "battles#index"
 
   match '/theme', to: 'static_pages#theme', via: 'get'
   match '/gametype', to: 'static_pages#gametype', via: 'get'
-
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
 

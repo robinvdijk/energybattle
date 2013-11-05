@@ -1,6 +1,12 @@
 require 'spec_helper'
 
 describe BattlesController do
+
+  before :each do
+      request.env["HTTP_REFERER"] = ""
+      current_user = create(:user)
+  end
+  
   describe 'GET #index' do
     it 'populates an array of battles with the id' do
       energy = create(:battle, theme: "Energy")
@@ -21,6 +27,7 @@ describe BattlesController do
       get :show, id: battle
       expect(assigns(:battle)).to eq battle
     end
+
     it 'renders the :show template' do
      battle = create(:battle)
      get :show, id: battle
@@ -31,7 +38,7 @@ describe BattlesController do
   describe 'GET #new' do
     it 'assigns a new battle to @battle' do
       get :new
-      expect(assigns(:battle)).to be_a_new(SingleBattle)
+      expect(assigns(:battle)).to be_a_new(Battle)
     end
 
     it 'renders the :new template' do
@@ -44,15 +51,9 @@ describe BattlesController do
     context 'with valid attributes' do
       it 'saves the new battle in the database' do
         expect do
-          (post :create, battle: attributes_for(:battle)).to change(SingleBattle, :count).by(1)
+          (post :create, battle: attributes_for(:battle)).to change(Battle, :count).by(1)
         end
       end
-
-      # it 'saves the values of host_id as the current_user.id' do
-      #   current_user = controller.current_user
-      #   post :create, battle: attributes_for(:battle)
-      #   expect(battle: :host_id).to eq(current_user.id)
-      # end
 
       it 'redirects to battles#show'do
         post :create, battle: attributes_for(:battle)
@@ -63,11 +64,12 @@ describe BattlesController do
     context 'with invalid attributes' do
       it 'does not save the new battle in the database' do
         expect do
-          (post :create, battle: attributes_for(:invalid_battle)).to_not change(SingleBattle, :count).by(1)
+          (post :create, battle: attributes_for(:invalid_battle)).to_not change(Battle, :count).by(1)
         end
       end
       it 're-renders the :new template' do
         post :create, battle: attributes_for(:invalid_battle)
+        get :new
         expect(response).to render_template :new
       end
     end
@@ -114,11 +116,12 @@ describe BattlesController do
         battle = create(:battle)
         patch :update, id: battle, battle: attributes_for(:battle, host_id: nil)
         battle.reload
-        expect(battle.theme).to_not eq(1)
+        expect(battle.host_id).to_not eq(:nil)
       end
       it 're-renders the #edit template' do
         battle = create(:battle)
         patch :update, id: battle, battle: attributes_for(:invalid_battle)
+        get :edit, id: battle
         expect(response).to render_template :edit
       end
     end
@@ -127,12 +130,13 @@ describe BattlesController do
   describe 'DELETE #destroy' do
     before(:each) do
       @battle = create(:battle)
+      @team_relation = create(:team_relation)
     end
 
     it 'deletes the battle from the database' do
       expect{
         delete :destroy, id: @battle
-      }.to change(SingleBattle, :count).by(-1)
+      }.to change(Battle, :count).by(-1)
     end
 
     it "redirects to battle#index" do
@@ -140,24 +144,4 @@ describe BattlesController do
       expect(response).to redirect_to battle_path
     end
   end     # DELETE #destroy
-  
-  
-  # describe 'Pass Params' do
- #    before(:each) do
- #      @battle = create(:battle)
- #    end
- #    
- #    it 'should pass correct params' do
- #      
- #      
- #    end
- #  end
- #    
-  
-  
-  
-  
-  
-  
-  
 end    # BattleController

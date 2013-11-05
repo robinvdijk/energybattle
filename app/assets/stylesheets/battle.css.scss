@@ -1,44 +1,65 @@
 h1 {
-	width:400px;
-	margin:auto;
-	margin-bottom:10px;
-	margin-top:10px;
+        text-align:center;
+        margin-bottom:10px;
+        margin-top:10px;
+        text-shadow:1px 1px gray;
 }
 
-#grijs-vlak {
-	background-color:gray;
-	width:960px;
-	margin:auto;
+.subheading {
+        text-align:center;
+        font-size:26px;
+        font-weight:bold;
+        padding:2px;
+        text-shadow:1px 1px gray;
 }
 
-#blauw-vlak {
-	background-color:blue;
-	width:40%;
-	height:400px;
-	float:left;
-	margin:auto;
+#container {
+        width:960px;
+        margin:auto;
 }
 
-#rood-vlak {
-	background-color:red;
-	width:40%;
-	float:right;
-	height:400px;
-	margin:auto;
+.quarter_of_container {
+        background-color:darkgray;
+        width:24.85%;
+        height:450px;
+        float:left;
+        margin:auto;
+        border-left:1px solid black;
+}
+
+.pusher {
+        height:80%;
 }
 
 .member {
-	background-color:green;
-	padding:15px;
-	color:white;
+        background-color:gray;
+        padding:15px;
+        margin:5px;
+        color:white;
+        border-radius:7px;
 }
 
-#form {
-	float:left;
-	width:20%;
-	background: grey;
+.join_button {
+        margin-left:100px;
 }
 
-#submit {
-	float:right;
+.invite {
+        position:relative;
+        height:85%;
+        overflow:scroll;
+        margin-bottom:10px;
+}
+
+.invite_members {
+        background-color:green;
+        margin:3px;
+        padding:3px;
+        border-radius:3px;
+        width:100px;
+}
+
+.notice {
+        border:2px green solid;
+        padding:7px;
+        border-radius:7px;
 }
