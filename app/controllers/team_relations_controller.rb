@@ -32,7 +32,7 @@ class TeamRelationsController < ApplicationController
   end
 
   def not_accepted
-    TeamRelation.where(user_id: 5, accepted: false)
+    TeamRelation.where(user_id: 2, accepted: false)
   end
 
 private
