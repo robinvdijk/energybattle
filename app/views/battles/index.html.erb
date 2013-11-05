@@ -16,4 +16,10 @@
 	<% end %>
 </tbody>
 <table>
+	<% not_accepted.each do |t| %>
+		<div>
+			<%= t.battle_id %>
+			<%= t.team %>
+		</div>
+	<% end %>
 <%= link_to "Nieuwe battle", new_battle_path %>
