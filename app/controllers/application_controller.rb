@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_user_is_host
 
   def current_user
-    @current_user = User.find(5)
+    @current_user = User.first
   end
 
   def current_user_is_host
