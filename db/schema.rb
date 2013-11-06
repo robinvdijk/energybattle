@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20131105134145) do
     t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
     t.string   "title"
     t.datetime "start_date"
     t.datetime "end_date"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 20131105134145) do
     t.integer  "player_limit"
     t.boolean  "access"
     t.integer  "duration"
+    t.string   "status"
   end
 
   create_table "notifications", force: true do |t|

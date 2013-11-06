@@ -1,0 +1,43 @@
+@import "bourbon";
+@import "neat";
+@import "reset";
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic);
+
+
+.container{
+	@include outer-container;
+}
+
+header {
+	background: rgb(52, 73, 94);
+	height: 50px;
+	width: 100%;	
+}
+
+nav {
+	background: rgb(104, 192, 123);
+	width: 100%;
+	box-shadow: 0 2px 0 0 rgba(77, 155, 93, 1.0);	
+}
+
+nav ul {
+	padding: 12px 0 12px 0;
+	list-style-type: none;
+}
+
+nav ul li {
+	display: inline;
+	margin: 0;
+}
+
+nav ul li a {
+	padding-right: 30px;
+	font-family: 'Lato' , sans-serif;
+	font-size: 1.5em;
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+}
+
+nav ul li a:hover {
+	color: rgba(255, 255, 255, 1);
+}
