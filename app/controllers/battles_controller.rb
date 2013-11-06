@@ -4,6 +4,7 @@ class BattlesController < TeamRelationsController
 
   def index
     @battles = Battle.all
+	 @count_notifications = current_user.notifications.count
   end
 
   def show

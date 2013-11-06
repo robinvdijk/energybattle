@@ -2,6 +2,7 @@
 	<% if user_in_one_team(user) %>
 		<div class="member">
 			<%= user.first_name %>
+			
 			<%= render "users/invite", user: user %>
 		</div>
 	<% end %>
