@@ -7,6 +7,8 @@ class Battle < ActiveRecord::Base
   validates :theme, presence: true
 
   after_create :create_host_team_relation
+  
+  # scope :params_theme, where("theme = '#{params[:theme]}'")
 
   def create_host_team_relation
     r = TeamRelation.new

@@ -9,7 +9,8 @@
 		<p>Spelers limiet: 	<%= @battle.player_limit %></p>
 		<p>Thema: 			<%= @battle.theme %></p>
 		<p>Spelvorm: 		<%= @battle.game_type %></p>
+		
+		<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit") if current_user_is_host %>
 	<% end %>
 </div>
 
-<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit") if current_user_is_host %>

@@ -3,7 +3,7 @@
 	<%= f.hidden_field :status, value: "Pending" %>
 
 	<%= f.label :title, "Titel" %>
-	<%= f.text_area :title %>
+	<%= f.text_field :title %><br>
 
 	<%= f.label :start_date, "Begin Datum/Tijd" %><br>
 	<%= f.datetime_select :start_date %><br>
@@ -14,11 +14,15 @@
 	<%= f.label :player_limit, "Max. aantal spelers" %><br>
 	<%= f.number_field :player_limit %><br>
 
-	<%= f.label :theme, "Theme" %><br>
-	<%= f.select :theme, options_for_select([params[:theme], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br>
+	<% unless params[:satus] = "Edit"%>
 
-	<%= f.label :game_type, "Game" %><br>
-	<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br><br>
-
-	<%= f.submit "Plaats in overzicht"%>
+		<%= f.label :theme, "Theme" %><br>
+		<%= f.select :theme, options_for_select([params[:theme], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br>
+	
+		<%= f.label :game_type, "Game" %><br>
+		<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br><br>
+	
+	<% end %>
+	
+	<%= f.submit "Plaats in overzicht" %>
 <% end %>

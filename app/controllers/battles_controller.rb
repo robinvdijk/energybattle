@@ -3,7 +3,11 @@ class BattlesController < TeamRelationsController
   before_action :current_user, only: [:new, :create, :show, :edit, :update]
 
   def index
-    @battles = Battle.all
+    if params[:theme]
+      @battles = Battle.where(:theme => params[:theme])
+    else
+      @battles = Battle.all
+    end
   end
 
   def show
