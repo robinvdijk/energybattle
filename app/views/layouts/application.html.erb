@@ -7,19 +7,31 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<<<<<<< HEAD
 <header>
 	Onze header
 </header>
 <nav>
+=======
+
+<div id="container">
+	<%= render 'layouts/header' %>
+	<div class="header"></div>
+>>>>>>> f1ddb8945668f0ed54c6bcf067c51fa07fd90a90
 	<% if flash[:notice] %>
-    	<div class="notice"><%= flash[:notice] %></div>
-    <% end %>
+	<div class="notice"><%= flash[:notice] %></div>
+	<% end %>
 	<% if flash[:alert] %>
+<<<<<<< HEAD
     	<div class="alert"><%= flash[:alert] %></div>
     <% end %>
 	<%= render 'layouts/header' %>
 </nav>
 <div class="container">
+=======
+	<div class="alert"><%= flash[:alert] %></div>
+	<% end %>
+>>>>>>> f1ddb8945668f0ed54c6bcf067c51fa07fd90a90
 	<%= yield %>
 </div>
 </body>
