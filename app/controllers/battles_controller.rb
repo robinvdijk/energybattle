@@ -8,6 +8,7 @@ class BattlesController < TeamRelationsController
     else
       @battles = Battle.all
     end
+	 @count_notifications = current_user.notifications.count
   end
 
   def show
