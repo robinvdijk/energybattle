@@ -8,8 +8,7 @@ class Battle < ActiveRecord::Base
 
   after_create :create_host_team_relation
   
-  # scope :params_theme, where("theme = '#{params[:theme]}'")
-
+  
   def create_host_team_relation
     r = TeamRelation.new
     r.user_id = self.host_id
