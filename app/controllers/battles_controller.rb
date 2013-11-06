@@ -60,7 +60,4 @@ private
     params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
   end
 
-
-
-
 end
