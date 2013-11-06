@@ -1,3 +1,10 @@
+<% if @count_notifications %>
+	Er zijn <%= @count_notifications %> notificaties.
+	<div class="notifications">
+		<%= render current_user.notifications %>
+	</div>
+<% end %>
+
 <table cellpadding="5" cellspacing="5">
 <thead>
   <tr>
@@ -17,12 +24,5 @@
 		</tr>
 	<% end %>
 </tbody>
-<table>
-	<% not_accepted.each do |t| %>
-		<div>
-			<%= t.battle_id %>
-			<%= t.team %>
-		</div>
-	<% end %>
 	
 <%= link_to "Nieuwe battle", theme_path %>

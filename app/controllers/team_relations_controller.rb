@@ -22,17 +22,23 @@ class TeamRelationsController < ApplicationController
     flash[:notice] = "Verwisseld van team"
     redirect_to :back
   end
+  
+  def invite
+	  TeamRelation.create!(:user_id => params[:id], :battle_id => params[:battle_id], :status => 'invited', :team => 'opponent_team')
+	  Notification.create!(:notification_type => 'invite', :battle_id => params[:battle_id], :receiver_id => params[:id], :sender_id => current_user.id)
+	  redirect_to :back
+  end
 
   def user_in_one_team(user)
     TeamRelation.where(user_id: user.id, battle_id: @battle.id).count == 0
   end
 
   def find_team_members(team)
-    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team", accepted: true)
+    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team", status: 'joined')
   end
 
   def not_accepted
-    TeamRelation.where(user_id: 2, accepted: false)
+    TeamRelation.where(user_id: 2, status: 'invited')
   end
 
 private
@@ -41,6 +47,6 @@ private
   end
 
   def team_relation_params
-    params.require(:team_relation).permit(:user_id, :battle_id, :team, :accepted)
+    params.require(:team_relation).permit(:user_id, :battle_id, :team, :status)
   end
 end

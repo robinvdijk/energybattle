@@ -8,6 +8,7 @@ class BattlesController < TeamRelationsController
     else
       @battles = Battle.all
     end
+	 @count_notifications = current_user.notifications.count
   end
 
   def show
@@ -59,8 +60,5 @@ private
   def battle_params
     params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
   end
-
-
-
 
 end
