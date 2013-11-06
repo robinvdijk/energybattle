@@ -17,7 +17,7 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
-      @battle.end_date = @battle.start_date - @battle.duration
+      @battle.end_date = @battle.start_date + @battle.duration
       @battle.save
       flash[:notice] = "Nieuwe battle aangemaakt"
       redirect_to @battle

@@ -11,7 +11,11 @@
 			</div>
 		<% end %>
 	</div>
-	<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
+
+	<% unless @battle.users.count == @battle.player_limit %>		
+		<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
+	<% end %>
+		
 <% elsif @battle.status?("Prepare") %>
 	<div class="pusher">
 		<% find_team_members(team).each do |team|%>

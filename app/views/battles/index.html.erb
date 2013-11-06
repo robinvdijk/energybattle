@@ -4,6 +4,7 @@
 	  <th>Thema</th>
 	  <th>Status</th>
 	  <th>Host name</th>
+	  <th>Spelers</th>
   </tr>
 </thead>
 <tbody>
@@ -12,6 +13,7 @@
 			<td><%= link_to s.theme, battle_path(s) %></td>
 			<td><%= s.status %></td>
 			<td><%= find_host(s.host_id).first_name %></td>
+			<td><%= s.users.count %> / <%= s.player_limit %>
 		</tr>
 	<% end %>
 </tbody>
@@ -22,4 +24,5 @@
 			<%= t.team %>
 		</div>
 	<% end %>
-<%= link_to "Nieuwe battle", new_battle_path %>
+	
+<%= link_to "Nieuwe battle", theme_path %>
