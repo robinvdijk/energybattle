@@ -1,0 +1,11 @@
+<%= div_for notification do%>
+	<p>
+		<%= link_to notification.sender.first_name, user_path(notification.sender) %> heeft je uitgenodigd voor een <%= notification.battle.theme %> battle.
+	</p>
+
+	<%= link_to 'Accept', accept_notification_path(notification), method: :patch %><br/>
+	<%= link_to 'Decline', notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
+<hr/>
+<% end %>
+
+
