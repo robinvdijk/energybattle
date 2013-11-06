@@ -5,8 +5,10 @@
 	<p> Jou team <%= f.radio_button :team, "host_team" %></p>
 	<p> Ander team <%= f.radio_button :team, "opponent_team" %></p>
 	<p>
-		Accepted:
-		Wel<%= f.radio_button :accepted, :true %>
-		Niet <%= f.radio_button :accepted, :false %>
+		<%= f.hidden_field :status, value: 'invited' %>
+
 	</p>
 <% end %>
+
+
+<%= link_to 'Invite', invite_team_relation_path(user, :battle_id => params[:id]), method: :patch %>

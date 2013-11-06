@@ -1,21 +1,18 @@
 <div>
 	<div class="theme">
 		<h1>Energie</h1>		
-		<div class="subheading">Energy</div class="subheading">
-		<div><%= link_to "Host", gametype_path(:theme => "Energie") %></div>
-		<div><%= link_to "Join", battles_path %></div>
+		<div><%= link_to "Host", gametype_path(:theme => "energy") %></div>
+		<div><%= link_to "Join", battles_path(:theme => "energy") %></div>
 	</div>
 	<div class="theme">
 		<h1>Gas</h1>
-		<div class="subheading">Gas</div class="subheading">
-		<div><%= link_to "Host", gametype_path(:theme => "Gas") %></div>
-		<div><%= link_to "Join", battles_path %></div>
+		<div><%= link_to "Host", gametype_path(:theme => "gas") %></div>
+		<div><%= link_to "Join", battles_path(:theme => "gas") %></div>
 	</div>
 	<div class="theme">
 		<h1>Vuil</h1>
-		<div class="subheading">Vuil</div class="subheading">
-		<div><%= link_to "Host", gametype_path(:theme => "Vuil") %></div>
-		<div><%= link_to "Join", battles_path %></div>
+		<div><%= link_to "Host", gametype_path(:theme => "carbage") %></div>
+		<div><%= link_to "Join", battles_path(:theme => "carbage") %></div>
 	</div>
 	
 </div>

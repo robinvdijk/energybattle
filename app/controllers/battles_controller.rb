@@ -3,7 +3,12 @@ class BattlesController < TeamRelationsController
   before_action :current_user, only: [:new, :create, :show, :edit, :update]
 
   def index
-    @battles = Battle.all
+    if params[:theme]
+      @battles = Battle.where(:theme => params[:theme])
+    else
+      @battles = Battle.all
+    end
+	 @count_notifications = current_user.notifications.count
   end
 
   def show
@@ -17,7 +22,7 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
-      @battle.end_date = @battle.start_date - @battle.duration
+      @battle.end_date = @battle.start_date + @battle.duration
       @battle.save
       flash[:notice] = "Nieuwe battle aangemaakt"
       redirect_to @battle
@@ -55,8 +60,5 @@ private
   def battle_params
     params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
   end
-
-
-
 
 end

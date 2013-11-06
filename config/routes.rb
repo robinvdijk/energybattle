@@ -1,10 +1,15 @@
 Energybattle::Application.routes.draw do
+  resources :notifications do
+	  patch :accept, on: :member
+  end
+
   resources :readings
   resources :users
   resources :battles
 
   resources :team_relations do
-    patch :switch, on: :member
+	  patch :invite, on: :member
+	  patch :switch, on: :member
   end
 
   root "static_pages#theme"
