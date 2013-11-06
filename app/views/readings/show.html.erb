@@ -1,2 +1,5 @@
-<h1>Meterstand</h1>
-De meterstand op <%= @reading.created_at.to_date %> is <strong><%= @reading.amount %></strong> kWh.
+<div class="subheading">Meterstand (<%= @reading.created_at.to_date.strftime("%d %B %Y") %>)</div>
+De meterstand op <%= @reading.created_at.to_date %> is <strong><%= @reading.amount %></strong> kWh.<br/>
+
+Foto:<br/>
+<%= image_tag @reading.meter_url.to_s %>

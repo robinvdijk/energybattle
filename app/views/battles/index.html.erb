@@ -1,0 +1,29 @@
+<table cellpadding="5" cellspacing="5">
+<thead>
+<!--   <tr>
+	  <th><%= link_to "Thema", sort: "theme" %></th>
+	  <th><%= link_to "Status", sort:  "status"%></th>
+	  <th><%= link_to "Host name", sort: "host_id" %></th>
+  </tr>
+ -->
+  <tr>
+  	<th><%= sortable "theme" %></th>
+  	<th><%= sortable "status" %></th>
+  	<th><%= sortable "host_id" %></th>
+  	<th><%= sortable "created_at" %></th>
+  </tr>
+</thead>
+<tbody>
+	<% @battles.each do |s| %>
+		<tr>
+			<td><%= link_to s.theme, battle_path(s) %></td>
+			<td><%= s.status %></td>
+			<td><%= find_host(s.host_id).first_name %></td>
+			<td><%= s.created_at.to_date.strftime('%d %B %Y') %></td>
+		</tr>
+	<% end %>
+</tbody>
+<table>
+
+<%= will_paginate @battles %>
+<%= link_to "Nieuwe battle", new_battle_path %>

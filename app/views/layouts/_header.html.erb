@@ -1,4 +1,12 @@
-<%= link_to 'Meting invoeren', invoeren_path %> | 
 <%= link_to 'Alle metingen', meterstanden_path %> | 
-<%= link_to 'Alle battles', single_battles_path %> | 
-<%= link_to 'Nieuwe battle', new_single_battle_path %>
+<%= link_to 'Alle battles', battles_path %> | 
+<%= link_to 'Nieuwe meting', invoeren_path %> | 
+<%= link_to 'Nieuwe battle', new_battle_path %> |
+<%= link_to 'Nieuw thema', theme_path %>
+
+	<% if flash[:notice] %>
+    	<div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+	<% if flash[:alert] %>
+    	<div class="alert"><%= flash[:alert] %></div>
+    <% end %>

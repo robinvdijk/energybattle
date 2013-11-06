@@ -1,0 +1,9 @@
+<%= form_for @battle do |f| %>
+	<% if @battle.status?("Pending") %>
+		<%= f.hidden_field :status, value: "Prepare" %>
+		<%= f.submit "Prepare Battle" %>
+	<% elsif @battle.status?("Prepare") %>
+		<%= f.hidden_field :status, value: "Start" %>
+		<%= f.submit "Start Battle" %>
+	<% end %>
+<% end %>

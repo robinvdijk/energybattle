@@ -1,0 +1,26 @@
+<div class="subheading">Creër een battle</div>
+<div class="quarter_of_container">
+	<div class="subheading">Instellingen</div>
+		<%= form_for @battle do |f| %>
+			<%= f.hidden_field :host_id, value: @current_user.id %>
+			<%= f.hidden_field :status, value: "Pending" %>
+			<%= f.label :theme, "Theme" %>
+			<%= f.select :theme, options_for_select([["Energy", "Energy"], ["Dirt", "Dirt"]]) %>
+			<%= f.submit "Creër Battle"%>
+		<% end %>
+</div>
+<div class="quarter_of_container">
+	<div class="subheading">Team 1</div>
+	<div class='member'>
+		<%= @current_user.first_name %>
+		<%= @current_user.email %>
+	</div>
+</div>
+<div class="quarter_of_container">
+	<div class="subheading">Team 2</div>
+</div>
+<div class="quarter_of_container">
+	<div class="subheading">Uitnodigen</div>
+	<%= render 'users/search_members' %>
+</div>
+<%= link_to "Terug naar battle overzicht", root_path %>
