@@ -14,6 +14,7 @@ Energybattle::Application.routes.draw do
   root "battles#index"
 
   match '/theme', to: 'static_pages#theme', via: 'get'
+  match '/gametype', to: 'static_pages#gametype', via: 'get'
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
 

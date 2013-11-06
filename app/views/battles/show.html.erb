@@ -1,4 +1,4 @@
-<h1><%= @battle.status %> Battle</h1>
+<h1><%= @battle.status %> Battle / <%= @battle.title%></h1>
 <div class="quarter_of_container">
 	<%= render "settings_battle" if @battle.status?("Pending") %>
 	<%= render "readings/upload_readings" if @battle.status?("Prepare") %>

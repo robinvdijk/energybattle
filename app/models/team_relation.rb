@@ -8,4 +8,6 @@ class TeamRelation < ActiveRecord::Base
   def host_team_relation?
     self.battle.destroy if self.battle.host_id == self.user_id
   end
+  
+  
 end

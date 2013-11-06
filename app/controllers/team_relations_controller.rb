@@ -1,6 +1,6 @@
 class TeamRelationsController < ApplicationController
   before_action :set_team_relation, only: [:destroy, :switch]
-  helper_method :user_in_one_team, :find_team_members
+  helper_method :user_in_one_team, :find_team_members, :not_accepted
 
   def create
     @team_relation = TeamRelation.new(team_relation_params)
@@ -23,12 +23,16 @@ class TeamRelationsController < ApplicationController
     redirect_to :back
   end
 
-  def user_in_one_team
-    TeamRelation.where(user_id: @current_user.id, battle_id: @battle.id).count == 0
+  def user_in_one_team(user)
+    TeamRelation.where(user_id: user.id, battle_id: @battle.id).count == 0
   end
 
   def find_team_members(team)
-    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team").load
+    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team", accepted: true)
+  end
+
+  def not_accepted
+    TeamRelation.where(user_id: 2, accepted: false)
   end
 
 private
@@ -37,6 +41,6 @@ private
   end
 
   def team_relation_params
-    params.require(:team_relation).permit(:user_id, :battle_id, :team)
+    params.require(:team_relation).permit(:user_id, :battle_id, :team, :accepted)
   end
 end

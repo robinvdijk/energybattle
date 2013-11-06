@@ -1,11 +1,12 @@
 require 'spec_helper'
 
 describe BattlesController do
+
   before :each do
       request.env["HTTP_REFERER"] = ""
       current_user = create(:user)
   end
-
+  
   describe 'GET #index' do
     it 'populates an array of battles with the id' do
       energy = create(:battle, theme: "Energy")

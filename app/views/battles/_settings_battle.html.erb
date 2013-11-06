@@ -1,5 +1,15 @@
 <div class="pusher">
 	<div class="subheading">Instellingen</div>
-	<p>Thema: <%= @battle.theme%></p>
+	<% if params[:status] == "Edit" %>
+		<%= render 'edit_form'%>
+	<% else %>
+		<p>Titel: 			<%= @battle.title %></p>
+		<p>Start Datum: 	<%= @battle.start_date.strftime("%d-%m-%Y") %></p>
+		<p>Eind Datum: 		<%= @battle.end_date.strftime("%d-%m-%Y") %></p>
+		<p>Spelers limiet: 	<%= @battle.player_limit %></p>
+		<p>Thema: 			<%= @battle.theme %></p>
+		<p>Spelvorm: 		<%= @battle.game_type %></p>
+	<% end %>
 </div>
-<%= link_to "Wijzig instellingen", edit_battle_path(@battle) if current_user_is_host %>
+
+<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit") if current_user_is_host %>

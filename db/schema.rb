@@ -21,6 +21,13 @@ ActiveRecord::Schema.define(version: 20131104174706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "status"
+    t.string   "title"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.string   "game_type"
+    t.integer  "player_limit"
+    t.boolean  "access"
+    t.integer  "duration"
   end
 
   create_table "readings", force: true do |t|
@@ -37,6 +44,7 @@ ActiveRecord::Schema.define(version: 20131104174706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "team"
+    t.boolean  "accepted"
   end
 
   create_table "users", force: true do |t|

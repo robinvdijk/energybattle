@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   has_many :battles, through: :team_relations
   has_many :readings
+  has_many :team_relations
   validates :first_name, presence: true
+
+
 
   def self.search(search)
     search.present? and where('first_name LIKE ?', "%#{search}%")

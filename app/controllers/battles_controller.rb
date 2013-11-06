@@ -18,6 +18,8 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
+      @battle.end_date = @battle.start_date + @battle.duration
+      @battle.save
       flash[:notice] = "Nieuwe battle aangemaakt"
       redirect_to @battle
     else
@@ -43,19 +45,23 @@ class BattlesController < TeamRelationsController
   end
 
 private
-    def set_battle
+  def set_battle
       @battle = Battle.find(params[:id])
-    end
+  end
 
-    def battle_params
-      params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :status)
-    end
+  def twitter_url_for(url, text)
+    link_to "Share this url", "http://twitter.com/share?url=#{url}&text=#{text}"
+  end
 
-    def sort_column
-      Battle.column_names.include?(params[:sort]) ? params[:sort] : "theme"
-    end
+  def battle_params
+    params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
+  end
+
+  def sort_column
+    Battle.column_names.include?(params[:sort]) ? params[:sort] : "theme"
+  end
   
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
-    end
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  end
 end
