@@ -5,9 +5,11 @@ class Battle < ActiveRecord::Base
   validates :host_id, presence: true
   validates :status, presence: true
   validates :theme, presence: true
-  validates :title, presence: true
+  validates :title, presence: true, length: {maximum: 25}
 
   after_create :create_host_team_relation
+  
+  # scope :params_theme, where("theme = '#{params[:theme]}'")
 
   def create_host_team_relation
     r = TeamRelation.new

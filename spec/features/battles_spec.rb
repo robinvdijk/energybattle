@@ -5,7 +5,10 @@ feature 'Battle management' do
     current_user = create(:user)
     visit battles_path
     click_link "Nieuwe battle"
-      expect(current_path).to eq new_battle_path
+      expect(current_path).to eq theme_path
+      first(".theme").click_link("Host")
+      first(".theme").click_link("Choose")
+
       expect(page).to have_content "#{current_user.first_name}"
       expect(page).to have_content "#{current_user.email}"
 

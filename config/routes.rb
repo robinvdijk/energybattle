@@ -3,7 +3,9 @@ Energybattle::Application.routes.draw do
 
   resources :readings
 
-  resources :users
+  resources :users do
+      resources :readings
+  end
 
   resources :battles
 

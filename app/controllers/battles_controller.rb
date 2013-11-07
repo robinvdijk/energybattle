@@ -7,6 +7,14 @@ class BattlesController < TeamRelationsController
     @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
   end
 
+  # def index
+  #   if params[:theme]
+  #     @battles = Battle.where(:theme => params[:theme])
+  #   else
+  #     @battles = Battle.all
+  #   end
+  # end
+
   def show
     @battle = Battle.find(params[:id])
   end

@@ -14,13 +14,13 @@ class ReadingsController < ApplicationController
     if Reading.any?  
       if @reading.amount >= @reading_value
         @reading.save
-        redirect_to meterstanden_path
+        flash[:succes] = "Gelukt"
       else
         render 'new'
       end
     else
       if @reading.save
-        redirect_to meterstanden_path
+        flash[:succes] = "Gelukt"
       else
         render 'new'
       end

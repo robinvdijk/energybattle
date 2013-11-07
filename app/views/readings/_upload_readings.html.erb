@@ -1,9 +1,10 @@
 <div class="subheading">Upload foto</div>
 
 
-<% if @user.readings.any? %>
-<p>Hoi</p>
-<% else %>
-<p>Doei</p>
+<% @battle.users.each do |f| %>
+	<%= form_for f.readings.build do |r|%>
+		<%= r.text_field :amount %> kWh<br/>
+		<%= r.file_field :meter %>
+		<%= r.submit "Meterstand opslaan" %>
+	<% end %>
 <% end %>
-
