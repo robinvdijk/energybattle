@@ -1,9 +1,14 @@
 <div class="inner-header">
 	<ul>
-		<li><a href="/home/" title="home"> Home </a></li>
-		<li><a href="/home/" title="home"> Profiel </a></li>
-		<li><a href="/home/" title="home"> Battle's </a></li>
-		<li><a href="/home/" title="home"> Teams </a></li>
-		<li><a href="/home/" title="home"> Spelers </a></li>
+		<li><a href="/home/"> Home</a></li>
+		<li><a href="/home/"> Profiel</a></li>
+		<li><%= link_to "Battles", battles_path %></li>
+		<li><a href="/home/"> Teams</a></li>
+		<li><a href="/home/"> Spelers</a></li>
+		<div class="pull-right">
+			<div class="search">Zoeken</div>
+			<div class="notifications">Notifications</div>
+			<div class="menu">menu</div>
+		</div>
 	</ul>
 </div>

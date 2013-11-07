@@ -24,5 +24,6 @@
 	
 	<% end %>
 	
-	<%= f.submit "Plaats in overzicht" %>
+	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
+	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
 <% end %>
