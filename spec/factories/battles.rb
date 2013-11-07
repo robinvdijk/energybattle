@@ -6,7 +6,6 @@ FactoryGirl.define do
     theme "Energy"
     status "Pending"
 
-
     factory :invalid_battle do
       opponent_id nil
     end
