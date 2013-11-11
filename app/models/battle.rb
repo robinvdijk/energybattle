@@ -1,6 +1,7 @@
 class Battle < ActiveRecord::Base
   has_many :users, through: :team_relations
   has_many :team_relations
+  has_many :readings
     
   validates :host_id, presence: true
   validates :status, presence: true

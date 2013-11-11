@@ -11,19 +11,11 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
-    if Reading.any?  
-      if @reading.amount >= @reading_value
-        @reading.save
-        flash[:succes] = "Gelukt"
-      else
-        render 'new'
-      end
+    if @reading.save
+      flash[:succes] = "Gelukt"
+      redirect_to @reading.battle
     else
-      if @reading.save
-        flash[:succes] = "Gelukt"
-      else
-        render 'new'
-      end
+      render 'new'
     end
   end
 
@@ -34,7 +26,7 @@ class ReadingsController < ApplicationController
   private
 
   def reading_params
-    params.require(:reading).permit(:amount, :meter)
+    params.require(:reading).permit(:amount, :meter, :user_id, :battle_id)
   end
 
   def higher_value
