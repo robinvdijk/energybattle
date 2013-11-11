@@ -8,6 +8,7 @@ class Battle < ActiveRecord::Base
   validates :title, presence: true, length: {maximum: 25}
 
   after_create :create_host_team_relation
+  
 
   def create_host_team_relation
     r = TeamRelation.new
