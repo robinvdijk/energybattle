@@ -4,6 +4,7 @@ FactoryGirl.define do
     sequence(:user_id) { |n| n+1 }
     battle_id 1
     team "opponent_team"
+    status "joined"
 
     factory :invalid_team_relation do
       team nil

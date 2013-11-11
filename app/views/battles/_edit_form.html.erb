@@ -15,14 +15,13 @@
 	<%= f.number_field :player_limit %><br>
 
 	<% unless params[:status] == "Edit"%>
-
 		<%= f.label :theme, "Theme" %><br>
 		<%= f.select :theme, options_for_select([params[:theme]]) %><br>
 	
 		<%= f.label :game_type, "Game" %><br>
 		<%= f.select :game_type, options_for_select([params[:game_type]]) %><br><br>
-	
 	<% end %>
 	
-	<%= f.submit "Plaats in overzicht" %>
+	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
+	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
 <% end %>

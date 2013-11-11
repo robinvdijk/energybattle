@@ -16,4 +16,4 @@
 	<%= render "readings/upload_readings" if @battle.status?("Prepare")%>
 </div>
 <%= render "status_button" if current_user_is_host %>
-<%= link_to "Terug naar battle overzicht", root_path %>
+<%= link_to "Terug naar battle overzicht", battles_path %>
