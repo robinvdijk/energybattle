@@ -17,13 +17,12 @@
 <tbody>
 	<% @battles.each do |s| %>
 		<tr>
-			<td><%= link_to s.theme, battle_path(s) %></td>
+			<td><%= link_to s.theme, battle_path(s), class: "primary-button" %></td>
 			<td><%= s.status %></td>
 			<td><%= find_host(s.host_id).first_name %></td>
 			<td><%= s.users.count %> / <%= s.player_limit %>
 		</tr>
 	<% end %>
 </tbody>
-<%= link_to "Nieuwe battle", theme_path, class: "primary-button" %>
 <table>
-
+<%= link_to "Nieuwe battle", theme_path, class: "primary-button" %>
