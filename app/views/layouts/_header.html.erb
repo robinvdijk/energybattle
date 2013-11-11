@@ -1,14 +1,13 @@
 <div class="inner-header">
 	<ul>
-		<li><a href="/home/"> Home</a></li>
+		<li><%= link_to "Home", root_path %></li>
 		<li><a href="/home/"> Profiel</a></li>
 		<li><%= link_to "Battles", theme_path %></li>
 		<li><a href="/home/"> Teams</a></li>
 		<li><a href="/home/"> Spelers</a></li>
 		<div class="pull-right">
-			<div class="search">Zoeken</div>
-			<div class="notifications">Notifications</div>
-			<div class="menu">menu</div>
+			<%= link_to image_tag("Bell.svg"), '', class: "icon-bell" %>
+			<%= link_to image_tag("Menu.svg"), '', class: "icon-menu" %>
 		</div>
 	</ul>
 </div>
