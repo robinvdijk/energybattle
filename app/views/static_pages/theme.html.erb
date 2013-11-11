@@ -1,18 +1,24 @@
 <div>
 	<div class="theme">
 		<h1>Energie</h1>		
-		<div><%= link_to "Host", gametype_path(:theme => "energy"), class: "primary-button" %></div>
-		<div><%= link_to "Join", battles_path(:theme => "energy"), class: "primary-button" %></div>
+		<div class="bottom-pusher">
+			<%= link_to "Host", gametype_path(:theme => "energy"), class: "primary-button" %>
+			<%= link_to "Join", battles_path(:theme => "energy"), class: "primary-button" %>
+		</div>
 	</div>
 	<div class="theme">
 		<h1>Gas</h1>
-		<div><%= link_to "Host", gametype_path(:theme => "gas"), class: "primary-button" %></div>
-		<div><%= link_to "Join", battles_path(:theme => "gas"), class: "primary-button" %></div>
+		<div class="bottom-pusher">
+			<%= link_to "Host", gametype_path(:theme => "gas"), class: "primary-button" %>
+			<%= link_to "Join", battles_path(:theme => "gas"), class: "primary-button" %>
+		</div>
 	</div>
 	<div class="theme">
 		<h1>Vuil</h1>
-		<div><%= link_to "Host", gametype_path(:theme => "carbage"), class: "primary-button" %></div>
-		<div><%= link_to "Join", battles_path(:theme => "carbage"), class: "primary-button" %></div>
+		<div class="bottom-pusher">
+			<%= link_to "Host", gametype_path(:theme => "carbage"), class: "primary-button" %>
+			<%= link_to "Join", battles_path(:theme => "carbage"), class: "primary-button" %>
+		</div>
 	</div>
 	
 </div>
