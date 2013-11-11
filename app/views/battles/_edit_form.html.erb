@@ -15,14 +15,11 @@
 	<%= f.number_field :player_limit %><br>
 
 	<% unless params[:status] == "Edit"%>
-
 		<%= f.label :theme, "Theme" %><br>
 		<%= f.select :theme, options_for_select([params[:theme], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br>
-	
 		<%= f.label :game_type, "Game" %><br>
 		<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br><br>
-	
 	<% end %>
-	
+
 	<%= f.submit "Plaats in overzicht" %>
 <% end %>

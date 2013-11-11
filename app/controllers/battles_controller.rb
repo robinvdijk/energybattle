@@ -4,16 +4,13 @@ class BattlesController < TeamRelationsController
   helper_method :sort_column, :sort_direction
 
   def index
-    @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+    if params[:theme]
+      @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+    else
+      @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+    end
+	 @count_notifications = current_user.notifications.count
   end
-
-  # def index
-  #   if params[:theme]
-  #     @battles = Battle.where(:theme => params[:theme])
-  #   else
-  #     @battles = Battle.all
-  #   end
-  # end
 
   def show
     @battle = Battle.find(params[:id])
@@ -72,4 +69,5 @@ private
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
+
 end

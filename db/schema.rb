@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131104174706) do
+ActiveRecord::Schema.define(version: 20131105134145) do
 
   create_table "battles", force: true do |t|
     t.integer  "host_id"
@@ -30,6 +30,16 @@ ActiveRecord::Schema.define(version: 20131104174706) do
     t.string   "status"
   end
 
+  create_table "notifications", force: true do |t|
+    t.string   "notification_type"
+    t.integer  "battle_id"
+    t.integer  "sender_id"
+    t.integer  "receiver_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "readings", force: true do |t|
     t.integer  "amount"
     t.datetime "created_at"
@@ -44,7 +54,7 @@ ActiveRecord::Schema.define(version: 20131104174706) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "team"
-    t.boolean  "accepted"
+    t.string   "status"
   end
 
   create_table "users", force: true do |t|

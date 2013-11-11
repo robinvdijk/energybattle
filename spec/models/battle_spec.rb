@@ -17,3 +17,5 @@ describe Battle do
     expect(build(:battle, theme: nil)).to have(1).errors_on(:theme)
   end
 end
+
+
