@@ -12,7 +12,7 @@
 	<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %><br>
 
 	<%= f.label :player_limit, "Max. aantal spelers" %><br>
-	<%= f.number_field :player_limit %><br>
+	<%= f.number_field :player_limit, :min => 0 %><br>
 
 	<% unless params[:status] == "Edit"%>
 		<%= f.label :theme, "Theme" %><br>
