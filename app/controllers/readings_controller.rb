@@ -14,13 +14,13 @@ class ReadingsController < ApplicationController
     if Reading.any?  
       if @reading.amount >= @reading_value
         @reading.save
-        flash[:succes] = "Gelukt"
+        
       else
         render 'new'
       end
     else
       if @reading.save
-        flash[:succes] = "Gelukt"
+        
       else
         render 'new'
       end

@@ -13,12 +13,6 @@
 		</header>
 		<nav>
 			<%= render 'layouts/header' %>
-			<% if flash[:notice] %>
-				<div class="notice"><%= flash[:notice] %></div>
-			<% end %>
-			<% if flash[:alert] %>
-		    	<div class="alert"><%= flash[:alert] %></div>
-		    <% end %>
 		</nav>
 		<div class="container">
 			<%= yield %>
