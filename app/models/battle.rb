@@ -7,6 +7,7 @@ class Battle < ActiveRecord::Base
   validates :theme, presence: true
 
   after_create :create_host_team_relation
+  
 
   def create_host_team_relation
     r = TeamRelation.new
