@@ -6,7 +6,7 @@ describe BattlesController do
       request.env["HTTP_REFERER"] = ""
       current_user = create(:user)
   end
-  
+
   describe 'GET #index' do
     it 'populates an array of battles with the id' do
       energy = create(:battle, theme: "Energy")
@@ -130,7 +130,7 @@ describe BattlesController do
   describe 'DELETE #destroy' do
     before(:each) do
       @battle = create(:battle)
-      @team_relation = create(:team_relation)
+      @team_relation = create(:team_relation, id: 2)
     end
 
     it 'deletes the battle from the database' do

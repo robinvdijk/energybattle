@@ -16,10 +16,9 @@
 
 	<% unless params[:status] == "Edit"%>
 		<%= f.label :theme, "Theme" %><br>
-		<%= f.select :theme, options_for_select([params[:theme], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br>
+		<%= f.select :theme, options_for_select([params[:theme], ["Energy", "Energy"], ["Dirt", "Dirt"]]) %><br>
 		<%= f.label :game_type, "Game" %><br>
-		<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "energy"], ["Dirt", "dirt"]]) %><br><br>
+		<%= f.select :game_type, options_for_select([params[:game_type], ["Energy", "Energy"], ["Dirt", "Dirt"]]) %><br><br>
 	<% end %>
-	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
-	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
+	<%= link_to 'Plaats in overzicht', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
 <% end %>

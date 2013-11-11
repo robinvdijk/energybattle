@@ -1,14 +1,1 @@
-<%= form_for TeamRelation.new do |f| %>
-	<%= f.hidden_field :battle_id, value: @battle.id %>
-	<%= f.hidden_field :user_id, value: user.id %>
-	<%= f.submit "Invite", class: "invite_button" %>
-	<p> Jou team <%= f.radio_button :team, "host_team" %></p>
-	<p> Ander team <%= f.radio_button :team, "opponent_team" %></p>
-	<p>
-		<%= f.hidden_field :status, value: 'invited' %>
-
-	</p>
-<% end %>
-
-
-<%= link_to 'Invite', invite_team_relation_path(user, :battle_id => params[:id]), method: :patch %>
+<%= link_to 'Invite', invite_team_relation_path(user, :battle_id => params[:id]), method: :patch, class: "primary-button" %>

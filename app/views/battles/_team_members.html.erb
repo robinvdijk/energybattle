@@ -5,18 +5,16 @@
 				<%= team.user.first_name %>
 				<%= team.user.email %>
 				<% if team.user.id == @current_user.id %>
-					<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"} %>
-					<%= link_to "Switch teams", switch_team_relation_path(team), method: :patch unless current_user_is_host %>
+					<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "primary-button" %>
+					<%= link_to "Switch teams", switch_team_relation_path(team), class: "primary-button", method: :patch unless current_user_is_host %>
 				<% end %>
 			</div>
 		<% end %>
 	</div>
-
-	<% unless @battle.users.count == @battle.player_limit %>		
+	<% unless @battle.users.count == @battle.player_limit %>
 		<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
 	<% end %>
-		
-<% elsif @battle.status?("Prepare") %>
+<% elsif @battle.status?("Prepare") || @battle.status?("Start") %>
 	<div class="pusher">
 		<% find_team_members(team).each do |team|%>
 			<div class="member">
