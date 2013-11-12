@@ -12,21 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery.ui.datepicker
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-	$("#battles th a").click(function(){
-		$.getScript(this.href);
-		return false;
-	});
-});
-
-
-// $(document).ready(function(){
-// 	$("#battles th a").click(function(){
-// 		alert("Hoi");
-// 	});
-// });
-
-

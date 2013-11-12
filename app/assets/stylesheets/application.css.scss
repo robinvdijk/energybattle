@@ -1,3 +1,4 @@
+/* *= require jquery.ui.datepicker */
 @import "bourbon";
 @import "neat";
 @import "reset";
@@ -14,23 +15,23 @@
 header {
 	background: rgb(52, 73, 94);
 	height: 3.125em;
-	width: 100%;	
+	width: 100%;
 }
 
 nav {
 	background: rgb(104, 192, 123);
 	width: 100%;
-	box-shadow: 0 0.125em 0 0 rgba(77, 155, 93, 1.0);	
-	
+	box-shadow: 0 0.125em 0 0 rgba(77, 155, 93, 1.0);
+
 	ul {
 	padding: 0.75em 0 0.75em 0;
 	list-style-type: none;
-	
+
 		li {
 			display: inline;
 			margin: 0;
 			padding-right: 1.875em;
-			
+
 			a {
 				padding-bottom: 0.3em;
 				font-family: 'Lato' , sans-serif;
@@ -121,4 +122,22 @@ nav {
 .bottom-pusher{
 	position:absolute;
 	bottom:0.5em;
+}
+
+.form-group{
+	margin:0.3em 0.2em;
+	label{
+		float: left;
+		width: 90px;
+		padding-top: 5px;
+		padding-left:5px;
+	}
+	.form-attribute{
+		margin-left:8em;
+		p {
+			color:#FFF;
+			margin-left:0.1em;
+			width:90%;
+		}
+	}
 }

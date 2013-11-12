@@ -6,11 +6,8 @@
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-
 	<body>
-		<header>
-			Onze header
-		</header>
+		<header></header>
 		<nav>
 			<%= render 'layouts/header' %>
 			<% if flash[:notice] %>
@@ -24,5 +21,4 @@
 			<%= yield %>
 		</div>
 	</body>
-
 </html>

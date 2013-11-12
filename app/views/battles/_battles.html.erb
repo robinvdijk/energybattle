@@ -1,4 +1,4 @@
-<table cellpadding="5" cellspacing="5">
+<table cellpadding="20" cellspacing="20">
 <thead>
   <tr>
   	<th><%= sortable "title" %></th>
@@ -13,8 +13,8 @@
 <tbody>
 	<% @battles.each do |s| %>
 		<tr>
-			<td><%= s.title %></td>
-			<td><%= link_to s.theme, battle_path(s) %></td>
+			<td><%= link_to s.title, battle_path(s) %></td>
+			<td><%= s.theme.capitalize %></td>
 			<td><%= s.status %></td>
 			<td><%= find_host(s.host_id).first_name %></td>
 

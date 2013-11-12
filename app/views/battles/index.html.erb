@@ -1,17 +1,4 @@
-
-<div id="battles">
-	<%= render 'battles' %>
-</div>	
-
-<%= will_paginate @battles %>
-
-	<% not_accepted.each do |t| %>
-		<div>
-			<%= t.battle_id %>
-			<%= t.team %>
-		</div>
-	<% end %>
-	
+<br>
 
 <% if @count_notifications %>
 	Er zijn <%= @count_notifications %> notificaties.
@@ -19,5 +6,13 @@
 		<%= render current_user.notifications %>
 	</div>
 <% end %>
+
+<br>
+
+<div id="battles">
+	<%= render 'battles' %>
+</div>
+
+<%= will_paginate @battles %>
 
 <%= link_to "Nieuwe battle", theme_path %>
