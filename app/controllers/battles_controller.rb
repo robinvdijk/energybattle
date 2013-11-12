@@ -9,7 +9,6 @@ class BattlesController < TeamRelationsController
     else
       @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
     end
-	 @count_notifications = current_user.notifications.count
   end
 
   def show
