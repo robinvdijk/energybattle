@@ -11,6 +11,7 @@ gem 'mini_magick'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-turbolinks'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bourbon'
@@ -49,7 +50,6 @@ group :test do
   gem 'factory_girl_rails', '4.2.1'
   gem 'launchy'
 end
-
 
 group :assets do
 

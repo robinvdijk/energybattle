@@ -7,6 +7,7 @@
 		<li><a href="/home/"> Spelers</a></li>
 		<div class="pull-right">
 			<%= link_to image_tag("Bell.svg"), '', class: "icon-bell" %>
+<<<<<<< HEAD
 			<div class="notifications-center">
 				<% if @count_notifications %>
 					Er zijn <%= @count_notifications %> notificaties.
@@ -14,6 +15,15 @@
 						<%= render current_user.notifications %>
 					</div>
 				<% end %>
+=======
+			<div class="notification-center">
+				<% if @count_notifications %>
+				Er zijn <%= @count_notifications %> notificaties.
+				<div class="notifications">
+		<%= render current_user.notifications %>
+	</div>
+<% end %>
+>>>>>>> 3fd8605aec0e06629f53035edb0ff6f507745349
 			</div>
 			<%= link_to image_tag("Menu.svg"), '', class: "icon-menu" %>
 		</div>
