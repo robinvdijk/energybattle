@@ -1,0 +1,52 @@
+.battle_settings {
+	@include outer-container;
+	@include span-columns(4);
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	margin-top: 1.65em;
+	position:relative;
+	border-radius: 0.3em;
+	font-family: 'lato' , sans-serif;
+	color: rgb(52, 73, 94);
+	font-size: 1.2em;
+}
+
+.subheading {
+	margin-top: 1em;
+	font-family: 'lato' , sans-serif;
+	font-size: 1.5em;
+	color: rgb(52, 73, 94);
+	text-shadow: none;
+}
+
+.teams{
+	@include span-columns (8);
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	margin-top: 2em;
+	position:relative;
+	border-radius: 0.3em;
+	height: 100px;
+}
+
+.team_1{
+	@include span-columns (4 of 8);
+}
+
+.team_2{
+	@include span-columns (4 of 8);
+}
+
+.test {
+	@include span-columns (4);
+	label {
+		line-height:1.4em;
+	}
+}
+
+.new_battle{
+	ul li {
+		text-decoration:none;
+		padding:5px;
+	}
+}
