@@ -797,7 +797,7 @@ jQuery.extend({
 			}
 		}
 
-		// Flatten any nested arrays
+		// Flatten any of-8ed arrays
 		return core_concat.apply( [], ret );
 	},
 
@@ -2792,7 +2792,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 			}
 
-			// Override manipulation of globals by nested matchers
+			// Override manipulation of globals by of-8ed matchers
 			if ( outermost ) {
 				dirruns = dirrunsUnique;
 				outermostContext = contextBackup;
@@ -6210,7 +6210,7 @@ jQuery.fn.extend({
 
 	domManip: function( args, callback, allowIntersection ) {
 
-		// Flatten any nested arrays
+		// Flatten any of-8ed arrays
 		args = core_concat.apply( [], args );
 
 		var first, node, hasScripts,

@@ -44,22 +44,54 @@ h1 {
 }
 
 .invite {
-        position:relative;
-        height:85%;
-        overflow:scroll;
-        margin-bottom:10px;
+	text-align:center;
 }
 
 .invite_members {
-        background-color:green;
-        margin:3px;
-        padding:3px;
-        border-radius:3px;
-        width:100px;
+	background-color:green;
+	margin:3px;
+	padding:3px;
+	border-radius:3px;
+	width:100px;
+}
+
+#inviteable_members {
+	overflow:scroll;
+  position:relative;
+  height:20em;
+  margin-bottom:10px;
 }
 
 .notice {
-        border:2px green solid;
-        padding:7px;
-        border-radius:7px;
+	border:2px green solid;
+	padding:7px;
+	border-radius:7px;
+	margin:1em 0;
 }
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    @include span-columns($i);
+  }
+}
+
+@for $i from 1 through 12 {
+	@for $p from 1 through 12 {
+	  .col-#{$i}-of-#{$p} {
+	    @include span-columns($i of $p);
+	  }
+	}
+}
+
+@for $i from 1 through 6 {
+	.omega-#{$i} {
+		@include omega(#{$i}n);
+	}
+}
+
+.border-right {
+	border-right:2px solid #2c3e50;
+	height:100%;
+}
+
+

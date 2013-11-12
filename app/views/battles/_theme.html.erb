@@ -1,5 +1,8 @@
 <div class="theme">
 	<h1><%= "#{theme.capitalize}" %></h1>
-	<div><%= link_to "Host", gametype_path(:theme => "#{theme}"), class: "primary-button" %></div>
-	<div><%= link_to "Join", battles_path(:theme => "#{theme}"), class: "primary-button" %></div>
+	<div class="bottom-pusher">
+		<%= link_to image_tag("#{theme}.jpg"), gametype_path(:theme => "#{theme}")  %>
+		<%= link_to "Host", gametype_path(:theme => "#{theme}"), class: "primary-button" %>
+		<%= link_to "Join", battles_path(:theme => "#{theme}"), class: "primary-button" %>
+	</div>
 </div>

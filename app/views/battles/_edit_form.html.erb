@@ -1,49 +1,48 @@
 <%= form_for @battle do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
-	<%= f.hidden_field :status, value: "Pending" %>
+	<%= f.hidden_field :status, value: "pending" %>
 	<div class="form-group">
-		<%= f.label :title, "Title" %>
+		<%= f.label :title, "Titel" %>
 		<div class="form-attribute">
 			<%= f.text_field :title %>
 			<p>Hiermee bepaal je de naam van een battle</p>
 		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :player_limit, "Player Limit" %>
+		<%= f.label :player_limit, "Spelers limiet" %>
 		<div class="form-attribute">
 			<%= f.number_field :player_limit %>
 		</div>
 	</div>
 	<% unless params[:status] == "Edit"%>
 	<div class="form-group">
-		<%= f.label :theme, "Theme" %>
+		<%= f.label :theme, "Thema" %>
 		<div class="form-attribute">
 			<%= f.select :theme, options_for_select([params[:theme]]) %>
 			<p></p>
 		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :game_type, "Game Type" %>
+		<%= f.label :game_type, "Spelvorm" %>
 		<div class="form-attribute">
 			<%= f.select :game_type, options_for_select([params[:game_type]]) %>
 			<p></p>
 		</div>
 	</div>
 	<div class="form-group">
-		<%= f.label :start_date, "Start Date" %>
+		<%= f.label :start_date, "Start Datum" %>
 		<div class="form-attribute">
 			<%= f.text_field :start_date, class: "datepicker" %>
 			<p></p>
 		</div>
 	</div>
-	<% end %>
 	<div class="form-group">
-		<%= f.label :duration, "Duration" %>
+		<%= f.label :duration, "Duur" %>
 		<div class="form-attribute">
 			<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %>
 			<p></p>
 		</div>
 	</div>
+	<% end %>
 	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
-	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
 <% end %>

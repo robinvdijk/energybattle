@@ -1,0 +1,53 @@
+.battle_settings {
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	padding:0 0.3em;
+	position:relative;
+	border-radius: 0.3em;
+	font-family: 'lato' , sans-serif;
+	color: rgb(52, 73, 94);
+	font-size: 1.2em;
+	p {
+		padding:0.4em 0;
+	}
+}
+
+.subheading {
+	font-family: 'lato' , sans-serif;
+	font-size: 1.5em;
+	color: rgb(52, 73, 94);
+	text-shadow: none;
+	margin:0.4em 0;
+}
+
+.teams-header{
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	position:relative;
+	border-radius: 0.3em;
+	height: 100px;
+	li {
+		float: left;
+		list-style: none;
+		padding: 2% 6% 0 6%;
+	}
+}
+
+.new_battle{
+	ul li {
+		text-decoration:none;
+		padding:5px;
+	}
+}
+
+.ui-menu {
+	width:12em;
+	li{
+		margin:0.8em;
+		list-style:none;
+	}
+	a {
+		padding:0.3em;
+		background-color:#999;
+	}
+}
