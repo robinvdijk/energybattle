@@ -1,4 +1,4 @@
-<div class="subheading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
+<div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
 <div class="col-4 battle_settings">
 	<div class="subheading">Instellingen</div>
 	<%= render "settings_battle" if @battle.status?("pending") %>
