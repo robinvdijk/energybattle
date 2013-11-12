@@ -14,6 +14,7 @@ class BattlesController < TeamRelationsController
 
   def show
     @battle = Battle.find(params[:id])
+    @reading = Reading.new
   end
 
   def new

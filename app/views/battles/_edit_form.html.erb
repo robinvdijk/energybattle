@@ -1,33 +1,49 @@
 <%= form_for @battle do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
 	<%= f.hidden_field :status, value: "Pending" %>
-	
-	<div class="test">
-		<%= f.label :title, "Title" %></br>
-		<%= f.label :start_date, "Start Date" %>
-		<%= f.label :duration, "Duration" %>
-		<%= f.label :player_limit, "Player Limit" %>
-		<%= f.label :status, "Status" %>
-		<%= f.label :theme, "Theme" %>
-		<%= f.label :game_type, "Game Type" %>
+	<div class="form-group">
+		<%= f.label :title, "Title" %>
+		<div class="form-attribute">
+			<%= f.text_field :title %>
+			<p>Hiermee bepaal je de naam van een battle</p>
+		</div>
 	</div>
-	
-	<ul>
-		<li><%= f.text_field :title %></li>
-		<li><%= f.date_select :start_date %></li>
-
-		<li><%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %></li>
-
-		<li><%= f.number_field :player_limit %></li>
-
-		<% unless params[:status] == "Edit"%>
-			<li><%= f.select :theme, options_for_select([params[:theme]]) %></li>
-
-			<li><%= f.select :game_type, options_for_select([params[:game_type]]) %></li>
-		<% end %>
-		
-		<%= f.submit "Plaats in overzicht", class: "primary-button" %>
-		<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
-	</ul>
-	
+	<div class="form-group">
+		<%= f.label :player_limit, "Player Limit" %>
+		<div class="form-attribute">
+			<%= f.number_field :player_limit %>
+		</div>
+	</div>
+	<% unless params[:status] == "Edit"%>
+	<div class="form-group">
+		<%= f.label :theme, "Theme" %>
+		<div class="form-attribute">
+			<%= f.select :theme, options_for_select([params[:theme]]) %>
+			<p></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :game_type, "Game Type" %>
+		<div class="form-attribute">
+			<%= f.select :game_type, options_for_select([params[:game_type]]) %>
+			<p></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :start_date, "Start Date" %>
+		<div class="form-attribute">
+			<%= f.text_field :start_date, class: "datepicker" %>
+			<p></p>
+		</div>
+	</div>
+	<% end %>
+	<div class="form-group">
+		<%= f.label :duration, "Duration" %>
+		<div class="form-attribute">
+			<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %>
+			<p></p>
+		</div>
+	</div>
+	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
+	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
 <% end %>

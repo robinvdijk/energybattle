@@ -11,7 +11,9 @@ gem 'mini_magick'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-turbolinks'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bourbon'
 gem 'neat'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -49,9 +51,8 @@ group :test do
   gem 'launchy'
 end
 
-
 group :assets do
-  
+
 end
 
 # Use ActiveModel has_secure_password

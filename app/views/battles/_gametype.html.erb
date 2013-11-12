@@ -1,0 +1,4 @@
+<div class="theme">
+	<h1><%= "#{game_type.capitalize}" %></h1>
+	<div><%= link_to "Choose", new_battle_path(:theme => params[:theme], game_type: "#{game_type}"), class: "primary-button bottom-pusher" %></div>
+</div>

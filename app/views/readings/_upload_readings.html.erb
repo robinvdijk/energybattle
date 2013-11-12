@@ -1,10 +1,4 @@
 <div class="subheading">Upload foto</div>
+	
+	<%= render 'readings/form' %>
 
-
-<% @battle.users.each do |f| %>
-	<%= form_for f.readings.build do |r|%>
-		<%= r.text_field :amount %> kWh<br/>
-		<%= r.file_field :meter %>
-		<%= r.submit "Meterstand opslaan" %>
-	<% end %>
-<% end %>
