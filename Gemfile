@@ -22,8 +22,8 @@ gem 'neat'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'will_paginate'
+gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 
