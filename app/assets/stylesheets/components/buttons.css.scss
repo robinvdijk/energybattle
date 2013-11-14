@@ -1,0 +1,28 @@
+.primary-button {
+	background: rgb(104, 192, 123);
+	display: block;
+	overflow: hidden;
+	text-align:center;
+	width: 300px;
+	height: auto;
+	padding: .5em;
+	margin: 0.5em 1em .5em 1em;
+	border-radius: 0.3em;
+	box-shadow: 0 0.125em 0 0 rgb(77, 155, 93);
+	text-align: center;
+	font-family: 'Lato' , sans-serif;
+	font-size: 1.5em;
+	color: rgba(255, 255, 255, 0.8);
+	text-decoration: none;
+	transition: background .5s ease-in;
+	border:none;
+}.primary-button:hover {
+	background: rgb(83, 153, 98);
+	color: rgba(255, 255, 255, .8);
+}.primary-button:active {
+	background: rgb(63, 115, 73);
+	box-shadow: 0 0.125em 0 0 rgb(63, 115, 73);
+	color: rgba(255, 255, 255, .8);
+}.join_button {
+	margin-left:100px;
+}

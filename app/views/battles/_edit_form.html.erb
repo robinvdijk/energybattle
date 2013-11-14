@@ -1,26 +1,50 @@
 <%= form_for @battle, :action => "create" do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
-	<%= f.hidden_field :status, value: "Pending" %>
-
-	<%= f.label :title, "Titel" %>
-	<%= f.text_field :title %><br>
-
-	<%= f.label :start_date, "Begin Datum/Tijd" %><br>
-	<%= f.datetime_select :start_date %><br>
-
-	<%= f.label :duration, "Tijd" %>
-	<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %><br>
-
-	<%= f.label :player_limit, "Max. aantal spelers" %><br>
-	<%= f.number_field :player_limit, :min => 0 %><br>
-
+	<%= f.hidden_field :status, value: "pending" %>
+	<div class="form-group">
+		<%= f.label :title, "Titel" %>
+		<div class="form-attribute">
+			<%= f.text_field :title %>
+			<p>Hiermee bepaal je de naam van een battle</p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :player_limit, "Spelers limiet" %>
+		<div class="form-attribute">
+			<%= f.number_field :player_limit %>
+		</div>
+	</div>
 	<% unless params[:status] == "Edit"%>
-		<%= f.label :theme, "Theme" %><br>
-		<%= f.select :theme, options_for_select([params[:theme]]) %><br>
-	
-		<%= f.label :game_type, "Game" %><br>
-		<%= f.select :game_type, options_for_select([params[:game_type]]) %><br><br>
+	<div class="form-group">
+		<%= f.label :theme, "Thema" %>
+		<div class="form-attribute">
+			<%= f.select :theme, options_for_select([params[:theme]]) %>
+			<p></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :game_type, "Spelvorm" %>
+		<div class="form-attribute">
+			<%= f.select :game_type, options_for_select([params[:game_type]]) %>
+			<p></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :start_date, "Start Datum" %>
+		<div class="form-attribute">
+			<%= f.text_field :start_date, class: "datepicker" %>
+			<p></p>
+		</div>
+	</div>
+	<div class="form-group">
+		<%= f.label :duration, "Duur" %>
+		<div class="form-attribute">
+			<%= f.select :duration, options_for_select([["1 Week", 604800], ["2 Weken", 1209600]]) %>
+			<p></p>
+		</div>
+	</div>
 	<% end %>
 	
 	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
+
 <% end %>

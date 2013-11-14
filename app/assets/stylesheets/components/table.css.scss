@@ -1,0 +1,20 @@
+.battle_index table{
+	margin-top:1em;
+	width:100%;
+}.battle_index tr:nth-child(odd){
+	 background-color:#68c07b;
+}.battle_index tr:nth-child(even)    {
+	background-color:#ffffff;
+}.battle_index td {
+	padding:7px;
+}.battle_index tr:first-child td{
+	background-color:#4d9b5d;
+}.battle_index tr:first-child td:first-child{
+	border-top-left-radius:7px;
+}.battle_index tr:first-child td:last-child{
+	border-top-right-radius:7px;
+}.battle_index tr:last-child td:first-child{
+	border-bottom-left-radius:7px;
+}.battle_index tr:last-child td:last-child{
+	border-bottom-right-radius:7px;
+}
