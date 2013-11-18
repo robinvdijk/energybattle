@@ -1,6 +1,10 @@
 <%= form_for @reading do |f| %>
+	<%= f.hidden_field :user_id, :value => current_user.id %>
+	<%= f.hidden_field :battle_id, :value => params[:id] %>
+
 	<%= f.label :amount, 'Huidige Meterstand:' %>
 	<%= f.text_field :amount %> kWh<br/>
 	<%= f.file_field :meter %>
 	<%= f.submit "Meterstand opslaan" %>
 <% end %>
+

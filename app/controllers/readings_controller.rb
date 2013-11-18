@@ -1,6 +1,6 @@
 class ReadingsController < ApplicationController
   before_action :higher_value
-
+    
   def index
     @readings = Reading.all
   end
@@ -14,15 +14,17 @@ class ReadingsController < ApplicationController
     if Reading.any?  
       if @reading.amount >= @reading_value
         @reading.save
-        
+        redirect_to @reading.battle
       else
-        render 'new'
+        flash[:alert] = "Er is iets mis gegaan"
+        redirect_to @reading.battle
       end
     else
       if @reading.save
-        
+        flash[:succes] = "Gelukt"
+        redirect_to @reading.battle
       else
-        render 'new'
+         redirect_to @reading.battle
       end
     end
   end
@@ -34,7 +36,7 @@ class ReadingsController < ApplicationController
   private
 
   def reading_params
-    params.require(:reading).permit(:amount, :meter)
+    params.require(:reading).permit(:amount, :meter, :user_id, :battle_id)
   end
 
   def higher_value
@@ -44,4 +46,5 @@ class ReadingsController < ApplicationController
       @reading_value = nil
     end
   end
+
 end

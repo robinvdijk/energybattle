@@ -5,4 +5,5 @@ class Reading < ActiveRecord::Base
 	validates :meter, presence: true
 
 	belongs_to :user
+    belongs_to :battle
 end

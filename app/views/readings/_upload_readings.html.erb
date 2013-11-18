@@ -1,10 +1,23 @@
-<div class="subheading">Upload foto</div>
+
+<% if current_user.readings.order("created_at").last.battle_id == @battle.id %> 
+
+<% if current_user.readings.last.battle_id == @battle.id %>
+
+<%  %>
+
+	<div class="subheading">Je meterstand gegevens</div>
+	<p>Je opgegeven meterstand is <%= current_user.readings.order("created_at").last.amount %> kWh.
+	</p>
+	<%= image_tag current_user.readings.order("created_at").last.meter_url.to_s, class: 'reading-img' %>
 
 
-<% @battle.users.each do |f| %>
-	<%= form_for f.readings.build do |r|%>
-		<%= r.text_field :amount %> kWh<br/>
-		<%= r.file_field :meter %>
-		<%= r.submit "Meterstand opslaan" %>
-	<% end %>
+
+<% else %>
+
+
+<div class="subheading">Upload meterstand gegevens</div>
+<%= render 'readings/form' %>
+	
+
+
 <% end %>
