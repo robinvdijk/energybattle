@@ -8,8 +8,8 @@
 		<div class="pull-right">
 			<%= link_to image_tag("Bell.svg"), '', class: "icon-bell" %>
 			<div class="notification-center">
+			<b class="notch"></b>
 				<% if @count_notifications %>
-				Er zijn <%= @count_notifications %> notificaties.
 				<div class="notifications">
 		<%= render current_user.notifications %>
 	</div>
