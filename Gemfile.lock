@@ -59,6 +59,12 @@ GEM
       execjs
     coffee-script-source (1.6.3)
     database_cleaner (1.2.0)
+    devise (3.2.1)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.4)
     em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
@@ -92,6 +98,7 @@ GEM
     guard-rspec (3.1.0)
       guard (>= 1.8)
       rspec (~> 2.13)
+    hashie (2.0.5)
     hike (1.2.3)
     http_parser.rb (0.5.3)
     i18n (0.6.5)
@@ -129,6 +136,10 @@ GEM
       sass (>= 3.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
+      rack
+    orm_adapter (0.5.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
       coderay (~> 1.0.5)
@@ -211,6 +222,8 @@ GEM
     uglifier (2.3.0)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    warden (1.2.3)
+      rack (>= 1.0)
     websocket (1.0.7)
     will_paginate (3.0.5)
     xpath (2.0.0)
@@ -227,6 +240,7 @@ DEPENDENCIES
   carrierwave
   coffee-rails (~> 4.0.0)
   database_cleaner
+  devise
   exifr
   exiftool
   factory_girl_rails (= 4.2.1)
@@ -241,6 +255,7 @@ DEPENDENCIES
   launchy
   mini_magick
   neat
+  omniauth
   rails (= 4.0.0)
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.0)

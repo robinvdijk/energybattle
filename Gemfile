@@ -7,6 +7,8 @@ gem 'rails', '4.0.0'
 gem 'exiftool'
 gem 'exifr'
 
+gem 'devise'
+gem 'omniauth'
 
 gem 'carrierwave'
 gem 'mini_magick'

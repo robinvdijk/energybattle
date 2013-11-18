@@ -1,4 +1,5 @@
 Energybattle::Application.routes.draw do
+  devise_for :users
   resources :notifications do
 	  patch :accept, on: :member
   end
