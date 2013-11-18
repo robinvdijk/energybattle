@@ -1,7 +1,11 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
+
+
 gem 'rails', '4.0.0'
+gem 'exiftool'
+gem 'exifr'
 
 
 gem 'carrierwave'
@@ -24,8 +28,8 @@ gem 'neat'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'will_paginate'
+gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 

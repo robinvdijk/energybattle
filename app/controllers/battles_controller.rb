@@ -29,7 +29,7 @@ class BattlesController < TeamRelationsController
       redirect_to @battle
     else
       flash[:alert] = "Er missen een aantal instellingen"
-      render :new
+      render :action => "new"
     end
   end
 

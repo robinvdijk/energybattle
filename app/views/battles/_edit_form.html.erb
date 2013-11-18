@@ -1,4 +1,4 @@
-<%= form_for @battle do |f| %>
+<%= form_for @battle, :action => "create" do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
 	<%= f.hidden_field :status, value: "pending" %>
 	<div class="form-group">
@@ -44,5 +44,7 @@
 		</div>
 	</div>
 	<% end %>
-	<%= f.submit "Plaats in overzicht", class: "primary-button" %>
+	
+	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
+
 <% end %>
