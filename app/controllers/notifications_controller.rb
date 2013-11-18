@@ -14,7 +14,11 @@ class NotificationsController < ApplicationController
   end
 
   def destroy
+	  # relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
+		
     @notification.destroy
+		# relation.delete
+		
     redirect_to root_path, notice: 'De uitnodiging is succesvol afgewezen'
   end
 

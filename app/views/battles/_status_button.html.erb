@@ -1,5 +1,5 @@
 <%= form_for @battle do |f| %>
-	<% if @battle.status?("Pending") %>
+	<% if @battle.status?("pending") %>
 		<%= f.hidden_field :status, value: "Prepare" %>
 		<%= link_to 'Prepare Battle', "#", :onclick => "$('#edit_battle_#{@battle.id}').submit()", class: "primary-button" %>
 	<% elsif @battle.status?("Prepare") %>

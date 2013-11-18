@@ -1,28 +1,25 @@
-<% if @battle.status?("Pending") %>
-	<div class="pusher">
-		<% find_team_members(team).each do |team|%>
-			<div class="member">
-				<%= team.user.first_name %>
-				<%= team.user.email %>
-				<% if team.user.id == @current_user.id %>
-					<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "primary-button" %>
-					<%= link_to "Switch teams", switch_team_relation_path(team), class: "primary-button", method: :patch unless current_user_is_host %>
-				<% end %>
-			</div>
-		<% end %>
-	</div>
+<% if @battle.status?("pending") %>
+	<% find_team_members(team).each do |team|%>
+		<div class="member">
+			<%= team.user.first_name %>
+			<%= team.user.email %>
+			<%= team.status if team.status == "invited" %>
+			<% if team.user.id == @current_user.id %>
+				<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "primary-button" %>
+				<%= link_to "Switch teams", switch_team_relation_path(team), class: "primary-button", method: :patch unless current_user_is_host %>
+			<% end %>
+		</div>
+	<% end %>
 	<% unless @battle.users.count == @battle.player_limit %>
 		<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
 	<% end %>
 <% elsif @battle.status?("Prepare") || @battle.status?("Start") %>
-	<div class="pusher">
-		<% find_team_members(team).each do |team|%>
-			<div class="member">
-				<%= team.user.first_name %>
-				<%= team.user.email %>
-			</div>
-		<% end %>
-	</div>
+	<% find_team_members(team).each do |team|%>
+		<div class="member">
+			<%= team.user.first_name %>
+			<%= team.user.email %>
+		</div>
+	<% end %>
 <% else %>
 
 <% end %>

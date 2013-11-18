@@ -23,7 +23,7 @@ feature 'Battle management' do
       expect(current_path).to eq battle_path(2)
       expect(page).to have_content "Nieuwe battle aangemaakt"
     within 'h1' do
-      expect(page).to have_content 'Pending'
+      expect(page).to have_content 'pending'
     end
   end     # adds a new battle
 
@@ -36,7 +36,7 @@ feature 'Battle management' do
       expect(page).to have_content "#{@opponent_user.first_name}"
       expect(page).to have_content "#{@opponent_user.email}"
       expect(page).to_not have_button "Join"
-    expect{click_link "Prepare Battle"}.to change(@battle, :status).from("Pending").to("Prepare")
+    expect{click_link "Prepare Battle"}.to change(@battle, :status).from("pending").to("Prepare")
   end     # change battle status from pending to prepare
 
   scenario 'change battle status from prepare to start' do

@@ -15,7 +15,9 @@ gem 'mini_magick'
 gem 'sass-rails', '~> 4.0.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
+gem 'jquery-turbolinks'
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'bourbon'
 gem 'neat'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -26,8 +28,8 @@ gem 'neat'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-
 gem 'will_paginate'
+gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 
@@ -53,9 +55,8 @@ group :test do
   gem 'launchy'
 end
 
-
 group :assets do
-  
+
 end
 
 # Use ActiveModel has_secure_password

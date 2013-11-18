@@ -1,7 +1,7 @@
 
+
 <% if current_user.readings.order("created_at").last.battle_id == @battle.id %> 
 
-<% if current_user.readings.last.battle_id == @battle.id %>
 
 <%  %>
 
@@ -18,6 +18,5 @@
 <div class="subheading">Upload meterstand gegevens</div>
 <%= render 'readings/form' %>
 	
-
 
 <% end %>

@@ -1,19 +1,23 @@
-<div class="subheading">Creër een battle</div>
-<div class="quarter_of_container">
+<div class="heading">Creër een battle</div>
+<div class="col-4 battle_settings">
+	<div class="subheading">Instellingen</div>
 	<%= render 'edit_form'%>
 </div>
-<div class="quarter_of_container">
-	<div class="subheading">Team 1</div>
-	<div class='member'>
-		<%= @current_user.first_name %>
-		<%= @current_user.email %>
+<div class="col-8 omega-1">
+	<div class="teams-header">
+		<div class="col-4-of-8">
+			<%= render "team_header", team: "host" %>
+		</div>
+		<div class="col-4-of-8 omega-1">
+			<%= render "team_header", team: "opponent" %>
+		</div>
+	</div>
+	<div class="col-4-of-8">
+		<div class='member'>
+			<%= @current_user.first_name %>
+			<%= @current_user.email %>
+		</div>
+	</div>
+	<div class="col-4-of-8">
 	</div>
 </div>
-<div class="quarter_of_container">
-	<div class="subheading">Team 2</div>
-</div>
-<div class="quarter_of_container">
-	<div class="subheading">Uitnodigen</div>
-	<!-- <%= render 'users/search_members' %> -->
-</div>
-<%= link_to "Terug naar battle overzicht", root_path, class: "primary-button" %>

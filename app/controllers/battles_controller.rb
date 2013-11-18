@@ -9,7 +9,6 @@ class BattlesController < TeamRelationsController
     else
       @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
     end
-	 @count_notifications = current_user.notifications.count
   end
 
   def show
@@ -30,7 +29,7 @@ class BattlesController < TeamRelationsController
       redirect_to @battle
     else
       flash[:alert] = "Er missen een aantal instellingen"
-      render :new
+      render :action => "new"
     end
   end
 
@@ -66,7 +65,7 @@ private
   def sort_column
     Battle.column_names.include?(params[:sort]) ? params[:sort] : "theme"
   end
-  
+
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end

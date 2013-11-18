@@ -11,22 +11,8 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery_ujs
+//= require jquery.ui.all
 //= require turbolinks
 //= require_tree .
-
-$(document).ready(function(){
-	$("#battles th a").click(function(){
-		$.getScript(this.href);
-		return false;
-	});
-});
-
-
-// $(document).ready(function(){
-// 	$("#battles th a").click(function(){
-// 		alert("Hoi");
-// 	});
-// });
-
-

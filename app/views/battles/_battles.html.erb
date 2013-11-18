@@ -1,36 +1,34 @@
-<table cellpadding="5" cellspacing="5">
-<thead>
-  <tr>
-  	<th><%= sortable "title" %></th>
-  	<th><%= sortable "theme" %></th>
-  	<th><%= sortable "status" %></th>
-  	<th><%= sortable "host_id" %></th>
-  	<th><%= sortable "start_date" %></th>
-  	<th><%= sortable "end_date" %></th>
-  	<th><%= sortable "player_limit" %></th>
-  </tr>
-</thead>
-<tbody>
-	<% @battles.each do |s| %>
-		<tr>
-			<td><%= s.title %></td>
-			<td><%= link_to s.theme, battle_path(s) %></td>
-			<td><%= s.status %></td>
-			<td><%= find_host(s.host_id).first_name %></td>
+<div class="battle_index">
+	<table>
+	  <tr>
+	  	<td><%= sortable "title" %></td>
+	  	<td><%= sortable "theme" %></td>
+	  	<td><%= sortable "status" %></td>
+	  	<td><%= sortable "host_id" %></td>
+	  	<td><%= sortable "start_date" %></td>
+	  	<td><%= sortable "end_date" %></td>
+	  	<td><%= sortable "player_limit" %></td>
+	  </tr>
+		<% @battles.each do |s| %>
+			<tr>
+				<td><%= link_to s.title, battle_path(s) %></td>
+				<td><%= s.theme.capitalize %></td>
+				<td><%= s.status.capitalize %></td>
+				<td><%= find_host(s.host_id).first_name %></td>
 
-			<% if s.start_date.present? %>
-				<td><%= s.start_date.strftime('%d %B %Y') %></td>
-			<% else %>
-				<td>Geen start datum.</td>
-			<% end %>
+				<% if s.start_date.present? %>
+					<td><%= s.start_date.strftime('%d %B %Y') %></td>
+				<% else %>
+					<td>Geen start datum.</td>
+				<% end %>
 
-			<% if s.end_date.present? %>
-				<td><%= s.end_date.strftime('%d %B %Y') %></td>
-			<% else %>
-				<td>Geen eind datum.</td>
-			<% end %>
-			<td><%= s.users.count %> / <%= s.player_limit %>
-		</tr>
-	<% end %>
-</tbody>
-<table>
+				<% if s.end_date.present? %>
+					<td><%= s.end_date.strftime('%d %B %Y') %></td>
+				<% else %>
+					<td>Geen eind datum.</td>
+				<% end %>
+				<td><%= s.users.count %> / <%= s.player_limit %></td>
+			</tr>
+		<% end %>
+	<table>
+</div>

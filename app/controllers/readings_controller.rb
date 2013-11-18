@@ -1,6 +1,6 @@
 class ReadingsController < ApplicationController
   before_action :higher_value
-    
+
   def index
     @readings = Reading.all
   end
@@ -11,8 +11,12 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
+
     if Reading.any?  
-      if @reading.amount >= @reading_value
+      if @reading.amount >= @reading_value && @reading.save
+        flash[:succes] = "Gelukt"
+        exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
+        @reading.original_date = exif.date_time if exif.date_time
         @reading.save
         redirect_to @reading.battle
       else
@@ -22,12 +26,16 @@ class ReadingsController < ApplicationController
     else
       if @reading.save
         flash[:succes] = "Gelukt"
+        exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
+        @reading.original_date = exif.date_time if exif.date_time
+        @reading.save
         redirect_to @reading.battle
       else
          redirect_to @reading.battle
       end
     end
   end
+  
 
   def show
     @reading = Reading.find(params[:id])
@@ -36,7 +44,7 @@ class ReadingsController < ApplicationController
   private
 
   def reading_params
-    params.require(:reading).permit(:amount, :meter, :user_id, :battle_id)
+    params.require(:reading).permit(:amount, :meter, :user_id, :battle_id, :original_date)
   end
 
   def higher_value
