@@ -1,9 +1,12 @@
 class BattlesController < TeamRelationsController
   before_action :set_battle, only: [:show, :edit, :update, :destroy]
-  before_action :current_user, only: [:new, :create, :show, :edit, :update]
+  before_action :current_user, only: [:index, :new, :create, :show, :edit, :update]
   helper_method :sort_column, :sort_direction
 
   def index
+    @team_relations = TeamRelation.where(user_id: current_user.id)
+    @battles_joined = @team_relations.map { |t| t.battle } 
+
     if params[:theme]
       @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
     else
