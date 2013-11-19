@@ -1,9 +1,11 @@
+<% provide(:title, @battle.title) %> 
 <div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
 <div class="col-4 battle_settings">
         <div class="subheading">Instellingen</div>
         <%= render "settings_battle" if @battle.status?("pending") %>
         <%= render "readings/upload_readings" if @battle.status?("prepare") %>
-</div>
+				<%= render "sidebar_battle" %>
+</div>	
 
 <% if @battle.status?('started') %>
 	<%= render 'battles/statistics/overview' %>

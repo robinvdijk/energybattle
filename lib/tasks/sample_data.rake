@@ -21,6 +21,6 @@ end
 def make_battles
   users = User.all
   1.times do |n|
-    users.each { |user| Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy", status: "pending", start_date: "2013-11-04 13:37:00", end_date: "2013-11-11 13:37:00", duration: 604800, player_limit: 12, title: "Title-#{user.id+1}" ) }
+    users.each { |user| Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy", status: "pending", start_date: "2013-11-12", end_date: "2013-11-19", duration: 604800, player_limit: 12, title: "Title-#{user.id+1}" ) }
   end
 end
