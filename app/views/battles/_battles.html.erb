@@ -1,15 +1,7 @@
 <div class="battle_index">
 	<table>
 	<h1>Battles die ik host</h1>
-	  <tr>
-	  	<td><%= sortable "title" %></td>
-	  	<td><%= sortable "theme" %></td>
-	  	<td><%= sortable "status" %></td>
-	  	<td><%= sortable "host_id" %></td>
-	  	<td><%= sortable "start_date" %></td>
-	  	<td><%= sortable "end_date" %></td>
-	  	<td><%= sortable "player_limit" %></td>
-	  </tr>
+	  <%= render 'table_name_battle' %>
 		<% @battles.where(host_id: current_user.id).each do |s| %>
 			<tr>
 				<td><%= link_to s.title, battle_path(s) %></td>
@@ -33,24 +25,18 @@
 		<% end %>
 	<table>
 
-	<table>
-	<h1>Battles dat heb ik gejoined</h1>
-	  <tr>
-	  	<td><%= sortable "title" %></td>
-	  	<td><%= sortable "theme" %></td>
-	  	<td><%= sortable "status" %></td>
-	  	<td><%= sortable "host_id" %></td>
-	  	<td><%= sortable "start_date" %></td>
-	  	<td><%= sortable "end_date" %></td>
-	  	<td><%= sortable "player_limit" %></td>
-	  </tr>
+
+
 	<% @battles_joined.map do |s| %>
-	<% unless s.host_id == current_user.id %>
-			<tr>
+		<% unless s.host_id == current_user.id %>
+		  <table>
+		    <h1>Battles dat heb ik gejoined</h1>
+	    	  <%= render 'table_name_battle' %>
+	    	<tr>  
 				<td><%= link_to s.title, battle_path(s) %></td>
 				<td><%= s.theme.capitalize %></td>
 				<td><%= s.status.capitalize %></td>
-				<td><%= find_host(s.host_id).first_name %></td>
+				<td><%= find_host(s.host_id).name %></td>
 
 				<% if s.start_date.present? %>
 					<td><%= s.start_date.strftime('%d %B %Y') %></td>
@@ -69,29 +55,21 @@
 						(Host)
 					<% end %>
 				</td>
-			</tr>
+			</tr>	
+	 	  <table>
 		<% end %>
-		<% end %>
-	<table>
-
+	<% end %>
 
 	<table>
 	<h1>Alle battles</h1>
-	  <tr>
-	  	<td><%= sortable "title" %></td>
-	  	<td><%= sortable "theme" %></td>
-	  	<td><%= sortable "status" %></td>
-	  	<td><%= sortable "host_id" %></td>
-	  	<td><%= sortable "start_date" %></td>
-	  	<td><%= sortable "end_date" %></td>
-	  	<td><%= sortable "player_limit" %></td>
-	  </tr>
+	  <%= render 'table_name_battle' %>
+
 		<% @battles.each do |s| %>
 			<tr>
 				<td><%= link_to s.title, battle_path(s) %></td>
 				<td><%= s.theme.capitalize %></td>
 				<td><%= s.status.capitalize %></td>
-				<td><%= find_host(s.host_id).first_name %></td>
+				<td><%= find_host(s.host_id).name %></td>
 
 				<% if s.start_date.present? %>
 					<td><%= s.start_date.strftime('%d %B %Y') %></td>
