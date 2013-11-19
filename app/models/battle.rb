@@ -24,7 +24,6 @@ class Battle < ActiveRecord::Base
   def status?(value)
     self.status == value
   end
-
 end
 
 
