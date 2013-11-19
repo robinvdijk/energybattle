@@ -1,8 +1,15 @@
 source 'https://rubygems.org'
 
 ruby '2.0.0'
-gem 'rails', '4.0.0'
 
+
+gem 'rails', '4.0.0'
+gem 'exiftool'
+gem 'exifr'
+
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'carrierwave'
 gem 'mini_magick'

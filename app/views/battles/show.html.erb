@@ -1,28 +1,20 @@
 <div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
 <div class="col-4 battle_settings">
-	<div class="subheading">Instellingen</div>
-	<%= render "settings_battle" if @battle.status?("pending") %>
-	<%= render "readings/upload_readings" if @battle.status?("Prepare") %>
+        <div class="subheading">Instellingen</div>
+        <%= render "settings_battle" if @battle.status?("pending") %>
+        <%= render "readings/upload_readings" if @battle.status?("Prepare") %>
 </div>
-<div class="col-8 omega-1">
-	<div class="teams-header">
-		<div class="col-4-of-8">
-			<%= render "team_header", team: "host" %>
-		</div>
-		<div class="col-4-of-8 omega-1">
-			<%= render "team_header", team: "opponent" %>
-		</div>
-	</div>
-	<div class="col-4-of-8">
-		<%= render "team_members", team: "host" %>
-	</div>
-	<div class="col-4-of-8">
-		<%= render "team_members", team: "opponent" %>
-	</div>
+<div class="col-8 omega-1 teams-header">
+        <div class="col-4-of-8">
+                <%= render "team_members", team: "host" %>
+        </div>
+        <div class="col-4-of-8">
+                <%= render "team_members", team: "opponent" %>
+        </div>
 </div>
 
 <%#= render "readings/upload_readings" if @battle.status?("Prepare")%>
 <div class="col-12">
-	<%= render "status_button" if current_user_is_host %>
-	<%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" %>
+        <div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
+        <%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" %>
 </div>

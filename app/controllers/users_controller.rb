@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @users = @users.where("first_name LIKE ?", "%#{params[:term]}%").pluck(:first_name) if params[:term].present?
+    @users = @users.where("name LIKE ?", "%#{params[:term]}%").pluck(:name) if params[:term].present?
     respond_with @users
   end
 end

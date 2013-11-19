@@ -3,21 +3,17 @@
 	<div class="subheading">Instellingen</div>
 	<%= render 'edit_form'%>
 </div>
-<div class="col-8 omega-1">
-	<div class="teams-header">
-		<div class="col-4-of-8">
-			<%= render "team_header", team: "host" %>
-		</div>
-		<div class="col-4-of-8 omega-1">
-			<%= render "team_header", team: "opponent" %>
-		</div>
-	</div>
+<div class="col-8 omega-1 teams-header">
 	<div class="col-4-of-8">
+		<%= render "team_members", team: "host" %>
 		<div class='member'>
-			<%= @current_user.first_name %>
-			<%= @current_user.email %>
+            <%= image_tag current_user.avatar %>
+            <ul>
+                <li><%= current_user.name %></li>
+            </ul>
 		</div>
 	</div>
 	<div class="col-4-of-8">
+		<%= render "team_members", team: "opponent" %>
 	</div>
 </div>

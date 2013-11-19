@@ -5,7 +5,7 @@
 	<%= hidden_field_tag :game_type, params[:game_type] %>
 	
 	<div class="form-group">
-		<%= f.input :title, :error_html => { :class => "error"} %>
+		<%= f.input :title %>
 	</div>
 	<div class="form-group">
 		<%= f.input :player_limit %>
@@ -25,7 +25,5 @@
 	</div>
 
 	<% end %>
-	
-	<%= link_to 'submit', "#", :onclick => "$('#new_battle').submit()", class: "primary-button" %>
-
+	<%= f.submit "Wijzigingen opslaan", class: "primary-button" %>
 <% end %>

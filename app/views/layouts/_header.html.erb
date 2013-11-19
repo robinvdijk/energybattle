@@ -4,7 +4,14 @@
 		    <li><%= link_to_unless_current(name, url) do link_to name, url, class: "current" end %></li>
 		<% end %>
 		<div class="pull-right">
+            <% if user_signed_in? %>
+                <%= image_tag current_user.avatar, style: 'height:30px' %>
+                <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+            <% else %>
+                <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
+            <% end %>
 			<%= link_to image_tag("Bell.svg"), '', class: "icon-bell" %>
+
 			<div class="notifications-center">
 				<% if @count_notifications %>
 					<div class="notifications">
@@ -16,4 +23,3 @@
 		</div>
 	</ul>
 </div>
-
