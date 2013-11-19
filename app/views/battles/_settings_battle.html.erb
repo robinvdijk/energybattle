@@ -16,5 +16,5 @@
 		<p><%= @battle.theme %></p>
 		<p><%= @battle.game_type %></p>
 
-	<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button" if current_user_is_host %>
+	<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button bottom-pusher" if current_user_is_host %>
 <% end %>

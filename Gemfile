@@ -9,6 +9,7 @@ gem 'exifr'
 
 gem 'devise'
 gem 'omniauth'
+gem 'omniauth-facebook'
 
 gem 'carrierwave'
 gem 'mini_magick'

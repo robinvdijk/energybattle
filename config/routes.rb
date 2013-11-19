@@ -1,5 +1,9 @@
 Energybattle::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  authenticated :user do
+    root :to => "static_pages#theme", as: :authenticated_root
+  end
+
   resources :notifications do
 	  patch :accept, on: :member
   end
@@ -17,7 +21,7 @@ Energybattle::Application.routes.draw do
 	  patch :switch, on: :member
   end
 
-  root "static_pages#theme"
+  root to: "static_pages#homepage"
 
   match '/theme', to: 'static_pages#theme', via: 'get'
   match '/gametype', to: 'static_pages#gametype', via: 'get'

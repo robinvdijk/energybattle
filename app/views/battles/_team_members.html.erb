@@ -1,13 +1,24 @@
+<div class="subheading"><%= "Team #{team}"  %></div>
+<%= render "invite_team" if @battle.status?("pending")%>
+<ul class="teams-headrow">
+	<li>Profielfoto</li>
+	<li>Spelernaam</li>
+	<li>Punten</li>
+</ul>
 <% if @battle.status?("pending") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-			<%= team.user.first_name %>
-			<%= team.user.email %>
-			<%= team.status if team.status == "invited" %>
-			<% if team.user.id == @current_user.id %>
-				<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "primary-button" %>
-				<%= link_to "Switch teams", switch_team_relation_path(team), class: "primary-button", method: :patch unless current_user_is_host %>
-			<% end %>
+			<%= image_tag team.user.avatar %>
+            <ul>
+    			<% if team.user.id == @current_user.id %>
+                    <li>
+                        <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
+                        <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
+                    </li>
+                <% end %>
+                <li><%= team.user.name %></li>
+    			<li><%= team.status if team.status == "invited" %></li>
+            </ul>
 		</div>
 	<% end %>
 	<% unless @battle.users.count == @battle.player_limit %>
@@ -16,8 +27,8 @@
 <% elsif @battle.status?("Prepare") || @battle.status?("Start") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-			<%= team.user.first_name %>
-			<%= team.user.email %>
+            <%= image_tag team.user.avatar %>
+			<%= team.user.name %>
 		</div>
 	<% end %>
 <% else %>

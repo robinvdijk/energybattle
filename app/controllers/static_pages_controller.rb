@@ -1,12 +1,7 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :check_signin, only: [:homepage]
 
-  def theme
- 	 @count_notifications = current_user.notifications.count
-
-  end
-  
   def gametype
-    
+
   end
-  
 end
