@@ -28,7 +28,7 @@ class Battle < ActiveRecord::Base
   def end_battles
     battles = Battle.where(:end_date == Date.today)
     for battle in battles do
-      battle.status = "ended"
+      battle.status = "closing"
     end
   end
 end
