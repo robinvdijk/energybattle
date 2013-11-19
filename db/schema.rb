@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131112142242) do
+ActiveRecord::Schema.define(version: 20131119105136) do
 
   create_table "battles", force: true do |t|
     t.integer  "host_id"
@@ -20,14 +20,14 @@ ActiveRecord::Schema.define(version: 20131112142242) do
     t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
     t.string   "title"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.string   "game_type"
     t.integer  "player_limit"
     t.boolean  "access"
     t.integer  "duration"
+    t.string   "status"
   end
 
   create_table "notifications", force: true do |t|
