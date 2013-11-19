@@ -9,6 +9,3 @@
     <div class="subheading">Upload meterstand gegevens</div>
     <%= render 'readings/form' %>
 <% end %>
-
-<% @readings = @battle.users.map { |u| u.readings.last } %>
-<%= @readings.map { |r| r.amount } %> 
