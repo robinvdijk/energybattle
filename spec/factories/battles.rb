@@ -4,10 +4,8 @@ FactoryGirl.define do
     opponent_id { Faker::Number.digit }
     winner_id { Faker::Number.digit }
     theme "Energy"
-		start_date "12-11-2013"
-    status "Pending"
+    status "pending"
     title "Test"
-		game_type "snelste"
 
     factory :invalid_battle do
       opponent_id nil

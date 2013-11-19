@@ -8,11 +8,13 @@ end
 
 def make_users
 
-  9.times do |n|
-    first_name = Faker::Name.first_name
-    email = "test-#{n+1}@test.nl"
-    User.create!(first_name: first_name,
-                 email: email)
+  5.times do |n|
+    name = Faker::Name.name
+    email = "test-#{n}@test.nl"
+    User.create!(name: name,
+                 email: email,
+                 password: "password",
+                 password_confirmation: "password")
   end
 end
 

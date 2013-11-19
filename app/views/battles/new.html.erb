@@ -1,17 +1,19 @@
-<div class="subheading">Creër een battle</div>
-<div class="battle_settings">
+<div class="heading">Creër een battle</div>
+<div class="col-4 battle_settings">
 	<div class="subheading">Instellingen</div>
 	<%= render 'edit_form'%>
 </div>
-<div class="teams">
-<div class="team_1">
-	<div class="subheading">Team 1</div>
-	<div class='member'>
-		<%= @current_user.first_name %>
-		<%= @current_user.email %>
+<div class="col-8 omega-1 teams-header">
+	<div class="col-4-of-8">
+		<%= render "team_members", team: "host" %>
+		<div class='member'>
+            <%= image_tag current_user.avatar %>
+            <ul>
+                <li><%= current_user.name %></li>
+            </ul>
+		</div>
 	</div>
-</div>
-<div class="team_2">
-	<div class="subheading">Team 2</div>
-</div>
+	<div class="col-4-of-8">
+		<%= render "team_members", team: "opponent" %>
+	</div>
 </div>

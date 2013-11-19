@@ -798,7 +798,7 @@ jQuery.extend({
 			}
 		}
 
-		// Flatten any nested arrays
+		// Flatten any of-8ed arrays
 		return core_concat.apply( [], ret );
 	},
 
@@ -2793,7 +2793,7 @@ function matcherFromGroupMatchers( elementMatchers, setMatchers ) {
 				}
 			}
 
-			// Override manipulation of globals by nested matchers
+			// Override manipulation of globals by of-8ed matchers
 			if ( outermost ) {
 				dirruns = dirrunsUnique;
 				outermostContext = contextBackup;
@@ -6211,7 +6211,7 @@ jQuery.fn.extend({
 
 	domManip: function( args, callback, allowIntersection ) {
 
-		// Flatten any nested arrays
+		// Flatten any of-8ed arrays
 		args = core_concat.apply( [], args );
 
 		var first, node, hasScripts,
@@ -10278,7 +10278,7 @@ $.fn.extend({
 				if ( position === "absolute" || position === "relative" || position === "fixed" ) {
 					// IE returns 0 when zIndex is not specified
 					// other browsers return a string
-					// we ignore the case of nested elements with an explicit value of 0
+					// we ignore the case of of-8ed elements with an explicit value of 0
 					// <div style="z-index: -10;"><div style="z-index: 0;"></div></div>
 					value = parseInt( elem.css( "zIndex" ), 10 );
 					if ( !isNaN( value ) && value !== 0 ) {

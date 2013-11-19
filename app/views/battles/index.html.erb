@@ -1,15 +1,7 @@
-
-
 <div id="battles">
 	<%= render 'battles' %>
 </div>
 
 <%= will_paginate @battles %>
 
-<div id="battles">
-	<%= render 'battles' %>
-</div>
-
-<%= will_paginate @battles %>
-
-<%= link_to "Nieuwe battle", theme_path %>
+<%= link_to "Nieuwe battle", theme_path, class: "primary-button" %>

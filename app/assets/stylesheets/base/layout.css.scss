@@ -1,0 +1,75 @@
+// THEME
+.theme {
+	@include span-columns(4);
+	float: left;
+	height:25em;
+	border-radius:7px;
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	margin-top: 2em;
+	position:relative;
+	img {
+		display:block;
+		margin:0 auto;
+	}
+}.bottom-pusher{
+	position:absolute;
+	bottom:0.5em;
+}
+//BATTLE
+.battle_settings {
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+  height:30em;
+	padding:0 0.3em;
+	position:relative;
+	border-radius: 0.3em;
+	color: rgb(52, 73, 94);
+	font-size: 1.2em;
+	p {
+		padding:0.4em 0;
+	}
+}.teams-header{
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	position:relative;
+	border-radius: 0.3em;
+	height: 36em;
+  .teams-headrow {
+    padding-bottom: 2.2em;
+    margin: 0 0.4em 1em 0.4em;
+    border-bottom: 1px solid black;
+    li {
+      float: left;
+      list-style: none;
+      padding: 2% 6% 0 6%;
+    }
+  }
+}.member {
+	background-color:gray;
+	padding:15px;
+  height:5em;
+	margin:5px;
+	color:white;
+	border-radius:7px;
+  li {
+    list-style:none;
+  }
+  img {
+    float:left;
+    margin-right:5px;
+  }
+}.invite {
+	text-align:center;
+}.invite_members {
+	background-color:green;
+	margin:3px;
+	padding:3px;
+	border-radius:3px;
+	width:100px;
+}#inviteable_members {
+	overflow:scroll;
+	position:relative;
+	height:20em;
+	margin-bottom:10px;
+}

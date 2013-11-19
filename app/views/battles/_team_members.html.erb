@@ -1,29 +1,36 @@
-<% if @battle.status?("Pending") %>
-	<div class="pusher">
-		<% find_team_members(team).each do |team|%>
-			<div class="member">
-				<%= team.user.first_name %>
-				<%= team.user.email %>
-				<%= team.status if team.status == "invited" %>
-				<% if team.user.id == @current_user.id %>
-					<%= link_to "Leave", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "primary-button" %>
-					<%= link_to "Switch teams", switch_team_relation_path(team), class: "primary-button", method: :patch unless current_user_is_host %>
-				<% end %>
-			</div>
-		<% end %>
-	</div>
+<div class="subheading"><%= "Team #{team}"  %></div>
+<%= render "invite_team" if @battle.status?("pending")%>
+<ul class="teams-headrow">
+	<li>Profielfoto</li>
+	<li>Spelernaam</li>
+	<li>Punten</li>
+</ul>
+<% if @battle.status?("pending") %>
+	<% find_team_members(team).each do |team|%>
+		<div class="member">
+			<%= image_tag team.user.avatar %>
+            <ul>
+    			<% if team.user.id == @current_user.id %>
+                    <li>
+                        <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
+                        <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
+                    </li>
+                <% end %>
+                <li><%= team.user.name %></li>
+    			<li><%= team.status if team.status == "invited" %></li>
+            </ul>
+		</div>
+	<% end %>
 	<% unless @battle.users.count == @battle.player_limit %>
 		<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
 	<% end %>
 <% elsif @battle.status?("Prepare") || @battle.status?("Start") %>
-	<div class="pusher">
-		<% find_team_members(team).each do |team|%>
-			<div class="member">
-				<%= team.user.first_name %>
-				<%= team.user.email %>
-			</div>
-		<% end %>
-	</div>
+	<% find_team_members(team).each do |team|%>
+		<div class="member">
+            <%= image_tag team.user.avatar %>
+			<%= team.user.name %>
+		</div>
+	<% end %>
 <% else %>
 
 <% end %>
