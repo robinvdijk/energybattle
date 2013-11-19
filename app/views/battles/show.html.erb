@@ -1,4 +1,5 @@
-<div class="heading"> Battle: <%= @battle.title %> / Status: <%= @battle.status %></div>
+<% provide(:title, @battle.title) %> 
+<div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
 <div class="col-4 battle_settings">
 		<%= render "sidebar_battle" %>
 </div>	

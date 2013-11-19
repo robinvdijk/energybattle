@@ -32,6 +32,3 @@ class Battle < ActiveRecord::Base
     end
   end
 end
-
-
-
