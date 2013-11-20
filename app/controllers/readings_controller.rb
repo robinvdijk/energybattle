@@ -4,7 +4,11 @@ class ReadingsController < ApplicationController
 	respond_to :json, :html
 
   def index
-    @readings = Reading.all
+		if params[:battle_id].present?
+	    @readings = Reading.where(:battle_id => params[:battle_id])
+		else
+			@readings = Reading.all
+		end
   end
 
   def new
