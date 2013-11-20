@@ -10,7 +10,8 @@ class Battle < ActiveRecord::Base
   validates :start_date, presence: {message: "Moet ingevuld zijn"}
 
   after_create :create_host_team_relation
-
+  
+  # scope :current_battle , where(:battle_id => self.id)
 
   def create_host_team_relation
     r = TeamRelation.new
@@ -29,10 +30,10 @@ class Battle < ActiveRecord::Base
     self.users.map { |u| u.readings.where(battle_id: self.id) }.count == self.player_limit
   end
 
-  def end_battles
+  def self.update_battles
     battles = Battle.where(:end_date == Date.today)
     for battle in battles do
-      battle.status = "closing"
+      battle.update_attribute(:status, "closing")
     end
   end
 

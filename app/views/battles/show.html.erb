@@ -1,7 +1,4 @@
 <div class="col-4 battle_settings">
-    <div class="subheading">Instellingen</div>
-    <%= render "settings_battle" if @battle.status?("pending") %>
-    <%= render "readings/upload_readings" if @battle.status?("prepare") %>
     <%= render "sidebar_battle" %>
 </div>
 <% if @battle.status?('started') %>

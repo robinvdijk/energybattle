@@ -23,7 +23,10 @@ class ReadingsController < ApplicationController
         flash[:succes] = "Gelukt"
         exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
         @reading.original_date = exif.date_time if exif.date_time
-        @reading.save
+        @reading.save        
+        if @reading.battle.status?("closing")
+          @reading.battle.update_attribute(:status, "finished")
+        end
         redirect_to @reading.battle
       else
         flash[:alert] = "Er is iets mis gegaan"
