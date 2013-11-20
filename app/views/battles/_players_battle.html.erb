@@ -13,8 +13,7 @@
 			<% end %>
 		</tr>
 		<tr>
-			<td><%= number_to_percentage 1 - ((user.readings.sum(:amount).to_f) / 12500) %>
-</td>
+			<td><%= number_to_percentage 1 - ((user.readings.sum(:amount).to_f) / 12500) %></td>
 		</tr>
 	</table>
 <% end %>

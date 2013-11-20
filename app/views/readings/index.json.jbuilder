@@ -6,9 +6,10 @@ json.array!(@readings) do |reading|
 		json.period reading.created_at.strftime("%Y-%m-%d")
 	end
 
-	json.battle_id reading.battle_id
-	
-	json.amount reading.amount
+    json.user_id reading.user_id
 
-	json.set! 'user', reading.user.name
+
+
+    json.set! reading.user.name, reading.amount
+    json.set! "Mathijs Kingma", reading.amount + 400
 end

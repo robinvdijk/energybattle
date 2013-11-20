@@ -26,12 +26,12 @@ class ReadingsController < ApplicationController
   def create
     @reading = Reading.new(reading_params)
 
-    if Reading.any?  
+    if Reading.any?
       if @reading.amount >= @reading_value && @reading.save
         flash[:succes] = "Gelukt"
         exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
         @reading.original_date = exif.date_time if exif.date_time
-        @reading.save        
+        @reading.save
         if @reading.battle.status?("closing")
           @reading.battle.update_attribute(:status, "finished")
         end
@@ -52,7 +52,7 @@ class ReadingsController < ApplicationController
       end
     end
   end
-  
+
 
   def show
     @reading = Reading.find(params[:id])

@@ -1,8 +1,11 @@
-<% if @battle.status?("prepare") %>
-	<%= render 'readings/upload_readings' %>
-	<%= render 'players_battle' %>
+<% if @battle.status?("prepare") || @battle.status?("started") %>
+	<div class="gray-box"><%= render 'readings/form' %></div>
+	<div class="gray-box">
+        <div class="subheading"><p>Team 1</p></div>
+        <%= render 'players_battle' %>
+    </div>
 <% elsif @battle.status?("closing") %>
-	<%= render 'readings/upload_readings' %>
+	<%= render 'readings/form' %>
 	<%= render 'players_battle' %>
 <% elsif @battle.status?("finished") %>
 	<%= render 'players_battle' %>

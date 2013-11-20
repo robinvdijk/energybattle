@@ -1,5 +1,4 @@
-<div class="col-4 battle_settings">
-    <div class="subheading">Instellingen</div>
+<div class="col-4">
     <%= render "sidebar_battle" %>
 </div>
 <% if @battle.status?('started') %>
@@ -14,7 +13,7 @@
         </div>
     </div>
 <% end %>
-<%#= render "readings/upload_readings" if @battle.status?("prepare")%>
+<%#= render "readings/form" if @battle.status?("prepare")%>
 <div class="col-12">
 	<div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
 	<%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" if @battle.status?("pending") || @battle.status?("Prepare") %>
