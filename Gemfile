@@ -23,6 +23,8 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bourbon'
 gem 'neat'
+gem 'simple_form'
+gem 'timecop'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

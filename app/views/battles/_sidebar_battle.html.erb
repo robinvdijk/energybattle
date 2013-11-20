@@ -1,0 +1,16 @@
+<% if @battle.status?("Prepare") %>
+	<%= render 'readings/upload_readings' %>
+	<%= render 'players_battle' %>
+<% elsif @battle.status?("pending") %>
+	<%= render 'settings_battle'%>
+<% end %>
+
+
+
+
+
+
+
+
+
+

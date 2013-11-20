@@ -2,7 +2,7 @@
 	<% if @battle.status?("pending") %>
 		<%= f.hidden_field :status, value: "Prepare" %>
 		<%= link_to 'Prepare Battle', "#", :onclick => "$('#edit_battle_#{@battle.id}').submit()", class: "primary-button" %>
-	<% elsif @battle.status?("Prepare") %>
+	<% elsif @battle.status?("Prepare") && @battle.uploads_prepared? %>
 		<%= f.hidden_field :status, value: "Start" %>
 		<%= link_to 'Start Battle', "#", :onclick => "$('#edit_battle_#{@battle.id}').submit()", class: "primary-button" %>
 	<% end %>

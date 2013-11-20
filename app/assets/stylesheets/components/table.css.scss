@@ -1,21 +1,45 @@
 #battles table {
   width:100%;
-}.table_index table{
+}.battle_index table{
 	margin-top:1em;
-}.table_index tr:nth-child(odd){
+}.battle_index tr:nth-child(odd){
 	 background-color:#68c07b;
-}.table_index tr:nth-child(even)    {
+}.battle_index tr:nth-child(even)    {
 	background-color:#ffffff;
-}.table_index td {
+}.battle_index td {
 	padding:7px;
-}.table_index tr:first-child td{
+}.battle_index tr:first-child td{
 	background-color:#4d9b5d;
-}.table_index tr:first-child td:first-child{
+}.battle_index tr:first-child td:first-child{
 	border-top-left-radius:7px;
-}.table_index tr:first-child td:last-child{
-	border-top-right-radius:7px;
-}.table_index tr:last-child td:first-child{
 	border-bottom-left-radius:7px;
-}.table_index tr:last-child td:last-child{
+}.battle_index tr:first-child td:last-child{
+	border-top-right-radius:7px;
+	border-bottom-right-radius:7px;
+}.battle_index tr:last-child td:first-child{
+	border-bottom-left-radius:7px;
+}.battle_index tr:last-child td:last-child{
+	border-bottom-right-radius:7px;
+}
+
+.battle_show table{
+  width:100%;
+}.battle_show tr:nth-child(odd){
+	 background-color:#fff;
+}.battle_show tr:nth-child(even)    {
+	 background-color:#68c07b;
+}.battle_show td {
+	padding:7px;
+}.battle_show tr:first-child td{
+	background-color:#fff;
+}.battle_show tr:first-child td:first-child{
+	border-top-left-radius:7px;
+  border-bottom-left-radius:7px;
+}.battle_show tr:first-child td:last-child{
+	border-top-right-radius:7px;
+  border-bottom-right-radius:7px;
+}.battle_show tr:last-child td:first-child{
+	border-bottom-left-radius:7px;
+}.battle_show tr:last-child td:last-child{
 	border-bottom-right-radius:7px;
 }

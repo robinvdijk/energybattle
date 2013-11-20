@@ -1,4 +1,11 @@
+.gray-box {
+	border-radius:7px;
+	background-color: rgb(240, 240, 240);
+	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+  margin:2em 0 1em 0;
+}
 // THEME
+
 .theme {
 	@include span-columns(4);
 	float: left;
@@ -72,4 +79,6 @@
 	position:relative;
 	height:20em;
 	margin-bottom:10px;
+}.settings-item{
+  padding:1em;
 }

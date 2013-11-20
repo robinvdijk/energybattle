@@ -2,15 +2,15 @@ class Battle < ActiveRecord::Base
   has_many :users, through: :team_relations
   has_many :team_relations
   has_many :readings
-    
+
   validates :host_id, presence: true
   validates :status, presence: true
-  validates :theme, presence: true
-  validates :title, presence: true, length: {maximum: 25}
-  validates :player_limit, presence: true, :numericality => { :only_integer => true }
+  validates :title, presence: {message: "Moet ingevuld zijn"}, length: {maximum: 25}
+  validates :player_limit, presence: {message: "Moet ingevuld zijn"}, length: {minimum: 2}, :numericality => { :only_integer => true }
+  validates :start_date, presence: {message: "Moet ingevuld zijn"}
 
   after_create :create_host_team_relation
-  
+
 
   def create_host_team_relation
     r = TeamRelation.new
@@ -20,12 +20,19 @@ class Battle < ActiveRecord::Base
     r.status = 'joined'
     r.save
   end
-  
+
   def status?(value)
     self.status == value
   end
 
+  def uploads_prepared?
+    self.users.map { |u| u.readings.where(battle_id: self.id) }.count == self.player_limit
+  end
+
+  def end_battles
+    battles = Battle.where(:end_date == Date.today)
+    for battle in battles do
+      battle.status = "closing"
+    end
+  end
 end
-
-
-
