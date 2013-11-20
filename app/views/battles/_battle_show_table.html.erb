@@ -1,0 +1,20 @@
+<div class="battle_show">
+    <table>
+        <tr>
+            <td>Fotouploads</td>
+            <td>Eerste Meterstand</td>
+            <td>Huidige Meterstand</td>
+            <td>Besparing</td>
+            <td>Gezinsgrootte</td>
+        </tr>
+        <% find_team_members(team).each do |team|%>
+        <tr>
+            <td><%= team.user.readings.where(battle_id: @battle.id).count %></td>
+            <td><%= team.user.readings.where(battle_id: @battle.id).first.amount %></td>
+            <td><%= team.user.readings.where(battle_id: @battle.id).last.amount %></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <% end %>
+    <table>
+</div>

@@ -24,7 +24,7 @@
 	<% unless @battle.users.count == @battle.player_limit %>
 		<%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
 	<% end %>
-<% elsif @battle.status?("Prepare") || @battle.status?("Start") %>
+<% elsif @battle.status?("prepare") || @battle.status?("Start") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
             <%= image_tag team.user.avatar %>

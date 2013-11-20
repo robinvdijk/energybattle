@@ -5,10 +5,10 @@
 		<% end %>
 		<div class="pull-right">
             <% if user_signed_in? %>
-                <%= image_tag current_user.avatar, style: 'height:30px' %>
-                <%= link_to "Logout", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+                <%= image_tag current_user.avatar, style: 'height:30px; border-radius:150px' %>
+                <%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
             <% else %>
-                <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
+                <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
             <% end %>
 			<%= link_to image_tag("icons/Bell.svg"), '', class: "icon-bell" %>
 

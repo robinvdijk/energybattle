@@ -1,16 +1,11 @@
-<% if @battle.status?("Prepare") %>
+<% if @battle.status?("prepare") %>
 	<%= render 'readings/upload_readings' %>
+	<%= render 'players_battle' %>
+<% elsif @battle.status?("closing") %>
+	<%= render 'readings/upload_readings' %>
+	<%= render 'players_battle' %>
+<% elsif @battle.status?("finished") %>
 	<%= render 'players_battle' %>
 <% elsif @battle.status?("pending") %>
 	<%= render 'settings_battle'%>
 <% end %>
-
-
-
-
-
-
-
-
-
-

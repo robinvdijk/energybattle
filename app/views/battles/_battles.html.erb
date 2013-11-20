@@ -1,38 +1,39 @@
 <div class="battle_index">
-	<table>
-	<h1>Battles die ik host</h1>
-	  <%= render 'table_name_battle' %>
-		<% @battles.where(host_id: current_user.id).each do |s| %>
-			<tr>
-				<td><%= link_to s.title, battle_path(s) %></td>
-				<td><%= s.theme.capitalize %></td>
-				<td><%= s.status.capitalize %></td>
-				<td><%= find_host(s.host_id).name %></td>
 
-				<% if s.start_date.present? %>
-					<td><%= s.start_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen start datum.</td>
-				<% end %>
+	<% if @battles.where(host_id: current_user.id).any? %>
+		<table>
+		<h1>Battles die ik host</h1>
+		  <%= render 'table_name_battle' %>
+			<% @battles.where(host_id: current_user.id).each do |s| %>
+				<tr>
+					<td><%= link_to s.title, battle_path(s) %></td>
+					<td><%= s.theme.capitalize %></td>
+					<td><%= s.status.capitalize %></td>
+					<td><%= find_host(s.host_id).name %></td>
 
-				<% if s.end_date.present? %>
-					<td><%= s.end_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen eind datum.</td>
-				<% end %>
-				<td><%= s.users.count %> / <%= s.player_limit %></td>
-			</tr>
-		<% end %>
-	<table>
+					<% if s.start_date.present? %>
+						<td><%= s.start_date.strftime('%d %B %Y') %></td>
+					<% else %>
+						<td>Geen start datum.</td>
+					<% end %>
 
-
+					<% if s.end_date.present? %>
+						<td><%= s.end_date.strftime('%d %B %Y') %></td>
+					<% else %>
+						<td>Geen eind datum.</td>
+					<% end %>
+					<td><%= s.users.count %> / <%= s.player_limit %></td>
+				</tr>
+			<% end %>
+		<table>
+	<% end %>
 
 	<% @battles_joined.map do |s| %>
 		<% unless s.host_id == current_user.id %>
 		  <table>
 		    <h1>Battles dat heb ik gejoined</h1>
 	    	  <%= render 'table_name_battle' %>
-	    	<tr>  
+	    	<tr>
 				<td><%= link_to s.title, battle_path(s) %></td>
 				<td><%= s.theme.capitalize %></td>
 				<td><%= s.status.capitalize %></td>
@@ -55,7 +56,7 @@
 						(Host)
 					<% end %>
 				</td>
-			</tr>	
+			</tr>
 	 	  <table>
 		<% end %>
 	<% end %>

@@ -4,7 +4,9 @@
   <title><%= full_title(yield(:title)) %></title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-  <%= csrf_meta_tags %>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+	<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>	
+	<%= csrf_meta_tags %>
 </head>
 	<body>
 		<header></header>
@@ -20,5 +22,24 @@
 		    <% end %> -->
 			<%= yield %>
 		</div>
+		<script>
+	  Morris.Line({
+	    element: 'hero-graph',
+	    data: [
+			{period: "2012 Q1", stand: 2000},
+			{period: "2012 Q2", stand: 2100},
+			{period: "2012 Q3", stand: 2200},
+			{period: "2012 Q4", stand: 2300}							
+			],
+	    xkey: 'period',
+			xLabels: ['day'],
+	    ykeys: ['stand'],
+	    labels: ['Meterstand'],
+			ymin: 'auto',
+			ymax: 'auto'
+	  });
+
+			
+		</script>
 	</body>
 </html>

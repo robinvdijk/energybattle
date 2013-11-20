@@ -5,15 +5,13 @@ class BattlesController < TeamRelationsController
 
   def index
     @team_relations = TeamRelation.where(user_id: current_user.id)
-    @battles_joined = @team_relations.map { |t| t.battle } 
+    @battles_joined = @team_relations.map { |t| t.battle }
 
     if params[:theme]
       @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
     else
       @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
     end
-  	 @count_notifications = current_user.notifications.count
-		
   end
 
   def show
@@ -25,6 +23,11 @@ class BattlesController < TeamRelationsController
   def new
     @battle = Battle.new
   end
+	
+	def readings
+		p 'hoi'
+	end
+
 
   def create
     @battle = Battle.new(battle_params)
