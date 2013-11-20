@@ -2,7 +2,7 @@
     <% if @battle.status?("pending") %>
         <%= f.hidden_field :status, value: "prepare" %>
         <%= f.submit 'prepare', class: 'primary-button' %>
-        <% elsif @battle.status?("prepare") && @battle.uploads_prepared? %>
+        <% elsif @battle.status?("prepare") %>
         <%= f.hidden_field :status, value: "started" %>
         <%= f.submit 'Start', class: 'primary-button' %>
     <% end %>
