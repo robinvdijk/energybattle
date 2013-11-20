@@ -14,7 +14,9 @@ Energybattle::Application.routes.draw do
       resources :readings
   end
 
-  resources :battles
+  resources :battles do
+		resources :readings
+	end
 
   resources :team_relations do
 	  patch :invite, on: :member
