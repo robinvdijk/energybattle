@@ -1,4 +1,18 @@
 <% for user in @battle.users do %>
-	<%= image_tag user.avatar %>
-	<%= user.name %>
+	<table>
+		<tr>
+		  	<td>Avatar</td>
+		  	<td>Naam</td>
+		  	<td>Score</td>
+		</tr>
+		<tr>
+			<td><%= image_tag user.avatar %></td>
+			<td><%= user.name %></td>
+			<td><%= user.readings.sum(:amount) - user.readings.current_battle.first.amount %></td>
+		</tr>
+		<tr>
+			<td><%= number_to_percentage 1 - ((user.readings.sum(:amount).to_f) / 12500) %>
+</td>
+		</tr>
+	</table>
 <% end %>
