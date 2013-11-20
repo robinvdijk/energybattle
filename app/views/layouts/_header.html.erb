@@ -10,7 +10,7 @@
             <% else %>
                 <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
             <% end %>
-			<%= link_to image_tag("Bell.svg"), '', class: "icon-bell" %>
+			<%= link_to image_tag("icons/Bell.svg"), '', class: "icon-bell" %>
 
 			<div class="notifications-center">
 				<% if @count_notifications %>
@@ -19,7 +19,7 @@
 					</div>
 				<% end %>
 			</div>
-			<%= link_to image_tag("Menu.svg"), '', class: "icon-menu" %>
+			<%= link_to image_tag("icons/Menu.svg"), '', class: "icon-menu" %>
 		</div>
 	</ul>
 </div>
