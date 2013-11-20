@@ -1,9 +1,10 @@
 class ReadingsController < ApplicationController
   before_action :higher_value
 
+	respond_to :json, :html
+
   def index
     @readings = Reading.all
-		respond_to :json
   end
 
   def new
