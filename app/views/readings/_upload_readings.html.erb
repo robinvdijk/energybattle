@@ -10,5 +10,27 @@
     <%= render 'readings/form' %>
 <% end %>
 
-<% @readings = @battle.users.map { |u| u.readings.last } %>
-<%= @readings.map { |r| r.amount } %> 
+
+<table>
+	<tr>
+ 
+		<td>Spelersnaam</td>
+		<td>kWh</td>
+	</tr>
+</table>
+
+
+		
+<table>
+	<th>
+<% if @battle.readings.any? %>
+	<% @readings = @battle.users.map { |u| u.readings.last } %>
+	<% @reading_img = @readings.map { |r| r } %> 
+	<% @reading_img.map do |q|%>
+		<tr>Henk</tr>
+		<tr><%= link_to q.amount, q.meter_url.to_s %></tr>
+	<% end %>
+<% end %>
+</th>
+</table>
+
