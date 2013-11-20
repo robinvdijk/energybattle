@@ -5,11 +5,19 @@ class ReadingsController < ApplicationController
 
   def index
 		if params[:battle_id].present?
-	    @readings = Reading.where(:battle_id => params[:battle_id], :user_id => current_user.id).order(:user_id)
+	    @readings = Reading.where(:battle_id => params[:battle_id]).order(:user_id)
 		else
-			@readings = Reading.all
+			@readings = Reading.distinct(:created_at)
 		end
   end
+	
+	def test
+		readings = Reading.order(:created_at)
+		readings.each do |reading|
+
+		end
+		Reading.where("battle_id = ?", @battle.id)
+	end
 
   def new
     @reading = Reading.new
