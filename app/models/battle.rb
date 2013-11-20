@@ -35,4 +35,5 @@ class Battle < ActiveRecord::Base
       battle.status = "closing"
     end
   end
+
 end
