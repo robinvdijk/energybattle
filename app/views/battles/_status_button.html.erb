@@ -1,9 +1,9 @@
 <%= form_for @battle do |f| %>
-	<% if @battle.status?("pending") %>
-		<%= f.hidden_field :status, value: "Prepare" %>
-		<%= link_to 'Prepare Battle', "#", :onclick => "$('#edit_battle_#{@battle.id}').submit()", class: "primary-button" %>
-	<% elsif @battle.status?("Prepare") %>
-		<%= f.hidden_field :status, value: "Start" %>
-		<%= link_to 'Start Battle', "#", :onclick => "$('#edit_battle_#{@battle.id}').submit()", class: "primary-button" %>
-	<% end %>
+    <% if @battle.status?("pending") %>
+        <%= f.hidden_field :status, value: "prepare" %>
+        <%= f.submit 'prepare', class: 'primary-button' %>
+        <% elsif @battle.status?("prepare") && @battle.uploads_prepared? %>
+        <%= f.hidden_field :status, value: "started" %>
+        <%= f.submit 'Start', class: 'primary-button' %>
+    <% end %>
 <% end %>

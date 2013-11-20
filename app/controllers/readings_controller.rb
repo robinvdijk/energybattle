@@ -3,6 +3,7 @@ class ReadingsController < ApplicationController
 
   def index
     @readings = Reading.all
+		respond_to :json
   end
 
   def new

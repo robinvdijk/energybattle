@@ -4,7 +4,9 @@ class TeamRelationsController < ApplicationController
 
   def create
     @team_relation = TeamRelation.new(team_relation_params)
-    redirect_to :back if @team_relation.save
+    if @team_relation.save
+      redirect_to :back
+    end
   end
 
   def destroy

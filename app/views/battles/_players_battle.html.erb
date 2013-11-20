@@ -8,7 +8,9 @@
 		<tr>
 			<td><%= image_tag user.avatar %></td>
 			<td><%= user.name %></td>
-			<td><%= user.readings.sum(:amount) - user.readings.current_battle.first.amount %></td>
+			<% unless user.readings %>
+			<td><%= user.readings.sum(:amount) - user.readings.where(:battle_id => @battle.id).first.amount %></td>
+			<% end %>
 		</tr>
 		<tr>
 			<td><%= number_to_percentage 1 - ((user.readings.sum(:amount).to_f) / 12500) %>
