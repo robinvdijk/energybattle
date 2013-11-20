@@ -1,1 +1,31 @@
-<div id="hero-graph" class="graph"></div>
+<% if @battle.status?("pending") || @battle.status?("Prepare") %>
+<% else %>
+    <div class="col-8 omega-1 gray-box">
+        <div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
+        <div class="col-4-of-8">
+            <div class="settings-item"><%= @battle.start_date.strftime("%d-%B-%Y") %></div>
+            <div class="settings-item"><%= @battle.end_date.strftime("%d-%B-%Y") %></div>
+        </div>
+        <div class="col-4-of-8">
+            <div class="settings-item"><%= @battle.player_limit %> Spelers</div>
+            <div class="settings-item"><%= @battle.duration %></div>
+        </div>
+    </div>
+<% end %>
+
+<div class="col-8 omega-1 teams-header">
+    <% if @battle.status?("pending") || @battle.status?("Prepare") %>
+    <div class="col-4-of-8">
+        <%= render "team_members", team: "host" %>
+    </div>
+    <div class="col-4-of-8">
+        <%= render "team_members", team: "opponent" %>
+    </div>
+    <% elsif @battle.status?("Start") %>
+    <div class="subheading"><p>Team 1</p></div>
+        <%= render "battle_show_table", team: "host" %>
+    <div class="subheading"><p>Team 2</p></div>
+        <%= render "battle_show_table", team: "opponent" %>
+    <% end %>
+    <div id="hero-graph" class="graph"></div>
+</div>

@@ -10,7 +10,8 @@ feature 'Battle management' do
     first(".theme").click_link("Host")
     first(".theme").click_link("Choose")
       expect(current_path).to eq new_battle_path
-      expect(page).to have_content "#{@current_user.first_name}"
+      save_and_open_page
+      expect(page).to have_content "#{@current_user.name}"
       expect(page).to have_content "#{@current_user.email}"
       fill_in 'battle_title', :with => "Test"
       fill_in 'battle_player_limit', :with => "12"
