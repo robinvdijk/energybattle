@@ -1,8 +1,14 @@
 class ReadingsController < ApplicationController
   before_action :higher_value
 
+	respond_to :json, :html
+
   def index
-    @readings = Reading.all
+		if params[:battle_id].present?
+	    @readings = Reading.where(:battle_id => params[:battle_id])
+		else
+			@readings = Reading.all
+		end
   end
 
   def new
@@ -17,7 +23,10 @@ class ReadingsController < ApplicationController
         flash[:succes] = "Gelukt"
         exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
         @reading.original_date = exif.date_time if exif.date_time
-        @reading.save
+        @reading.save        
+        if @reading.battle.status?("closing")
+          @reading.battle.update_attribute(:status, "finished")
+        end
         redirect_to @reading.battle
       else
         flash[:alert] = "Er is iets mis gegaan"

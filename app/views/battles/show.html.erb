@@ -1,21 +1,22 @@
-<% provide(:title, @battle.title) %> 
-<div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
 <div class="col-4 battle_settings">
-        <div class="subheading">Instellingen</div>
-        <%= render "settings_battle" if @battle.status?("pending") %>
-        <%= render "readings/upload_readings" if @battle.status?("Prepare") %>
+    <div class="subheading">Instellingen</div>
+    <%= render "sidebar_battle" %>
 </div>
-<div class="col-8 omega-1 teams-header">
+<% if @battle.status?('started') %>
+	<%= render 'battles/statistics/overview' %>
+<% else %>
+    <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">
-                <%= render "team_members", team: "host" %>
+            <%= render "team_members", team: "host" %>
         </div>
         <div class="col-4-of-8">
-                <%= render "team_members", team: "opponent" %>
+            <%= render "team_members", team: "opponent" %>
         </div>
+    </div>
+<% end %>
+<%#= render "readings/upload_readings" if @battle.status?("prepare")%>
+<div class="col-12">
+	<div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
+	<%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" if @battle.status?("pending") || @battle.status?("Prepare") %>
 </div>
 
-<%#= render "readings/upload_readings" if @battle.status?("Prepare")%>
-<div class="col-12">
-        <div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
-        <%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" %>
-</div>
