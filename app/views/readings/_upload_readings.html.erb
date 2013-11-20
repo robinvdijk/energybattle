@@ -5,7 +5,5 @@
     <%= image_tag u.meter_url.to_s, class: 'reading-img' %>
 <% end %>
 
-<% unless current_user.readings.where(battle_id: @battle.id).any? %>
     <div class="subheading">Upload meterstand gegevens</div>
     <%= render 'readings/form' %>
-<% end %>
