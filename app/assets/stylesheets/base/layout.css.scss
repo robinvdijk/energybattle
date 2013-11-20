@@ -44,27 +44,42 @@
 	height: 36em;
   .teams-headrow {
     padding-bottom: 2.2em;
-    margin: 0 0.4em 1em 0.4em;
+    margin: 0 0.2em 1em 0.35em;
     border-bottom: 1px solid black;
     li {
       float: left;
       list-style: none;
-      padding: 2% 6% 0 6%;
+      padding: 2% 0 0 0;
+    }
+    .team-head1{
+    	padding-left: 12%;
+
+    }
+    .team-head2{
+    	padding-left: 29%;
+
+    }
+    .team-head3{
+		padding-left: 21%
     }
   }
 }.member {
-	background-color:gray;
-	padding:15px;
-  height:5em;
+	padding:5px;
+    height:2.5em;
 	margin:5px;
-	color:white;
-	border-radius:7px;
+	color:#34495e;
+	line-height:1.7;
+	border-bottom: 1px solid #ddd;
   li {
     list-style:none;
   }
   img {
     float:left;
     margin-right:5px;
+  }
+  .destroy{
+  	margin-top: -5px;
+  	padding-right:0.45em;
   }
 }.invite {
 	text-align:center;
