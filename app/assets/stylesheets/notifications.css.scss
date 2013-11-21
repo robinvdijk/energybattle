@@ -1,7 +1,7 @@
 .notification-center{
-	background-color: rgb(240, 240, 240);
+	background-color: $grey;
 	border-radius: 0.3em;
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	box-shadow: 0 0.125em 0 0 $darkblue;
 	position: absolute;
 	height: 300px;
 	width: 300px;
@@ -19,7 +19,7 @@
     border-top: 0;
     border-left: 15px solid transparent;
     border-right: 15px solid transparent;
-    border-bottom: 15px solid rgb(240, 240, 240);
+    border-bottom: 15px solid $grey;
     padding: 0;
     width: 0;
     height: 0;
@@ -31,10 +31,10 @@
 	margin: 50px;
 		
 	p{
-		color: rgb(44, 62, 80);
+		color: $darkblue;
 	}
 	a{
-		color: rgb(104, 192, 123);
+		color: $green;
 		text-decoration: none;	
 		}
 }

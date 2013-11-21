@@ -1,14 +1,18 @@
 .battle_settings {
 	@include outer-container;
 	@include span-columns(4);
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
 	margin-top: 1.65em;
 	position:relative;
 	border-radius: 0.3em;
 	font-family: 'lato' , sans-serif;
-	color: rgb(52, 73, 94);
+	color: $blue;
 	font-size: 1.2em;
+	.primary-button{
+		display: none !important;
+		margin: 0 0 0 1em;
+	}
 }
 
 .subheading {
@@ -16,14 +20,14 @@
 	margin-bottom: 1em;
 	font-family: 'lato' , sans-serif;
 	font-size: 1.5em;
-	color: rgb(52, 73, 94);
+	color: $blue;
 	text-shadow: none;
 }
 
 .teams{
 	@include span-columns (8);
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
 	margin-top: 2em;
 	position:relative;
 	border-radius: 0.3em;

@@ -2,14 +2,14 @@
 
 body{
 	font-family: 'lato' , sans-serif;
-	color: rgb(52, 73, 94);
+	color: $blue;
 }.heading {
 	text-align:center;
 	font-size:1.5em;
 	font-weight:bold;
 	padding:2px;
 	margin:0.4em 0;
-	color: rgb(52, 73, 94);
+	color: $blue;
 }.subheading {
 	@extend .heading;
 	font-size:1.2em;

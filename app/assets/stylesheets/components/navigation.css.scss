@@ -1,5 +1,5 @@
 nav {
-	background: rgb(104, 192, 123);
+	background: $green;
 	width: 100%;
 	box-shadow: 0 0.15em 0 0 rgba(77, 155, 93, 1.0);
 	ul {
@@ -13,7 +13,7 @@ nav {
 				padding-bottom: 0.3em;
 				font-family: 'Lato' , sans-serif;
 				font-size: 1.5em;
-				color: rgba(255, 255, 255, 0.8);
+				color: $white;
 				text-decoration: none;
 			}
 			a:hover {
@@ -21,8 +21,8 @@ nav {
 				border-bottom: 0.15em solid rgba(255, 255, 255, 1);
 			}
 			.current {
-				color: rgba(255, 255, 255, 0.8);
-				border-bottom: 0.15em solid rgba(255, 255, 255, 0.8);
+				color: $white;
+				border-bottom: 0.15em solid $white;
 			}
 		}
 	}
