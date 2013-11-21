@@ -5,11 +5,19 @@ class ReadingsController < ApplicationController
 
   def index
 		if params[:battle_id].present?
-	    @readings = Reading.where(:battle_id => params[:battle_id])
+	    @readings = Reading.where(:battle_id => params[:battle_id]).order(:user_id)
 		else
-			@readings = Reading.all
+			@readings = Reading.distinct(:created_at)
 		end
   end
+	
+	def test
+		readings = Reading.order(:created_at)
+		readings.each do |reading|
+
+		end
+		Reading.where("battle_id = ?", @battle.id)
+	end
 
   def new
     @reading = Reading.new
@@ -18,12 +26,12 @@ class ReadingsController < ApplicationController
   def create
     @reading = Reading.new(reading_params)
 
-    if Reading.any?  
+    if Reading.any?
       if @reading.amount >= @reading_value && @reading.save
         flash[:succes] = "Gelukt"
         exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
         @reading.original_date = exif.date_time if exif.date_time
-        @reading.save        
+        @reading.save
         if @reading.battle.status?("closing")
           @reading.battle.update_attribute(:status, "finished")
         end
@@ -44,7 +52,7 @@ class ReadingsController < ApplicationController
       end
     end
   end
-  
+
 
   def show
     @reading = Reading.find(params[:id])

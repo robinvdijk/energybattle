@@ -5,13 +5,15 @@ class Battle < ActiveRecord::Base
 
   validates :host_id, presence: true
   validates :status, presence: true
+  validates :duration, presence: {message: "Moet ingevuld zijn"}
   validates :title, presence: {message: "Moet ingevuld zijn"}, length: {maximum: 25}
 
-  validates :player_limit, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true, greater_than: 1, less_than_or_equal_to: 16 }
+  validates :player_limit, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true, less_than_or_equal_to: 16# , greater_than: 1
+  }
   validates :start_date, presence: {message: "Moet ingevuld zijn"}
 
   after_create :create_host_team_relation
-  
+
   # scope :current_battle , where(:battle_id => self.id)
 
   def create_host_team_relation
@@ -29,6 +31,10 @@ class Battle < ActiveRecord::Base
 
   def uploads_prepared?
     self.users.map { |u| u.readings.where(battle_id: self.id) }.count == self.player_limit
+  end
+
+  def team_full?
+    self.users.count == self.player_limit
   end
 
   def self.update_battles

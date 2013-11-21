@@ -23,7 +23,7 @@ class BattlesController < TeamRelationsController
   def new
     @battle = Battle.new
   end
-	
+
 	def readings
 		p 'hoi'
 	end

@@ -1,4 +1,4 @@
-<% if @battle.status?("pending") || @battle.status?("Prepare") %>
+<% if @battle.status?("pending") || @battle.status?("prepare") %>
 <% else %>
     <div class="col-8 omega-1 gray-box">
         <div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
@@ -14,14 +14,14 @@
 <% end %>
 
 <div class="col-8 omega-1 teams-header">
-    <% if @battle.status?("pending") || @battle.status?("Prepare") %>
+    <% if @battle.status?("pending") || @battle.status?("prepare") %>
     <div class="col-4-of-8">
         <%= render "team_members", team: "host" %>
     </div>
     <div class="col-4-of-8">
         <%= render "team_members", team: "opponent" %>
     </div>
-    <% elsif @battle.status?("Start") %>
+    <% elsif @battle.status?("started") %>
     <div class="subheading"><p>Team 1</p></div>
         <%= render "battle_show_table", team: "host" %>
     <div class="subheading"><p>Team 2</p></div>
