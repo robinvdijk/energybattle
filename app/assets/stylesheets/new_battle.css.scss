@@ -3,14 +3,14 @@
 	@include span-columns(4);
 	background-color: $grey;
 	box-shadow: 0 0.125em 0 0 $darkblue;
-	margin-top: 1.65em;
 	position:relative;
 	border-radius: 0.3em;
 	font-family: 'lato' , sans-serif;
 	color: $blue;
 	font-size: 1.2em;
 	.primary-button{
-		margin: 0 0 0 1em;
+		margin-top: 2em;
+		margin-left: 0.6em;
 	}
 }
 

@@ -54,3 +54,14 @@ a{
 	text-decoration: none;
 	color: $blue;
 }
+
+
+a:hover{
+	color:$darkgreen;
+	text-decoration:underline;
+}
+
+a:active{
+	color:$darkergreen;
+	text-decoration:underline;
+}

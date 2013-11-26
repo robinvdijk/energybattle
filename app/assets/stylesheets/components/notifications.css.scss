@@ -7,14 +7,16 @@
 	width: 300px;
 	margin: 18px;
 	z-index: 1;
-	right: 16%;
-	top: 105px;
+	right: 0;
+	top: 60px;
+	
+	
 }
 
 .notifications-center .notch {
     position: absolute;
     top: -15px;
-    left: 61%;
+    right: 40px;
     margin: 0;
     border-top: 0;
     border-left: 15px solid transparent;
@@ -31,10 +33,30 @@
 	margin: 50px;
 		
 	p{
-		color: $darkblue;
+		color: $white;
 	}
 	a{
 		color: $green;
 		text-decoration: none;	
 		}
 }
+
+.notification_button_accept{
+	right: 40px;
+	position: absolute;
+	img {
+	fill: rgb(100, 100, 100);
+	width: 20px;
+	}
+}
+
+
+.notification_button_decline{
+	right: 15px;
+	position: absolute;
+	img {
+	fill: $darkblue;
+	width: 20px;
+	}
+}
+
