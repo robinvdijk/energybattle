@@ -1,4 +1,4 @@
-en:
+nl:
   simple_form:
     "yes": 'Yes'
     "no": 'No'
@@ -21,8 +21,5 @@ en:
           game_type: 'Speltype'
           start_date: 'Start datum'
           duration: 'Looptijd'
-    # hints:
-    #   defaults:
-    #     username: 'User name to sign in.'
-    #     password: 'No special characters, please.'
-
+      reading:
+          meter: 'Upload foto'
