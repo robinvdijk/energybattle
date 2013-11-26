@@ -1,4 +1,4 @@
-.notification-center{
+.notifications-center{
 	background-color: rgb(240, 240, 240);
 	border-radius: 0.3em;
 	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
@@ -9,9 +9,10 @@
 	z-index: 1;
 	right: 16%;
 	top: 105px;
+  display:none;
 }
 
-.notification-center .notch {
+.notifications-center .notch {
     position: absolute;
     top: -15px;
     left: 61%;
@@ -25,16 +26,16 @@
     height: 0;
 }
 
-.notification {
+.notifications {
 	font-family: 'Lato' , sans-serif;
 	font-size: 0.8em;
 	margin: 50px;
-		
+
 	p{
 		color: rgb(44, 62, 80);
 	}
 	a{
 		color: rgb(104, 192, 123);
-		text-decoration: none;	
+		text-decoration: none;
 		}
 }

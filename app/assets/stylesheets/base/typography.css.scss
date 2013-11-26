@@ -8,9 +8,10 @@ body{
 	font-size:1.5em;
 	font-weight:bold;
 	padding:2px;
-	margin:0.4em 0;
+  margin-bottom:1em;
 	color: rgb(52, 73, 94);
 }.subheading {
 	@extend .heading;
 	font-size:1.2em;
+  margin: 0.4em, 0;
 }

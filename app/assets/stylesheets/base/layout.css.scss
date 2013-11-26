@@ -1,8 +1,13 @@
-.gray-box {
+.box {
 	border-radius:7px;
 	background-color: rgb(240, 240, 240);
 	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
-  margin:2em 0 1em 0;
+  margin-bottom:1em;
+}
+
+.box-padding{
+  @extend .box;
+  padding:1em;
 }
 // THEME
 
@@ -39,9 +44,7 @@
 }.teams-header{
 	background-color: rgb(240, 240, 240);
 	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
-	position:relative;
 	border-radius: 0.3em;
-	height: 36em;
   .teams-headrow {
     padding-bottom: 2.2em;
     margin: 0 0.2em 1em 0.35em;
@@ -76,6 +79,8 @@
   img {
     float:left;
     margin-right:5px;
+    height:30px;
+    border-radius:150px
   }
   .destroy{
   	margin-top: -5px;

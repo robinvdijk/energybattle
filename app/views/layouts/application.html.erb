@@ -19,27 +19,5 @@
 			<% end %>
 			<%= yield %>
 		</div>
-		<script>
-
-		var jsonData = $.ajax({
-      url: "http://localhost:3000/battles/11/readings.json", // make this url point to the data file
-      dataType: "json",
-      async: false
-    }).responseText;
-
-		var data = jQuery.parseJSON(jsonData);
-		console.log(data);
-	  Morris.Line({
-	    element: 'hero-graph',
-	    data: data,
-	    xkey: 'period',
-			xLabels: ['day'],
-	    ykeys: ['Jeroen Stevens', 'Mathijs Kingma'],
-	    labels: ['Meterstand'],
-			ymin: 'auto',
-			ymax: 'auto',
-	    hideHover: 'auto'
-	  });
-		</script>
 	</body>
 </html>
