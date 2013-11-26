@@ -1,5 +1,6 @@
 .box {
 	border-radius:7px;
+<<<<<<< HEAD
 	background-color: rgb(240, 240, 240);
 	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
   margin-bottom:1em;
@@ -8,6 +9,11 @@
 .box-padding{
   @extend .box;
   padding:1em;
+=======
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
+  margin:2em 0 1em 0;
+>>>>>>> 40c1aad9c2b2c298a5677837940f2c8144812e63
 }
 // THEME
 
@@ -16,10 +22,13 @@
 	float: left;
 	height:25em;
 	border-radius:7px;
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
 	margin-top: 2em;
 	position:relative;
+	.primary-button{
+		margin-left:1em;
+	}
 	img {
 		display:block;
 		margin:0 auto;
@@ -30,20 +39,21 @@
 }
 //BATTLE
 .battle_settings {
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
  	height:30em;
 	padding:0 0.3em;
 	position:relative;
 	border-radius: 0.3em;
-	color: rgb(52, 73, 94);
+	color: $blue;
 	font-size: 1.2em;
 	p {
 		padding:0.4em 0;
 	}
 }.teams-header{
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
+	position:relative;
 	border-radius: 0.3em;
   .teams-headrow {
     padding-bottom: 2.2em;
@@ -89,7 +99,7 @@
 }.invite {
 	text-align:center;
 }.invite_members {
-	background-color:green;
+	background-color: $green;
 	margin:3px;
 	padding:3px;
 	border-radius:3px;

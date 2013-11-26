@@ -8,9 +8,17 @@ class ReadingsController < ApplicationController
 	    @readings = Reading.where(:battle_id => params[:battle_id]).order(:user_id).map
       @personal_readings = Reading.where(:battle_id => params[:battle_id], user_id: current_user.id).map
 		else
-			@readings = Reading.all
+			@readings = Reading.distinct(:created_at)
 		end
   end
+
+	def test
+		readings = Reading.order(:created_at)
+		readings.each do |reading|
+
+		end
+		Reading.where("battle_id = ?", @battle.id)
+	end
 
   def new
     @reading = Reading.new

@@ -164,7 +164,7 @@ header {
   width: 100%; }
 
 nav {
-  background: #68c07b;
+  background: $green;
   width: 100%;
   box-shadow: 0 0.125em 0 0 #4d9b5d; }
   nav ul {
@@ -178,14 +178,14 @@ nav {
         padding-bottom: 0.3em;
         font-family: 'Lato' , sans-serif;
         font-size: 1.5em;
-        color: rgba(255, 255, 255, 0.8);
+        color: $white;
         text-decoration: none; }
       nav ul li a:hover {
         color: white;
         border-bottom: 0.15em solid white; }
       nav ul li a:active {
-        color: rgba(255, 255, 255, 0.8);
-        border-bottom: 0.15em solid rgba(255, 255, 255, 0.8); }
+        color: $white;
+        border-bottom: 0.15em solid $white; }
 
 .pull-right {
   float: right; }
@@ -203,7 +203,7 @@ nav {
 /*einde van de header*/
 /*buttons*/
 .primary-button {
-  background: #68c07b;
+  background: $green;
   display: block;
   overflow: hidden;
   text-align: center;
@@ -216,18 +216,18 @@ nav {
   text-align: center;
   font-family: 'Lato' , sans-serif;
   font-size: 1.5em;
-  color: rgba(255, 255, 255, 0.8);
+  color: $white;
   text-decoration: none;
   transition: background .5s ease-in; }
 
 .primary-button:hover {
   background: #539962;
-  color: rgba(255, 255, 255, 0.8); }
+  color: $white; }
 
 .primary-button:active {
   background: #3f7349;
   box-shadow: 0 0.125em 0 0 #3f7349;
-  color: rgba(255, 255, 255, 0.8); }
+  color: $white; }
 
 /*einde buttons*/
 .theme {

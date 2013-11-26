@@ -25,7 +25,7 @@ class Reading < ActiveRecord::Base
       {
         original_date: date,
         personal: reading_by_day[date],
-        ideal: reading_by_day[date].to_i + growth.to_i
+        ideal: reading_by_day[date].to_i + growth
       }
     end
   end
