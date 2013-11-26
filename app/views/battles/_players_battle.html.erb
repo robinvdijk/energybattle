@@ -1,19 +1,21 @@
-<% for user in @battle.users do %>
-	<table>
+<div class="battle_show">
+    <table>
 		<tr>
 		  	<td>Avatar</td>
 		  	<td>Naam</td>
 		  	<td>Score</td>
+            <td>Besparing</td>
 		</tr>
+        <% find_team_members(team).each do |team| %>
 		<tr>
-			<td><%= image_tag user.avatar %></td>
-			<td><%= user.name %></td>
-			<% unless user.readings %>
-			<td><%= user.readings.sum(:amount) - user.readings.where(:battle_id => @battle.id).first.amount %></td>
+			<td><%= image_tag team.user.avatar if team.user.avatar? %></td>
+			<td><%= team.user.name %></td>
+			<% unless team.user.readings %>
+			<td><%= user.readings.sum(:amount) - team.user.readings.where(:battle_id => @battle.id).first.amount %></td>
 			<% end %>
+            <td></td>
+            <td><%= number_to_percentage 1 - ((team.user.readings.sum(:amount).to_f) / 12500) %></td>
 		</tr>
-		<tr>
-			<td><%= number_to_percentage 1 - ((user.readings.sum(:amount).to_f) / 12500) %></td>
-		</tr>
-	</table>
-<% end %>
+        <% end %>
+    </table>
+</div>

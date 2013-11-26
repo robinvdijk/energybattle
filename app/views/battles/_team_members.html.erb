@@ -8,7 +8,7 @@
 <% if @battle.status?("pending") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-			<%= image_tag team.user.avatar, style: "height:30px; border-radius:150px;" %>
+			<%= image_tag team.user.avatar %>
             <ul>
     			<% if team.user.id == @current_user.id %>
                     <li>
@@ -16,7 +16,7 @@
                         <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
                     </li>
                 <% else %>
-					
+
                 <% end %>
                 <li><%= team.user.name %></li>
     			<li><%= team.status if team.status == "invited" %></li>
@@ -29,7 +29,7 @@
 <% elsif @battle.status?("prepare") || @battle.status?("Start") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-            <%= image_tag team.user.avatar %>
+      <%= image_tag team.user.avatar %>
 			<%= team.user.name %>
 		</div>
 	<% end %>

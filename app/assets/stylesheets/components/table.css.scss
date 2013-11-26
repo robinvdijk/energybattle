@@ -24,12 +24,18 @@
 
 .battle_show table{
   width:100%;
+}.battle_show img{
+  border-radius:150px;
+  height:30px;
+}.battle_show tr:not(:first-child){
+  height:46px;
 }.battle_show tr:nth-child(odd){
 	 background-color:#fff;
 }.battle_show tr:nth-child(even)    {
 	 background-color:$green;
 }.battle_show td {
 	padding:7px;
+  vertical-align:middle;
 }.battle_show tr:first-child td{
 	background-color:#fff;
 }.battle_show tr:first-child td:first-child{

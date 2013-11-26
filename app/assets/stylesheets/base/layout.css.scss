@@ -1,7 +1,13 @@
-.gray-box {
+.box {
 	border-radius:7px;
 	background-color: $grey;
 	box-shadow: 0 0.125em 0 0 $darkblue;
+  margin-bottom:1em;
+}
+
+.box-padding{
+  @extend .box;
+  padding:1em;
   margin:2em 0 1em 0;
 }
 // THEME
@@ -44,7 +50,6 @@
 	box-shadow: 0 0.125em 0 0 $darkblue;
 	position:relative;
 	border-radius: 0.3em;
-	height: 36em;
   .teams-headrow {
     padding-bottom: 2.2em;
     margin: 0 0.2em 1em 0.35em;
@@ -79,6 +84,8 @@
   img {
     float:left;
     margin-right:5px;
+    height:30px;
+    border-radius:150px
   }
   .destroy{
   	margin-top: -5px;
