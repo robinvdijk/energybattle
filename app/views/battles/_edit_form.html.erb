@@ -1,3 +1,4 @@
+<% provide(:title, "Creëer een battle") %>
 <%= simple_form_for @battle, :action => "create" do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
 	<%= f.hidden_field :status, value: "pending" %>

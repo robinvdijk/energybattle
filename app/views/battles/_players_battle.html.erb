@@ -6,7 +6,7 @@
 		  	<td>Score</td>
 		</tr>
 		<tr>
-			<td><%= image_tag user.avatar %></td>
+			<td><%= image_tag user.avatar, style: "height:30px; border-radius: 150px;" %></td>
 			<td><%= user.name %></td>
 			<% unless user.readings %>
 			<td><%= user.readings.sum(:amount) - user.readings.where(:battle_id => @battle.id).first.amount %></td>

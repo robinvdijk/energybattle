@@ -1,4 +1,4 @@
-<div class="heading">Creër een battle</div>
+<div class="heading">Creëer een battle</div>
 <div class="col-4 battle_settings">
 	<div class="subheading">Instellingen</div>
 	<%= render 'edit_form'%>
@@ -7,7 +7,7 @@
 	<div class="col-4-of-8">
 		<%= render "team_members", team: "host" %>
 		<div class='member'>
-            <%= image_tag current_user.avatar %>
+            <%= image_tag current_user.avatar, style: "height:30px; border-radius: 150px;" %>
             <ul>
                 <li><%= current_user.name %></li>
             </ul>
