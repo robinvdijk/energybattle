@@ -1,19 +1,14 @@
 .box {
 	border-radius:7px;
-<<<<<<< HEAD
-	background-color: rgb(240, 240, 240);
-	box-shadow: 0 0.125em 0 0 rgb(44, 62, 80);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
   margin-bottom:1em;
 }
 
 .box-padding{
   @extend .box;
   padding:1em;
-=======
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
   margin:2em 0 1em 0;
->>>>>>> 40c1aad9c2b2c298a5677837940f2c8144812e63
 }
 // THEME
 
