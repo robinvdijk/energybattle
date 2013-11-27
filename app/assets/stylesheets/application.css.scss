@@ -18,3 +18,12 @@
 @import "components/table";
 @import "components/statistics";
 
+
+.blank_row
+{
+    height: 10px !important; /* Overwrite any previous rules */
+    background-color: white;
+	td {
+	    background-color: #f0f0f0;
+	}
+}

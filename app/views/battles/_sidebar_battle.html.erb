@@ -1,4 +1,9 @@
-<% if @battle.status?("prepare") %>
+<% if @battle.status?("pending") %>
+	<%= render 'settings_battle'%>
+<% elsif @battle.status?("prepare") %>
+	<%= render 'readings/upload_readings' %>
+	<%= render 'players_battle' %>
+<% elsif @battle.status?("started")%>
 	<%= render 'readings/upload_readings' %>
 	<%= render 'players_battle' %>
 <% elsif @battle.status?("closing") %>
@@ -6,6 +11,4 @@
 	<%= render 'players_battle' %>
 <% elsif @battle.status?("finished") %>
 	<%= render 'players_battle' %>
-<% elsif @battle.status?("pending") %>
-	<%= render 'settings_battle'%>
 <% end %>

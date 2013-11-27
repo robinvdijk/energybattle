@@ -18,6 +18,8 @@ class BattlesController < TeamRelationsController
     @battle = Battle.find(params[:id])
     @reading = Reading.new
 		@battlecount = Battle.count
+    
+    calculate
   end
 
   def new
@@ -57,6 +59,26 @@ class BattlesController < TeamRelationsController
     @battle.destroy
     redirect_to battle_path
   end
+  
+  def calculate
+    teamrelations = TeamRelation.where(battle_id: @battle.id, team: "host_team")
+    @begin_amount_sum = 0
+    @current_amount_sum = 0
+    @energy_savings_sum = 0
+    
+    for relation in teamrelations do
+      @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
+    end
+    for relation in teamrelations do
+      @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
+    end
+    for relation in teamrelations do
+      @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+    end
+    
+    
+  end
+  
 
 private
   def set_battle
