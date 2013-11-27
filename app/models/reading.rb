@@ -14,18 +14,22 @@ class Reading < ActiveRecord::Base
     self.save
   end
 
-  def self.personal_chart_data(start_date, end_date)
-    personal_readings = where(battle_id: 16, user_id: 6)
+  def self.personal_chart_data(battle, current_user)
+    start_date = battle.start_date
+    end_date = battle.end_date
+    personal_readings = where(battle_id: battle.id, user_id: 6)
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
     growth = personal_readings.growth(start_date, end_date, personal_readings)
     growth2 = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
 
     (start_date.to_date..end_date.to_date).map do |date|
+      days_gone = Date.today+2..date
       {
         original_date: date,
         personal: reading_by_day[date],
-        ideal: reading_by_day[date].to_i + growth
+        ideal: reading_by_day[date] || personal_readings.last.amount + growth2.to_i * (days_gone.count),
+        points: battle.points?(current_user).to_i
       }
     end
   end

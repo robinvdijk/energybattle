@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_signin, :check_notifications
 
-  helper_method :current_user_is_host
+  helper_method :current_user_is_host, :send_fb_notification
 
   def check_signin
     unless user_signed_in? == true
