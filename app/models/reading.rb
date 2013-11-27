@@ -8,7 +8,8 @@ class Reading < ActiveRecord::Base
 
 	belongs_to :user
   belongs_to :battle
-
+  
+  
   def self.test
     self.update_attributes(:original_date => exif)
     self.save
