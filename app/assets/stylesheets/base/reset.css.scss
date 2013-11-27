@@ -32,15 +32,15 @@ nav ul {
     list-style:none;
 }
 
-blockquote, q {
-    quotes:none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-    content:'';
-    content:none;
-}
+// blockquote, q {
+//     quotes:none;
+// }
+//
+// blockquote:before, blockquote:after,
+// q:before, q:after {
+//     content:'';
+//     content:none;
+// }
 
 a {
     margin:0;
@@ -84,7 +84,7 @@ hr {
     display:block;
     height:1px;
     border:0;
-    border-top:1px solid #cccccc;
+    border-top:1px solid rgb(44, 62, 80);
     margin:1em 0;
     padding:0;
 }

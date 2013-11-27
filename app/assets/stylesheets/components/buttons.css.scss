@@ -1,30 +1,30 @@
 .primary-button {
-	background: rgb(104, 192, 123);
-	display: block;
-	overflow: hidden;
-	text-align:center;
-	width: 300px;
-	height: auto;
-	padding: .5em;
-	margin: 0.5em 1em .5em 1em;
-	border-radius: 0.3em;
-	box-shadow: 0 0.125em 0 0 rgb(77, 155, 93);
-	text-align: center;
-	font-family: 'Lato' , sans-serif;
-	font-size: 1.5em;
-	color: rgba(255, 255, 255, 0.8);
-	text-decoration: none;
-	transition: background .5s ease-in;
-	border:none;
+        background: $green;
+        display: block;
+        overflow: hidden;
+        text-align:center;
+        width: 300px;
+        height: auto;
+        padding: .5em;
+        margin: 0.5em 0em .5em 0;
+        border-radius: 0.3em;
+        box-shadow: 0 0.125em 0 0 $darkgreen;
+        text-align: center;
+        font-family: 'Lato' , sans-serif;
+        font-size: 1.5em;
+        color: $white;
+        text-decoration: none;
+        transition: background .5s ease-in;
+        border:none;
 }.primary-button:hover {
-	background: rgb(83, 153, 98);
-	color: rgba(255, 255, 255, .8);
+        background: $darkgreen;
+        color: $white;
 }.primary-button:active {
-	background: rgb(63, 115, 73);
-	box-shadow: 0 0.125em 0 0 rgb(63, 115, 73);
-	color: rgba(255, 255, 255, .8);
+        background: $darkergreen;
+        box-shadow: 0 0.125em 0 0 $darkergreen;
+        color: $white;
 }.join_button {
-	margin-left:100px;
+        margin-left:100px;
 }.fb-btn {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
   background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
@@ -39,7 +39,7 @@
   border-radius: 5px;
 
   display:inline-block;
-  color:#ffffff;
+  color:$white;
   font-family:arial;
   font-size:13px;
   font-weight:bold;

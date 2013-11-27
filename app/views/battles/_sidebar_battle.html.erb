@@ -1,11 +1,19 @@
-<% if @battle.status?("prepare") %>
-	<%= render 'readings/upload_readings' %>
+<% case params[:status] 
+   when "pending" %>
+	<%= render 'settings_battle', class: "box-padding" %>
+
+<% when "prepare" || "started" %>
+   	<div class="box-padding"><%= render 'readings/form' %></div>
+	<div class="box col-4-of-4">
+        <div class="subheading">Team 1</div>
+        <%= render 'players_battle', team: "host" %>
+        <div class="subheading">Team 2</div>
+        <%= render 'players_battle', team: "opponent" %>
+
+<% when "closing" %>
+	<%= render 'readings/form' %>
 	<%= render 'players_battle' %>
-<% elsif @battle.status?("closing") %>
-	<%= render 'readings/upload_readings' %>
+	
+<% when "finished" %>
 	<%= render 'players_battle' %>
-<% elsif @battle.status?("finished") %>
-	<%= render 'players_battle' %>
-<% elsif @battle.status?("pending") %>
-	<%= render 'settings_battle'%>
 <% end %>

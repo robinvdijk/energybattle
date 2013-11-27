@@ -4,8 +4,10 @@
 
 @import "base/reset";
 @import "base/bourbon";
+@import "base/color";
 @import "base/layout";
 @import "base/typography";
+
 
 @import "components/alerts";
 @import "components/auto_complete";
@@ -13,8 +15,10 @@
 @import "components/forms";
 @import "components/header";
 @import "components/navigation";
+@import "components/notifications";
 
 @import "components/table";
 @import "components/table";
 @import "components/statistics";
 
+@import "new_battle"

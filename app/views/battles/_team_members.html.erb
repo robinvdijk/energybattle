@@ -8,14 +8,13 @@
 <% if @battle.status?("pending") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-			<%= image_tag team.user.avatar, style: "height:30px; border-radius:150px;" %>
+			<%= image_tag team.user.avatar %>
             <ul>
                 <li>
 					<%= team.user.name %>
                 <% if team.user.id == @current_user.id %>
                         <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
                         <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
-                    
                 <% else %>
         			<%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
                 <% end %>

@@ -9,12 +9,19 @@
         </tr>
         <% find_team_members(team).each do |team|%>
         <tr>
-            <td><%= team.user.readings.where(battle_id: @battle.id).count %></td>
+            <td><%= count = team.user.readings.where(battle_id: @battle.id).count %></td>
+            <% if count == 0 %>
+            <td>Nog geen meterstand geupload</td>
+            <td>Nog geen meterstand geupload</td>
+            <% else %>
             <td><%= team.user.readings.where(battle_id: @battle.id).first.amount %></td>
             <td><%= team.user.readings.where(battle_id: @battle.id).last.amount %></td>
+            <% end %>
             <td></td>
             <td></td>
         </tr>
         <% end %>
     <table>
 </div>
+
+f
