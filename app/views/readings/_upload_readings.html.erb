@@ -1,11 +1,3 @@
-<% current_user.readings.where(battle_id: @battle.id).order("created_at").each do |u| %>
-    <div class="subheading">Je meterstand gegevens</div>
-    <p>Je opgegeven meterstand is <%= u.amount %> kWh.
-    </p>
-    <%= image_tag u.meter_url.to_s, class: 'reading-img' %>
-<% end %>
+<div class="subheading">Upload meterstand gegevens</div>
+<%= render 'readings/form' %>
 
-<% unless current_user.readings.where(battle_id: @battle.id).any? %>
-    <div class="subheading">Upload meterstand gegevens</div>
-    <%= render 'readings/form' %>
-<% end %>
