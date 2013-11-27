@@ -10,16 +10,15 @@
 		<div class="member">
 			<%= image_tag team.user.avatar %>
             <ul>
-    			<% if team.user.id == @current_user.id %>
-                    <li>
+                <li>
+					<%= team.user.name %>
+                <% if team.user.id == @current_user.id %>
                         <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
                         <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
-                    </li>
                 <% else %>
-
+        			<%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
                 <% end %>
-                <li><%= team.user.name %></li>
-    			<li><%= team.status if team.status == "invited" %></li>
+                </li>
             </ul>
 		</div>
 	<% end %>
@@ -29,7 +28,7 @@
 <% elsif @battle.status?("prepare") || @battle.status?("Start") %>
 	<% find_team_members(team).each do |team|%>
 		<div class="member">
-      <%= image_tag team.user.avatar %>
+            <%= image_tag team.user.avatar, style: "height:30px; border-radius:150px;" %>
 			<%= team.user.name %>
 		</div>
 	<% end %>
