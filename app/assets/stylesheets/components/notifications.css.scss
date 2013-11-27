@@ -9,9 +9,11 @@
 	z-index: 1;
 	right: 0;
 	top: 60px;
-//	right: 16%;
-//	top: 105px;
-//  display:none;
+	display: none;
+	
+	&.active {
+		display: block;
+	}
 }
 
 .notifications-center .notch {
@@ -33,21 +35,30 @@
 	font-size: 0.8em;
 	margin: 50px;
 
-	p{
-		color: $white;
-	}
-	a{
-		color: $green;
-		text-decoration: none;
+	.notification{
+		border-bottom: 1px solid $darkblue;
+		padding-bottom: 10px;
+		width: 119%;
+		p{
+			color: $white;
+			float: left;
+			width: 210px;
 		}
+		a{
+			color: $green;
+			text-decoration: none;
+		}
+	}	
+	
 }
 
 .notification_button_accept{
 	right: 40px;
 	position: absolute;
-	img {
-	fill: rgb(100, 100, 100);
-	width: 20px;
+	color: $darkblue;
+	font-size: 25px;
+	&:hover{
+		color: green;
 	}
 }
 
@@ -55,8 +66,9 @@
 .notification_button_decline{
 	right: 15px;
 	position: absolute;
-	img {
-	fill: $darkblue;
-	width: 20px;
+	color: $darkblue;
+	font-size: 25px;
+	&:hover{
+		color:red;
 	}
 }
