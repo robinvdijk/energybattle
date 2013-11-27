@@ -7,7 +7,6 @@ class Battle < ActiveRecord::Base
   validates :status, presence: true
   validates :duration, presence: {message: "Moet ingevuld zijn"}
   validates :title, presence: {message: "Moet ingevuld zijn"}, length: {maximum: 25}
-
   validates :player_limit, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true, less_than_or_equal_to: 16# , greater_than: 1
   }
   validates :start_date, presence: {message: "Moet ingevuld zijn"}
@@ -44,4 +43,17 @@ class Battle < ActiveRecord::Base
     end
   end
 
+  def points(user)
+    a1 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).first.amount
+
+    a2 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).last.amount
+
+    baseline = (user.readings.first.amount/365.to_f)*self.duration
+
+    s = 12
+
+    i = 30
+
+    (1-((a2-a1)/baseline))*100*s+i
+  end
 end
