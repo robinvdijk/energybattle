@@ -17,7 +17,7 @@ class Reading < ActiveRecord::Base
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date
     end_date = battle.end_date
-    personal_readings = where(battle_id: battle.id, user_id: 6)
+    personal_readings = where(battle_id: battle.id, user_id: current_user.id)
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
     growth = personal_readings.growth(start_date, end_date, personal_readings)
@@ -28,8 +28,7 @@ class Reading < ActiveRecord::Base
       {
         original_date: date,
         personal: reading_by_day[date],
-        ideal: reading_by_day[date] || personal_readings.last.amount + growth2.to_i * (days_gone.count),
-        points: battle.points?(current_user).to_i
+        ideal: reading_by_day[date] || personal_readings.last.amount + growth2.to_i * (days_gone.count)
       }
     end
   end

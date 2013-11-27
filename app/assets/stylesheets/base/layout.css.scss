@@ -88,8 +88,18 @@
     border-radius:150px
   }
   .destroy{
-  	margin-top: -5px;
+  	margin-top: -0.3em;
   	padding-right:0.45em;
+  }
+  .status_img{
+  	img{
+  	 float:right;
+  	 padding-right:0.25em;
+  	 fill: blue;}
+  }
+  .icon-message{
+  	margin-right: 0.55em;
+    float:right;
   }
 }.invite {
 	text-align:center;

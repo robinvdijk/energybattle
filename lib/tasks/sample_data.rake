@@ -6,6 +6,7 @@ namespace :db do
     make_own_battles
   end
 end
+# maar eerst jezelf aan voor dat je populate doet
 def make_users
   19.times do |n|
     name = Faker::Name.name
@@ -26,7 +27,7 @@ def make_battles_to_join
 end
 
 def make_own_battles
-  current_user = User.find(20)
+  current_user = User.find(1)
   users = User.where.not(id: 1)
   6.times do |n|
     battle = Battle.create!(host_id: current_user.id, theme: "energy", status: "started", start_date: Date.today+n, end_date: 7.days.from_now.to_date+n, duration: 7, title: "Title-#{n}", player_limit: n*2)
@@ -34,20 +35,25 @@ def make_own_battles
     order = users.shuffle
     order_id = order.map { |o| o.id }
 
-    # current_user relation
-    TeamRelation.create!(user_id: current_user.id, battle_id: battle.id, team: "host_team", status: "joined")
     # Host team_realtions
     (1*n-1).times do |i|
       TeamRelation.create!(user_id: order_id[i], battle_id: battle.id, team: "host_team", status: "joined")
     end
     # Opponent team_relations
     (1*n).times do |i|
-      TeamRelation.create!(user_id: order_id[i], battle_id: battle.id, team: "opponent_team", status: "joined")
+      TeamRelation.create!(user_id: order_id[-1-i], battle_id: battle.id, team: "opponent_team", status: "joined")
     end
 
+    # Reading voor jezelf in de battle
+    amount = [3300,4200,4600,5500]
+    Reading.create!(user_id: current_user.id, battle_id: :null, created_at: 1.week.ago, updated_at: 4.weeks.ago, amount: amount.shuffle.first )
+    rand(1..7).times do |t|
+      Reading.create!(user_id: current_user.id, battle_id: battle.id, created_at: battle.start_date+t, updated_at: battle.start_date+t, amount: current_user.readings.first.amount + (current_user.readings.first.amount/365*t))
+    end
+    # Readings voor battlelid
     order.each do |user|
       rand(1..7).times do |t|
-        Reading.create!(user_id: user.id, battle_id: battle.id, created_at: (Date.today+t).to_date, amount: user.readings.first.amount + (user.readings.first.amount/365*t))
+        Reading.create!(user_id: user.id, battle_id: battle.id, created_at: battle.start_date+t, updated_at: battle.start_date+t, amount: user.readings.first.amount + (user.readings.first.amount/365*t))
       end
     end
   end
