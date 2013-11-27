@@ -1,8 +1,8 @@
-<div class="col-4 battle_settings">
-    <div class="subheading">Instellingen</div>
-    <%= render "sidebar_battle" %>
+<div class="heading"><%= @battle.title %></div>
+<div class="col-4">
+    <%= render "battles/sidebar_battle" %>
 </div>
-<% if @battle.status?('started') %>
+<% if @battle.status?('started') || @battle.status?('prepare') %>
 	<%= render 'battles/statistics/overview' %>
 <% else %>
     <div class="col-8 omega-1 teams-header">
@@ -14,9 +14,7 @@
         </div>
     </div>
 <% end %>
-<%#= render "readings/upload_readings" if @battle.status?("prepare")%>
 <div class="col-12">
 	<div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
 	<%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" if @battle.status?("pending") || @battle.status?("Prepare") %>
 </div>
-

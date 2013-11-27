@@ -1,9 +1,10 @@
+<% provide(:title, "Creëer een battle") %>
 <%= simple_form_for @battle, :action => "create" do |f| %>
 	<%= f.hidden_field :host_id, value: @current_user.id %>
 	<%= f.hidden_field :status, value: "pending" %>
 	<%= hidden_field_tag :theme, params[:theme] %>
 	<%= hidden_field_tag :game_type, params[:game_type] %>
-	
+
 	<div class="form-group">
 		<%= f.input :title %>
 	</div>
@@ -12,10 +13,10 @@
 	</div>
 	<% unless params[:status] == "Edit"%>
 	<div class="form-group">
-		<%= f.input :theme, :input_html => { :value => params[:theme], :readonly => true }%>
+		<%= f.input :theme, :input_html => { :value => params[:theme].capitalize, :readonly => true }%>
 	</div>
 	<div class="form-group">
-		<%= f.input :game_type, :input_html => { :value => params[:game_type], :readonly => true} %>
+		<%= f.input :game_type, :input_html => { :value => params[:game_type].capitalize, :readonly => true} %>
 	</div>
 	<div class="form-group">
 		<%= f.input :start_date, :as => :datepicker %>
@@ -25,5 +26,9 @@
 	</div>
 
 	<% end %>
-	<%= f.submit "Wijzigingen opslaan", class: "primary-button" %>
+    <% if params[:status] == "Edit" %>
+        <%= f.submit "Wijzigingen opslaan", class: "primary-button"  %>
+    <% else %>
+        <%= f.submit "Creër Battle", class: "primary-button" %>
+    <% end %>
 <% end %>

@@ -2,9 +2,8 @@
 	<p>
 		<%= link_to notification.sender.name, user_path(notification.sender) %> heeft je uitgenodigd voor een <%= notification.battle.theme %> battle.
 	</p>
-
-	<%= link_to 'Accept', accept_notification_path(notification), method: :patch %><br/>
-	<%= link_to 'Decline', notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
+	<%= link_to image_tag("icons/Check.svg"), accept_notification_path(notification), method: :patch , class:"notification_button_accept" %>
+	<%= link_to image_tag("icons/Cross.svg"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } , class:"notification_button_decline" %>
 <hr/>
 <% end %>
 

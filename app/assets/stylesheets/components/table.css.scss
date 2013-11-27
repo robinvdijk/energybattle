@@ -3,13 +3,13 @@
 }.battle_index table{
 	margin-top:1em;
 }.battle_index tr:nth-child(odd){
-	 background-color:#68c07b;
+	 background-color:$grey;
 }.battle_index tr:nth-child(even)    {
-	background-color:#ffffff;
+	background-color:#fff;
 }.battle_index td {
 	padding:7px;
 }.battle_index tr:first-child td{
-	background-color:#4d9b5d;
+	background-color: $green;
 }.battle_index tr:first-child td:first-child{
 	border-top-left-radius:7px;
 	border-bottom-left-radius:7px;
@@ -24,12 +24,18 @@
 
 .battle_show table{
   width:100%;
+}.battle_show img{
+  border-radius:150px;
+  height:30px;
+}.battle_show tr:not(:first-child){
+  height:46px;
 }.battle_show tr:nth-child(odd){
 	 background-color:#fff;
 }.battle_show tr:nth-child(even)    {
-	 background-color:#68c07b;
+	 background-color:$green;
 }.battle_show td {
 	padding:7px;
+  vertical-align:middle;
 }.battle_show tr:first-child td{
 	background-color:#fff;
 }.battle_show tr:first-child td:first-child{
@@ -42,4 +48,26 @@
 	border-bottom-left-radius:7px;
 }.battle_show tr:last-child td:last-child{
 	border-bottom-right-radius:7px;
+}
+
+h1{
+	margin-top: 15px;
+}
+
+table a{
+	font-family: 'Lato' , sans-serif;
+	font-size: 1em;
+	text-decoration: none;
+	color: $blue;
+}
+
+
+table a:hover{
+	color:$darkgreen;
+	text-decoration:underline;
+}
+
+table a:active{
+	color:$darkergreen;
+	text-decoration:underline;
 }

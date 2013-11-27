@@ -15,7 +15,6 @@
             <td><%= number_to_percentage(100 - (team.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100, :precision => 2)%></td>
 			<td></td>
 		</tr>
-		
         <% end %>
 		<tr class="blank_row">
 		</tr>
@@ -28,9 +27,3 @@
 		</tr>
     <table>
 </div>
-
-
-<!-- team: "#{team}_team" -->
-
-
-
