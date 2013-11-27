@@ -1,63 +1,34 @@
 <% provide(:title, "Dashboard") %>
 
-<% if @battles.where(host_id: current_user.id).any? %>
-		<table>
-		<h1>Battles die ik host</h1>
-		  <%= render 'battles/table_name_battle' %>
-			<% @battles.where(host_id: current_user.id).each do |s| %>
-				<tr>
-					<td><%= link_to s.title, battle_path(s) %></td>
-					<td><%= s.theme %></td>
-					<td><%= s.status %></td>
-					<td><%= find_host(s.host_id).name %></td>
-
-					<% if s.start_date.present? %>
-						<td><%= s.start_date.strftime('%d %B %Y') %></td>
-					<% else %>
-						<td>Geen start datum.</td>
-					<% end %>
-
-					<% if s.end_date.present? %>
-						<td><%= s.end_date.strftime('%d %B %Y') %></td>
-					<% else %>
-						<td>Geen eind datum.</td>
-					<% end %>
-					<td><%= s.users.count %> / <%= s.player_limit %></td>
-				</tr>
-			<% end %>
-		<table>
-<% end %>
-
-<br/>
-
-<% @battles_joined.map do |s| %>
-	<% unless s.host_id == current_user.id %>
-	  <table>
-	    <h1>Battles dat heb ik gejoined</h1>
-    	  <%= render 'battles/table_name_battle' %>
-    	<tr>
-			<td><%= link_to s.title, battle_path(s) %></td>
-			<td><%= s.theme.capitalize %></td>
-			<td><%= s.status.capitalize %></td>
-			<td><%= find_host(s.host_id).name %></td>
-			<% if s.start_date.present? %>
-				<td><%= s.start_date.strftime('%d %B %Y') %></td>
-			<% else %>
-				<td>Geen start datum.</td>
-			<% end %>
-			<% if s.end_date.present? %>
-				<td><%= s.end_date.strftime('%d %B %Y') %></td>
-			<% else %>
-				<td>Geen eind datum.</td>
-			<% end %>
-			<td>
-				<%= s.users.count %> / <%= s.player_limit %>
-				<% if s.host_id == current_user.id %>
-					(Host)
-				<% end %>
-			</td>
-		</tr>
- 	  <table>
-	<% end %>
-<% end %>
-
+<div class="profile-info">
+  <%= image_tag "#{current_user.avatar}&height=130&width=130", class: 'rounded-img' %>
+  <h2 class="heading"><%= current_user.name%></h2>
+  <h3 class="subheading">Player 1</h3>
+  
+  <ul class="left">
+    <li>NHL Hogeschool</li>
+    <li>Klas 5C</li>
+    <li>26 Jaar</li>
+    <li>Gebruiker sinds: <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
+  </ul>
+  
+  <ul class="right">
+    <li>Team X</li>
+    <li>Team Achter de Hoven</li>
+    <li>Team cool</li>
+  </ul>
+  <hr class="clear">
+  <div class="profile-statistics">
+    <ul>
+      <li>
+        <%= current_user.battles.count %> <span class="small">Battles</span>
+      </li>
+      <li>
+        1130 <span class="small">Punten</span>
+      </li>
+      <li>
+        <%= current_user.battles.count %> <span class="small">Teams</span>
+      </li>            
+    </ul>
+  </div>
+</div>
