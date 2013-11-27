@@ -13,7 +13,7 @@ $(document).ready(function() {
     xkey: 'original_date',
   	xLabels: ['day'],
     ykeys: ['personal', 'ideal'],
-    labels: ['Meterstand'],
+    labels: ['Meterstand', 'Uiteindelijke meterstand', 'Punten'],
   	ymin: 'auto',
   	ymax: 'auto',
     hideHover: 'auto'

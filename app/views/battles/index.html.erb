@@ -4,6 +4,6 @@
 	<%= render 'battles' %>
 </div>
 
-<%= will_paginate @battles %>
+<%= will_paginate @battles, previous_label: "Vorige", next_label: "Volgende" %>
 
 <%= link_to "Nieuwe battle", theme_path, class: "primary-button" %>
