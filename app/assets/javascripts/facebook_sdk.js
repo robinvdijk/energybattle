@@ -1,10 +1,19 @@
 $(document).ready(function(){
     callFB();
     $(".send_notifications").on("click", function(){
-      FB.ui({method: "send", link: "test.com"});
+      FB.ui({method: "send", to: "100003692456003", name: "Doe je mee met Energy Battle?", link: "www.Energybattle.com"});
     });
     $(".invite_with_fb").on("click", function(){
       FB.ui({method: "apprequests", message: "Energybattle de nieuwe ultime game"});
+    });
+    $(".post_on_feed").on("click", function(){
+      FB.ui({
+        method: "feed", 
+        link: "www.energybattle.nl", 
+        name: "Energy Battle",
+        picture: 'http://fbrell.com/f8.jpg',
+        description: "Wil je ook een lagere energierekening en een schoner milieu? Doe mee met Energy Battle!", 
+        caption: "Ik heb 1000 punten behaald bij Energy Battle!"});
     });
 });
 
@@ -24,4 +33,36 @@ function callFB(){
      js.src = "//connect.facebook.net/en_US/all.js";
      d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
-}
+
+  var fbAppId = '533003410107372';
+  var objectToLike = 'http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/';
+
+  // This check is just here to make sure you set your app ID. You don't
+  // need to use it in production. 
+  if (fbAppId === '533003410107372') {
+    alert('Please set the fbAppId in the sample.');
+  }
+
+  function postLike() {
+    FB.api(
+       'https://localhost:3000',
+       'post',
+       { object: objectToLike,
+         privacy: {'value': 'SELF'} },
+       function(response) {
+         if (!response) {
+           alert('Error occurred.');
+         } else if (response.error) {
+           document.getElementById('result').innerHTML =
+             'Error: ' + response.error.message;
+         } else {
+           document.getElementById('result').innerHTML =
+             '<a href=\"https://www.facebook.com/me/activity/' +
+             response.id + '\">' +
+             'Story created.  ID is ' +
+             response.id + '</a>';
+         }
+       }
+    );
+
+} 

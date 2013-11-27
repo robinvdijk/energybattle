@@ -2,7 +2,7 @@
 	<% @battles_joined.map do |s| %>
 		<% unless s.host_id == current_user.id %>
 		  <table>
-		    <h1>Battles dat heb ik gejoined</h1>
+		    <h1>Battles dat ik heb gejoined</h1>
 	    	  <%= render 'table_name_battle' %>
 	    	<tr>
 				<td><%= link_to s.title, battle_path(s) %></td>

@@ -33,7 +33,7 @@
 <% @battles_joined.map do |s| %>
 	<% unless s.host_id == current_user.id %>
 	  <table>
-	    <h1>Battles dat heb ik gejoined</h1>
+	    <h1>Battles dat ik heb gejoined</h1>
     	  <%= render 'battles/table_name_battle' %>
     	<tr>
 			<td><%= link_to s.title, battle_path(s) %></td>
@@ -61,3 +61,25 @@
 	<% end %>
 <% end %>
 
+<br/>
+<br/>
+
+
+<div>
+This example creates a story on Facebook using the
+<a href="https://developers.facebook.com/docs/reference/ogaction/og.likes">
+<code>og.likes</code></a> API.  That story will just say
+that you like an
+<a href="http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/">
+article on TechCrunch</a>.  The story should only
+be visible to you.
+</div>
+
+<div>
+<input
+  type="button"
+  value="Create a story with an og.likes action"
+  onclick="postLike();">
+</div>
+
+<div id="result"></div>
