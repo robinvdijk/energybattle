@@ -21,4 +21,5 @@
 
 .container, .inner-header {
 	@include outer-container;
+	position: relative;
 }
