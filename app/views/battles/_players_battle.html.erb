@@ -11,7 +11,7 @@
 			<td><%= image_tag team.user.avatar, style: "height:30px; border-radius: 150px;" if team.user.avatar? %></td>
 			<td><%= team.user.name %></td>
 			<% unless team.user.readings %>
-			<td><%= user.readings.sum(:amount) - team.user.readings.where(:battle_id => @battle.id).first.amount %></td>
+			<td><%= team.user.readings.where(:battle_id => @battle.id).first.amount %></td>
 			<% end %>
             <td></td>
             <td><%= number_to_percentage 1 - ((team.user.readings.sum(:amount).to_f) / 12500) %></td>

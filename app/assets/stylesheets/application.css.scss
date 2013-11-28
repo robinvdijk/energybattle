@@ -27,6 +27,14 @@
 @import "components/table";
 @import "components/statistics";
 
-@import "new_battle"
+@import "new_battle";
 
 
+.blank_row {
+    height: 10px !important; /* Overwrite any previous rules 
+	moet nog ergens anders hoor is een test*/
+    background-color: white;
+	td {
+	    background-color: #f0f0f0;
+	}
+}

@@ -1,5 +1,4 @@
 .notifications-center{
-display:none;
 	background-color: $blue;
 	border-radius: 0.3em;
 	box-shadow: 0 0.125em 0 0 $darkblue;
@@ -17,10 +16,7 @@ display:none;
 	      border: 2px solid $green;
 		  float: left;
 		  margin-right: 10px;
-	    }
-
-	
-	&.active {
+	    }	&.active {
 		display: block;
 	}
 }
