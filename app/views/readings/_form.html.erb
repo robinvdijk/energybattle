@@ -1,7 +1,7 @@
 <%= simple_form_for @reading, :action => "create" do |f| %>
 	<%= f.hidden_field :user_id, :value => current_user.id %>
 	<%= f.hidden_field :battle_id, :value => params[:id] %>
-    Laatste ingevoerde Meterstand: <%= current_user.readings.last.amount %> KWh
+    Laatste ingevoerde Meterstand: <%= current_user.readings.last.amount if current_user.readings.count != 0 %> KWh
 	<div class="form-group">
 		<%= f.input :meter %>
 	</div>

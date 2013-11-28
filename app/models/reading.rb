@@ -4,12 +4,12 @@ class Reading < ActiveRecord::Base
 	validates :amount, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true }
 	mount_uploader :meter, MeterUploader
 
-	validates :meter, presence: {message: "Moet upgeload zijn"}
+	# validates :meter, presence: {message: "Moet upgeload zijn"} # disable om populate te gebruiken
 
 	belongs_to :user
   belongs_to :battle
-  
-  
+
+
   def self.test
     self.update_attributes(:original_date => exif)
     self.save
@@ -18,19 +18,17 @@ class Reading < ActiveRecord::Base
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date
     end_date = battle.end_date
-    personal_readings = where(battle_id: battle.id, user_id: 6)
+    personal_readings = where(battle_id: battle.id, user_id: current_user.id)
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
-    growth = personal_readings.growth(start_date, end_date, personal_readings)
-    growth2 = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
 
     (start_date.to_date..end_date.to_date).map do |date|
-      days_gone = Date.today+2..date
+      days_gone = start_date..date
       {
         original_date: date,
         personal: reading_by_day[date],
-        ideal: reading_by_day[date] || personal_readings.last.amount + growth2.to_i * (days_gone.count),
-        points: battle.points?(current_user).to_i
+        ideal: reading_by_day[date] || personal_readings.last.amount + growth.to_i * (days_gone.count)
       }
     end
   end
