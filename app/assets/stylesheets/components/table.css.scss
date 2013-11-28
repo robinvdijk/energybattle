@@ -5,6 +5,7 @@
   margin-top:1em;
   tr:nth-child(odd){
     background-color:$grey;
+  }
   tr:nth-child(even){
     background-color:#fff;
   }
@@ -31,17 +32,18 @@
 }
 
 .battle_show table{
-  width:100%
+  width:100%;
   img{
     border-radius:150px;
     height:30px;
   }
   tr:nth-child(odd){
     background-color:#fff;
-  tr:nth-child(even)    {
+  }
+  tr:nth-child(even){
     background-color:$green;
   }
-  td {
+  td{
     padding:7px;
     vertical-align:middle;
   }
