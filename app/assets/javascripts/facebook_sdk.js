@@ -37,12 +37,6 @@ function callFB(){
   var fbAppId = '533003410107372';
   var objectToLike = 'http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/';
 
-  // This check is just here to make sure you set your app ID. You don't
-  // need to use it in production.
-  if (fbAppId === '533003410107372') {
-    alert('Please set the fbAppId in the sample.');
-  };
-
   function postLike() {
     FB.api(
        'https://localhost:3000',
