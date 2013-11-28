@@ -6,7 +6,8 @@
 	</ul>
 	
         <%= link_to "Send post", '#', class: "send_notifications" %> |
-        <%= link_to "Send invite requests to facebook friends", '#', class: "invite_with_fb" %>
+        <%= link_to "Send invite requests to facebook friends", '#', class: "invite_with_fb" %> | 
+        <%= link_to "Post on feed", '#', class: "post_on_feed" %>
 		<div class="pull-right">
             <% if user_signed_in? %>
                 <%= image_tag current_user.avatar, style: 'height:30px; border-radius:150px' %>

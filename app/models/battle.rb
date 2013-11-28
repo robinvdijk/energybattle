@@ -14,9 +14,6 @@ class Battle < ActiveRecord::Base
 
   after_create :create_host_team_relation
 
-  # scope :current_battle , where(:battle_id => self.id)
-
-
   def create_host_team_relation
     r = TeamRelation.new
     r.user_id = self.host_id
@@ -47,15 +44,10 @@ class Battle < ActiveRecord::Base
 
   def points(user)
     a1 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).first.amount
-
     a2 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).last.amount
-
     baseline = (user.readings.first.amount/365.to_f)*self.duration
-
     s = 12
-
     i = 30
-
     (1-((a2-a1)/baseline))*100*s+i
   end
 end
