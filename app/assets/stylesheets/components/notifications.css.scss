@@ -5,12 +5,20 @@ display:none;
 	box-shadow: 0 0.125em 0 0 $darkblue;
 	position: absolute;
 	height: 300px;
-	width: 300px;
+	width: 350px;
 	margin: 18px;
 	z-index: 1;
 	right: 0;
 	top: 60px;
 	display: none;
+	.facebookfoto{
+	      width: 50px;
+	      border-radius: 150px;
+	      border: 2px solid $green;
+		  float: left;
+		  margin-right: 10px;
+	    }
+
 	
 	&.active {
 		display: block;
@@ -39,7 +47,7 @@ display:none;
 	.notification{
 		border-bottom: 1px solid $darkblue;
 		padding-bottom: 10px;
-		width: 119%;
+		width: 110%;
 		p{
 			color: $white;
 			float: left;
@@ -58,6 +66,7 @@ display:none;
 	position: absolute;
 	color: $darkblue;
 	font-size: 25px;
+	margin-top: 30px;
 	&:hover{
 		color: green;
 	}
@@ -69,7 +78,9 @@ display:none;
 	position: absolute;
 	color: $darkblue;
 	font-size: 25px;
+	margin-top: 30px;
 	&:hover{
 		color:red;
 	}
 }
+
