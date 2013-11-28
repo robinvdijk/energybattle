@@ -2,7 +2,9 @@
 	<ul>
 		<% [["Home", :root], ["Battles", :theme]].each do |name,url| %>
 		    <li><%= link_to_unless_current(name, url) do link_to name, url, class: "current" end %></li>
-		<% end %>
+		<% end %>		
+	</ul>
+	
         <%= link_to "Send post", '#', class: "send_notifications" %> |
         <%= link_to "Send invite requests to facebook friends", '#', class: "invite_with_fb" %>
 		<div class="pull-right">
@@ -12,8 +14,9 @@
             <% else %>
                 <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
             <% end %>
+
 			<%= link_to image_tag("icons/Bell.svg"), '#', class: "icon-bell" %>
- 
+
 			<div class="notifications-center">
 				<% if @count_notifications %>
                     <div class="notch"></div>

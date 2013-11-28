@@ -19,7 +19,9 @@ class BattlesController < TeamRelationsController
     @reading = Reading.new
 		@battlecount = Battle.count
     
-    calculate
+    unless @battle.status = "pending"
+      calculate
+    end
   end
 
   def new
@@ -68,11 +70,7 @@ class BattlesController < TeamRelationsController
     
     for relation in teamrelations do
       @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
-    end
-    for relation in teamrelations do
       @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
-    end
-    for relation in teamrelations do
       @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
     end
   end

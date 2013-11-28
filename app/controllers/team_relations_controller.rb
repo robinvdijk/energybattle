@@ -36,7 +36,7 @@ class TeamRelationsController < ApplicationController
   end
 
   def find_team_members(team)
-    TeamRelation.where(battle_id: @battle.id, team: "#{team}_team")
+    TeamRelation.where(battle_id: @battle.id, team: "host_team")
   end
 
 private
