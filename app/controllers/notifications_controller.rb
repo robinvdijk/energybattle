@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  # before_action :set_notification
+  before_action :set_notification
 
   def accept
 		if @notification.notification_type == 'invite'
@@ -12,12 +12,13 @@ class NotificationsController < ApplicationController
 		     redirect_to root_path, error: "Er is iets fouts gegaan"
 		  end
 		elsif @notification.notification_type == 'kick_request'
-			@notification.battle.kick
+			p 'goeie'
+			team_relation = TeamRelation.where(battle_id: @notification.battle_id, user_id: @notification.receiver_id).first.destroy			
 			@notification.destroy
 		  redirect_to :back
 		end
   end
-
+	
   def destroy
 	  # relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
 		
@@ -26,7 +27,7 @@ class NotificationsController < ApplicationController
 		
     redirect_to root_path, notice: 'De uitnodiging is succesvol afgewezen'
   end
-	
+
 	def new
 		@notification = Notification.new
 	end

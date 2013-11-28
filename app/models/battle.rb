@@ -25,10 +25,14 @@ class Battle < ActiveRecord::Base
     r.status = 'joined'
     r.save
   end
-
+	
   def status?(value)
     self.status == value
   end
+	
+	def in_battle?(current_user)
+		TeamRelation.where(battle_id: self.id, user_id: current_user.id).first
+	end
 
   def uploads_prepared?
     self.users.map { |u| u.readings.where(battle_id: self.id) }.count == self.player_limit

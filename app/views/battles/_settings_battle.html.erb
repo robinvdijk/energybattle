@@ -1,0 +1,20 @@
+<% if params[:status] == "Edit" %>
+	<%= render 'edit_form'%>
+<% else %>
+	<div class="col-2-of-4 omega-1">
+		<p>Titel: 			</p>
+		<p>Start Datum: 	</p>
+		<p>Eind Datum: 		</p>
+		<p>Spelers limiet: 	</p>
+		<p>Thema: 			</p>
+		<p>Spelvorm: 		</p>
+	</div>
+		<p><%= @battle.title %></p>
+		<p><%= @battle.start_date.try(:strftime, "%d %B %Y") %></p>
+		<p><%= @battle.end_date.try(:strftime, "%d %B %Y") %></p>
+		<p><%= @battle.player_limit %></p>
+		<p><%= @battle.theme %></p>
+		<p><%= @battle.game_type %></p>
+
+	<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button bottom-pusher" if current_user_is_host %>
+<% end %>

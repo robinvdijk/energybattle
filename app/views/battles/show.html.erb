@@ -1,4 +1,4 @@
-<div class="heading"><%= @battle.title %><%= @battle.status %></div>
+<div class="heading"><%= @battle.title %></div>
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
@@ -18,3 +18,4 @@
 	<div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
 	<%= link_to "Terug naar battle overzicht", battles_path, class: "primary-button" if @battle.status?("pending") || @battle.status?("Prepare") %>
 </div>
+

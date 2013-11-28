@@ -75,17 +75,14 @@ class BattlesController < TeamRelationsController
     end
   end
 	
-	def kick_request(user_id)
-		# Status van teamrelation wordt op 'reported' gezet
-		# Daarna wordt aan de host een notificatie gestuurd,
-		# als de host deze notificatie accepteerd, dan wordt de teamrelatie verwijderd
-		
-		team_relation = TeamRelation.where(:user_id => user_id, :battle_id => @battle.id).first
-		notification = Notification.create!(:notification_type => 'kick', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => @battle.host_id)
+	def kick_request
+
+		@battle = Battle.find(params[:id])
+		team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
+		notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
+		redirect_to :back	
 	end
-  def kick
-		redirect_to root_path
-	end
+
 
 private
   def set_battle
