@@ -1,4 +1,9 @@
-/* *= require jquery.ui.datepicker */
+/* 
+ *= require jquery.ui.datepicker
+ *= require font-awesome
+ */
+@import "font-awesome";
+
 @import "bourbon";
 @import "neat";
 
@@ -16,6 +21,7 @@
 @import "components/header";
 @import "components/navigation";
 @import "components/notifications";
+@import "components/dashboard";
 
 @import "components/table";
 @import "components/table";

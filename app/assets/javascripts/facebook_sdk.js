@@ -15,17 +15,22 @@ $(document).ready(function(){
         description: "Wil je ook een lagere energierekening en een schoner milieu? Doe mee met Energy Battle!", 
         caption: "Ik heb 1000 punten behaald bij Energy Battle!"});
     });
+    
 });
 
 function callFB(){
     window.fbAsyncInit = function() {
       FB.init({
-        appId      : '533003410107372', // App ID
+        appId      : 534518849970647, // App ID
+        status     : true,    // check login status
+        cookie     : true,    // enable cookies to allow the
+                            // server to access the session
+        xfbml      : true     // parse page for xfbml or html5
       });
 
     // Additional initialization code here
   };
-
+}
   // Load the SDK Asynchronously
   (function(d){
      var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
@@ -34,35 +39,37 @@ function callFB(){
      d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
 
-  var fbAppId = '533003410107372';
+  var fbAppId = '534518849970647';
   var objectToLike = 'http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/';
 
   // This check is just here to make sure you set your app ID. You don't
   // need to use it in production. 
-  if (fbAppId === '533003410107372') {
+  if (fbAppId === 'lol') {
     alert('Please set the fbAppId in the sample.');
   }
 
-  function postLike() {
-    FB.api(
-       'https://localhost:3000',
-       'post',
-       { object: objectToLike,
-         privacy: {'value': 'SELF'} },
-       function(response) {
-         if (!response) {
+
+
+ function tickerInfo(){
+FB.api(
+  'https://graphc.facebook.com/me/energybattle:win',
+  'post',
+  {
+    battle: "http://samples.ogp.me/558093757613156"
+  },
+  function(response) {
+    if (!response) {
            alert('Error occurred.');
          } else if (response.error) {
-           document.getElementById('result').innerHTML =
+           document.getElementById('result2').innerHTML =
              'Error: ' + response.error.message;
          } else {
-           document.getElementById('result').innerHTML =
+           document.getElementById('result2').innerHTML =
              '<a href=\"https://www.facebook.com/me/activity/' +
              response.id + '\">' +
              'Story created.  ID is ' +
              response.id + '</a>';
          }
-       }
-    );
-
-} 
+  }
+);
+  }

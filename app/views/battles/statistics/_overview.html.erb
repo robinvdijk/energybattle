@@ -1,12 +1,12 @@
 <div class="col-8 omega-1 box">
-    <div class="heading"> Battle: <%= @battle.title%> / Status: <%= @battle.status %></div>
+    <div class="heading"> Battle: <%= @battle.title %> / Status: <%= @battle.status %></div>
     <div class="col-4-of-8">
         <div class="settings-item"><%= @battle.start_date.strftime("%d-%B-%Y") %></div>
         <div class="settings-item"><%= @battle.end_date.strftime("%d-%B-%Y") %></div>
     </div>
     <div class="col-4-of-8">
         <div class="settings-item"><%= @battle.player_limit %> Spelers</div>
-        <div class="settings-item"><%= @battle.duration %></div>
+        <div class="settings-item"><%= @battle.duration %> Dagen</div>
     </div>
 </div>
 

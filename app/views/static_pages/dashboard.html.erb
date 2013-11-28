@@ -64,22 +64,35 @@
 <br/>
 <br/>
 
-
-<div>
-This example creates a story on Facebook using the
-<a href="https://developers.facebook.com/docs/reference/ogaction/og.likes">
-<code>og.likes</code></a> API.  That story will just say
-that you like an
-<a href="http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/">
-article on TechCrunch</a>.  The story should only
-be visible to you.
+<div class="profile-info">
+  <%= image_tag "#{current_user.avatar}&height=130&width=130", class: 'rounded-img' %>
+  <h2 class="heading"><%= current_user.name%></h2>
+  <h3 class="subheading">Player 1</h3>
+  
+  <ul class="left">
+    <li>NHL Hogeschool</li>
+    <li>Klas 5C</li>
+    <li>26 Jaar</li>
+    <li>Gebruiker sinds: <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
+  </ul>
+  
+  <ul class="right">
+    <li>Team X</li>
+    <li>Team Achter de Hoven</li>
+    <li>Team cool</li>
+  </ul>
+  <hr class="clear">
+  <div class="profile-statistics">
+    <ul>
+      <li>
+        <%= current_user.battles.count %> <span class="small">Battles</span>
+      </li>
+      <li>
+        1130 <span class="small">Punten</span>
+      </li>
+      <li>
+        <%= current_user.battles.count %> <span class="small">Teams</span>
+      </li>            
+    </ul>
+  </div>
 </div>
-
-<div>
-<input
-  type="button"
-  value="Create a story with an og.likes action"
-  onclick="postLike();">
-</div>
-
-<div id="result"></div>

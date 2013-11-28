@@ -15,6 +15,9 @@ class StaticPagesController < ApplicationController
   end
 
 
+	def homepage
+	end
+	
   def gametype
 
   end
