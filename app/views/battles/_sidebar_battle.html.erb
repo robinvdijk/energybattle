@@ -1,29 +1,29 @@
 <% case @battle.status %>
-   <% when "pending" %>
-	<%= render 'settings_battle', class: "box-padding" %>
+	<% when "pending" %>
+			<div class="box-padding"><%= render 'settings_battle' %></div>
 
-	<% when "prepare"  %>
-	   	<div class="box-padding"><%= render 'readings/form' %></div>
-		<div class="box col-4-of-4">
-	        <div class="subheading">Team 1</div>
-	        <%= render 'players_battle', team: "host" %>
-	        <div class="subheading">Team 2</div>
-	        <%= render 'players_battle', team: "opponent" %>
-	    </div>
+		<% when "prepare"  %>
+		   	<div class="box-padding"><%= render 'readings/form' %></div>
+			<div class="box col-4-of-4">
+		        <div class="subheading">Team 1</div>
+		        <%= render 'players_battle', team: "host" %>
+		        <div class="subheading">Team 2</div>
+		        <%= render 'players_battle', team: "opponent" %>
+		    </div>
 
-	<% when "started"  %>
-	   	<div class="box-padding"><%= render 'readings/form' %></div>
-		<div class="box col-4-of-4">
-	        <div class="subheading">Team 1</div>
-	        <%= render 'players_battle', team: "host" %>
-	        <div class="subheading">Team 2</div>
-	        <%= render 'players_battle', team: "opponent" %>
-	    </div>
+		<% when "started"  %>
+		   	<div class="box-padding"><%= render 'readings/form' %></div>
+			<div class="box col-4-of-4">
+		        <div class="subheading">Team 1</div>
+		        <%= render 'players_battle', team: "host" %>
+		        <div class="subheading">Team 2</div>
+		        <%= render 'players_battle', team: "opponent" %>
+		    </div>
 
-	<% when "closing" %>
-		<%= render 'readings/form' %>
-		<%= render 'players_battle' %>
+		<% when "closing" %>
+			<%= render 'readings/form' %>
+			<%= render 'players_battle' %>
 
-	<% when "finished" %>
-		<%= render 'players_battle' %>
+		<% when "finished" %>
+			<%= render 'players_battle' %>
 <% end %>
