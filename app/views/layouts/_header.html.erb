@@ -12,7 +12,7 @@
             <% else %>
                 <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
             <% end %>
-			<%= link_to image_tag("icons/Bell.svg"), '', class: "icon-bell" %>
+			<%= link_to image_tag("icons/Bell.svg"), '#', class: "icon-bell" %>
  
 			<div class="notifications-center">
 				<% if @count_notifications %>

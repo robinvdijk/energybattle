@@ -1,6 +1,6 @@
 <% case @battle.status %>
    <% when "pending" %>
-	<%= render 'settings_battle', class: "box-padding" %>
+	<%= render 'settings_battle' %>
 
 	<% when "prepare"  %>
 	   	<div class="box-padding"><%= render 'readings/form' %></div>

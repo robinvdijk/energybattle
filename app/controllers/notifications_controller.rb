@@ -1,16 +1,21 @@
 class NotificationsController < ApplicationController
-  before_action :set_notification
+  # before_action :set_notification
 
   def accept
-
-	  relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
-	  if relation
-		  relation.update_attributes(status: 'joined')
-		  @notification.destroy
-	     redirect_to battles_path(@notification.battle_id), notice: "Je hebt een battle succesvol gejoined!"
-	  else
-	     redirect_to root_path, error: "Er is iets fouts gegaan"
-	  end
+		if @notification.notification_type == 'invite'
+		  relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
+		  if relation
+			  relation.update_attributes(status: 'joined')
+			  @notification.destroy
+		     redirect_to battles_path(@notification.battle_id), notice: "Je hebt een battle succesvol gejoined!"
+		  else
+		     redirect_to root_path, error: "Er is iets fouts gegaan"
+		  end
+		elsif @notification.notification_type == 'kick_request'
+			@notification.battle.kick
+			@notification.destroy
+		  redirect_to :back
+		end
   end
 
   def destroy
@@ -21,11 +26,30 @@ class NotificationsController < ApplicationController
 		
     redirect_to root_path, notice: 'De uitnodiging is succesvol afgewezen'
   end
-
+	
+	def new
+		@notification = Notification.new
+	end
+	
+  def create
+    @notification = Notification.new(notification_params)
+    if @notification.save
+      flash[:notice] = "Nieuwe notificatie aangemaakt"
+      redirect_to root_path
+    else
+      flash[:alert] = "Er missen een aantal instellingen"
+      render :action => "new"
+    end
+  end
+	
   private
 
 	# Use callbacks to share common setup or constraints between actions.
 	def set_notification
 		@notification = Notification.find(params[:id])
 	end
+	
+  def notification_params
+    params.require(:notification).permit(:notification_type, :battle_id, :sender_id, :receiver_id, :message)
+  end
 end

@@ -75,10 +75,19 @@ class BattlesController < TeamRelationsController
     for relation in teamrelations do
       @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
     end
-    
-    
   end
-  
+	
+	def kick_request(user_id)
+		# Status van teamrelation wordt op 'reported' gezet
+		# Daarna wordt aan de host een notificatie gestuurd,
+		# als de host deze notificatie accepteerd, dan wordt de teamrelatie verwijderd
+		
+		team_relation = TeamRelation.where(:user_id => user_id, :battle_id => @battle.id).first
+		notification = Notification.create!(:notification_type => 'kick', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => @battle.host_id)
+	end
+  def kick
+		redirect_to root_path
+	end
 
 private
   def set_battle
