@@ -18,8 +18,8 @@ class BattlesController < TeamRelationsController
     @battle = Battle.find(params[:id])
     @reading = Reading.new
 		@battlecount = Battle.count
-    
-    unless @battle.status = "pending"
+
+    unless @battle.status = "pending" || "prepare"
       calculate
     end
   end
@@ -27,11 +27,6 @@ class BattlesController < TeamRelationsController
   def new
     @battle = Battle.new
   end
-
-	def readings
-		p 'hoi'
-	end
-
 
   def create
     @battle = Battle.new(battle_params)
@@ -61,25 +56,25 @@ class BattlesController < TeamRelationsController
     @battle.destroy
     redirect_to battle_path
   end
-  
+
   def calculate
     teamrelations = TeamRelation.where(battle_id: @battle.id, team: "host_team")
     @begin_amount_sum = 0
     @current_amount_sum = 0
     @energy_savings_sum = 0
-    
+
     for relation in teamrelations do
       @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
       @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
       @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
     end
   end
-	
+
 	def kick_request(user_id)
 		# Status van teamrelation wordt op 'reported' gezet
 		# Daarna wordt aan de host een notificatie gestuurd,
 		# als de host deze notificatie accepteerd, dan wordt de teamrelatie verwijderd
-		
+
 		team_relation = TeamRelation.where(:user_id => user_id, :battle_id => @battle.id).first
 		notification = Notification.create!(:notification_type => 'kick', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => @battle.host_id)
 	end
