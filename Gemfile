@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.0.1'
 gem 'exiftool'
@@ -46,6 +46,10 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
   gem 'faker'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :test do

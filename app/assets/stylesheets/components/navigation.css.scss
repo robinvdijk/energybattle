@@ -6,6 +6,7 @@ nav {
 	ul {
 	padding: 0.75em 0 0.75em 0;
 	list-style-type: none;
+	float:left;
 		li {
 			display: inline;
 			margin: 0;
@@ -46,18 +47,31 @@ nav {
 	}
 	&:active{
 		color: $darkergreen;
-	};
+	}
 }
-
+.reddot {
+    position:absolute;
+    right:35px;
+    top:-5px;
+    background-color:red;
+    line-height:15px;
+    width:15px;
+    height:15px;
+    border-radius:10px;
+	text-align: center;
+	color: $white !important;
+	font-size: .8em;
+}
 .menu{
 	background-color: $blue;
 	width: 300px;
-	height: 600px;
+	height: 100%;
 	position: absolute;
 	float:right;
 	right:0;
 	z-index: 1;
 	display: none;
+	margin-top: 50px;
 	
 	&.active {
 		display: block;
