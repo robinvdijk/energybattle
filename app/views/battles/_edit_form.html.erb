@@ -12,10 +12,10 @@
         </div>
         <% unless params[:status] == "Edit"%>
         <div class="form-group">
-            <%= f.input :theme, :input_html => { :value => params[:theme].capitalize, :readonly => true }%>
+            <%= f.input :theme, :input_html => { :value => params[:theme], :readonly => true }%>
         </div>
         <div class="form-group">
-            <%= f.input :game_type, :input_html => { :value => params[:game_type].capitalize, :readonly => true} %>
+            <%= f.input :game_type, :input_html => { :value => params[:game_type], :readonly => true} %>
         </div>
         <div class="form-group">
             <%= f.input :start_date, :as => :datepicker %>

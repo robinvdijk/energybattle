@@ -1,5 +1,5 @@
 <div class="subheading"><%= "Team #{team}"  %></div>
-<%= render "invite_team" if @battle.status?("pending")%>
+<%= render "search_members", team: team if @battle.status?("pending") && current_user_is_host%>
 <ul class="teams-headrow">
   <li class="team-head1">Speler</li>
   <li class="team-head2">Score</li>
@@ -8,7 +8,7 @@
 <% if @battle.status?("pending") %>
     <% find_team_members(team).each do |team|%>
         <div class="member">
-            <%= image_tag team.user.avatar %>
+            <%= image_tag team.user.avatar if team.user.avatar == true  %>
             <ul>
                 <li>
                   <%= team.user.name %>

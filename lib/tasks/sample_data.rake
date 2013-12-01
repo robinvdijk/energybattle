@@ -31,7 +31,7 @@ def make_own_battles
   current_user = User.find(1)
   users = User.where.not(id: 1)
   6.times do |n|
-    battle = Battle.create!(host_id: current_user.id, theme: "energy", status: "started", start_date: Date.today+n, end_date: 7.days.from_now.to_date+n, duration: 7, title: "Title-#{n}", player_limit: n*2)
+    battle = Battle.create!(host_id: current_user.id, theme: "energy", status: "started", start_date: Date.today+n, end_date: 7.days.from_now.to_date+n, duration: 7, title: "Title-#{n}", player_limit: n*2, game_type: "snelste")
 
     order = users.shuffle
     order_id = order.map { |o| o.id }
