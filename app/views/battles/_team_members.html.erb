@@ -28,7 +28,7 @@
 <% elsif @battle.status?("prepare") || @battle.status?("started") %>
     <% find_team_members(team).each do |team|%>
         <div class="member">
-            <%= image_tag team.user.avatar, style: "height:30px; border-radius:150px;" %>
+            <%= image_tag team.user.avatar %>
             <%= team.user.name %>
         </div>
     <% end %>

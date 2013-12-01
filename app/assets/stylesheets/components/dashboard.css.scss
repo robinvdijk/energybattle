@@ -5,8 +5,7 @@
   min-height: 550px;
   background-color: #F0F0F0;
   text-align: center;
-  
-  
+
   .rounded-img {
     width: 130px;
     border-radius: 150px;
@@ -18,16 +17,16 @@
   }
   ul {
     float: left;
-    
+
     li {
       font-size: 0.9em;
       list-style: none;
       line-height: 20px;
       margin: 10px 0 0 0;
     }
-    
+
     &.left {
-      width: 50%;      
+      width: 50%;
       text-align: right;
       padding-right: 10px;
       border-right: 1px solid #333;
@@ -37,7 +36,7 @@
       padding-left: 10px;
       text-align: left;
     }
-  }  
+  }
 
   .profile-statistics {
     position: absolute;

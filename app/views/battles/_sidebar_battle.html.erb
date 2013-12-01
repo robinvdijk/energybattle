@@ -1,7 +1,10 @@
 <% case @battle.status %>
-<%when "pending" %>
-    <div class="box-padding"><%= render 'settings_battle'%></div>
-<% when "prepare"  %>
+<% when "pending" %>
+    <div class="box-padding">
+        <%= render 'settings_battle'%>
+        <%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button", style: "position:relative; top:0.5em" if current_user_is_host %>
+    </div>
+<% when "prepare" %>
     <div class="box-padding"><%= render 'readings/form' %></div>
     <div class="box col-4-of-4">
         <div class="subheading">Team 1</div>

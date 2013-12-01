@@ -15,7 +15,6 @@ class BattlesController < TeamRelationsController
   end
 
   def show
-    @battle = Battle.find(params[:id])
     @reading = Reading.new
     @battlecount = Battle.count
 
@@ -93,7 +92,7 @@ class BattlesController < TeamRelationsController
 
 private
   def set_battle
-      @battle = Battle.find(params[:id])
+    @battle = Battle.find(params[:id])
   end
 
   def twitter_url_for(url, text)
