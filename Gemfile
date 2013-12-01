@@ -23,6 +23,7 @@ gem 'neat'
 gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
+gem 'faker'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -44,7 +45,6 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
-  gem 'faker'
 end
 
 group :production do
