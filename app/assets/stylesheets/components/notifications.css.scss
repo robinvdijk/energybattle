@@ -1,24 +1,24 @@
 .notifications-center{
-	background-color: $blue;
-	border-radius: 0.3em;
-	box-shadow: 0 0.125em 0 0 $darkblue;
-	position: absolute;
-	height: 300px;
-	width: 350px;
-	margin: 18px;
-	z-index: 1;
-	right: 0;
-	top: 60px;
-	display: none;
-	.facebookfoto{
-	      width: 50px;
-	      border-radius: 150px;
-	      border: 2px solid $green;
-		  float: left;
-		  margin-right: 10px;
-	    }	&.active {
-		display: block;
-	}
+  background-color: $blue;
+  border-radius: 0.3em;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  position: absolute;
+  height: 300px;
+  width: 350px;
+  margin: 18px;
+  z-index: 1;
+  right: 0;
+  top: 60px;
+  display: none;
+  .facebookfoto{
+        width: 50px;
+        border-radius: 150px;
+        border: 2px solid $green;
+      float: left;
+      margin-right: 10px;
+      }	&.active {
+    display: block;
+  }
 }
 
 .notifications-center .notch {
@@ -36,45 +36,44 @@
 }
 
 .notifications {
-	font-family: 'Lato' , sans-serif;
-	font-size: 0.8em;
-	margin: 50px;
+  font-family: 'Lato' , sans-serif;
+  font-size: 0.8em;
+  margin: 50px;
 
-	.notification{
-		border-bottom: 1px solid $darkblue;
-		padding-bottom: 10px;
-		width: 110%;
-		p{
-			color: $white;
-			float: left;
-			width: 210px;
-		}
-		a{
-			color: $green;
-			text-decoration: none;
-		}
-	}
-
+  .notification{
+    border-bottom: 1px solid $darkblue;
+    padding-bottom: 10px;
+    width: 110%;
+    p{
+      color: $white;
+      float: left;
+      width: 210px;
+    }
+    a{
+      color: $green;
+      text-decoration: none;
+    }
+  }
 }
 
 .notification_button_accept{
-	right: 40px;
-	position: absolute;
-	color: $darkblue;
-	font-size: 25px;
-	margin-top: 30px;
-	&:hover{
-		color: green;
-	}
+  right: 40px;
+  position: absolute;
+  color: $darkblue;
+  font-size: 25px;
+  margin-top: 30px;
+  &:hover{
+    color: green;
+  }
 }
 
 .notification_button_decline{
-	right: 15px;
-	position: absolute;
-	color: $darkblue;
-	font-size: 25px;
-	margin-top: 30px;
-	&:hover{
-		color:red;
-	}
+  right: 15px;
+  position: absolute;
+  color: $darkblue;
+  font-size: 25px;
+  margin-top: 30px;
+  &:hover{
+    color:red;
+  }
 }

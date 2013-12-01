@@ -1,9 +1,9 @@
 <div class="subheading"><%= "Team #{team}"  %></div>
 <%= render "invite_team" if @battle.status?("pending")%>
 <ul class="teams-headrow">
-	<li class="team-head1">Speler</li>
-	<li class="team-head2">Score</li>
-	<li class="team-head3">Status</li>
+  <li class="team-head1">Speler</li>
+  <li class="team-head2">Score</li>
+  <li class="team-head3">Status</li>
 </ul>
 <% if @battle.status?("pending") %>
     <% find_team_members(team).each do |team|%>
@@ -11,24 +11,16 @@
             <%= image_tag team.user.avatar %>
             <ul>
                 <li>
-<<<<<<< HEAD
-                    <%= team.user.name %>
-=======
                   <%= team.user.name %>
-          <% if @battle.host_id != team.user.id%>
-            <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
-          <% end %>
->>>>>>> dfa057a75b68033601e0c89f3160023c234341ee
-                <% if team.user.id == @current_user.id %>
-                        <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
-                        <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
-                <% else %>
-<<<<<<< HEAD
+                  <% if @battle.host_id != team.user.id%>
+                    <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
+                  <% end %>
+                  <% if team.user.id == @current_user.id %>
+                    <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
+                    <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
+                  <% else %>
                     <%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
-=======
-                  <%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
->>>>>>> dfa057a75b68033601e0c89f3160023c234341ee
-                <% end %>
+                  <% end %>
                 </li>
             </ul>
         </div>
@@ -37,7 +29,6 @@
         <%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
     <% end %>
 <% elsif @battle.status?("prepare") || @battle.status?("started") %>
-<<<<<<< HEAD
     <% find_team_members(team).each do |team|%>
         <div class="member">
             <%= image_tag team.user.avatar %>
@@ -45,14 +36,3 @@
         </div>
     <% end %>
 <% end %>
-=======
-	<% find_team_members(team).each do |team|%>
-		<div class="member">
-            <%= image_tag team.user.avatar, style: "height:30px; border-radius:150px;" %>
-			<%= team.user.name %>
-		</div>
-	<% end %>
-<% else %>
-
-<% end %>
->>>>>>> dfa057a75b68033601e0c89f3160023c234341ee

@@ -1,55 +1,61 @@
 .box {
-	border-radius:7px;
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
+  border-radius:7px;
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
   margin-bottom:1em;
 }
-
 .box-padding{
   @extend .box;
   padding:1em;
   margin:0 0 1em 0;
+  .primary-button{
+    position:relative;
+    top:0.5em;
+  }
 }
 // THEME
-
 .theme {
-	@include span-columns(4);
-	float: left;
-	height:25em;
-	border-radius:7px;
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
-	margin-top: 2em;
-	position:relative;
-	.primary-button{
-		margin-left:1em;
-	}
-	img {
-		display:block;
-		margin:0 auto;
-	}
+  @include span-columns(4);
+  float: left;
+  height:25em;
+  border-radius:7px;
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  margin-top: 2em;
+  position:relative;
+  .primary-button{
+    margin-left:1em;
+  }
+  img {
+    display:block;
+    margin:0 auto;
+  }
 }.bottom-pusher{
-	position:absolute;
-	bottom:0.5em;
+  position:absolute;
+  bottom:0.5em;
 }
 //BATTLE
 .battle_settings {
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
- 	height:30em;
-	padding:0 0.3em;
-	position:relative;
-	border-radius: 0.3em;
-	color: $blue;
-	font-size: 1.2em;
-	p {
-		padding:0.4em 0;
-	}
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  height:30em;
+  padding:0 0.3em;
+  position:relative;
+  border-radius: 0.3em;
+  color: $blue;
+  font-size: 1.2em;
+  p {
+    padding:0.4em 0;
+  }
 }.teams-header{
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
-	position:relative;
-	border-radius: 0.3em;
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  position:relative;
+  border-radius: 0.3em;
+  padding-bottom:6em;
+  .primary-button{
+    margin-left:1em;
+  }
   .teams-headrow {
     padding-bottom: 2.2em;
     margin: 0 0.2em 1em 0.35em;
@@ -60,24 +66,22 @@
       padding: 2% 0 0 0;
     }
     .team-head1{
-    	padding-left: 12%;
-
+      padding-left: 12%;
     }
     .team-head2{
-    	padding-left: 29%;
-
+      padding-left: 29%;
     }
     .team-head3{
-		padding-left: 21%
+      padding-left: 21%
     }
   }
 }.member {
-	padding:5px;
+  padding:5px;
     height:2.5em;
-	margin:5px;
-	color:#34495e;
-	line-height:1.7;
-	border-bottom: 1px solid #ddd;
+  margin:5px;
+  color:#34495e;
+  line-height:1.7;
+  border-bottom: 1px solid #ddd;
   li {
     list-style:none;
   }
@@ -88,32 +92,32 @@
     border-radius:150px
   }
   .destroy{
-  	margin-top: -0.3em;
-  	padding-right:0.45em;
+    margin-top: -0.3em;
+    padding-right:0.45em;
   }
   .status_img{
-  	img{
-  	 float:right;
-  	 padding-right:0.25em;
-  	 fill: blue;}
+    img{
+      float:right;
+      padding-right:0.25em;
+      fill: blue;}
   }
   .icon-message{
-  	margin-right: 0.55em;
+    margin-right: 0.55em;
     float:right;
   }
 }.invite {
-	text-align:center;
+  text-align:center;
 }.invite_members {
-	background-color: $green;
-	margin:3px;
-	padding:3px;
-	border-radius:3px;
-	width:100px;
+  background-color: $green;
+  margin:3px;
+  padding:3px;
+  border-radius:3px;
+  width:100px;
 }#inviteable_members {
-	overflow:scroll;
-	position:relative;
-	height:20em;
-	margin-bottom:10px;
+  overflow:scroll;
+  position:relative;
+  height:20em;
+  margin-bottom:10px;
 }.settings-item{
   padding:1em;
 }
