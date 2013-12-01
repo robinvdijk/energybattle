@@ -69,25 +69,11 @@ class BattlesController < TeamRelationsController
     end
   end
 
-  def kick_request(user_id)
-    # Status van teamrelation wordt op 'reported' gezet
-    # Daarna wordt aan de host een notificatie gestuurd,
-    # als de host deze notificatie accepteerd, dan wordt de teamrelatie verwijderd
-
-    team_relation = TeamRelation.where(:user_id => user_id, :battle_id => @battle.id).first
-    notification = Notification.create!(:notification_type => 'kick', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => @battle.host_id)
-  end
-
-  def kick
-    redirect_to root_path
-  end
-
-  def sort_column
-    Battle.column_names.include?(params[:sort]) ? params[:sort] : "theme"
-  end
-
-  def sort_direction
-    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+  def kick_request
+    @battle = Battle.find(params[:id])
+    team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
+    notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
+    redirect_to :back
   end
 
 private
@@ -101,5 +87,13 @@ private
 
   def battle_params
     params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
+  end
+
+  def sort_column
+    Battle.column_names.include?(params[:sort]) ? params[:sort] : "theme"
+  end
+
+  def sort_direction
+    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
 end

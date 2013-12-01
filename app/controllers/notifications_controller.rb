@@ -1,5 +1,5 @@
 class NotificationsController < ApplicationController
-  # before_action :set_notification
+  before_action :set_notification
 
   def accept
     if @notification.notification_type == 'invite'
@@ -7,12 +7,12 @@ class NotificationsController < ApplicationController
       if relation
         relation.update_attributes(status: 'joined')
         @notification.destroy
-         redirect_to battles_path(@notification.battle_id), notice: "Je hebt een battle succesvol gejoined!"
+        redirect_to battles_path(@notification.battle_id), notice: "Je hebt een battle succesvol gejoined!"
       else
-         redirect_to root_path, error: "Er is iets fouts gegaan"
+        redirect_to root_path, error: "Er is iets fouts gegaan"
       end
     elsif @notification.notification_type == 'kick_request'
-      @notification.battle.kick
+      team_relation = TeamRelation.where(battle_id: @notification.battle_id, user_id: @notification.receiver_id).first.destroy
       @notification.destroy
       redirect_to :back
     end

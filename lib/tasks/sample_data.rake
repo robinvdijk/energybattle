@@ -4,6 +4,7 @@ namespace :db do
     make_users
     make_battles_to_join
     make_own_battles
+    make_notifications
   end
 end
 # maar eerst jezelf aan voor dat je populate doet
@@ -56,5 +57,11 @@ def make_own_battles
         Reading.create!(user_id: user.id, battle_id: battle.id, created_at: battle.start_date+t, updated_at: battle.start_date+t, amount: user.readings.first.amount + (user.readings.first.amount/365*t))
       end
     end
+  end
+end
+
+def make_notifications
+  3.times do |i|
+    Notification.create!(notification_type: "invited", receiver_id: 1, sender_id: i, battle_id: i, message: "test notification #{i}")
   end
 end

@@ -15,4 +15,10 @@
 		<p><%= @battle.player_limit %></p>
 		<p><%= @battle.theme %></p>
 		<p><%= @battle.game_type %></p>
+<<<<<<< HEAD
 <% end %>
+=======
+
+	<%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button bottom-pusher" if current_user_is_host %>
+<% end %>
+>>>>>>> dfa057a75b68033601e0c89f3160023c234341ee

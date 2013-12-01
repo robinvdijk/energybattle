@@ -1,10 +1,13 @@
 // Dashboard
 .profile-info {
+  @include outer-container;
+  @include span-columns(4);
   position: relative;
-  width: 300px;
   min-height: 550px;
   background-color: #F0F0F0;
   text-align: center;
+  border-top-right-radius:10px;
+  border-top-left-radius:10px;
 
   .rounded-img {
     width: 130px;
@@ -14,6 +17,11 @@
   }
   .heading {
     margin-top: 10px;
+    margin-bottom: 0;
+  }
+  .subheading{
+    margin-bottom: .8em;
+    font-weight: 300;
   }
   ul {
     float: left;
@@ -39,6 +47,7 @@
   }
 
   .profile-statistics {
+  @include span-columns (4 of 4);
     position: absolute;
     bottom: 0;
     background-color: $darkblue;
@@ -47,8 +56,8 @@
     ul {
       li {
         font-family: 'lato';
-        padding: 22px 12px 12px 12px;
-        color: white;
+        padding: 22px 21px 12px 21px;
+        color: $white;
         font-size: 48px;
         float: left;
         display: block;
@@ -59,7 +68,7 @@
           border: none;
         }
         .small {
-          margin-top: 10px;
+          margin-top: 20px;
           display: block;
           font-weight: 300;
           font-size: 18px;
