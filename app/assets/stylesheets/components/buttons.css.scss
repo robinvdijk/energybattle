@@ -26,6 +26,9 @@
   box-shadow: 0 0.125em 0 0 $darkergreen;
   color: $white;
 }
+.primary-button:disabled{
+  opacity:0.5;
+}
 
 .join_button {
   margin-left:100px;

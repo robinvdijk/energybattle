@@ -24,6 +24,4 @@
         </ul>
     </div>
 <% end %>
-<% unless @battle.users.count == @battle.player_limit %>
-    <%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
-<% end %>
+<%= render "team_relation/join_team", team: "#{team}_team" %>
