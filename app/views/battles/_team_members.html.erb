@@ -1,5 +1,5 @@
 <div class="subheading"><%= "Team #{team}"  %></div>
-<%= render "search_members", team: team if current_user_is_host && @battle.team_full?("#{team}") == false %>
+<%= render "search_members", team: team if current_user_is_host %>
 <ul class="teams-headrow">
   <li class="team-head1">Speler</li>
   <li class="team-head2">Score</li>
