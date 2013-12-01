@@ -8,9 +8,9 @@ class BattlesController < TeamRelationsController
     @battles_joined = @team_relations.map { |t| t.battle }
 
     if params[:theme]
-      @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction)
+      @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction)#.paginate(per_page: 3, page: params[:page])
     else
-      @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+      @battles = Battle.order(sort_column + ' ' + sort_direction)#.paginate(per_page: 10, page: params[:page])
     end
   end
 
