@@ -1,38 +1,29 @@
 <div class="subheading"><%= "Team #{team}"  %></div>
-<%= render "search_members", team: team if @battle.status?("pending") && current_user_is_host%>
+<%= render "search_members", team: team if current_user_is_host && @battle.team_full? == false %>
 <ul class="teams-headrow">
   <li class="team-head1">Speler</li>
   <li class="team-head2">Score</li>
   <li class="team-head3">Status</li>
 </ul>
-<% if @battle.status?("pending") %>
-    <% find_team_members(team).each do |team|%>
-        <div class="member">
-            <%= image_tag team.user.avatar if team.user.avatar == true  %>
-            <ul>
-                <li>
-                  <%= team.user.name %>
-                  <% if @battle.host_id != team.user.id%>
-                    <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
-                  <% end %>
-                  <% if team.user.id == @current_user.id %>
-                    <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
-                    <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
-                  <% else %>
-                    <%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
-                  <% end %>
-                </li>
-            </ul>
-        </div>
-    <% end %>
-    <% unless @battle.users.count == @battle.player_limit %>
-        <%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
-    <% end %>
-<% elsif @battle.status?("prepare") || @battle.status?("started") %>
-    <% find_team_members(team).each do |team|%>
-        <div class="member">
-            <%= image_tag team.user.avatar %>
-            <%= team.user.name %>
-        </div>
-    <% end %>
+<% find_team_members(team).each do |team|%>
+    <div class="member">
+        <%= image_tag team.user.avatar if team.user.avatar == true  %>
+        <ul>
+            <li>
+              <%= team.user.name %>
+              <% if @battle.host_id != team.user.id%>
+                <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
+              <% end %>
+              <% if team.user.id == @current_user.id %>
+                <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
+                <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
+              <% else %>
+                <%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
+              <% end %>
+            </li>
+        </ul>
+    </div>
+<% end %>
+<% unless @battle.users.count == @battle.player_limit %>
+    <%= render "team_relation/join_team", team: "#{team}_team" if user_in_one_team(@current_user) %>
 <% end %>

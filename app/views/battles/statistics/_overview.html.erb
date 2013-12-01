@@ -13,9 +13,9 @@
     <div class="subheading">Team 1</div>
         <%= render "battle_show_table", team: "host" %>
     <div class="subheading">Team 2</div>
-        <%= render "battle_show_table", team: "opponent" %>
-        <% if current_user.readings.where(battle_id: @battle.id).count != 0 %>
-            <%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)} %>
-            <%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle)} %>
-        <% end %>
+    <%= render "battle_show_table", team: "opponent" %>
+    <% if current_user.readings.where(battle_id: @battle.id).count != 0 %>
+        <%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)} %>
+        <%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle)} %>
+    <% end %>
 </div>

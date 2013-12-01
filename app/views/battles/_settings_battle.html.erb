@@ -13,6 +13,6 @@
     <p><%= @battle.start_date.try(:strftime, "%d %B %Y") %></p>
     <p><%= @battle.end_date.try(:strftime, "%d %B %Y") %></p>
     <p><%= @battle.player_limit %></p>
-    <p><%= @battle.theme %></p>
-    <p><%= @battle.game_type %></p>
+    <p><%= @battle.theme.capitalize %></p>
+    <p><%= @battle.game_type.capitalize %></p>
 <% end %>
