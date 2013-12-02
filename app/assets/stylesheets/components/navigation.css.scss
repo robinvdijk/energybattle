@@ -37,6 +37,10 @@ nav {
     color: rgb(77, 155, 93);
   }
 }
+.avatar{
+	height: 30px;
+	border-radius: 150px;
+}
 .icon {
   padding: 5px;
   font-size: 35px;
@@ -62,9 +66,10 @@ nav {
 	font-size: .8em;
 }
 .dropdownmenu{
+	@include outer-container;
 	background-color: $blue;
-	width: 350px;
-	height: 100%;
+	width: 300px;
+	height: 500px;
 	position: absolute;
 	float:right;
 	right:0;
@@ -75,4 +80,34 @@ nav {
 	&.active {
 		display: block;
 	}
+	
+	a{
+        font-family: 'Lato' , sans-serif;
+		font-weight: 400;
+        font-size: 1.5em;
+        color: $white;
+        text-decoration: none;
+	}
+	
+	a:hover{
+		border-bottom:0px;
+		}
+
+		ul li { 
+		    float: left; 
+		    margin-bottom: 10px; 
+			border-bottom: 1px solid $darkblue;
+			padding: 10px 0 10px 0;
+		}
+		ul li ul {
+			background-color: $darkblue;
+			width: 300px;
+		}
+		
+		ul li ul li {
+			margin-left: 25px;
+			display: block;
+			border-bottom: 1px solid $blue;
+			padding: 10px 0 10px 0;
+		}
 }
