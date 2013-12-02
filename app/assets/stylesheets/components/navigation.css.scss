@@ -1,82 +1,78 @@
 nav {
-	background: $green;
-	width: 100%;
-	box-shadow: 0 0.15em 0 0 rgba(77, 155, 93, 1.0);
- 	margin-bottom:2em;
-	ul {
-	padding: 0.75em 0 0.75em 0;
-	list-style-type: none;
-	float:left;
-		li {
-			display: inline;
-			margin: 0;
-			padding-right: 1.875em;
-			a {
-				padding-bottom: 0.3em;
-				font-family: 'Lato' , sans-serif;
-				font-size: 1.5em;
-				color: $white;
-				text-decoration: none;
-			}
-			a:hover {
-				color: rgba(255, 255, 255, 1);
-				border-bottom: 0.15em solid rgba(255, 255, 255, 1);
-			}
-			.current {
-				color: $white;
-				border-bottom: 0.15em solid $white;
-			}
-		}
-	}
+  background: $green;
+  width: 100%;
+  box-shadow: 0 0.15em 0 0 rgba(77, 155, 93, 1.0);
+  margin-bottom:2em;
+  ul {
+  padding: 0.75em 0 0.75em 0;
+  list-style-type: none;
+  float:left;
+    li {
+      display: inline;
+      margin: 0;
+      padding-right: 1.875em;
+      a {
+        padding-bottom: 0.3em;
+        font-family: 'Lato' , sans-serif;
+        font-size: 1.5em;
+        color: $white;
+        text-decoration: none;
+      }
+      a:hover {
+        color: rgba(255, 255, 255, 1);
+        border-bottom: 0.15em solid rgba(255, 255, 255, 1);
+      }
+      .current {
+        color: $white;
+        border-bottom: 0.15em solid $white;
+      }
+    }
+  }
 }
-
 .rightmenu {
-	margin-top: 3px;
-	div {
-		float:left;
-		margin: 0.625em;
-		color: rgb(77, 155, 93);
-	}
+  margin-top: 3px;
+  div {
+    float:left;
+    margin: 0.625em;
+    color: rgb(77, 155, 93);
+  }
 }
 .icon {
-	padding: 5px;
-	font-size: 35px;
-	color: $darkgreen;
-	&:hover{
-		color: $darkergreen;
-	}
-	&:active{
-		color: $darkergreen;
-	}
+  padding: 5px;
+  font-size: 35px;
+  color: $darkgreen;
+  &:hover{
+    color: $darkergreen;
+  }
+  &:active{
+    color: $darkergreen;
+  }
 }
 .reddot {
-    position:absolute;
-    right:35px;
-    top:-5px;
-    background-color:red;
-    line-height:15px;
-    width:15px;
-    height:15px;
-    border-radius:10px;
-	text-align: center;
-	color: $white !important;
-	font-size: .8em;
+  position:absolute;
+  right:35px;
+  top:-5px;
+  background-color:red;
+  line-height:15px;
+  width:15px;
+  height:15px;
+  border-radius:10px;
+  text-align: center;
+  color: $white !important;
+  font-size: .8em;
 }
 .menu{
-	background-color: $blue;
-	width: 300px;
-	height: 100%;
-	position: absolute;
-	float:right;
-	right:0;
-	z-index: 1;
-	display: none;
-	margin-top: 50px;
-	
-	&.active {
-		display: block;
-	}
+  background-color: $blue;
+  width: 300px;
+  height: 100%;
+  position: absolute;
+  float:right;
+  right:0;
+  z-index: 1;
+  display: none;
+  margin-top: 50px;
+
+  &.active {
+    display: block;
+  }
 }
-
-
-

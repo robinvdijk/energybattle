@@ -11,11 +11,11 @@ $(document).ready(function() {
     element: 'personal-graph',
     data: $('#personal-graph').data('readings'),
     xkey: 'original_date',
-  	xLabels: ['day'],
+    xLabels: ['day'],
     ykeys: ['personal', 'ideal'],
     labels: ['Meterstand', 'Uiteindelijke meterstand'],
-  	ymin: 'auto',
-  	ymax: 'auto',
+    ymin: 'auto',
+    ymax: 'auto',
     hideHover: 'auto'
   });
 
@@ -23,11 +23,11 @@ $(document).ready(function() {
     element: 'overall-graph',
     data: $('#overall-graph').data('readings'),
     xkey: 'original_date',
-  	xLabels: ['day'],
+    xLabels: ['day'],
     ykeys: ['name'],
     labels: ['Meterstand'],
-  	ymin: 'auto',
-  	ymax: 'auto',
+    ymin: 'auto',
+    ymax: 'auto',
     hideHover: 'auto'
   });
 });

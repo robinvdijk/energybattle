@@ -1,66 +1,66 @@
 <div class="battle_index">
-	<% @battles_joined.map do |s| %>
-		<% unless s.host_id == current_user.id %>
-		  <table>
-		    <h1>Battles dat heb ik gejoined</h1>
-	    	  <%= render 'table_name_battle' %>
-	    	<tr>
-				<td><%= link_to s.title, battle_path(s) %></td>
-				<td><%= s.theme.capitalize %></td>
-				<td><%= s.status.capitalize %></td>
-				<td><%= find_host(s.host_id).name %></td>
+    <% @battles_joined.map do |s| %>
+        <% unless s.host_id == current_user.id %>
+          <table>
+            <h1>Battles dat ik heb gejoined</h1>
+              <%= render 'table_name_battle' %>
+            <tr>
+                <td><%= link_to s.title, battle_path(s) %></td>
+                <td><%= s.theme.capitalize %></td>
+                <td><%= s.status.capitalize %></td>
+                <td><%= find_host(s.host_id).name %></td>
 
-				<% if s.start_date.present? %>
-					<td><%= s.start_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen start datum.</td>
-				<% end %>
+                <% if s.start_date.present? %>
+                    <td><%= s.start_date.strftime('%d %B %Y') %></td>
+                <% else %>
+                    <td>Geen start datum.</td>
+                <% end %>
 
-				<% if s.end_date.present? %>
-					<td><%= s.end_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen eind datum.</td>
-				<% end %>
-				<td>
-					<%= s.users.count %> / <%= s.player_limit %>
-					<% if s.host_id == current_user.id %>
-						(Host)
-					<% end %>
-				</td>
-			</tr>
-	 	  <table>
-		<% end %>
-	<% end %>
+                <% if s.end_date.present? %>
+                    <td><%= s.end_date.strftime('%d %B %Y') %></td>
+                <% else %>
+                    <td>Geen eind datum.</td>
+                <% end %>
+                <td>
+                    <%= s.users.count %> / <%= s.player_limit %>
+                    <% if s.host_id == current_user.id %>
+                        (Host)
+                    <% end %>
+                </td>
+            </tr>
+          <table>
+        <% end %>
+    <% end %>
 
-	<table>
-	<h1>Alle battles</h1>
-	  <%= render 'table_name_battle' %>
+    <table>
+    <h1>Alle battles</h1>
+      <%= render 'table_name_battle' %>
 
-		<% @battles.each do |s| %>
-			<tr>
-				<td><%= link_to s.title, battle_path(s) %></td>
-				<td><%= s.theme.capitalize %></td>
-				<td><%= s.status.capitalize %></td>
-				<td><%= find_host(s.host_id).name %></td>
+        <% @battles.each do |s| %>
+            <tr>
+                <td><%= link_to s.title, battle_path(s) %></td>
+                <td><%= s.theme.capitalize %></td>
+                <td><%= s.status.capitalize %></td>
+                <td><%= find_host(s.host_id).name %></td>
 
-				<% if s.start_date.present? %>
-					<td><%= s.start_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen start datum.</td>
-				<% end %>
+                <% if s.start_date.present? %>
+                    <td><%= s.start_date.strftime('%d %B %Y') %></td>
+                <% else %>
+                    <td>Geen start datum.</td>
+                <% end %>
 
-				<% if s.end_date.present? %>
-					<td><%= s.end_date.strftime('%d %B %Y') %></td>
-				<% else %>
-					<td>Geen eind datum.</td>
-				<% end %>
-				<td>
-					<%= s.users.count %> / <%= s.player_limit %>
-					<% if s.host_id == current_user.id %>
-						(Host)
-					<% end %>
-				</td>
-			</tr>
-		<% end %>
-	<table>
+                <% if s.end_date.present? %>
+                    <td><%= s.end_date.strftime('%d %B %Y') %></td>
+                <% else %>
+                    <td>Geen eind datum.</td>
+                <% end %>
+                <td>
+                    <%= s.users.count %> / <%= s.player_limit %>
+                    <% if s.host_id == current_user.id %>
+                        (Host)
+                    <% end %>
+                </td>
+            </tr>
+        <% end %>
+    <table>
 </div>

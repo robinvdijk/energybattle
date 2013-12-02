@@ -1,17 +1,18 @@
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400,700,400italic);
 
 body{
-	font-family: 'lato' , sans-serif;
-	color: $blue;
+  font-family: 'lato' , sans-serif;
+  color: $blue;
 }.heading {
-	text-align:center;
-	font-size:1.5em;
-	font-weight:700;
-	padding:2px;
+  text-align:center;
+  font-size:1.5em;
+  font-weight:700;
+  padding:2px;
   margin-bottom:1em;
-	color: $blue;
+  color: $blue;
 }.subheading {
-	@extend .heading;
-	font-size:1.2em;
-  margin: 0.4em, 0;
+  @extend .heading;
+  font-size:1.2em;
+  margin-bottom:0.4em;
+  margin-top:0.4em;
 }

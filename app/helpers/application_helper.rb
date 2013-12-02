@@ -1,11 +1,11 @@
 module ApplicationHelper
   def full_title(page_title)
-	  base_title = "Energy Battle"
-	  if page_title.empty?
-	    base_title
-	  else
-	    "#{page_title} | #{base_title}"
-	  end
+    base_title = "Energy Battle"
+    if page_title.empty?
+      base_title
+    else
+      "#{page_title} | #{base_title}"
+    end
   end
 
   def sortable(column, title = nil)
@@ -15,11 +15,10 @@ module ApplicationHelper
   end
 
   def current_user
-	  @current_user ||= User.first
+    @current_user ||= User.first
   end
 
-  #   def accept
-
+  # def accept
   #   relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
   #   if relation
   #     relation.update_attributes(status: 'joined')
@@ -29,5 +28,4 @@ module ApplicationHelper
   #      redirect_to root_path, error: "Er is iets fouts gegaan"
   #   end
   # end
-  
 end

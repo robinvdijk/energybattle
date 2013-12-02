@@ -1,0 +1,10 @@
+<div class="invite">
+  <%= form_for TeamRelation.new do |f| %>
+        <%= f.hidden_field :status, value: "invited" %>
+        <%= f.hidden_field :user_id, class: 'user_id' %>
+        <%= f.hidden_field :battle_id, value: @battle.id %>
+        <%= f.hidden_field :team, value: "#{team}_team" %>
+        <%= text_field_tag nil, nil, class: "invite_user", data: { autocomplete_source: users_path }, placeholder: "Zoeken teamleden", size: 63, disabled: @battle.team_full?("#{team}") %>
+      <%#= link_to 'Invite', invite_team_relation_path(user, :battle_id => params[:id]), id: 'invite' %>
+  <% end %>
+</div>

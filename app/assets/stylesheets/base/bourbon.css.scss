@@ -1,25 +1,25 @@
 // BOURBON
 @for $i from 1 through 12 {
-	.col-#{$i} {
-		@include span-columns($i);
-	}
+  .col-#{$i} {
+    @include span-columns($i);
+  }
 }
 
 @for $i from 1 through 12 {
-	@for $p from 1 through 12 {
-		.col-#{$i}-of-#{$p} {
-			@include span-columns($i of $p);
-		}
-	}
+  @for $p from 1 through 12 {
+    .col-#{$i}-of-#{$p} {
+      @include span-columns($i of $p);
+    }
+  }
 }
 
 @for $i from 1 through 6 {
-	.omega-#{$i} {
-		@include omega(#{$i}n);
-	}
+  .omega-#{$i} {
+    @include omega(#{$i}n);
+  }
 }
 
 .container, .inner-header {
-	@include outer-container;
-	position: relative;
+  @include outer-container;
+  position: relative;
 }
