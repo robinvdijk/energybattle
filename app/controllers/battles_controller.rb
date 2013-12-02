@@ -71,7 +71,7 @@ class BattlesController < TeamRelationsController
   end
 
 	def kick_request
-		
+
 		@battle = Battle.find(params[:id])
 		team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
 		notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
