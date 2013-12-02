@@ -19,19 +19,13 @@ class BattlesController < TeamRelationsController
     @reading = Reading.new
 		@battlecount = Battle.count
     
-    unless @battle.status = "pending"
-      calculate
-    end
+    calculate
+    
   end
 
   def new
     @battle = Battle.new
   end
-
-	def readings
-		p 'hoi'
-	end
-
 
   def create
     @battle = Battle.new(battle_params)
@@ -69,9 +63,9 @@ class BattlesController < TeamRelationsController
     @energy_savings_sum = 0
     
     for relation in teamrelations do
-      @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
-      @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
-      @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+        @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
+        @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
+        @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
     end
   end
   
@@ -86,7 +80,7 @@ private
   end
 
   def battle_params
-    params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
+    params.require(:battle).permit(:all)
   end
 
   def sort_column
