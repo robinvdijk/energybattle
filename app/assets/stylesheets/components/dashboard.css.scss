@@ -1,15 +1,14 @@
 // Dashboard
 .profile-info {
-	@include outer-container;
-	@include span-columns(4);
+  @include outer-container;
+  @include span-columns(4);
   position: relative;
   min-height: 550px;
   background-color: #F0F0F0;
   text-align: center;
   border-top-right-radius:10px;
   border-top-left-radius:10px;
-  
-  
+
   .rounded-img {
     width: 130px;
     border-radius: 150px;
@@ -18,24 +17,24 @@
   }
   .heading {
     margin-top: 10px;
-	margin-bottom: 0;
+    margin-bottom: 0;
   }
   .subheading{
-	  margin-bottom: .8em;
-	  font-weight: 300;
+    margin-bottom: .8em;
+    font-weight: 300;
   }
   ul {
     float: left;
-    
+
     li {
       font-size: 0.9em;
       list-style: none;
       line-height: 20px;
       margin: 10px 0 0 0;
     }
-    
+
     &.left {
-      width: 50%;      
+      width: 50%;
       text-align: right;
       padding-right: 10px;
       border-right: 1px solid #333;
@@ -45,10 +44,10 @@
       padding-left: 10px;
       text-align: left;
     }
-  }  
+  }
 
   .profile-statistics {
-	@include span-columns (4 of 4);
+  @include span-columns (4 of 4);
     position: absolute;
     bottom: 0;
     background-color: $darkblue;

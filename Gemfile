@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '4.0.1'
+gem 'rails', '4.0.0'
 gem 'exiftool'
 gem 'exifr'
 
@@ -33,7 +33,6 @@ gem "font-awesome-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'will_paginate'
-gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 

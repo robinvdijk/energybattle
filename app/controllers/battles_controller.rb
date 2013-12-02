@@ -8,16 +8,15 @@ class BattlesController < TeamRelationsController
     @battles_joined = @team_relations.map { |t| t.battle }
 
     if params[:theme]
-      @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction).paginate(per_page: 3, page: params[:page])
+      @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction)#.paginate(per_page: 3, page: params[:page])
     else
-      @battles = Battle.order(sort_column + ' ' + sort_direction).paginate(per_page: 10, page: params[:page])
+      @battles = Battle.order(sort_column + ' ' + sort_direction)#.paginate(per_page: 10, page: params[:page])
     end
   end
 
   def show
-    @battle = Battle.find(params[:id])
     @reading = Reading.new
-		@battlecount = Battle.count
+    @battlecount = Battle.count
 
     unless @battle.status = "pending" || "prepare"
       calculate
@@ -70,21 +69,28 @@ class BattlesController < TeamRelationsController
     end
   end
 
-	def kick_request(user_id)
-		# Status van teamrelation wordt op 'reported' gezet
-		# Daarna wordt aan de host een notificatie gestuurd,
-		# als de host deze notificatie accepteerd, dan wordt de teamrelatie verwijderd
+<<<<<<< HEAD
+	def kick_request
 
-		team_relation = TeamRelation.where(:user_id => user_id, :battle_id => @battle.id).first
-		notification = Notification.create!(:notification_type => 'kick', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => @battle.host_id)
+		@battle = Battle.find(params[:id])
+		team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
+		notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
+		redirect_to :back
+
 	end
-  def kick
-		redirect_to root_path
-	end
+
+=======
+  def kick_request
+    @battle = Battle.find(params[:id])
+    team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
+    notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
+    redirect_to :back
+  end
+>>>>>>> e881411f00a2e0d2347995b25c830259bd0177f5
 
 private
   def set_battle
-      @battle = Battle.find(params[:id])
+    @battle = Battle.find(params[:id])
   end
 
   def twitter_url_for(url, text)
@@ -102,5 +108,4 @@ private
   def sort_direction
     %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
   end
-
 end

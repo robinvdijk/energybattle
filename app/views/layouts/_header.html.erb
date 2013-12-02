@@ -1,38 +1,45 @@
 <div class="inner-header">
-	<ul>
-		<% [["Home", :root], ["Battles", :theme]].each do |name,url| %>
-		    <li><%= link_to_unless_current(name, url) do link_to name, url, class: "current" end %></li>
-		<% end %>
-
-	</ul>
-	<div class="rightmenu pull-right">
-        <% if user_signed_in? %>
-            <%= image_tag current_user.avatar, style: 'height:30px; border-radius:150px' , class: "facebookfoto" %>
-            <%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
-        <% else %>
-            <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
+    <ul>
+        <% [["Home", :root], ["Battles", :theme]].each do |name,url| %>
+            <li><%= link_to_unless_current(name, url) do link_to name, url, class: "current" end %></li>
         <% end %>
-			<%= link_to fa_icon("bell", class: "icon"), '#' %>
-			<% if current_user.notifications.any? %>
-				<div class="badge"><%= current_user.notifications.count %></div>
-			<% end %>
-			<div class="notifications-center">
-				<% if @count_notifications %>
-                    <div class="notch"></div>
-					<div class="notifications">
-						<%= render current_user.notifications %>
-					</div>
-				<% end %>
-			</div>
-			<%= link_to fa_icon("bars" , class: "icon"), '#' %>
-		</div>
-		<div class="dropdownmenu">hoi</div>
-	</div>
+
+        <%= link_to "Send post", '#', class: "send_notifications" %> |
+        <%= link_to "Send invite requests to facebook friends", '#', class: "invite_with_fb" %> |
+        <%= link_to "Post on feed", '#', class: "post_on_feed" %>
+    </ul>
+        <div class="rightmenu pull-right">
+            <% if user_signed_in? %>
+                <%= image_tag current_user.avatar, class: "facebookfoto" %>
+                <%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+                <%= link_to fa_icon("bell", class: "icon"), '#' %>
+                <% if current_user.notifications.any? %>
+                  <div class="badge"><%= current_user.notifications.count %></div>
+                <% end %>
+                <div class="notifications-center">
+                    <% if @count_notifications %>
+                        <div class="notch"></div>
+                        <div class="notifications">
+                            <%= render current_user.notifications %>
+                        </div>
+                    <% end %>
+                </div>
+                <%= link_to fa_icon("bars", class: "icon"), '#' %>
+            <% else %>
+                <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
+            <% end %>
+        </div>
+        <div class="dropdownmenu">hoi</div>
+        </div>
+    </ul>
+
 </div>
-<div class="st-menu st-effect-1" id="menu-1">
-	<div class="row">
-		<div class="span2 offset1" id="edit-profile">
- 
-		</div>
-	</div>
-</div>
+<!-- laten staan! -->
+
+<!-- <div class="st-menu st-effect-1" id="menu-1">
+    <div class="row">
+        <div class="span2 offset1" id="edit-profile">
+
+        </div>
+    </div>
+</div> -->
