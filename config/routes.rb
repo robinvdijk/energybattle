@@ -29,4 +29,5 @@ Energybattle::Application.routes.draw do
   match '/gametype', to: 'static_pages#gametype', via: 'get'
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
+  match '/registration', to: 'static_pages#after_registration', via: 'get'
 end

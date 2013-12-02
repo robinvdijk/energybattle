@@ -4,8 +4,6 @@ gem 'rails', '4.0.0'
 gem 'exiftool'
 gem 'exifr'
 
-gem 'pg'
-
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
@@ -35,7 +33,6 @@ gem "font-awesome-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'will_paginate'
-gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 
@@ -44,7 +41,7 @@ group :doc do
 end
 
 group :development, :test do
-  gem 'pg'
+  gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
   gem 'faker'

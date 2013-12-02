@@ -10,7 +10,7 @@
         <% find_team_members(team).each do |team| %>
         <tr>
             <td><%= team.user.readings.where(battle_id: @battle.id).count %></td>
-            <td><%= @henk = team.user.readings.where(battle_id: @battle.id).first.amount %></td>
+            <td><%= team.user.readings.where(battle_id: @battle.id).first.amount %></td>
             <td><%= team.user.readings.where(battle_id: @battle.id).last.amount %></td>
             <td><%= number_to_percentage(100 - (team.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100, :precision => 2)%></td>
 			<td></td>
