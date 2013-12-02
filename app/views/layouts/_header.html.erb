@@ -14,7 +14,7 @@
         <% end %>
 			<%= link_to fa_icon("bell", class: "icon"), '#' %>
 			<% if current_user.notifications.any? %>
-				<div class="reddot"><%= current_user.notifications.count %></div>
+				<div class="badge"><%= current_user.notifications.count %></div>
 			<% end %>
 			<div class="notifications-center">
 				<% if @count_notifications %>
@@ -26,7 +26,7 @@
 			</div>
 			<%= link_to fa_icon("bars" , class: "icon"), '#' %>
 		</div>
-		<div class="menu">hoi</div>
+		<div class="dropdownmenu">hoi</div>
 	</div>
 </div>
 <div class="st-menu st-effect-1" id="menu-1">

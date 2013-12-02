@@ -49,9 +49,9 @@ nav {
 		color: $darkergreen;
 	}
 }
-.reddot {
+.badge {
     position:absolute;
-    right:35px;
+    right:38px;
     top:-5px;
     background-color:red;
     line-height:15px;
@@ -62,9 +62,9 @@ nav {
 	color: $white !important;
 	font-size: .8em;
 }
-.menu{
+.dropdownmenu{
 	background-color: $blue;
-	width: 300px;
+	width: 350px;
 	height: 100%;
 	position: absolute;
 	float:right;
