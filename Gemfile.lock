@@ -281,12 +281,7 @@ DEPENDENCIES
   neat
   omniauth
   omniauth-facebook
-<<<<<<< HEAD
-  rails (= 4.0.1)
-=======
-  pg
   rails (= 4.0.0)
->>>>>>> 7f8f1bd0802c48947d4a04ee29fddce60541bf25
   rspec-rails (= 2.13.1)
   sass-rails (~> 4.0.0)
   sdoc

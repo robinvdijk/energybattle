@@ -15,15 +15,16 @@
                 <%= link_to fa_icon("bell", class: "icon"), '#' %>
                 <% if current_user.notifications.any? %>
                   <div class="badge"><%= current_user.notifications.count %></div>
+                
+                  <div class="notifications-center">
+                      <% if @count_notifications %>
+                          <div class="notch"></div>
+                          <div class="notifications">
+                              <%= render current_user.notifications %>
+                          </div>
+                      <% end %>
+                  </div>
                 <% end %>
-                <div class="notifications-center">
-                    <% if @count_notifications %>
-                        <div class="notch"></div>
-                        <div class="notifications">
-                            <%= render current_user.notifications %>
-                        </div>
-                    <% end %>
-                </div>
                 <%= link_to fa_icon("bars", class: "icon"), '#' %>
             <% else %>
                 <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
