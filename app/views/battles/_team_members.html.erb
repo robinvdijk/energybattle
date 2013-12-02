@@ -11,12 +11,11 @@
         <ul>
             <li>
               <%= team.user.name %>
-              <% if @battle.host_id != team.user.id%>
-                <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
-              <% end %>
-              <% if team.user.id == @current_user.id %>
+              <% if team.user.id == current_user.id %>
                 <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
                 <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
+              <% elsif team.user.id != @battle.host_id %>
+                <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
               <% else %>
                 <%= image_tag("icons/Message.svg", class: "icon-message") if team.status == "invited" %>
               <% end %>

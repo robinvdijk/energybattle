@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= full_title(yield(:title)) %></title>
+  <title>
+    <% if current_user.notifications.any? %>
+    [<%= current_user.notifications.count %>]
+    <% end %>
+    <%= full_title(yield(:title)) %>
+  </title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
-	<script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
-	<%= csrf_meta_tags %>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+  <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
+  <%= csrf_meta_tags %>
 </head>
-	<body>
-		<header></header>
-		<nav>
-			<%= render 'layouts/header' %>
-		</nav>
-		<div class="container">
-			<% if flash[:notice] %>
-				<div class="notice"><%= flash[:notice] %></div>
-			<% end %>
-			<%= yield %>
-		</div>
-	</body>
+  <body>
+    <header></header>
+    <nav>
+      <%= render 'layouts/header' %>
+    </nav>
+    <div class="blanket"></div>
+    <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
 </html>

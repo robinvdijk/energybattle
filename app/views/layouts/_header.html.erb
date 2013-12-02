@@ -9,17 +9,24 @@
                 <%= image_tag current_user.avatar, class: "avatar" %>
                 <%= link_to fa_icon("bell", class: "icon"), '#' %>
                 <% if current_user.notifications.any? %>
-                  <div class="badge"><%= current_user.notifications.count %></div>
-                <% end %>
-                <div class="notifications-center">
-                    <% if @count_notifications %>
-                        <div class="notch"></div>
-                        <div class="notifications">
-                            <%= render current_user.notifications %>
-                        </div>
-                    <% end %>
+                  <div class="reddot"><%= current_user.notifications.count %></div>
+                  <div class="notifications-center">
+                      <div class="notch"></div>
+                      <div class="notifications"><%= render current_user.notifications %></div>
+                  <% end %>
                 </div>
-                <%= link_to fa_icon("bars", class: "icon"), '#' %>
+                <%= link_to fa_icon("bars", class: "icon", id: "menu"), '#' %>
+                <div class="st-menu st-effect-1" id="menu-1">
+                    <div class="row">
+                        <div class="span2 offset1" id="menu">
+                          <ul>
+                            <li>1</li>
+                            <li>2</li>
+                            <li>3</li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
             <% else %>
                 <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
             <% end %>
@@ -57,12 +64,3 @@
      </div>
   </div>
 </div>
-<!-- laten staan! -->
-
-<!-- <div class="st-menu st-effect-1" id="menu-1">
-    <div class="row">
-        <div class="span2 offset1" id="edit-profile">
-
-        </div>
-    </div>
-</div> -->

@@ -1,7 +1,4 @@
 $ ->
-	$('.fa-bell').click () ->
-		$('.notifications-center').toggleClass('active')		
-	$('.fa-bars').click (event) ->
-		$('.dropdownmenu').toggleClass('active')
-	
-
+  $('.fa-bell').click (event) ->
+    event.preventDefault()
+    $('.notifications-center').toggleClass('active')

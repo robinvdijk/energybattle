@@ -3,11 +3,11 @@ class NotificationsController < ApplicationController
 
   def accept
     if @notification.notification_type == 'invite'
-      relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
+      relation = TeamRelation.where(battle_id: @notification.battle_id, user_id: @notification.receiver_id, :status => 'invited').first
       if relation
         relation.update_attributes(status: 'joined')
         @notification.destroy
-        redirect_to battles_path(@notification.battle_id), notice: "Je hebt een battle succesvol gejoined!"
+        redirect_to battles_path(@notification.battle_id), success: "Je hebt een battle succesvol gejoined!"
       else
         redirect_to root_path, error: "Er is iets fouts gegaan"
       end
@@ -32,8 +32,7 @@ class NotificationsController < ApplicationController
   def create
     @notification = Notification.new(notification_params)
     if @notification.save
-      flash[:notice] = "Nieuwe notificatie aangemaakt"
-      redirect_to root_path
+      redirect_to root_path, success: "Nieuwe notificatie aangemaakt"
     else
       flash[:alert] = "Er missen een aantal instellingen"
       render :action => "new"
