@@ -21,8 +21,7 @@ class TeamRelationsController < ApplicationController
     else
       @team_relation.update_attributes(team: "host_team")
     end
-    flash[:notice] = "Verwisseld van team"
-    redirect_to :back
+    redirect_to :back, notice: "Verwisseld van team"
   end
 
   def invite
