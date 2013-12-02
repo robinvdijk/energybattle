@@ -18,9 +18,7 @@ class BattlesController < TeamRelationsController
     @reading = Reading.new
     @battlecount = Battle.count
 
-    unless @battle.status = "pending" || "prepare"
-      calculate
-    end
+    # calculate
   end
 
   def new
@@ -63,30 +61,20 @@ class BattlesController < TeamRelationsController
     @energy_savings_sum = 0
 
     for relation in teamrelations do
-      @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
-      @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
-      @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+      if relation.user.readings.any?
+        @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
+        @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
+        @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+      end
     end
   end
 
-<<<<<<< HEAD
-	def kick_request
-
-		@battle = Battle.find(params[:id])
-		team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
-		notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
-		redirect_to :back
-
-	end
-
-=======
   def kick_request
     @battle = Battle.find(params[:id])
     team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
     notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
     redirect_to :back
   end
->>>>>>> e881411f00a2e0d2347995b25c830259bd0177f5
 
 private
   def set_battle
