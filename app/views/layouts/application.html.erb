@@ -18,10 +18,11 @@
 		<nav>
 			<%= render 'layouts/header' %>
 		</nav>
-		<div class="container">
-			<% if flash[:notice] %>
-				<div class="notice"><%= flash[:notice] %></div>
-			<% end %>
+		<div class="container">      
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
+      
 			<%= yield %>
 		</div>
 	</body>
