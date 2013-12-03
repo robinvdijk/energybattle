@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'exiftool'
@@ -33,7 +33,6 @@ gem "font-awesome-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'will_paginate'
-gem 'exifr'
 
 gem 'bcrypt-ruby', '~> 3.0.1'
 
@@ -46,6 +45,10 @@ group :development, :test do
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
   gem 'faker'
+end
+
+group :production do
+  gem 'pg'
 end
 
 group :test do

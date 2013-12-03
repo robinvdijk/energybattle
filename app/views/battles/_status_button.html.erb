@@ -1,9 +1,9 @@
 <%= form_for @battle do |f| %>
-    <% if @battle.status?("pending") && @battle.team_full? %>
-        <%= f.hidden_field :status, value: "prepare" %>
-        <%= f.submit 'Prepare', class: 'primary-button' %>
-        <% elsif @battle.status?("prepare") %>
-        <%= f.hidden_field :status, value: "started" %>
-        <%= f.submit 'Start', class: 'primary-button' %>
-    <% end %>
+  <% if @battle.status?("pending") && @battle.team_full?("host") && @battle.team_full?("opponent") %>
+    <%= f.hidden_field :status, value: "prepare" %>
+    <%= f.submit 'Prepare', class: 'primary-button' %>
+  <% elsif @battle.status?("prepare") %>
+    <%= f.hidden_field :status, value: "started" %>
+    <%= f.submit 'Start', class: 'primary-button' %>
+  <% end %>
 <% end %>

@@ -1,31 +1,29 @@
 <% provide(:title, "Creëer een battle") %>
 <%= simple_form_for @battle, :action => "create" do |f| %>
-	<%= f.hidden_field :host_id, value: @current_user.id %>
-	<%= f.hidden_field :status, value: "pending" %>
-	<%= hidden_field_tag :theme, params[:theme] %>
-	<%= hidden_field_tag :game_type, params[:game_type] %>
-
-	<div class="form-group">
-		<%= f.input :title %>
-	</div>
-	<div class="form-group">
-		<%= f.input :player_limit %>
-	</div>
-	<% unless params[:status] == "Edit"%>
-	<div class="form-group">
-		<%= f.input :theme, :input_html => { :value => params[:theme].capitalize, :readonly => true }%>
-	</div>
-	<div class="form-group">
-		<%= f.input :game_type, :input_html => { :value => params[:game_type].capitalize, :readonly => true} %>
-	</div>
-	<div class="form-group">
-		<%= f.input :start_date, :as => :datepicker %>
-	</div>
-	<div class="form-group">
-		<%= f.input :duration, :collection => ([["1 Week", 7], ["2 Weken", 14], ["3 Weken", 21], ["4 Weken", 28]]) %>
-	</div>
-
-	<% end %>
+    <%= f.hidden_field :host_id, value: @current_user.id %>
+    <%= f.hidden_field :status, value: "pending" %>
+    <%= hidden_field_tag :theme, params[:theme] %>
+    <%= hidden_field_tag :game_type, params[:game_type] %>
+        <div class="form-group">
+            <%= f.input :title %>
+        </div>
+        <div class="form-group">
+            <%= f.input :player_limit %>
+        </div>
+        <% unless params[:status] == "Edit"%>
+        <div class="form-group">
+            <%= f.input :theme, :input_html => { :value => params[:theme], :readonly => true }%>
+        </div>
+        <div class="form-group">
+            <%= f.input :game_type, :input_html => { :value => params[:game_type], :readonly => true} %>
+        </div>
+        <div class="form-group">
+            <%= f.input :start_date, :as => :datepicker %>
+        </div>
+        <div class="form-group">
+            <%= f.input :duration, :collection => ([["1 Week", 7], ["2 Weken", 14], ["3 Weken", 21], ["4 Weken", 28]]) %>
+        </div>
+    <% end %>
     <% if params[:status] == "Edit" %>
         <%= f.submit "Wijzigingen opslaan", class: "primary-button"  %>
     <% else %>

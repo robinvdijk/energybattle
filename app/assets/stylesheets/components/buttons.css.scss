@@ -1,31 +1,40 @@
 .primary-button {
-        background: $green;
-        display: block;
-        overflow: hidden;
-        text-align:center;
-        width: 300px;
-        height: auto;
-        padding: .5em;
-        margin: 0.5em 0em .5em 0;
-        border-radius: 0.3em;
-        box-shadow: 0 0.125em 0 0 $darkgreen;
-        text-align: center;
-        font-family: 'Lato' , sans-serif;
-        font-size: 1.5em;
-        color: $white;
-        text-decoration: none;
-        transition: background .5s ease-in;
-        border:none;
-}.primary-button:hover {
-        background: $darkgreen;
-        color: $white;
-}.primary-button:active {
-        background: $darkergreen;
-        box-shadow: 0 0.125em 0 0 $darkergreen;
-        color: $white;
-}.join_button {
-        margin-left:100px;
-}.fb-btn {
+  background: $green;
+  display: block;
+  overflow: hidden;
+  text-align:center;
+  width: 300px;
+  height: auto;
+  padding: .5em;
+  margin: 0.5em 0em .5em 0;
+  border-radius: 0.3em;
+  box-shadow: 0 0.125em 0 0 $darkgreen;
+  text-align: center;
+  font-family: 'Lato' , sans-serif;
+  font-size: 1.5em;
+  color: $white;
+  text-decoration: none;
+  transition: background .5s ease-in;
+  border:none;
+}
+.primary-button:hover {
+  background: $darkgreen;
+  color: $white;
+}
+.primary-button:active {
+  background: $darkergreen;
+  box-shadow: 0 0.125em 0 0 $darkergreen;
+  color: $white;
+}
+.primary-button:disabled{
+  opacity:0.5;
+}
+
+.join_button {
+  margin-left:100px;
+}
+
+.fb-btn {
   background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #637aad), color-stop(1, #5972a7));
   background:-moz-linear-gradient(top, #637aad 5%, #5972a7 100%);
   background:-webkit-linear-gradient(top, #637aad 5%, #5972a7 100%);
@@ -33,11 +42,8 @@
   background:-ms-linear-gradient(top, #637aad 5%, #5972a7 100%);
   background:linear-gradient(to bottom, #637aad 5%, #5972a7 100%);
   filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#637aad', endColorstr='#5972a7',GradientType=0);
-
   background-color:#637aad;
-
   border-radius: 5px;
-
   display:inline-block;
   color:$white;
   font-family:arial;
@@ -47,19 +53,23 @@
   text-decoration:none;
   position:relative;
   bottom:10px;
-
   box-shadow:0 0.2em 0 0 rgba(58, 73, 103, 0.8);
   transition: background .5s ease-in;
-}.fb-btn:hover{
-  background: rgba(78, 93, 138, 0.8);   
-}.fb-btn:active{
+}
+.fb-btn:hover{
+  background: rgba(78, 93, 138, 0.8);
+}
+.fb-btn:active{
   background: rgba(58, 73, 103, 0.8);
-}.destroy{
+}
+
+.destroy{
   text-decoration: none;
   color: red;
   font-size:1.5em;
   float:right;
-}.switch{
+}
+.switch{
   text-decoration:none;
   float:right;
   color:blue;

@@ -1,56 +1,47 @@
 .battle_settings {
-	@include outer-container;
-	@include span-columns(4);
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
-	position:relative;
-	border-radius: 0.3em;
-	font-family: 'lato' , sans-serif;
-	color: $blue;
-	font-size: 1.2em;
-	.primary-button{
-		margin-top: 2em;
-		margin-left: 0.6em;
-	}
-}
-
-.subheading {
-	margin-top: 1em;
-	margin-bottom: 1em;
-	font-family: 'lato' , sans-serif;
-	font-size: 1.5em;
-	color: $blue;
-	text-shadow: none;
+  @include outer-container;
+  @include span-columns(4);
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  position:relative;
+  border-radius: 0.3em;
+  font-family: 'lato' , sans-serif;
+  color: $blue;
+  font-size: 1.2em;
+  .primary-button{
+    margin-top: 2em;
+    margin-left: 0.6em;
+  }
 }
 
 .teams{
-	@include span-columns (8);
-	background-color: $grey;
-	box-shadow: 0 0.125em 0 0 $darkblue;
-	margin-top: 2em;
-	position:relative;
-	border-radius: 0.3em;
-	height: 100px;
+  @include span-columns (8);
+  background-color: $grey;
+  box-shadow: 0 0.125em 0 0 $darkblue;
+  margin-top: 2em;
+  position:relative;
+  border-radius: 0.3em;
+  height: 100px;
 }
 
 .team_1{
-	@include span-columns (4 of 8);
+  @include span-columns (4 of 8);
 }
 
 .team_2{
-	@include span-columns (4 of 8);
+  @include span-columns (4 of 8);
 }
 
 .test {
-	@include span-columns (4);
-	label {
-		line-height:1.4em;
-	}
+  @include span-columns (4);
+  label {
+  line-height:1.4em;
+  }
 }
 
 .new_battle{
-	ul li {
-		text-decoration:none;
-		padding:5px;
-	}
+  ul li {
+    text-decoration:none;
+    padding:5px;
+  }
 }

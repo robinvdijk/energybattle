@@ -9,21 +9,37 @@
         </tr>
         <% find_team_members(team).each do |team| %>
         <tr>
+			<% if team.user.readings.where(battle_id: @battle.id).any? %>
             <td><%= team.user.readings.where(battle_id: @battle.id).count %></td>
             <td><%= team.user.readings.where(battle_id: @battle.id).first.amount %></td>
             <td><%= team.user.readings.where(battle_id: @battle.id).last.amount %></td>
             <td><%= number_to_percentage(100 - (team.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100, :precision => 2)%></td>
-			<td></td>
-		</tr>
-        <% end %>
-		<tr class="blank_row">
-		</tr>
-		<tr>
-			<td><%= @battle.readings.count %></td>
-			<td><%= @begin_amount_sum %></td>
-			<td><%= @current_amount_sum %></td>
-			<td><%= number_to_percentage(@energy_savings_sum / 2, :precision => 2) %></td>
-			<td></td>
-		</tr>
+            <td></td>
+			<% end %>
+        </tr>
+		<% end %>
+        <tr class="blank_row">
+        </tr>
+        <tr style="background:grey">
+			<% if team == "host" %>
+            <td><%= @readings_sum %></td>
+            <td><%= @begin_amount_sum %></td>
+            <td><%= @current_amount_sum %></td>
+            <td><%= number_to_percentage(@energy_savings_sum / @battle.team_relations.where(team: "host_team").count, :precision => 2) %></td>
+            <td></td>
+			<% elsif team == "opponent" %>
+            <td><%= @readings_sum2 %></td>
+            <td><%= @begin_amount_sum2 %></td>
+            <td><%= @current_amount_sum2 %></td>
+            <td><%= number_to_percentage(@energy_savings_sum2 / @battle.team_relations.where(team: "_team").count, :precision => 2) %></td>
+            <td></td>
+			<% end %>
+        </tr>
+		
     <table>
 </div>
+
+
+
+
+
