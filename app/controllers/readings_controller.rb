@@ -15,15 +15,9 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
-    if Reading.any?
+    if current_user.readings.any?
       if @reading.save && @reading.amount >= current_user.readings.last.amount
         flash[:success] = "Gelukt"
-        exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
-        @reading.original_date = exif.date_time if exif.date_time
-        @reading.save
-        if @reading.battle.status?("closing")
-          @reading.battle.update_attribute(:status, "finished")
-        end
         redirect_to @reading.battle
       else
         redirect_to @reading.battle
@@ -32,7 +26,7 @@ class ReadingsController < ApplicationController
     else
       if @reading.save
         flash[:success] = "Gelukt"
-        exif = EXIFR::JPEG.new(Rails.root.join('public', 'uploads', 'reading', 'meter', "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
+        exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
         @reading.original_date = exif.date_time if exif.date_time
         @reading.save
         redirect_to @reading.battle

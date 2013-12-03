@@ -2,7 +2,7 @@
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
-<% if @battle.status?('started') || @battle.status?('prepare') %>
+<% if @battle.status?('started') || @battle.status?('prepare') || @battle.status?('closing') %>
   <%= render 'battles/statistics/overview' %>
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
