@@ -13,6 +13,10 @@
             <%= render "team_members", team: "opponent" %>
         </div>
     </div>
+<% elsif @battle.status?("finished") %>
+<div class="heading">
+  <%= @battle.title %><%= @battle.status %>
+</div>
 <% end %>
 <div class="col-12">
   <div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
