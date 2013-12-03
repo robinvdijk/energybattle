@@ -5,7 +5,7 @@ Energybattle::Application.routes.draw do
   end
 
   resources :notifications do
-	  patch :accept, on: :member
+    patch :accept, on: :member
   end
 
   resources :readings
@@ -15,13 +15,13 @@ Energybattle::Application.routes.draw do
   end
 
   resources :battles do
-		resources :readings
-		patch :kick_request, on: :member
-	end
+  	resources :readings
+  	patch :kick_request, on: :member
+  end
 
   resources :team_relations do
-	  patch :invite, on: :member
-	  patch :switch, on: :member
+    patch :invite, on: :member
+    patch :switch, on: :member
   end
 
   root to: "static_pages#homepage"
