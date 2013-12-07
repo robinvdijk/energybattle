@@ -16,18 +16,19 @@ class TeamRelationsController < ApplicationController
   end
 
   def switch
-    if @team_relation.team == "host_team"
-      @team_relation.update_attributes(team: "opponent_team")
+    team_relation = TeamRelation.where(user_id: params[:user_id], battle_id: params[:battle_id]).first
+    if team_relation.team == "host_team"
+      team_relation.update_attributes(team: "opponent_team")
     else
-      @team_relation.update_attributes(team: "host_team")
+      team_relation.update_attributes(team: "host_team")
     end
     redirect_to :back, notice: "Verwisseld van team"
   end
 
   def invite
-	  TeamRelation.create!(:user_id => params[:id], :battle_id => params[:battle_id], :status => 'invited', :team => 'opponent_team')
-	  Notification.create!(:notification_type => 'invite', :battle_id => params[:battle_id], :receiver_id => params[:id], :sender_id => current_user.id)
-	  redirect_to :back
+    TeamRelation.create!(:user_id => params[:id], :battle_id => params[:battle_id], :status => 'invited', :team => 'opponent_team')
+    Notification.create!(:notification_type => 'invite', :battle_id => params[:battle_id], :receiver_id => params[:id], :sender_id => current_user.id)
+    redirect_to :back
   end
 
   def user_in_one_team(user)

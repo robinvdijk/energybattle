@@ -15,25 +15,13 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
-    if current_user.readings.any?
-      if @reading.save && @reading.amount >= current_user.readings.last.amount
-        flash[:success] = "Gelukt"
-        redirect_to @reading.battle
-      else
-        redirect_to @reading.battle
-        flash[:alert] = "Er is iets mis gegaan"
-      end
+    check_amount = @reading.amount >= current_user.readings.last.amount if current_user.readings.any?
+    if check_amount
+      @reading.save
+      redirect_to @reading.battle, success: "Gelukt"
     else
-      if @reading.save
-        flash[:success] = "Gelukt"
-        exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{@reading.id}", "#{File.basename(@reading.meter_url)}").to_s)
-        @reading.original_date = exif.date_time if exif.date_time
-        @reading.save
-        redirect_to @reading.battle
-      else
-        flash[:alert] = "Er is iets mis gegaan"
-        render "form"
-      end
+      flash[:error] = "Er is iets mis gegaan"
+      redirect_to :back
     end
   end
 
