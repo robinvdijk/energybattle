@@ -31,7 +31,7 @@ nav {
 }
 .rightmenu {
   margin-top: 3px;
-  div {
+  .notifications-center div {
     float:left;
     margin: 0.625em;
     color: rgb(77, 155, 93);
@@ -54,8 +54,8 @@ nav {
 }
 .badge {
     position:absolute;
-    right:38px;
-    top:-5px;
+    right:45px;
+    top:2px;
     background-color:red;
     line-height:15px;
     width:15px;
