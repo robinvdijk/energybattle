@@ -8,21 +8,25 @@
     <div class="box-padding"><%= render 'readings/form' %></div>
     <div class="box col-4-of-4">
         <div class="subheading">Team 1</div>
-        <%= render 'players_battle', team: "host" %>
+        <%= render 'battles/users/players_battle', team: "host" %>
         <div class="subheading">Team 2</div>
-        <%= render 'players_battle', team: "opponent" %>
+        <%= render 'battles/users/players_battle', team: "opponent" %>
     </div>
 <% when "started"  %>
     <div class="box-padding"><%= render 'readings/form' %></div>
     <div class="box col-4-of-4">
         <div class="subheading">Team 1</div>
-        <%= render 'players_battle', team: "host" %>
+        <%= render 'battles/users/players_battle', team: "host" %>
         <div class="subheading">Team 2</div>
-        <%= render 'players_battle', team: "opponent" %>
+        <%= render 'battles/users/players_battle', team: "opponent" %>
     </div>
 <% when "closing" %>
-    <%= render 'readings/form' %>
-    <%= render 'players_battle' %>
+    <div class="box-padding"><%= render 'readings/form' %></div>
+    <div class="box col-4-of-4">
+        <div class="subheading">Team 1</div>
+        <%= render 'battles/users/players_battle', team: "host" %>
+        <div class="subheading">Team 2</div>
+        <%= render 'battles/users/players_battle', team: "opponent" %>
+    </div>
 <% when "finished" %>
-    <%= render 'players_battle' %>
 <% end %>

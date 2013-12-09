@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   helper_method :sort_column, :sort_direction
 
   def dashboard
+    @reading = Reading.new
     team_relations = TeamRelation.where(user_id: current_user.id)
     @battles_joined = team_relations.map { |t| t.battle }
     if params[:theme]
