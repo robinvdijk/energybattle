@@ -15,7 +15,7 @@
               <div class="notifications"><%= render current_user.notifications %></div>
           <% end %>
         </div>
-        <%= link_to fa_icon("bars", class: "icon", id: "menu"), '#' %>
+        <%= fa_icon("bars", class: "icon", id: "menu") %>
     <% else %>
         <%= link_to "Inloggen met Facebook", user_omniauth_authorize_path(:facebook), class: "fb-btn" %>
     <% end %>
@@ -24,29 +24,29 @@
            <div class="span2 offset1" id="menu">
             <ul>
               <li>
-                <%= link_to '#', class: 'Facebook' do %>
-                  <%= fa_icon('facebook-square', class: 'fa-fw') %> Facebook
-                <% end %>
+                <%#= link_to ' ', class: 'Facebook' do %>
+                  <%= fa_icon('facebook-square', class: 'fa-fw', id: 'Facebook') %> Facebook
+                <%# end %>
                 <ul>
                   <li>
-                    <%= link_to destroy_user_session_path, :method => :delete, class: '' do %>
+                    <%#= link_to destroy_user_session_path, :method => :delete, class: '' do %>
                       <%= fa_icon('power-off', class: 'fa-fw') %> Uitloggen
-                    <% end %>
+                    <%# end %>
                   </li>
                   <li>
-                    <%= link_to '#', class: 'send_notifications' do %>
-                      <%= fa_icon('comment', class: 'fa-fw') %> Plaats een bericht
-                    <% end %>
+                    <%#= link_to '#', class: 'send_notifications' do %>
+                      <%= fa_icon('comment', class: 'fa-fw', id: 'send_notifications') %> Plaats een bericht
+                    <%# end %>
                   </li>
                   <li>
-                    <%= link_to '#', class: 'invite_with_fb' do %>
-                      <%= fa_icon('users', class: 'fa-fw') %> Nodig vrienden uit via Facebook
-                    <% end %>
+                    <%#= link_to '#', class: 'invite_with_fb' do %>
+                      <%= fa_icon('users', class: 'fa-fw', id: 'invite_with_fb') %> Nodig vrienden uit via Facebook
+                    <%# end %>
                   </li>
                   <li>
-                    <%= link_to '#', class: 'post_on_feed' do %>
-                      <%= fa_icon('comments', class: 'fa-fw') %> Plaats een bericht op je tijdlijn
-                    <% end %>
+                    <%#= link_to '#', class: 'post_on_feed' do %>
+                      <%= fa_icon('comments', class: 'fa-fw', id: 'post_on_feed') %> Plaats een bericht op je tijdlijn
+                    <%# end %>
                   </li>
                 </ul>
               </li>
