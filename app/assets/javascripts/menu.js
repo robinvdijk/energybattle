@@ -5,6 +5,7 @@ $(document).ready(function() {
   });
   $("#menu").click(function() {
     $(".st-effect-1.st-menu").css('transform', 'translate3d(41%, 0, 0)');
+    $(".st-effect-1.st-menu").css('display', 'block');
     $(".blanket").toggle();
   });
   if($('body.profile-edit').length){
