@@ -3,7 +3,8 @@ class BattlesController < TeamRelationsController
   before_action :current_user, only: [:index, :new, :create, :show, :edit, :update]
   helper_method :sort_column, :sort_direction, :current_user_is_host
 
-  def index
+  def index		
+		p 'hooi'
     team_relations = TeamRelation.where(user_id: current_user.id)
     @battles_joined = team_relations.map { |t| t.battle }
 
@@ -21,7 +22,7 @@ class BattlesController < TeamRelationsController
     calculate
   end
 
-  def new
+  def new		
     @battle = Battle.new
   end
 
