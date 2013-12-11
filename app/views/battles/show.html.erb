@@ -25,7 +25,7 @@
 		<% readings = @battle.winning_player.readings.where(battle_id: @battle.id) %>
 		
 		<span class='besparing'>
-			<%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) %>
+			<%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) if readings.any? %>
 		</span>
 	</div>
 
