@@ -22,6 +22,8 @@ gem 'neat'
 gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
+gem 'whenever', :require => false
+
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
