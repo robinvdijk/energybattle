@@ -1,11 +1,11 @@
 class BattlesController < TeamRelationsController
-  before_action :set_battle, only: [:show, :edit, :update, :destroy]
+  before_action :set_battle, only: [:show, :edit, :update, :destroy, :kick_request]
   before_action :current_user, only: [:index, :new, :create, :show, :edit, :update]
-  helper_method :sort_column, :sort_direction
+  helper_method :sort_column, :sort_direction, :current_user_is_host
 
   def index
-    @team_relations = TeamRelation.where(user_id: current_user.id)
-    @battles_joined = @team_relations.map { |t| t.battle }
+    team_relations = TeamRelation.where(user_id: current_user.id)
+    @battles_joined = team_relations.map { |t| t.battle }
 
     if params[:theme]
       @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction)#.paginate(per_page: 3, page: params[:page])
@@ -28,8 +28,6 @@ class BattlesController < TeamRelationsController
   def create
     @battle = Battle.new(battle_params)
     if @battle.save
-      @battle.end_date = @battle.start_date + @battle.duration
-      @battle.save
       flash[:notice] = "Nieuwe battle aangemaakt"
       redirect_to @battle
     else
@@ -86,19 +84,15 @@ class BattlesController < TeamRelationsController
     team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
     notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
     redirect_to :back
+    unless params[:user_id] == @battle.host_id
+      TeamRelation.where(user_id: params[:user_id], battle_id: @battle.id).first
+      Notification.create!(notification_type: 'kick_request', battle_id: @battle.id, sender_id: current_user.id, receiver_id: params[:user_id])
+      redirect_to :back
+    end
   end
 
-private
-  def set_battle
-    @battle = Battle.find(params[:id])
-  end
-
-  def twitter_url_for(url, text)
-    link_to "Share this url", "http://twitter.com/share?url=#{url}&text=#{text}"
-  end
-
-  def battle_params
-    params.require(:battle).permit!
+  def current_user_is_host
+    @battle.host_id == current_user.id
   end
 
   def sort_column
@@ -106,6 +100,15 @@ private
   end
 
   def sort_direction
-    %w[asc desc].include?(params[:direction]) ?  params[:direction] : "asc"
+    %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+  end
+
+private
+  def set_battle
+    @battle = Battle.find(params[:id])
+  end
+
+  def battle_params
+    params.require(:battle).permit!
   end
 end
