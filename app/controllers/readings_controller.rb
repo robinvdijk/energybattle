@@ -15,14 +15,15 @@ class ReadingsController < ApplicationController
 
   def create
     @reading = Reading.new(reading_params)
-    if current_user.readings.any?
-      if @reading.save && @reading.amount >= current_user.readings.last.amount && current_user.id == 
-        flash[:success] = "Gelukt"
-        redirect_to @reading.battle
-      else
-        flash[:alert] = "Er is iets mis gegaan"
-        render "form"
-      end
+
+    check_amount = @reading.amount >= current_user.readings.last.amount if current_user.readings.any?
+    if check_amount
+      @reading.save
+      redirect_to @reading.battle, success: "Gelukt"
+    else
+      flash[:error] = "Er is iets mis gegaan"
+      redirect_to :back
+
     end
   end
 

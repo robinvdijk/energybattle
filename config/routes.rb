@@ -1,7 +1,7 @@
 Energybattle::Application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   authenticated :user do
-    root :to => "static_pages#dashboard", as: :authenticated_root
+    root :to => "static_pages#animation", as: :authenticated_root
   end
 
   resources :notifications do
@@ -15,8 +15,8 @@ Energybattle::Application.routes.draw do
   end
 
   resources :battles do
-  	resources :readings
-  	patch :kick_request, on: :member
+    resources :readings
+    patch :kick_request, on: :member
   end
 
   resources :team_relations do

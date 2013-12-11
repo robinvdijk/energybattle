@@ -9,10 +9,10 @@
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">
-            <%= render "team_members", team: "host" %>
+            <%= render "battles/users/team_members", team: "host" %>
         </div>
         <div class="col-4-of-8">
-            <%= render "team_members", team: "opponent" %>
+            <%= render "battles/users/team_members", team: "opponent" %>
         </div>
     </div>
 <% elsif @battle.status?("finished") %>
