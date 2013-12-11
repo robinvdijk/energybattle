@@ -14,11 +14,6 @@
   <%= csrf_meta_tags %>
 </head>
   <body>
-	  <!-- ClickTale Top part -->
-	  <script type="text/javascript">
-	  var WRInitTime=(new Date()).getTime();
-	  </script>
-	  <!-- ClickTale end of Top part -->
 	  
     <header></header>
     <nav>
@@ -31,23 +26,13 @@
     <div class="container">
       <%= yield %>
     </div>
-  
-	<!-- ClickTale Bottom part -->
-
-	<script type='text/javascript'>
-	// The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
-	// 
-	//   function ClickTalePreRecordingHook() { /* place your customized code here */  }
-	//
-	// For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
-
-	document.write(unescape("%3Cscript%20src='"+
-	(document.location.protocol=='https:'?
-	"https://clicktalecdn.sslcs.cdngc.net/www02/ptc/3632c354-b286-4686-84ca-f53cdffc7cb5.js":
-	"http://cdn.clicktale.net/www02/ptc/3632c354-b286-4686-84ca-f53cdffc7cb5.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
-	</script>
-
-	<!-- ClickTale end of Bottom part -->
-	
+    <script type="text/javascript">
+        var _mfq = _mfq || [];
+        (function () {
+        var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
+        mf.src = "//cdn.mouseflow.com/projects/39582a23-72c6-4700-bb50-686cbb387b2f.js";
+        document.getElementsByTagName("head")[0].appendChild(mf);
+      })();
+    </script>
   </body>
 </html>

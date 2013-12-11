@@ -94,4 +94,9 @@ class Reading < ActiveRecord::Base
       results
     end
   end
+  
+  def self.set_prepare
+    battles = Battle.where(status: "pending")
+  end
+  
 end
