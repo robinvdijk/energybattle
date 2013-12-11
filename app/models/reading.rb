@@ -10,6 +10,7 @@ class Reading < ActiveRecord::Base
   belongs_to :user
   belongs_to :battle
 
+
   #after_create :get_exif_data
   #after_create :closing_reading
 
@@ -24,6 +25,7 @@ class Reading < ActiveRecord::Base
       self.battle.update_attribute(:status, 'finished')
     end
   end
+
 
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date

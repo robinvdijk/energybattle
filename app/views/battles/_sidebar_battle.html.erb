@@ -1,32 +1,39 @@
 <% case @battle.status %>
-<% when "pending" %>
-    <div class="box-padding">
-        <%= render 'settings_battle'%>
-        <%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button" if current_user_is_host && params[:status] != "Edit" %>
-    </div>
-<% when "prepare" %>
-    <div class="box-padding"><%= render 'readings/form' %></div>
-    <div class="box col-4-of-4">
-        <div class="subheading">Team 1</div>
-        <%= render 'battles/users/players_battle', team: "host" %>
-        <div class="subheading">Team 2</div>
-        <%= render 'battles/users/players_battle', team: "opponent" %>
-    </div>
-<% when "started"  %>
-    <div class="box-padding"><%= render 'readings/form' %></div>
-    <div class="box col-4-of-4">
-        <div class="subheading">Team 1</div>
-        <%= render 'battles/users/players_battle', team: "host" %>
-        <div class="subheading">Team 2</div>
-        <%= render 'battles/users/players_battle', team: "opponent" %>
-    </div>
-<% when "closing" %>
-    <div class="box-padding"><%= render 'readings/form' %></div>
-    <div class="box col-4-of-4">
-        <div class="subheading">Team 1</div>
-        <%= render 'battles/users/players_battle', team: "host" %>
-        <div class="subheading">Team 2</div>
-        <%= render 'battles/users/players_battle', team: "opponent" %>
-    </div>
-<% when "finished" %>
+	<% when "pending" %>
+	    <div class="box-padding">
+	        <%= render 'settings_battle'%>
+	        <%= link_to "Wijzig instellingen", battle_path(@battle, :status => "Edit"), class: "primary-button" if current_user_is_host && params[:status] != "Edit" %>
+	    </div>
+	<% when "prepare" %>
+	    <div class="box-padding"><%= render 'readings/form' %></div>
+	    <div class="box col-4-of-4">
+	        <div class="subheading">Team 1</div>
+	        <%= render 'players_battle', team: "host" %>
+	        <div class="subheading">Team 2</div>
+	        <%= render 'players_battle', team: "opponent" %>
+	    </div>
+	<% when "started" %>
+	    <div class="box-padding"><%= render 'readings/form' %></div>
+	    <div class="box col-4-of-4">
+	        <div class="subheading">Team 1</div>
+	        <%= render 'players_battle', team: "host" %>
+	        <div class="subheading">Team 2</div>
+	        <%= render 'players_battle', team: "opponent" %>
+	    </div>
+	<% when "closing" %>
+	    <div class="box-padding"><%= render 'readings/form' %></div>
+	    <div class="box col-4-of-4">
+	        <div class="subheading">Team 1</div>
+	        <%= render 'players_battle', team: "host" %>
+	        <div class="subheading">Team 2</div>
+	        <%= render 'players_battle', team: "opponent" %>
+	    </div>
+	<% when "finished" %>
+	    <div class="box col-4-of-4">
+	        <div class="subheading">Team 1</div>
+	        <%= render 'players_battle', team: "host" %>
+	        <div class="subheading">Team 2</div>
+	        <%= render 'players_battle', team: "opponent" %>
+	    </div>
+
 <% end %>

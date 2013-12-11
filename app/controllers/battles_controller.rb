@@ -17,7 +17,9 @@ class BattlesController < TeamRelationsController
 
   def show
     @reading = Reading.new
-    # calculate
+		@battlecount = Battle.count
+    
+    calculate
   end
 
   def new		
@@ -53,21 +55,36 @@ class BattlesController < TeamRelationsController
 
   def calculate
     teamrelations = TeamRelation.where(battle_id: @battle.id, team: "host_team")
-    @begin_amount_sum = 0
-    @current_amount_sum = 0
-    @energy_savings_sum = 0
+    teamrelations2 = TeamRelation.where(battle_id: @battle.id, team: "opponent_team")
+    
+    @begin_amount_sum = 0 && @begin_amount_sum2 = 0
+    @current_amount_sum = 0 && @current_amount_sum2 = 0
+    @energy_savings_sum = 0 && @energy_savings_sum2 = 0
+    @readings_sum = 0 && @readings_sum2 = 0
 
     for relation in teamrelations do
-      if relation.user.readings.any?
-        readings = relation.user.readings.where(battle_id: @battle.id)
-        @begin_amount_sum += readings.first.amount
-        @current_amount_sum += readings.last.amount
-        @energy_savings_sum += (100 - (readings.last.amount.to_f / 3500) * 100)
+      if relation.user.readings.where(battle_id: @battle.id).any?
+        @begin_amount_sum += relation.user.readings.where(battle_id: @battle.id).first.amount
+        @current_amount_sum += relation.user.readings.where(battle_id: @battle.id).last.amount
+        @energy_savings_sum += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+        @readings_sum += relation.user.readings.where(battle_id: @battle.id).count
+      end
+    end
+    for relation in teamrelations2 do
+      if relation.user.readings.where(battle_id: @battle.id).any?
+        @begin_amount_sum2 += relation.user.readings.where(battle_id: @battle.id).first.amount
+        @current_amount_sum2 += relation.user.readings.where(battle_id: @battle.id).last.amount
+        @energy_savings_sum2 += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
+        @readings_sum2 += relation.user.readings.where(battle_id: @battle.id).count
       end
     end
   end
 
   def kick_request
+    @battle = Battle.find(params[:id])
+    team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
+    notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
+    redirect_to :back
     unless params[:user_id] == @battle.host_id
       TeamRelation.where(user_id: params[:user_id], battle_id: @battle.id).first
       Notification.create!(notification_type: 'kick_request', battle_id: @battle.id, sender_id: current_user.id, receiver_id: params[:user_id])
@@ -93,6 +110,6 @@ private
   end
 
   def battle_params
-    params.require(:battle).permit(:host_id, :opponent_id, :winner_id, :theme, :game_type, :start_date, :end_date, :access, :title, :player_limit, :duration, :status)
+    params.require(:battle).permit!
   end
 end
