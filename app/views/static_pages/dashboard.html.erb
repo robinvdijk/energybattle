@@ -1,10 +1,38 @@
 <% provide(:title, "Dashboard") %>
 
-<% if @battles.where(host_id: current_user.id).any? %>
+<% if @current_user_ended_battles.any? %>
+		<table>
+		<h1>Battles die ik heb gespeeld</h1>
+		  <%= render 'battles/table_name_battle' %>
+			<% @current_user_ended_battles.each do |s| %>
+				<tr>
+					<td><%= link_to s.title, battle_path(s) %></td>
+					<td><%= s.theme %></td>
+					<td><%= s.status %></td>
+					<td><%= find_host(s.host_id).name %></td>
+
+					<% if s.start_date.present? %>
+						<td><%= s.start_date.strftime('%d %B %Y') %></td>
+					<% else %>
+						<td>Geen start datum.</td>
+					<% end %>
+
+					<% if s.end_date.present? %>
+						<td><%= s.end_date.strftime('%d %B %Y') %></td>
+					<% else %>
+						<td>Geen eind datum.</td>
+					<% end %>
+					<td><%= s.users.count %> / <%= s.player_limit %></td>
+				</tr>
+			<% end %>
+		<table>
+<% end %>
+
+<% if @current_user_host_battles.any? %>
 		<table>
 		<h1>Battles die ik host</h1>
 		  <%= render 'battles/table_name_battle' %>
-			<% @battles.where(host_id: current_user.id).each do |s| %>
+			<% @current_user_host_battles.each do |s| %>
 				<tr>
 					<td><%= link_to s.title, battle_path(s) %></td>
 					<td><%= s.theme %></td>
@@ -30,7 +58,7 @@
 
 <br/>
 
-<% @battles_joined.map do |s| %>
+<% @battles_joined.each do |s| %>
 	<% unless s.host_id == current_user.id %>
 	  <table>
 	    <h1>Battles dat ik heb gejoined</h1>
