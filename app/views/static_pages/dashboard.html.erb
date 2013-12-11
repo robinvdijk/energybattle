@@ -1,5 +1,4 @@
 <% provide(:title, "Dashboard") %>
-
 <% if @battles.where(host_id: current_user.id).any? %>
 		<table>
 		<h1>Battles die ik host</h1>
