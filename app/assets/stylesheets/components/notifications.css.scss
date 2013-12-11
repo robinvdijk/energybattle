@@ -23,8 +23,8 @@
 
 .notifications-center .notch {
     position: absolute;
-    top: -15px;
-    right: 40px;
+    top: -25px;
+    right: 22px;
     margin: 0;
     border-top: 0;
     border-left: 15px solid transparent;
@@ -43,7 +43,7 @@
   .notification{
     border-bottom: 1px solid $darkblue;
     padding-bottom: 10px;
-    width: 110%;
+    width: 95%;
     p{
       color: $white;
       float: left;
@@ -76,4 +76,8 @@
   &:hover{
     color:red;
   }
+}
+
+.flash{
+
 }

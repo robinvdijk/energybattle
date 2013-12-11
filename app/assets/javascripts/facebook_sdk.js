@@ -34,7 +34,7 @@ function callFB(){
      d.getElementsByTagName('head')[0].appendChild(js);
    }(document));
 
-  // var fbAppId = '533003410107372';  // App ID Energybattle Development
+  //var fbAppId = '533003410107372';  // App ID Energybattle Development
   var fbAppId = '534518849970647'; // App ID Pruts_app Production
   var objectToLike = 'http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/';
 

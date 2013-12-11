@@ -38,7 +38,6 @@
 .battle_settings {
   background-color: $grey;
   box-shadow: 0 0.125em 0 0 $darkblue;
-  height:30em;
   padding:0 0.3em;
   position:relative;
   border-radius: 0.3em;
@@ -52,7 +51,10 @@
   box-shadow: 0 0.125em 0 0 $darkblue;
   position:relative;
   border-radius: 0.3em;
-  padding-bottom:1em;
+  padding-bottom:6em;
+  .primary-button{
+    margin-left:1em;
+  }
   .teams-headrow {
     padding-bottom: 2.2em;
     margin: 0 0.2em 1em 0.35em;

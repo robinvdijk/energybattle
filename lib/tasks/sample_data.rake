@@ -37,11 +37,11 @@ def make_own_battles
     order_id = order.map { |o| o.id }
 
     # Host team_realtions
-    (n-1).times do |i|
+    (n).times do |i|
       TeamRelation.create!(user_id: order_id[i], battle_id: battle.id, team: "host_team", status: "joined")
     end
     # Opponent team_relations
-    (n).times do |i|
+    (n+1).times do |i|
       TeamRelation.create!(user_id: order_id[-1-i], battle_id: battle.id, team: "opponent_team", status: "joined")
     end
 
@@ -62,6 +62,6 @@ end
 
 def make_notifications
   3.times do |i|
-    Notification.create!(notification_type: "invited", receiver_id: 1, sender_id: i, battle_id: i, message: "test notification #{i}")
+    Notification.create!(notification_type: "general", receiver_id: 1, sender_id: i+2, battle_id: i+1, message: "general notification #{i}")
   end
 end

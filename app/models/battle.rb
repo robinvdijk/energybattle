@@ -14,6 +14,8 @@ class Battle < ActiveRecord::Base
 
   after_create :create_host_team_relation
 
+  before_save :end_date
+
   def create_host_team_relation
     r = TeamRelation.new
     r.user_id = self.host_id
@@ -35,8 +37,8 @@ class Battle < ActiveRecord::Base
     self.users.map { |u| u.readings.where(battle_id: self.id) }.count == self.player_limit
   end
 
-  def team_full?
-    self.users.count == self.player_limit
+  def team_full?(team)
+    self.team_relations.where(team: "#{team}_team").count == self.player_limit / 2
   end
 
   def self.update_battles
@@ -53,5 +55,9 @@ class Battle < ActiveRecord::Base
     s = 12
     i = 30
     (1-((a2-a1)/baseline))*100*s+i
+  end
+
+  def end_date
+    self.end_date = self.start_date + self.duration
   end
 end

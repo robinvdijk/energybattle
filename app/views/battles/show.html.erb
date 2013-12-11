@@ -1,18 +1,24 @@
-<div class="heading"><%= @battle.title %> <%= @battle.status %></div>
+<div class="heading"><%= @battle.title %> / <%= @battle.status %></div>
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
-<% if @battle.status?('started') || @battle.status?('prepare') %>
+
+<% if @battle.status?('prepare') || @battle.status?('started') || @battle.status?('closing')%>
+
   <%= render 'battles/statistics/overview' %>
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">
-            <%= render "team_members", team: "host" %>
+            <%= render "battles/users/team_members", team: "host" %>
         </div>
         <div class="col-4-of-8">
-            <%= render "team_members", team: "opponent" %>
+            <%= render "battles/users/team_members", team: "opponent" %>
         </div>
     </div>
+<% elsif @battle.status?("finished") %>
+<div class="heading">
+  <%= @battle.title %><%= @battle.status %>
+</div>
 <% end %>
 <div class="col-12">
   <div class="pull-right"><%= render "status_button" if current_user_is_host %></div>
