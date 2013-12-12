@@ -5,7 +5,7 @@
       <p>
         In <%= link_to notification.battle.title, battle_path(notification.battle) %> moet je nog een fotouploaden om te kunnen beginnen
       </p>
-      <%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete %>
+      <%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
     <% when "invited" %>
 	    <%= image_tag notification.sender.avatar, class: "facebookfoto" %>
       <p>

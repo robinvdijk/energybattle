@@ -1,4 +1,14 @@
-<% provide(:title, "Dashboard") %>
+<% if (current_user.school == nil) %>
+	<% provide(:title, "Extra Informatie") %>
+	<h1>Welkom op Energybattle.</h1>
+	<p>Voordat je aan de slag kan gaan met Energybattle moet je nog een aantal gegevens invullen.</p>
+	<p>Ook moet je toestemming vragen aan je ouders als je nog geen 18 bent</p>
+	<%= render 'extra_info' %>
+	<%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+
+<% else %>
+	<% provide(:title, "Dashboard") %>
+	<%= welcome_message %>
 
 <% if @current_user_ended_battles.any? %>
 		<table>
@@ -57,7 +67,7 @@
 <% end %>
 
 <br/>
-
+<% if @battles_joined %>
 <% @battles_joined.each do |s| %>
 	<% unless s.host_id == current_user.id %>
 	  <table>
@@ -88,6 +98,7 @@
  	  <table>
 	<% end %>
 <% end %>
+<% end %>
 
 <div class="profile-info">
   <%= image_tag "#{current_user.avatar}&height=130&width=130", class: 'rounded-img' %>
@@ -95,15 +106,14 @@
   <h3 class="subheading">Player 1</h3>
 
   <ul class="left">
-    <li>NHL Hogeschool</li>
-    <li>Klas 5C</li>
-    <li>26 Jaar</li>
+    <li><%= current_user.school %></li>
+    <li><%= current_user.grade %></li>
+    <li><%= current_user.birthday %></li>
     <li>Gebruiker sinds: <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
   </ul>
-
+	
   <ul class="right">
-    <li>Team X</li>
-    <li>Team Achter de Hoven</li>
+    <li><%= pluralize(current_user.family_size, 'persoon', 'personen') %> in huis</li>
     <li>Team cool</li>
   </ul>
   <hr class="clear">
@@ -121,3 +131,4 @@
     </ul>
   </div>
 </div>
+<% end %>

@@ -4,7 +4,6 @@ class BattlesController < TeamRelationsController
   helper_method :sort_column, :sort_direction, :current_user_is_host
 
   def index		
-		p 'hooi'
     team_relations = TeamRelation.where(user_id: current_user.id)
     @battles_joined = team_relations.map { |t| t.battle }
 
@@ -18,7 +17,6 @@ class BattlesController < TeamRelationsController
   def show
     @reading = Reading.new
 		@battlecount = Battle.count
-    
     calculate
   end
 
@@ -76,6 +74,7 @@ class BattlesController < TeamRelationsController
         @current_amount_sum2 += relation.user.readings.where(battle_id: @battle.id).last.amount
         @energy_savings_sum2 += (100 - (relation.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100)
         @readings_sum2 += relation.user.readings.where(battle_id: @battle.id).count
+
       end
     end
   end
@@ -85,6 +84,7 @@ class BattlesController < TeamRelationsController
     team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
     notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
     redirect_to :back
+
     unless params[:user_id] == @battle.host_id
       TeamRelation.where(user_id: params[:user_id], battle_id: @battle.id).first
       Notification.create!(notification_type: 'kick_request', battle_id: @battle.id, sender_id: current_user.id, receiver_id: params[:user_id])
@@ -113,3 +113,4 @@ private
     params.require(:battle).permit!
   end
 end
+

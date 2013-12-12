@@ -2,9 +2,7 @@
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
-
-<% if @battle.status?('prepare') || @battle.status?('started') || @battle.status?('closing')%>
-
+<% if @battle.status?('started') || @battle.status?('prepare') || @battle.status?('closing') %>
   <%= render 'battles/statistics/overview' %>
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
@@ -16,6 +14,7 @@
         </div>
     </div>
 <% elsif @battle.status?("finished") %>
+
 	<%= image_tag('dirt.jpg', class: 'rotate') %>
 
 	<div class="winner">
@@ -35,6 +34,10 @@
 			<% end %>
 		</span>
 	</div>
+
+<div class="heading">
+  <%= @battle.title %><%= @battle.status %>
+</div>
 
 <% end %>
 <div class="col-12">

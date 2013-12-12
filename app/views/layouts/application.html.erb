@@ -14,25 +14,16 @@
   <%= csrf_meta_tags %>
 </head>
   <body>
-	  
     <header></header>
     <nav>
       <%= render 'layouts/header' %>
     </nav>
     <div class="blanket"></div>
-      <%# flash.each do |key, value| %>
-        <!-- <div class="flash <%#= key %>"><%#= value %></div> -->
-      <%# end %>
     <div class="container">
+      <% flash.each do |key, value| %>
+        <div class="flash <%= key %>"><%= value %></div>
+      <% end %>
       <%= yield %>
     </div>
-    <script type="text/javascript">
-        var _mfq = _mfq || [];
-        (function () {
-        var mf = document.createElement("script"); mf.type = "text/javascript"; mf.async = true;
-        mf.src = "//cdn.mouseflow.com/projects/39582a23-72c6-4700-bb50-686cbb387b2f.js";
-        document.getElementsByTagName("head")[0].appendChild(mf);
-      })();
-    </script>
   </body>
 </html>

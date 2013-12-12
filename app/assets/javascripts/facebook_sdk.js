@@ -36,28 +36,7 @@ function callFB(){
 
   var fbAppId = '533003410107372';  // App ID Energybattle Development
   // var fbAppId = '534518849970647'; // App ID Pruts_app Production
-  var objectToLike = 'http://techcrunch.com/2013/02/06/facebook-launches-developers-live-video-channel-to-keep-its-developer-ecosystem-up-to-date/';
 
-  function postLike() {
-    FB.api(
-       'https://localhost:3000',
-       'post',
-       { object: objectToLike,
-         privacy: {'value': 'SELF'} },
-       function(response) {
-         if (!response) {
-           alert('Error occurred.');
-         } else if (response.error) {
-           document.getElementById('result').innerHTML =
-             'Error: ' + response.error.message;
-         } else {
-           document.getElementById('result').innerHTML =
-             '<a href=\"https://www.facebook.com/me/activity/' +
-             response.id + '\">' +
-             'Story created.  ID is ' +
-             response.id + '</a>';
-         }
-       }
-    );
+ 
   };
 };

@@ -13,7 +13,7 @@
               <%= team.user.name %>
               <% if team.user.id == current_user.id %>
                 <%= link_to "✖", team, method: :delete, data: { confirm: "Wil je echt deze battle verlaten?"}, class: "destroy" %>
-                <%= link_to "⇐⇒", switch_team_relation_path(@battle, user_id: team.user.id, battle_id: @battle.id), class: "switch", method: :patch unless current_user_is_host %>
+                <%= link_to "⇐⇒", switch_team_relation_path(team), class: "switch", method: :patch unless current_user_is_host %>
               <% elsif team.user.id != @battle.host_id %>
                 <%= link_to 'Kick', kick_request_battle_path(@battle, user_id: team.user.id), method: :patch %>
               <% else %>
