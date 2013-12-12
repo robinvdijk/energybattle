@@ -19,10 +19,13 @@
   float: left;
   height:25em;
   border-radius:7px;
-  background-color: $grey;
+  background:url('energie.jpg');
+  background-size: 345px;
+   
   box-shadow: 0 0.125em 0 0 $darkblue;
   margin-top: 2em;
   position:relative;
+  
   .primary-button{
     margin-left:1em;
   }
@@ -30,7 +33,8 @@
     display:block;
     margin:0 auto;
   }
-}.bottom-pusher{
+}
+.bottom-pusher{
   position:absolute;
   bottom:0.5em;
 }

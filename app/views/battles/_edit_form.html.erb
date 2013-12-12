@@ -18,10 +18,10 @@
             <%= f.input :game_type, :input_html => { :value => params[:game_type], :readonly => true} %>
         </div>
         <div class="form-group">
-            <%= f.input :start_date, :as => :datepicker %>
+            <%= f.input :start_date, :as => :datepicker, :input_html => { :value => DateTime.now.strftime('%d-%m-%Y') } %>
         </div>
         <div class="form-group">
-            <%= f.input :duration, :collection => ([["1 Week", 7], ["2 Weken", 14], ["3 Weken", 21], ["4 Weken", 28]]) %>
+            <%= f.input :duration, :collection => ([["1 Week", 7], ["2 Weken", 14], ["3 Weken", 21], ["4 Weken", 28]]), :selected =>  '1 week' %>
         </div>
     <% end %>
     <% if params[:status] == "Edit" %>

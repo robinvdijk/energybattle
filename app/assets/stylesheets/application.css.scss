@@ -39,3 +39,43 @@
     background-color: #f0f0f0;
   }
 }
+
+
+.rotate {
+  -webkit-animation:spin 8s linear infinite;
+  -moz-animation:spin 8s linear infinite;
+  animation:spin 8s linear infinite;
+	display: none;
+}
+
+.winner {
+	border: 3px solid #999;
+	width: 300px;
+	border-radius: 5px;
+	padding: 10px;
+	text-align: center;
+	margin-left: 400px;
+	h1 {
+		font-size: 2em;
+	}
+	h2 {
+		margin-top: 10px;
+		font-size: 1.4em;
+	}
+	span.savings {
+		font-size: 1.4em;
+		&.positive {
+			color: $green;
+		}
+		&.negative {
+			color: red;
+		}
+	}
+}
+
+.rounded-img {
+  width: 130px;
+  border-radius: 150px;
+  border: 3px solid $green;
+  margin-top: 20px;
+}
