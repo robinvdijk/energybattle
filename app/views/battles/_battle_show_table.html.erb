@@ -10,6 +10,7 @@
         <% find_team_members(team).each do |team| %>
         <% readings = team.user.readings.where(battle_id: @battle.id) %>
         <tr>
+
             <td><%= readings.count %></td>
             <% if readings.count == 0 %>
               <td>Nog geen meterstand geupload</td>
@@ -20,17 +21,33 @@
               <td><%= readings.last.amount %></td>
               <td><%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2)%></td>
             <% end %>
+
             <td></td>
+			<% end %>
         </tr>
-        <% end %>
+		<% end %>
         <tr class="blank_row">
         </tr>
-        <tr>
-            <td><%= @battle.readings.count %></td>
+        <tr style="background:grey">
+			<% if team == "host" %>
+            <td><%= @readings_sum %></td>
             <td><%= @begin_amount_sum %></td>
             <td><%= @current_amount_sum %></td>
-            <td><%#= number_to_percentage(@energy_savings_sum / 2, :precision => 2) %></td>
+            <td><%= number_to_percentage(@energy_savings_sum / @battle.team_relations.where(team: "host_team").count, :precision => 2) %></td>
             <td></td>
+			<% elsif team == "opponent" %>
+            <td><%= @readings_sum2 %></td>
+            <td><%= @begin_amount_sum2 %></td>
+            <td><%= @current_amount_sum2 %></td>
+            <td><%= number_to_percentage(@energy_savings_sum2 / @battle.team_relations.where(team: "opponent_team").count, :precision => 2) %></td>
+            <td></td>
+			<% end %>
         </tr>
+		
     <table>
 </div>
+
+
+
+
+

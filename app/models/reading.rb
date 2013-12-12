@@ -2,16 +2,17 @@ class Reading < ActiveRecord::Base
   require 'open-uri'
 	METER_UPLOAD_PATH = 'public/uploads/reading/meter'
 
-	validates :amount, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true }
-	mount_uploader :meter, MeterUploader
+  validates :amount, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true }
+  mount_uploader :meter, MeterUploader
 
-	# validates :meter, presence: {message: "Moet upgeload zijn"} # disable om populate te gebruiken
+  # validates :meter, presence: {message: "Moet upgeload zijn"} # disable om populate te gebruiken
 
-	belongs_to :user
+  belongs_to :user
   belongs_to :battle
 
 	#after_create :exif_data
 	after_create :closing_reading
+
 
 	def exif_data
     exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{self.id}", "#{File.basename(self.meter_url)}").to_s)
@@ -91,4 +92,9 @@ class Reading < ActiveRecord::Base
       results
     end
   end
+  
+  def self.set_prepare
+    battles = Battle.where(status: "pending")
+  end
+  
 end

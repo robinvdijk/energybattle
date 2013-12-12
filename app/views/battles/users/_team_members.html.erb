@@ -1,5 +1,5 @@
 <div class="subheading"><%= "Team #{team}"  %></div>
-<%= render "search_members", team: team if current_user_is_host %>
+<%= render "battles/users/search_members", team: team if current_user_is_host %>
 <ul class="teams-headrow">
   <li class="team-head1">Speler</li>
   <li class="team-head2">Score</li>
@@ -23,4 +23,4 @@
         </ul>
     </div>
 <% end %>
-<%= render "team_relation/join_team", team: "#{team}_team" %>
+<%= render "team_relation/join_team", team: "#{team}_team" unless current_user_is_host %>
