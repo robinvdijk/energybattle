@@ -4,10 +4,8 @@ class BattlesController < TeamRelationsController
   helper_method :sort_column, :sort_direction, :current_user_is_host
 
   def index		
-		p 'hooi'
     team_relations = TeamRelation.where(user_id: current_user.id)
     @battles_joined = team_relations.map { |t| t.battle }
-
     if params[:theme]
       @battles = Battle.where(:theme => params[:theme]).order(sort_column + ' ' + sort_direction)#.paginate(per_page: 3, page: params[:page])
     else

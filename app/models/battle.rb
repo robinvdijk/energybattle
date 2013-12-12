@@ -53,13 +53,6 @@ class Battle < ActiveRecord::Base
     self.team_relations.where(team: "#{team}_team").count == self.player_limit / 2
   end
 
-  def self.update_battles
-    battles = Battle.where(:end_date == Date.today)
-    for battle in battles do
-      battle.update_attribute(:status, "closing")
-    end
-  end
-
   def points(user)
     a1 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).first.amount
     a2 = self.users.where(id: user.id).first.readings.where(battle_id: self.id).last.amount
@@ -72,4 +65,48 @@ class Battle < ActiveRecord::Base
   def end_date
     self.end_date = self.start_date + self.duration
   end
+  
+  
+  # CRON METHODS
+  
+  def self.update_battles
+    set_prepare
+    set_started
+    set_closing
+  end
+  
+  def self.set_prepare
+    battles = Battle.where(status: "pending")
+    for battle in battles do
+      if battle.start_date - 1.day == Date.today
+        battle.update_attributes(status: "prepare")
+      end
+    end
+  end
+  
+  def self.set_started
+    battles = Battle.where(status: "prepare")
+    for battle in battles do
+      if battle.start_date == Date.today
+        battle.update_attributes(status: "started")
+      end
+    end
+  end
+  
+  def self.set_closing
+    battles = Battle.where(end_date: Date.today)
+    for battle in battles do
+      battle.update_attributes(status: "closing")
+    end
+  end
+  
+  def self.remove_incomplete
+    battles = Battle.where(status: "prepare")
+    for battle in battles do
+      if battle.users.count < 2
+        battle.destroy
+      end
+    end
+  end
+  
 end

@@ -6,6 +6,7 @@
 <% if @battle.status?('prepare') || @battle.status?('started') || @battle.status?('closing')%>
 
   <%= render 'battles/statistics/overview' %>
+  
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">

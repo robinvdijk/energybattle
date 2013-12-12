@@ -36,8 +36,8 @@
     <table>
     <h1>Alle battles</h1>
       <%= render 'table_name_battle' %>
-
         <% @battles.each do |s| %>
+		<% if s.status == "pending" || s.status == "prepare"%>
             <tr>
                 <td><%= link_to s.title, battle_path(s) %></td>
                 <td><%= s.theme.capitalize %></td>
@@ -62,6 +62,7 @@
                     <% end %>
                 </td>
             </tr>
+		<% end %>
         <% end %>
     <table>
 </div>

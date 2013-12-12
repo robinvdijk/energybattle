@@ -1,12 +1,14 @@
 set :environment, 'development'
 set :output, 'log/cron.log'
 
-every 2.minutes do
-  runner "Reading.test"
+every 1.day, :at => '12:05 am' do
+  runner "Battle.update_battles"
 end
-#
-# every 4.days do
-#   runner "AnotherModel.prune_old_records"
-# end
+
+every 1.day, :at => '12:01 am' do
+  runner "Battle.remove_incomplete"
+end
+
+
 
 
