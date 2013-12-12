@@ -1,7 +1,6 @@
-source 'https://rubygems.org'
-ruby '2.0.0'
-gem 'rails', '4.0.0'
-gem 'exiftool'
+source 'http://rubygems.org'
+
+gem 'rails', '4.0.2'
 gem 'exifr'
 
 gem 'devise'
@@ -24,6 +23,8 @@ gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
 
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -33,8 +34,6 @@ gem "font-awesome-rails"
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'will_paginate'
-
-gem 'bcrypt-ruby', '~> 3.0.1'
 
 group :doc do
   gem 'sdoc', require: false
@@ -48,7 +47,7 @@ group :development, :test do
 end
 
 group :production do
-  gem 'pg'
+  #gem 'pg'
 end
 
 group :test do
@@ -60,10 +59,6 @@ group :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails', '4.2.1'
   gem 'launchy'
-end
-
-group :assets do
-
 end
 
 # Use ActiveModel has_secure_password

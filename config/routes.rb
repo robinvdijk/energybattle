@@ -5,7 +5,7 @@ Energybattle::Application.routes.draw do
   end
 
   resources :notifications do
-	  patch :accept, on: :member
+    patch :accept, on: :member
   end
 
   resources :readings
@@ -15,12 +15,13 @@ Energybattle::Application.routes.draw do
   end
 
   resources :battles do
-		resources :readings
-	end
+  	resources :readings
+  	patch :kick_request, on: :member
+  end
 
   resources :team_relations do
-	  patch :invite, on: :member
-	  patch :switch, on: :member
+    patch :invite, on: :member
+    patch :switch, on: :member
   end
 
   root to: "static_pages#homepage"
@@ -29,5 +30,4 @@ Energybattle::Application.routes.draw do
   match '/gametype', to: 'static_pages#gametype', via: 'get'
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
-  match '/registration', to: 'static_pages#after_registration', via: 'get'
 end

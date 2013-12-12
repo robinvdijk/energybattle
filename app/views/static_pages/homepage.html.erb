@@ -1,2 +1,19 @@
-hoi
-<br><br><br><br><br><br><br><br><br><br><br>f
+<% provide(:title, "Welkom") %>
+<div class="home">
+	<h1>Welkom op Energybattle!</h1>
+
+	<p>Tegenwoordig hoor je steeds meer over de vervuiling van het milieu. Er wordt op allerlei manieren geprobeerd om energie te besparen. </p>
+
+	<p>Zo probeert de overheid bijvoorbeeld energie te besparen door heffingen te doen op auto’s die veel CO<sub>2</sub> uitstoten en door veel strengere milieu eisen te stellen.</p>
+
+	<p>Ook bedrijven proberen hun producten steeds energiezuiniger te maken door hun koelkasten bijvoorbeeld te laten voldoen aan het A+++ certificaat.</p>
+	
+	<p>Omdat je de wereld niet kunt veranderen in je eentje, maar wel met zijn allen, zijn we de Energy Battle begonnen. In de Energy Battle kun je samen met je familie, vrienden en klasgenootjes een gezamenlijke battle beginnen waarin het de bedoeling is om zoveel mogelijk energie te besparen.</p>
+
+	<p>Voor meer tips over het besparen van energie willen we je graag doorverwijzen naar de volgende sites:</p>
+
+	<p><%= link_to "Energiebespaarwijzer", "http://www.energiebespaarwijzer.nl/" %> </p>
+	<%= link_to user_omniauth_authorize_path(:facebook), class: 'fb-btn-home' do %>
+		<%= fa_icon('facebook-square', class: 'fa-fw') %> Log in met Facebook
+	<% end %>
+</div>

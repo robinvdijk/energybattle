@@ -10,6 +10,12 @@ class User < ActiveRecord::Base
   has_many :notifications, :foreign_key => :receiver_id
   validates :name, presence: true
 
+  #Cookie Overflow error with these 3 enabled
+  validates :house_type, presence: true, on: :edit
+  validates :family_size, presence: true, on: :edit
+  #validates :parental_approval, inclusion: [true]
+
+
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
@@ -19,13 +25,15 @@ class User < ActiveRecord::Base
       if registered_user
         return registered_user
       else
-        user = User.create( name:auth.extra.raw_info.name,
-                            provider:auth.provider,
-                            uid:auth.uid,
-                            email:auth.info.email,
-                            password:Devise.friendly_token[0,20],
-                            avatar:auth.info.image
-                          )
+        user = User.create(
+          name:auth.extra.raw_info.name,
+          provider:auth.provider,
+          uid:auth.uid,
+          email:auth.info.email,
+          password:Devise.friendly_token[0,20],
+          avatar:auth.info.image,
+          birthday:auth.user_birthday
+        )
       end
     end
   end

@@ -8,22 +8,29 @@
             <td>Gezinsgrootte</td>
         </tr>
         <% find_team_members(team).each do |team| %>
+        <% readings = team.user.readings.where(battle_id: @battle.id) %>
         <tr>
-            <td><%= team.user.readings.where(battle_id: @battle.id).count %></td>
-            <td><%= team.user.readings.where(battle_id: @battle.id).first.amount %></td>
-            <td><%= team.user.readings.where(battle_id: @battle.id).last.amount %></td>
-            <td><%= number_to_percentage(100 - (team.user.readings.where(battle_id: @battle.id).last.amount.to_f / 3500) * 100, :precision => 2)%></td>
-			<td></td>
-		</tr>
+            <td><%= readings.count %></td>
+            <% if readings.count == 0 %>
+              <td>Nog geen meterstand geupload</td>
+              <td>Nog geen meterstand geupload</td>
+              <td>Nog geen besparing in deze battle</td>
+            <% else %>
+              <td><%= readings.first.amount %></td>
+              <td><%= readings.last.amount %></td>
+              <td><%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2)%></td>
+            <% end %>
+            <td></td>
+        </tr>
         <% end %>
-		<tr class="blank_row">
-		</tr>
-		<tr>
-			<td><%= @battle.readings.count %></td>
-			<td><%= @begin_amount_sum %></td>
-			<td><%= @current_amount_sum %></td>
-			<td><%= number_to_percentage(@energy_savings_sum / 2, :precision => 2) %></td>
-			<td></td>
-		</tr>
+        <tr class="blank_row">
+        </tr>
+        <tr>
+            <td><%= @battle.readings.count %></td>
+            <td><%= @begin_amount_sum %></td>
+            <td><%= @current_amount_sum %></td>
+            <td><%#= number_to_percentage(@energy_savings_sum / 2, :precision => 2) %></td>
+            <td></td>
+        </tr>
     <table>
 </div>

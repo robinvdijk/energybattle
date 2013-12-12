@@ -1,13 +1,11 @@
 .notice {
-	float: left;
-	border:1px green solid;
-	padding:7px;
-	border-radius:7px;
-	margin:1em 0;
+  border:1px green solid;
+  padding:7px;
+  border-radius:7px;
+  margin:1em 0;
 }
 
 .error {
-	@extend .notice;
-	border: 1px red solid;
+  @extend .notice;
+  border: 1px red solid;
 }
-

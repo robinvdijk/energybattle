@@ -1,5 +1,6 @@
 class Reading < ActiveRecord::Base
   require 'open-uri'
+	METER_UPLOAD_PATH = 'public/uploads/reading/meter'
 
 	validates :amount, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true }
 	mount_uploader :meter, MeterUploader
@@ -8,12 +9,20 @@ class Reading < ActiveRecord::Base
 
 	belongs_to :user
   belongs_to :battle
-  
-  
-  def self.test
-    self.update_attributes(:original_date => exif)
-    self.save
-  end
+
+	#after_create :exif_data
+	after_create :closing_reading
+
+	def exif_data
+    exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{self.id}", "#{File.basename(self.meter_url)}").to_s)
+		self.update_attributes(:original_date => exif.date_time) if exif.date_time
+	end
+
+	def closing_reading
+		if self.battle.status?('closing')
+			self.battle.update_attribute(:status, 'finished')
+		end
+	end
 
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date
@@ -21,15 +30,14 @@ class Reading < ActiveRecord::Base
     personal_readings = where(battle_id: battle.id, user_id: current_user.id)
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
-    growth = personal_readings.growth(start_date, end_date, personal_readings)
-    growth2 = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
 
     (start_date.to_date..end_date.to_date).map do |date|
-      days_gone = Date.today+2..date
+      days_gone = start_date..date
       {
         original_date: date,
         personal: reading_by_day[date],
-        ideal: reading_by_day[date] || personal_readings.last.amount + growth2.to_i * (days_gone.count)
+        ideal: reading_by_day[date] || personal_readings.last.amount + growth.to_i * (days_gone.count)
       }
     end
   end

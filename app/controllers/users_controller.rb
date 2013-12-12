@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  helper_method :find_user
 
   def index
     @users = User.all
@@ -13,7 +14,31 @@ class UsersController < ApplicationController
 
   end
 
+  def edit
+    find_user
+  end
+
+  def update
+    find_user
+    if @user.update_attributes(user_params)
+      redirect_to(root_path, :notice => 'Gebruiker is succesvol bijgewerkt.')
+    else
+      redirect_to :back
+      flash[:notice] = "Er is iets fout gegaan."
+    end
+  end
+
   def show
-  	@user = User.find(params[:id])
+    find_user
+  end
+
+  private
+
+  def user_params
+    params.require(:user).permit(:house_type, :family_size, :grade, :parental_approval, :company, :school, :birthday)
+  end
+
+  def find_user
+    @user = User.find(params[:id])
   end
 end

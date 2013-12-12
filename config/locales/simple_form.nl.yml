@@ -1,9 +1,9 @@
 nl:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": 'Ja'
+    "no": 'Nee'
     required:
-      text: 'required'
+      text: 'Verplicht'
       mark: '*'
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
@@ -13,6 +13,12 @@ nl:
     # Labels and hints examples
     labels:
       defaults:
+      user:
+        house_type: "Huistype"
+        family_size: "Gezinsgrootte"
+        grade: "Groep"
+        company: "Bedrijf" 
+        parental_approval: "Ik ben minimaal 18 jaar, ik woon op mezelf, of ik heb toestemming van mijn ouders om mee te spelen met Energybattle" 
       battle:
         new:
           title: 'Titel'
