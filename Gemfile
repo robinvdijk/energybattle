@@ -22,6 +22,8 @@ gem 'neat'
 gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
+gem 'whenever', :require => false
+
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
@@ -63,6 +65,7 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
+# gem 'split', require: 'split/dashboard'
 
 # Use unicorn as the app server
 # gem 'unicorn'

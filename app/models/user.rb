@@ -37,4 +37,9 @@ class User < ActiveRecord::Base
       end
     end
   end
+	
+	def test
+		p 'hooi'
+	end
+		
 end

@@ -22,7 +22,7 @@ Devise.setup do |config|
   require 'devise/orm/active_record'
   require "omniauth-facebook"
   #config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d" # Energybattle app Developemnt
-  config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d", {:scrope => 'user_birthday'} # Energybattle app Developemnt
+  config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d", {:scope => 'user_birthday'} # Energybattle app Developemnt
   
   # config.omniauth :facebook, "534518849970647", "e1e6d437c131962c24f34b180fb0e699" # Pruts_app app Production
 

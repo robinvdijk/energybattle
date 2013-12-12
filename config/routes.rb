@@ -23,6 +23,7 @@ Energybattle::Application.routes.draw do
     patch :invite, on: :member
     patch :switch, on: :member
   end
+	# mount Split::Dashboard, :at => 'split'
 
   root to: "static_pages#homepage"
 

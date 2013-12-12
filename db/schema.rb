@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20131211123654) do
 
   create_table "battles", force: true do |t|
@@ -41,7 +42,7 @@ ActiveRecord::Schema.define(version: 20131211123654) do
   end
 
   create_table "readings", force: true do |t|
-    t.integer  "amount",        default: 0
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meter"
