@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 		user_birthday = auth.extra.raw_info.birthday
+		birthday = Date.strptime(user_birthday, "%d - %m - %Y")
 		
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
@@ -34,7 +35,7 @@ class User < ActiveRecord::Base
           email:auth.info.email,
           password:Devise.friendly_token[0,20],
           avatar:auth.info.image,
-          birthday:auth.extra.raw_info.birthday
+          birthday:birthday
         )
       end
     end
