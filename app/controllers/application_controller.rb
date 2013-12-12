@@ -7,11 +7,7 @@ class ApplicationController < ActionController::Base
   def logged_in?
     unless user_signed_in?
       redirect_to root_path
-<<<<<<< HEAD
       flash[:notice] = "Log in om deze pagina te bezoeken"
-=======
-      flash[:notice] = "Login om deze pagina te bezoeken"
->>>>>>> b1d18294718c3f3b790b44c30d8ca846691cb65d
     end
   end
 end

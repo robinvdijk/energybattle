@@ -67,7 +67,7 @@
 <% end %>
 
 <br/>
-
+<% if @battles_joined %>
 <% @battles_joined.each do |s| %>
 	<% unless s.host_id == current_user.id %>
 	  <table>
@@ -97,6 +97,7 @@
 		</tr>
  	  <table>
 	<% end %>
+<% end %>
 <% end %>
 
 <div class="profile-info">
