@@ -4,7 +4,7 @@ Devise.setup do |config|
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  config.secret_key = 'c61b097c01281499382c938c8ef5011314206d0f726e86a64898f58d624b6727010293d1f711b1a0928f20f338139016c65212688049b5469a3aacde4c75ada8'
+  config.secret_key = '<c61b097c01281499382c938c8ef5011314206d0f726e86a64898f58d624b67270></c61b097c01281499382c938c8ef5011314206d0f726e86a64898f58d624b67270>10293d1f711b1a0928f20f338139016c65212688049b5469a3aacde4c75ada8'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
@@ -21,7 +21,9 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
   require "omniauth-facebook"
-  config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d" # Energybattle app Developemnt
+  #config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d" # Energybattle app Developemnt
+  config.omniauth :facebook, "533003410107372", "4db994f22079ae7af5ea13179aa84b4d", {:scope => 'user_birthday'} # Energybattle app Developemnt
+  
   # config.omniauth :facebook, "534518849970647", "e1e6d437c131962c24f34b180fb0e699" # Pruts_app app Production
 
   # ==> Configuration for any authentication mechanism

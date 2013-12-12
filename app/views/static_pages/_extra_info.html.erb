@@ -1,0 +1,13 @@
+<%= simple_form_for current_user do |f| %>
+	<%= f.input :house_type, prompt: "Selecteer je type woning", collection: ["2-onder-1-kapwoning", "Rijtjeshuis (hoek)", "Rijtjeshuis (tussenwoning)", "Flat / Appartement", "Vrijstaand", "Woonboot", "Anders"] %>
+	<%= f.input :family_size, prompt: "Selecteerd je gezinsgrootte", collection: 1..10 %>
+	<%= f.input :school %>
+	<%= f.input :grade, prompt: "Selecteerd je klas", collection: ["Eerste klas", "Tweede klas", "Derde klas", "Vierde klas", "Vijfde klas", "Zesde klas"]  %>
+	<%= f.input :company%>
+	<%= f.simple_fields_for :readings do |r| %>
+		<%= r.input :amount, label: "Gemiddelde meterstand afgelopen jaar" %>
+		<%= r.file_field :meter %>
+	<% end %>
+	<%= f.input :parental_approval %>
+	<%= f.button :submit, "Opslaan" %>
+<% end %>

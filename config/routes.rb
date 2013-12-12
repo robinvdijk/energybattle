@@ -15,8 +15,8 @@ Energybattle::Application.routes.draw do
   end
 
   resources :battles do
-    resources :readings
-    patch :kick_request, on: :member
+  	resources :readings
+  	patch :kick_request, on: :member
   end
 
   resources :team_relations do

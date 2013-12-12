@@ -1,6 +1,6 @@
 class Reading < ActiveRecord::Base
   require 'open-uri'
-  METER_UPLOAD_PATH = 'public/uploads/reading/meter'
+	METER_UPLOAD_PATH = 'public/uploads/reading/meter'
 
   validates :amount, presence: {message: "Moet ingevuld zijn"}, :numericality => { :only_integer => true }
   mount_uploader :meter, MeterUploader
@@ -10,22 +10,20 @@ class Reading < ActiveRecord::Base
   belongs_to :user
   belongs_to :battle
 
+	#after_create :exif_data
+	after_create :closing_reading
 
-  #after_create :get_exif_data
-  #after_create :closing_reading
 
-  def get_exif_data
-    puts "gets_exif_data"
+	def exif_data
     exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{self.id}", "#{File.basename(self.meter_url)}").to_s)
-    self.update_attributes(:original_date => exif.date_time) if exif.date_time
-  end
+		self.update_attributes(:original_date => exif.date_time) if exif.date_time
+	end
 
-  def closing_reading
-    if self.battle.status?('closing')
-      self.battle.update_attribute(:status, 'finished')
-    end
-  end
-
+	def closing_reading
+		if self.battle.status?('closing')
+			self.battle.update_attribute(:status, 'finished')
+		end
+	end
 
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date
