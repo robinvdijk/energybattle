@@ -36,7 +36,14 @@ class Battle < ActiveRecord::Base
 	def winning_team
 		'team' if self.status?('finished')
 	end
-	
+		
+	def finish_battle
+		self.status = 'finished'
+		# self.winner_id =
+		
+		self.save
+	end
+
 	def winning_player
 		User.find(self.winner_id) if self.status?('finished')
 	end
