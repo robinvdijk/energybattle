@@ -72,6 +72,18 @@ class Battle < ActiveRecord::Base
   def end_date
     self.end_date = self.start_date + self.duration
   end
+	
+	def reading_notification
+		battles = Battle.all
+		for battle in battles
+			if battle.status == 'closing'
+				for user in battle.users
+					NotificationMailer.upload_reading(user).deliver
+					Notification.create!(notification_type: 'upload_reading', battle_id: battle.id, sender_id: 1, receiver_id: user.id)			
+				end
+			end
+		end
+	end
   
   
   # CRON METHODS
