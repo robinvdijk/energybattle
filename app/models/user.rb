@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
 		user_birthday = auth.extra.raw_info.birthday
 		birthday = Date.strptime(user_birthday, "%d - %m - %Y")
-		
+
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     if user
       return user
@@ -40,9 +40,9 @@ class User < ActiveRecord::Base
       end
     end
   end
-	
+
 	def test
 		p 'hooi'
 	end
-		
+
 end
