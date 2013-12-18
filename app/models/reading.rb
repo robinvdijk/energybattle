@@ -93,8 +93,6 @@ class Reading < ActiveRecord::Base
     end
   end
   
-  def self.set_prepare
-    battles = Battle.where(status: "pending")
-  end
+
   
 end

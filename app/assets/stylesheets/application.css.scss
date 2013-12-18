@@ -63,8 +63,14 @@
 		margin-top: 10px;
 		font-size: 1.4em;
 	}
-	span.besparing {
+	span.savings {
 		font-size: 1.4em;
+		&.positive {
+			color: $green;
+		}
+		&.negative {
+			color: red;
+		}
 	}
 }
 
