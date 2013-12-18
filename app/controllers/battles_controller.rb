@@ -90,6 +90,7 @@ class BattlesController < TeamRelationsController
       redirect_to :back
     end
   end
+	
 
   def current_user_is_host
     @battle.host_id == current_user.id
