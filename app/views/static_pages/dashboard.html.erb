@@ -1,4 +1,4 @@
-<% if (current_user.school == nil) %>
+<% unless (current_user.parental_approval == true) %>
 	<% provide(:title, "Extra Informatie") %>
 	<h1>Welkom op Energybattle.</h1>
 	<p>Voordat je aan de slag kan gaan met Energybattle moet je nog een aantal gegevens invullen.</p>

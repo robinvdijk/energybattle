@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   #Cookie Overflow error with these 3 enabled
   validates :house_type, presence: true, on: :edit
   validates :family_size, presence: true, on: :edit
-  #validates :parental_approval, inclusion: [true]
+  validates :parental_approval, presence: true, on: :edit
 
 
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
