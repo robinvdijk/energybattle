@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131211123654) do
+ActiveRecord::Schema.define(version: 20131218124858) do
 
   create_table "battles", force: true do |t|
     t.integer  "host_id"
@@ -72,12 +72,12 @@ ActiveRecord::Schema.define(version: 20131211123654) do
   create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 20131211123654) do
     t.string   "house_type"
     t.string   "grade"
     t.integer  "family_size"
-    t.boolean  "parental_approval"
+    t.boolean  "parental_approval",      default: false
     t.string   "company"
     t.string   "school"
     t.date     "birthday"

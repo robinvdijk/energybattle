@@ -1,10 +1,14 @@
 <% if (current_user.school == nil) %>
+<div class="extra_info">
+
+<% unless (current_user.parental_approval == true) %>
 	<% provide(:title, "Extra Informatie") %>
 	<h1>Welkom op Energybattle.</h1>
 	<p>Voordat je aan de slag kan gaan met Energybattle moet je nog een aantal gegevens invullen.</p>
-	<p>Ook moet je toestemming vragen aan je ouders als je nog geen 18 bent</p>
+	<p>Ook moet je toestemming vragen aan je ouders als je nog geen 18 bent</p><br>
 	<%= render 'extra_info' %>
 	<%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+</div>
 
 <% else %>
 	<% provide(:title, "Dashboard") %>
@@ -18,6 +22,7 @@
 				<tr>
 					<td><%= link_to s.title, battle_path(s) %></td>
 					<td><%= s.theme %></td>
+					<td><%= s.game_type %></td>
 					<td><%= s.status %></td>
 					<td><%= find_host(s.host_id).name %></td>
 
@@ -46,6 +51,7 @@
 				<tr>
 					<td><%= link_to s.title, battle_path(s) %></td>
 					<td><%= s.theme %></td>
+					<td><%= s.game_type %></td>
 					<td><%= s.status %></td>
 					<td><%= find_host(s.host_id).name %></td>
 
@@ -109,7 +115,7 @@
     <li><%= current_user.school %></li>
     <li><%= current_user.grade %></li>
     <li><%= current_user.birthday %></li>
-    <li>Gebruiker sinds: <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
+    <li>Gebruiker sinds <br/> <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
   </ul>
 	
   <ul class="right">
@@ -120,13 +126,13 @@
   <div class="profile-statistics">
     <ul>
       <li>
+        12 <span class="small">Level</span>
+      </li>
+      <li>
+        11300 <span class="small">Punten</span>
+      </li>
+      <li>
         <%= current_user.battles.count %> <span class="small">Battles</span>
-      </li>
-      <li>
-        1130 <span class="small">Punten</span>
-      </li>
-      <li>
-        <%= current_user.battles.count %> <span class="small">Teams</span>
       </li>
     </ul>
   </div>

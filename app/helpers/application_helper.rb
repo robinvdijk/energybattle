@@ -17,7 +17,7 @@ module ApplicationHelper
   def current_user
     @current_user ||= User.first
   end
-
+  
   # def accept
   #   relation = TeamRelation.where(:user_id => @notification.receiver_id, :battle_id => @notification.battle_id, :status => 'invited').first
   #   if relation
