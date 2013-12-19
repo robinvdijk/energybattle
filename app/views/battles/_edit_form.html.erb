@@ -8,7 +8,7 @@
             <%= f.input :title %>
         </div>
         <div class="form-group">
-            <%= f.input :player_limit %>
+            <%= f.input :player_limit, collection: ([["2", 2], ["4", 4], ["6", 6], ["8", 8], ["10", 10], ["12", 12], ["14", 14], ["16", 16]]), selected: 4 %>
         </div>
         <% unless params[:status] == "Edit"%>
         <div class="form-group">

@@ -19,10 +19,10 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bourbon'
 gem 'neat'
-gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
 gem 'whenever', :require => false
+gem 'simple_form'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 

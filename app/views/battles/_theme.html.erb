@@ -1,10 +1,14 @@
 <div class="theme">
 	<div class="subheading"><%= "#{theme.capitalize}" %></div>
 	<div class="bottom-pusher">
-    <% unless theme != "energy" %>
-  		<%= link_to image_tag("#{theme}.jpg"), gametype_path(:theme => "#{theme}")  %>
-  		<%= link_to "Host", gametype_path(:theme => "#{theme}"), class: "primary-button" %>
-  		<%= link_to "Join", battles_path(:theme => "#{theme}"), class: "primary-button" %>
+    <% if theme == "energy" %>
+      <%= link_to image_tag("#{theme}.jpg"), gametype_path(:theme => "#{theme}")%>
+      <%= link_to "Host", gametype_path(:theme => "#{theme}"), class: "primary-button" %>
+      <%= link_to "Join", battles_path(:theme => "#{theme}"), class: "primary-button" %>
+    <% else %>
+      <%= link_to image_tag("#{theme}.jpg"), "#" %>
+      <button type="button" disabled class="primary-button">Host</button>
+      <button type="button" disabled class="primary-button">Join</button>
     <% end %>
 	</div>
 </div>
