@@ -74,8 +74,7 @@ class Battle < ActiveRecord::Base
   end
 	
 	def reading_notification
-		battles = Battle.all
-		for battle in battles
+		for battle in Battle.all
 			if battle.status == 'closing'
 				for user in battle.users
 					NotificationMailer.upload_reading(user).deliver
