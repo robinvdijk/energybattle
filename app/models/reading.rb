@@ -20,7 +20,7 @@ class Reading < ActiveRecord::Base
 	end
 
 	def closing_reading
-		if self.battle.status?('closing')
+		if self.battle.status == 'closing'
 			self.battle.update_attribute(:status, 'finished')
 		end
 	end

@@ -10,20 +10,17 @@
         <% find_team_members(team).each do |team| %>
         <% readings = team.user.readings.where(battle_id: @battle.id) %>
         <tr>
-
-            <td><%= readings.count %></td>
-            <% if readings.count == 0 %>
-              <td>Nog geen meterstand geupload</td>
-              <td>Nog geen meterstand geupload</td>
-              <td>Nog geen besparing in deze battle</td>
-            <% else %>
-              <td><%= readings.first.amount %></td>
-              <td><%= readings.last.amount %></td>
-              <td><%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2)%></td>
-            <% end %>
-
-            <td></td>
-
+         <td><%= readings.count %></td>
+         <% if readings.count == 0 %>
+           <td>Nog geen meterstand geupload</td>
+           <td>Nog geen meterstand geupload</td>
+           <td>Nog geen besparing in deze battle</td>
+         <% else %>
+           <td><%= readings.first.amount %></td>
+           <td><%= readings.last.amount %></td>
+           <td><%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2)%></td>
+         <% end %>
+         <td></td>
         </tr>
 		<% end %>
         <tr class="blank_row">
@@ -43,12 +40,5 @@
             <td></td>
 			<% end %>
         </tr>
-		
     <table>
 </div>
-
-
-
-
-
-
