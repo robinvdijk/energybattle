@@ -1,10 +1,12 @@
 <% if (current_user.school == nil) %>
+<div class="extra_info">
 	<% provide(:title, "Extra Informatie") %>
 	<h1>Welkom op Energybattle.</h1>
 	<p>Voordat je aan de slag kan gaan met Energybattle moet je nog een aantal gegevens invullen.</p>
-	<p>Ook moet je toestemming vragen aan je ouders als je nog geen 18 bent</p>
+	<p>Ook moet je toestemming vragen aan je ouders als je nog geen 18 bent</p><br>
 	<%= render 'extra_info' %>
 	<%= link_to "Uitloggen", destroy_user_session_path, :method => :delete, class: "fb-btn" %>
+</div>
 
 <% else %>
 	<% provide(:title, "Dashboard") %>
