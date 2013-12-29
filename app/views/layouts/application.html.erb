@@ -13,7 +13,7 @@
   <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-  <body>
+  <body <% if @current_user && @current_user.parental_approval %>class="without-background"<% end %>>
     <header></header>
     <nav>
       <%= render 'layouts/header' %>

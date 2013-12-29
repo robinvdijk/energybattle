@@ -1,1 +1,32 @@
-Users#show
+<% provide(:title, @user.name) %>
+
+<div class="profile-info">
+  <%= image_tag "#{@user.avatar}&height=130&width=130", class: 'rounded-img' %>
+  <h2 class="heading"><%= @user.name%></h2>
+
+  <ul class="left">
+    <li><%= @user.school %></li>
+    <li><%= @user.grade %></li>
+    <li><%= @user.birthday %></li>
+    <li>Gebruiker sinds <br/> <%= @user.created_at.strftime("%d-%m-%Y") %></li>
+  </ul>
+	
+  <ul class="right">
+    <li><%= pluralize(@user.family_size, 'persoon', 'personen') %> in huis</li>
+    <li>Team cool</li>
+  </ul>
+  <hr class="clear">
+  <div class="profile-statistics">
+    <ul>
+      <li>
+        12 <span class="small">Level</span>
+      </li>
+      <li>
+        11300 <span class="small">Punten</span>
+      </li>
+      <li>
+        <%= @user.battles.count %> <span class="small">Battles</span>
+      </li>
+    </ul>
+  </div>
+</div>

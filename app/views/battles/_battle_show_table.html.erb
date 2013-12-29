@@ -30,11 +30,13 @@
             <td><%= @readings_sum %></td>
             <td><%= @begin_amount_sum %></td>
             <td><%= @current_amount_sum %></td>
+            <td><%#= number_to_percentage(@energy_savings_sum / @battle.team_relations.where(team: "host_team").count, :precision => 2) %></td>
             <td></td>
 			<% elsif team == "opponent" %>
             <td><%= @readings_sum2 %></td>
             <td><%= @begin_amount_sum2 %></td>
             <td><%= @current_amount_sum2 %></td>
+            <td><%#= number_to_percentage(@energy_savings_sum2 / @battle.team_relations.where(team: "opponent_team").count, :precision => 2) %></td>
             <td></td>
 			<% end %>
         </tr>

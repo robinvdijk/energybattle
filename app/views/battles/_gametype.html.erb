@@ -1,5 +1,10 @@
 <div class="theme">
 	<div class="subheading"><%= "#{game_type.capitalize}" %></div>
+  <% if game_type == "snelste" %>
 	<%= link_to image_tag("#{game_type}.jpg"), new_battle_path(:theme => params[:theme], game_type: "#{game_type}")  %>
-	<%= link_to "Choose", new_battle_path(:theme => params[:theme], game_type: "#{game_type}"), class: "primary-button bottom-pusher" %>
+	<%= link_to "Kies", new_battle_path(:theme => params[:theme]), game_type: "#{game_type}", class: "primary-button bottom-pusher" %>
+  <% else %>
+	<%= link_to image_tag("#{game_type}.jpg"), '#'%>
+  <button type="button" disabled class="primary-button bottom-pusher">Choose</>
+  <% end %>
 </div>
