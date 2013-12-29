@@ -2,12 +2,12 @@
 <%= render "battles/users/search_members", team: team if current_user_is_host %>
 <ul class="teams-headrow">
   <li class="team-head1">Speler</li>
-  <li class="team-head2">Score</li>
+  <li class="team-head2">Level</li>
   <li class="team-head3">Status</li>
 </ul>
 <% find_team_members(team).each do |team|%>
     <div class="member">
-        <%= image_tag team.user.avatar if team.user.avatar == true  %>
+        <%= image_tag team.user.avatar if team.user.avatar.present?  %>
         <ul>
             <li>
               <%= link_to team.user.name, team.user %>
