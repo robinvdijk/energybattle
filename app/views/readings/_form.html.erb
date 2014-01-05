@@ -1,16 +1,20 @@
-<%= simple_form_for @reading, :action => "create" do |f| %>
-	<%= f.hidden_field :user_id, :value => current_user.id %>
-	<%= f.hidden_field :battle_id, :value => params[:id] %>
-	<% if current_user.readings.where(battle_id: @battle.id).any? %>
-		Laatste ingevoerde Meterstand: <%= current_user.readings.where(battle_id: @battle.id).last.amount %> KWh
-	<% else %>
-		Er zijn nog geen meterstanden ingevoerd
-	<% end%>
-	<div class="form-group">
-		<%= f.input :meter %>
-	</div>
-	<div class="form-group">
-		<%= f.input :amount %>
-	</div>
-	<%= f.submit "Meterstand opslaan" %>
-<% end %>
+<% if @battle.in_battle?(current_user) %>
+	<%= simple_form_for @reading, :action => "create" do |f| %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.hidden_field :battle_id, :value => params[:id] %>
+		<% if current_user.readings.where(battle_id: @battle.id).any? %>
+			Laatste ingevoerde Meterstand: <%= current_user.readings.where(battle_id: @battle.id).last.amount %> KWh
+		<% else %>
+			Er zijn nog geen meterstanden ingevoerd
+		<% end%>
+		<div class="form-group">
+			<%= f.input :meter %>
+		</div>
+		<div class="form-group">
+			<%= f.input :amount %>
+		</div>
+		<%= f.submit "Meterstand opslaan" %>
+	<% end %>
+<% else %>
+	Hier moet nog info in komen te staan als de gene niet in de battle zit.
+<% end %>	

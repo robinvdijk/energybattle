@@ -82,13 +82,14 @@ class BattlesController < TeamRelationsController
     @battle = Battle.find(params[:id])
     team_relation = TeamRelation.where(:user_id => params[:user_id], :battle_id => @battle.id).first
     notification = Notification.create!(:notification_type => 'kick_request', :battle_id => @battle.id, :sender_id => current_user.id, :receiver_id => 1)
-    redirect_to :back
 
     unless params[:user_id] == @battle.host_id
       TeamRelation.where(user_id: params[:user_id], battle_id: @battle.id).first
       Notification.create!(notification_type: 'kick_request', battle_id: @battle.id, sender_id: current_user.id, receiver_id: params[:user_id])
-      redirect_to :back
     end
+		
+    redirect_to :back, notice: "#{User.find(params[:user_id]).name} "
+		
   end
 	
 
