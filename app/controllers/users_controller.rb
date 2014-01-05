@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @battle = Battle.find(7) # Nog aanpassen naar een param
     @members = @battle.users.each{ |u| u.id }
     @users = @users.where.not(id: @members.map{ |m| m.id })
-    @users = @users.where("name LIKE ? AND id != ? ", "%#{params[:term]}%", @current_user.id).map{ |u| { label: u.name, value: u.id }} if params[:term].present?
+    @users = @users.where("name LIKE ? AND id != ? ", "%#{params[:term]}%", @current_user.id).map{ |u| { label: u.name, value: u.id, icon: u.avatar }} if params[:term].present?
     render json: @users
   end
 

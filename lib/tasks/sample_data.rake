@@ -13,7 +13,7 @@ def make_users
     name = Faker::Name.name
     email = "test-#{n}@test.nl"
     amount = [3300,4200,4600,5500]
-    user = User.create!(name: name,email: email, password: "password",password_confirmation: "password")
+    user = User.create!(name: name,email: email, password: "password", password_confirmation: "password")
     user = Reading.create!(user_id: user.id, battle_id: :null, created_at: 1.week.ago, updated_at: 1.week.ago, amount: amount.shuffle.first)
   end
 end
@@ -22,7 +22,7 @@ def make_battles_to_join
   users = User.where.not(id: 1)
   1.times do |n|
     users.each do |user|
-      Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy", status: "pending", start_date: "2013-11-12", end_date: "2013-11-19", duration: 604800, player_limit: 12, title: "Join-#{user.id-1}", game_type: "snelste" )
+      Battle.create!(host_id: user.id, opponent_id: :null , winner_id: user.id, theme: "energy", status: "pending", start_date: "2013-12-23", end_date: "2013-12-30", duration: 604800, player_limit: 12, title: "Join-#{user.id-1}", game_type: "beste" )
     end
   end
 end
@@ -31,7 +31,7 @@ def make_own_battles
   current_user = User.find(1)
   users = User.where.not(id: 1)
   6.times do |n|
-    battle = Battle.create!(host_id: current_user.id, theme: "energy", status: "started", start_date: Date.today+n, end_date: 7.days.from_now.to_date+n, duration: 7, title: "Host-#{n+1}", player_limit: (n+1)*2, game_type: "snelste")
+    battle = Battle.create!(host_id: current_user.id, theme: "energy", status: "started", start_date: Date.today, end_date: 7.days.from_now.to_date, duration: 7, title: "Host-#{n+1}", player_limit: (n+1)*2, game_type: "beste")
 
     order = users.shuffle
     order_id = order.map { |o| o.id }

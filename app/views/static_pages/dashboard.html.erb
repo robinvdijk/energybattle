@@ -105,6 +105,7 @@
 	<% end %>
 <% end %>
 <% end %>
+<% end %>
 
 <div class="profile-info">
   <%= image_tag "#{current_user.avatar}&height=130&width=130", class: 'rounded-img' %>
@@ -117,7 +118,7 @@
     <li><%= current_user.birthday %></li>
     <li>Gebruiker sinds <br/> <%= current_user.created_at.strftime("%d-%m-%Y") %></li>
   </ul>
-	
+
   <ul class="right">
     <li><%= pluralize(current_user.family_size, 'persoon', 'personen') %> in huis</li>
     <li>Team cool</li>
