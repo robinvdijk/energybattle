@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
     team_relations = TeamRelation.where(user_id: current_user.id)
 		@current_user_host_battles = Battle.where(host_id: current_user.id)
 		@current_user_ended_battles = current_user.battles.where(status: 'finished')
+    @battles_joined = current_user.battles.where.not(host_id: current_user.id)
   end
 
   def homepage

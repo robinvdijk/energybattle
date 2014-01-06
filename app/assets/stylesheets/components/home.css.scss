@@ -1,7 +1,7 @@
 body{
 	background-image: url('achtergrond.png');
 	&.without-background {
-		background: white;		
+		background: white;
 	}
 }
 
@@ -28,7 +28,6 @@ body{
 		font-size: 0.8em;
 	}
 }
-
 .fb-btn{
 	a{
 		color: $white;

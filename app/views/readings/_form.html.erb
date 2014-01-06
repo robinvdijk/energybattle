@@ -2,6 +2,7 @@
 	<%= simple_form_for @reading, :action => "create" do |f| %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :battle_id, :value => params[:id] %>
+    <%= f.hidden_field :created_at, :value => Date.today %>
 		<% if current_user.readings.where(battle_id: @battle.id).any? %>
 			Laatste ingevoerde Meterstand: <%= current_user.readings.where(battle_id: @battle.id).last.amount %> KWh
 		<% else %>
@@ -17,4 +18,4 @@
 	<% end %>
 <% else %>
 	Hier moet nog info in komen te staan als de gene niet in de battle zit.
-<% end %>	
+<% end %>

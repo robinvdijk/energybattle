@@ -1,0 +1,4 @@
+<% if current_user.readings.present? %>
+	<%= content_tag :div, "", id: "consumption-graph", data: {readings: Reading.consumption_chart_data(current_user)} %>
+<% end %>
+

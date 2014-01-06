@@ -5,6 +5,6 @@
 	<%= link_to "Kies", new_battle_path(:theme => params[:theme]), game_type: "#{game_type}", class: "primary-button bottom-pusher" %>
   <% else %>
 	<%= link_to image_tag("#{game_type}.jpg"), '#'%>
-  <button type="button" disabled class="primary-button bottom-pusher">Kies</button>
+  	<button type="button" disabled class="primary-button bottom-pusher">Kies</button>
   <% end %>
 </div>

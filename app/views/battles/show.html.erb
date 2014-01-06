@@ -1,10 +1,19 @@
 <div class="heading"><%= @battle.title %> / <%= @battle.status %></div>
+
+<ul id="progressbar">
+	<li class="active">Pending</li>
+	<li class="<% if @battle.status?('prepare') %>active<% end %>">Prepare</li>
+	<li class="<% if @battle.status?('started') %>active<% end %>">Started</li>
+	<li class="<% if @battle.status?('closing') %>active<% end %>">Closing</li>
+	<li class="<% if @battle.status?('finished') %>active<% end %>">Finished</li>
+</ul>
+
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
 <% if @battle.status?('started') || @battle.status?('prepare') || @battle.status?('closing') %>
   <%= render 'battles/statistics/overview' %>
-  
+
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">
@@ -15,17 +24,15 @@
         </div>
     </div>
 <% elsif @battle.status?("finished") %>
-
-	<%= image_tag('dirt.jpg', class: 'rotate') %>
-
+	<%= render 'battles/statistics/overview' %>
 	<div class="winner">
 		<h1>Winnaar</h1>
 	   <%= image_tag "#{@battle.winning_player.avatar}&height=130&width=130", class: 'rounded-img' %>
 		<h2>Besparing</h2>
 		<% readings = @battle.winning_player.readings.where(battle_id: @battle.id) %>
 		<% savings = number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) if readings.any? %>
-		
-		
+
+
 			<% if savings.to_f > 0 %>
 				<span class='savings positive'>+ <%= savings %></span>
 			<% elsif savings.to_f < 0 %>
