@@ -14,6 +14,8 @@ $(document).ready(function() {
 
   Morris.Line($('#overall-graph').data('readings'));
 
+  Morris.Line($('#team_vs_team-graph').data('readings'));
+
   // Morris.Line({
   //   element: 'overall-graph',
   //   data: $('#overall-graph').data('readings'),

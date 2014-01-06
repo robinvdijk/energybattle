@@ -16,7 +16,7 @@ class Reading < ActiveRecord::Base
 
   def exif_data
     exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{self.id}", "#{File.basename(self.meter_url)}").to_s)
-  	self.update_attributes(:original_date => exif.date_time) if exif.date_time
+    self.update_attributes(:original_date => exif.date_time) if exif.date_time
   end
 
   def closing_reading
@@ -28,23 +28,31 @@ class Reading < ActiveRecord::Base
   def self.personal_chart_data(battle, current_user)
     start_date = battle.start_date
     end_date = battle.end_date
-    personal_readings = where(battle_id: battle.id, user_id: current_user.id)
+    personal_readings = Reading.where(battle_id: battle.id, user_id: current_user.id)
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
-    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount)
+    # growth = verschil in laatste twee readings / verschil in dagen daartussen
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
 
+    personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date
+
+    counter = 0
     (start_date.to_date..end_date.to_date).map do |date|
-      days_gone = start_date..date
-      {
-        original_date: date,
-        personal: reading_by_day[date],
-        ideal: reading_by_day[date] || personal_readings.last.amount + growth.to_i * (days_gone.count)
-        #if reading_by_day[date] = nil do |i|
-        #  ideal: personal_readings.last.amount + growth.to_i * i
-        #else
-        #  ideal: reading_by_day[date]
-        #end
-      }
+      if date > personal_readings.last.created_at.to_date
+        counter+=1
+        {
+          original_date: date,
+          personal: reading_by_day[date],
+          ideal: personal_readings.last.amount + growth.to_i * counter
+        }
+      else
+        counter = 0
+        {
+          original_date: date,
+          personal: reading_by_day[date],
+          ideal: reading_by_day[date]
+        }
+      end
     end
   end
 
@@ -56,7 +64,7 @@ class Reading < ActiveRecord::Base
     end
   end
 
-  def self.overall_chart_data(battle)
+  def self.overall_chart_data(battle, current_user)
     output = {}
 
     start_date = battle.start_date
@@ -67,9 +75,9 @@ class Reading < ActiveRecord::Base
 
     readings = battle.readings.includes(:user).where(created_at: start_date.to_date..end_date.to_date)
     readings_by_date = readings.inject({}) do |hsh, r|
-      hsh[r.created_at] = [] unless hsh.key?(r.created_at)
+      hsh[r.created_at.to_date] = [] unless hsh.key?(r.created_at.to_date)
 
-      hsh[r.created_at] << r
+      hsh[r.created_at.to_date] << r
       hsh
     end
     labels = []
@@ -89,6 +97,19 @@ class Reading < ActiveRecord::Base
 
     keys = data.first.keys
     keys.shift
+    labels.shift
+
+    battleUsersId = battle.users.pluck(:id)
+    users = Hash[battleUsersId.map.with_index.to_a]
+    index = users[current_user.id]
+    lineColors = []
+    battleUsersId.count.times do |i|
+      if i == index
+        lineColors << '#0b62a4'
+      else
+        lineColors << '#999'
+      end
+    end
 
     output['data'] = data
     output['xkey'] = 'date'
@@ -96,33 +117,63 @@ class Reading < ActiveRecord::Base
     output['ykeys'] = keys
     output['labels'] = labels
     output['element'] = 'overall-graph'
+    output['lineColors'] = lineColors
 
     output
-
-    # (start_date..end_date).map do |date, name_of_members|
-    #   {
-    #     original_date: date,
-    #     user1: reading_by_name[0][name_of_members][date],
-    #     user2: reading_by_name[3]["Zetta Reichert I"][date]
-    #   }
-    # end
   end
 
-  def self.amount_of_each_member(start_date, end_date)
-    readings = where(created_at: start_date.to_date..end_date.to_date)
-    readings.map do |reading|
-      results = Hash.new do |hash, key|
-        hash = {}
-      end
+  def self.team_vs_team_chart_data(battle)
+    output = {}
 
-      arr = [[reading.user.name, reading.created_at.to_date, reading.amount]]
-      arr.each do |sub_arr|
-        main_key = sub_arr[0]
-        sub_key = sub_arr[1]
+    start_date = battle.start_date
+    end_date = battle.end_date
+    # overall_readings = where(battle_id: battle.id)
+    # name_of_members = battle.users.pluck(:name).first
+    # reading_by_name = overall_readings.amount_of_each_member(start_date, end_date)
 
-        results[main_key][sub_key] = sub_arr[2]
-      end
-      results
+    readings = battle.readings.includes(:user).where(created_at: start_date.to_date..end_date.to_date)
+    readings_by_date = readings.inject({}) do |hsh, r|
+      hsh[r.created_at.to_date] = [] unless hsh.key?(r.created_at.to_date)
+
+      hsh[r.created_at.to_date] << r
+      hsh
     end
+    labels = []
+
+    data = readings_by_date.map do |date, readings|
+      hsh = {
+        date: date
+      }
+
+      for reading in readings
+        hsh[reading.user_id] = reading.amount
+        labels << reading.user.name
+      end
+
+      hsh
+    end
+
+    keys = data.first.keys
+    keys.shift
+    labels.shift
+
+    lineColors = []
+    battle.users.pluck(:id).each do |i|
+      if battle.team_relations.where(user_id: i)[0].team == "host_team"
+        lineColors << '#999'
+      else
+        lineColors << '#0b62a4'
+      end
+    end
+
+    output['data'] = data
+    output['xkey'] = 'date'
+    output['element'] = 'line-example'
+    output['ykeys'] = keys
+    output['labels'] = labels
+    output['element'] = 'overall-graph'
+    output['lineColors'] = lineColors
+
+    output
   end
 end
