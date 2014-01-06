@@ -182,7 +182,7 @@ class Reading < ActiveRecord::Base
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
     # growth = verschil in laatste twee readings / verschil in dagen daartussen
-    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i if personal_readings.count > 1
 
     counter = 0
     (start_date.to_date..end_date.to_date).map do |date|
