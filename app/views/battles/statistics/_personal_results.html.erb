@@ -1,0 +1,20 @@
+<div class="col-8">
+	<div class="battle_show">
+	    <table>
+	        <tr>
+	            <td>Fotouploads</td>
+	            <td>Eerste Meterstand</td>
+	            <td>Huidige Meterstand</td>
+	            <td>Besparing</td>
+	            <td>Gezinsgrootte</td>
+	        </tr>
+			<tr>
+				<td><%= current_user.readings.where(battle_id: @battle.id).count %></td>
+				<td><%= current_user.readings.where(battle_id: @battle.id).first.amount %></td>
+				<td><%= current_user.readings.where(battle_id: @battle.id).last.amount %></td>
+				<td><%= number_to_percentage(100 - (current_user.readings.where(battle_id: @battle.id).last.amount.to_f / current_user.readings.first.amount.to_f) * 100, :precision => 2)%></td>
+				<td><%= current_user.family_size %></td>
+			</tr>
+		</table>
+	</div>
+</div>

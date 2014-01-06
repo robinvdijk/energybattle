@@ -22,11 +22,11 @@
   border-radius:7px;
   background:url('energie.jpg');
   background-size: 345px;
-   
+
   box-shadow: 0 0.125em 0 0 $darkblue;
   margin-top: 2em;
   position:relative;
-  
+
   .primary-button{
     margin-left:1em;
   }
@@ -108,6 +108,7 @@
   .icon-message{
     margin-right: 0.55em;
     float:right;
+    border-radius:0;
   }
 }.invite {
   text-align:center;
@@ -125,3 +126,6 @@
 }.settings-item{
   padding:1em;
 }
+
+#team_margin {
+	margin-bottom: 4.2em;}

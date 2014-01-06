@@ -1,7 +1,12 @@
 #battles table {
   width:100%;
 }
-.battle_index table{
+.dashboard-tables table{
+  width:65%;
+  float:right;
+}
+
+.battle_index, .dashboard-tables table{
   margin-top:1em;
   tr:nth-child(odd){
     background-color:$grey;
@@ -30,6 +35,7 @@
     border-bottom-right-radius:7px;
   }
 }
+
 
 .battle_show table{
   width:100%;

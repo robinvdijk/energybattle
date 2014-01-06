@@ -1,4 +1,4 @@
-<div class="battle_show">
+<div class="battle_show" id="team_margin">
 	<table>
 		<tr>
 			<td>Avatar</td>
@@ -6,7 +6,7 @@
 			<td>Score</td>
 			<td>Besparing</td>
 		</tr>
-		
+
 		<% find_team_members(team).each do |team| %>
 			<tr>
 				<td><%= image_tag team.user.avatar, class: 'avatar' if team.user.avatar? %></td>
@@ -19,4 +19,5 @@
 			</tr>
 		<% end %>
 	</table>
+  <td><%= render "team_relation/join_team_prepare", team: "#{team}_team" unless current_user_is_host %></td>
 </div>

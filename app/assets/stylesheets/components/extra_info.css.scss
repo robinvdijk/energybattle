@@ -1,0 +1,81 @@
+/*.extra_info{
+	@include outer-container;
+	@include span-columns(6);
+	@include shift(3);
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
+	padding:1em;
+	position:relative;
+	border-radius: 0.3em;
+	.fb-btn{
+		width:12.5em;
+	}
+}*/
+
+.extra_info{
+	@include outer-container;
+	@include span-columns(6);
+	@include shift(3);
+	width: 38%;
+	background-color: $grey;
+	box-shadow: 0 0.125em 0 0 $darkblue;
+	padding:1em 3em;
+	position:relative;
+	border-radius: 0.3em;
+	margin-left: 20em;
+	margin-bottom: 3em;
+	.fb-btn{
+		width:12.5em;
+		margin-left:0.3em;
+	}
+}
+
+.tooltip{
+	color: inherit; 
+	text-decoration: none;
+	position: relative;
+	span{
+		margin-left: -999em;
+		position: absolute;
+	}
+}
+.tooltip:hover span{
+	font-family: inherit;
+	position: absolute;
+ 	left: 1em;
+ 	top: 2em;
+ 	z-index: 99;
+ 	margin-left: 0;
+	width: 250px;
+	background: $grey;
+	border: 1px solid $blue;
+	border-radius: 0.3em;
+	h1 {
+		font-size: 1.2em;
+		font-weight: bold;
+		display: block;
+		padding: 0.2em 0 0.6em 0;
+	}
+	.fa-question-circle{
+		position: absolute;
+		opacity:0.15;
+	}
+	.fa-reading{
+		font-size: 15em;
+		right: 0.08em;
+		top: 0.2em;
+	}
+	.fa-grade{
+		font-size: 10em;
+		right: 0.38em;
+		top: 0.2em;
+	}
+	.fa-family-size{
+		font-size: 10em;
+		right:0.38em;
+		top:0.1em;
+	}
+}
+
+.custom { padding: 0.5em 0.8em 0.8em 2em; }
+* html a:hover { background: transparent; }

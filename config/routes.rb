@@ -23,6 +23,8 @@ Energybattle::Application.routes.draw do
     patch :invite, on: :member
     patch :switch, on: :member
   end
+  
+      
 	# mount Split::Dashboard, :at => 'split'
 
   root to: "static_pages#homepage"
@@ -31,4 +33,6 @@ Energybattle::Application.routes.draw do
   match '/gametype', to: 'static_pages#gametype', via: 'get'
   match '/meterstanden', to: 'readings#index', via: 'get'
   match '/invoeren', to: 'readings#new', via: 'get'
+
+  match '*a', to: "static_pages#dashboard", via: 'get'
 end

@@ -1,7 +1,7 @@
 body{
 	background-image: url('achtergrond.png');
 	&.without-background {
-		background: white;		
+		background: white;
 	}
 }
 
@@ -28,6 +28,7 @@ body{
 		font-size: 0.8em;
 	}
 }
+
 .simple_form input{
 
 	width: 300px;
@@ -41,17 +42,4 @@ body{
 	font-size: 1.5em;
 	text-align:center;
 	margin: 1em;
-}
-
-.extra_info{
-	@include outer-container;
-	@include span-columns(6);
-	@include shift(3);
-   background-color: $grey;
-   box-shadow: 0 0.125em 0 0 $darkblue;
-   padding:1em;
-   position:relative;
-   border-radius: 0.3em;
-   color: $blue;
-   font-size: 1.2em;
 }

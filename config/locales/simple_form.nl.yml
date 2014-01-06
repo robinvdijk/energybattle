@@ -22,7 +22,7 @@ nl:
       battle:
         new:
           title: 'Titel'
-          player_limit: 'max. spelers'
+          player_limit: 'Spelers'
           theme: 'Thema'
           game_type: 'Speltype'
           start_date: 'Start datum'
