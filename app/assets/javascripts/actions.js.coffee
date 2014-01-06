@@ -6,7 +6,7 @@ $ ->
 		this.remove()
 		
 	# Progressbar
-	$('#progressbar li').each (index) ->
+	$('#progressbar li').each ->
 		if $(this).next().hasClass('active')
 			$(this).addClass('active')
 	 
