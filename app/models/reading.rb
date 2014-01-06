@@ -34,8 +34,6 @@ class Reading < ActiveRecord::Base
     # growth = verschil in laatste twee readings / verschil in dagen daartussen
     growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
 
-    personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date
-
     counter = 0
     (start_date.to_date..end_date.to_date).map do |date|
       if date > personal_readings.last.created_at.to_date
@@ -175,5 +173,34 @@ class Reading < ActiveRecord::Base
     output['lineColors'] = lineColors
 
     output
+  end
+
+  def self.consumption_chart_data(current_user)
+    start_date = current_user.created_at.to_date
+    end_date = 2.weeks.from_now.to_date
+    personal_readings = Reading.where(user_id: current_user.id)
+    reading_by_day = personal_readings.amount_of_day(start_date, end_date)
+
+    # growth = verschil in laatste twee readings / verschil in dagen daartussen
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
+
+    counter = 0
+    (start_date.to_date..end_date.to_date).map do |date|
+      if date > personal_readings.last.created_at.to_date
+        counter+=1
+        {
+          original_date: date,
+          personal: reading_by_day[date],
+          ideal: personal_readings.last.amount + growth.to_i * counter
+        }
+      else
+        counter = 0
+        {
+          original_date: date,
+          personal: reading_by_day[date],
+          ideal: reading_by_day[date]
+        }
+      end
+    end
   end
 end

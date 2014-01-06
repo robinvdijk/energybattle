@@ -16,6 +16,15 @@ $(document).ready(function() {
 
   Morris.Line($('#team_vs_team-graph').data('readings'));
 
+  Morris.Line({
+    element: 'consumption-graph',
+    data: $('#consumption-graph').data('readings'),
+    xkey: 'original_date',
+    xLabels: ['day'],
+    ykeys: ['personal', 'ideal'],
+    labels: ['Meterstand', 'Uiteindelijke meterstand']
+  });
+
   // Morris.Line({
   //   element: 'overall-graph',
   //   data: $('#overall-graph').data('readings'),
