@@ -10,14 +10,14 @@ class Reading < ActiveRecord::Base
   belongs_to :user
   belongs_to :battle
 
-  #after_create :exif_data
-  #after_create :closing_reading
-
+  # after_create :exif_data
+  # after_create :closing_reading
 
   def exif_data
     exif = EXIFR::JPEG.new(Rails.root.join(METER_UPLOAD_PATH, "#{self.id}", "#{File.basename(self.meter_url)}").to_s)
     self.update_attributes(:original_date => exif.date_time) if exif.date_time
   end
+
 
   def closing_reading
     if self.battle.status == 'closing'
@@ -32,16 +32,18 @@ class Reading < ActiveRecord::Base
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
     # growth = verschil in laatste twee readings / verschil in dagen daartussen
-    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i if personal_readings.count > 1
 
     counter = 0
+    first_reading = current_user.readings.first
     (start_date.to_date..end_date.to_date).map do |date|
       if date > personal_readings.last.created_at.to_date
         counter+=1
         {
           original_date: date,
           personal: reading_by_day[date],
-          ideal: personal_readings.last.amount + growth.to_i * counter
+          ideal: personal_readings.last.amount + growth.to_i * counter,
+          expected: first_reading.amount + (first_reading.amount/365) * (date - first_reading.created_at.to_date).to_i
         }
       else
         counter = 0
@@ -182,7 +184,7 @@ class Reading < ActiveRecord::Base
     reading_by_day = personal_readings.amount_of_day(start_date, end_date)
 
     # growth = verschil in laatste twee readings / verschil in dagen daartussen
-    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i if personal_readings.count > 1
+    growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
 
     counter = 0
     (start_date.to_date..end_date.to_date).map do |date|

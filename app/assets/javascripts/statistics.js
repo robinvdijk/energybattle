@@ -5,8 +5,8 @@ $(document).ready(function() {
     data: $('#personal-graph').data('readings'),
     xkey: 'original_date',
     xLabels: ['day'],
-    ykeys: ['personal', 'ideal'],
-    labels: ['Meterstand', 'Uiteindelijke meterstand'],
+    ykeys: ['personal', 'ideal', 'expected'],
+    labels: ['Meterstand', 'Uiteindelijke meterstand', 'Verwachte meterstand'],
     ymin: 'auto',
     ymax: 'auto',
     hideHover: 'auto'
