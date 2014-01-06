@@ -1,3 +1,4 @@
+<h1><%= params[:theme] %></h1>
 <div class="battle_index">
 	<table>
 		<h1>Battles dat ik heb gejoined</h1>
@@ -8,6 +9,7 @@
 				<tr>
 					<td><%= link_to s.title, battle_path(s) %></td>
 					<td><%= s.theme.capitalize %></td>
+					<td><%= s.game_type.capitalize %></td>
 					<td><%= s.status.capitalize %></td>
 					<td><%= find_host(s.host_id).name %></td>
 
@@ -36,11 +38,12 @@
     <table>
     <h1>Alle battles</h1>
       <%= render 'table_name_battle' %>
-
         <% @battles.each do |s| %>
+		<% if s.status == "pending" || s.status == "prepare"%>
             <tr>
                 <td><%= link_to s.title, battle_path(s) %></td>
                 <td><%= s.theme.capitalize %></td>
+                <td><%= s.game_type.capitalize %></td>
                 <td><%= s.status.capitalize %></td>
                 <td><%= find_host(s.host_id).name %></td>
 
@@ -62,6 +65,7 @@
                     <% end %>
                 </td>
             </tr>
+		<% end %>
         <% end %>
     <table>
 </div>

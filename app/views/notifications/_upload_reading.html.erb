@@ -1,0 +1,5 @@
+ <%= image_tag current_user.avatar, class: "facebookfoto" %>
+<p>
+  In <%= link_to notification.battle.title, battle_path(notification.battle) %> moet je nog een meterstand uploaden om je eindresultaat te kunnen bekijken.
+</p>
+<%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>

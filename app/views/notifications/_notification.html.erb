@@ -1,27 +1,3 @@
 <%= div_for notification do %>
-  <% case notification.notification_type %>
-    <% when "general" %>
-	    <%= image_tag current_user.avatar, class: "facebookfoto" %>
-	 
-      <p>
-        In <%= link_to notification.battle.title, battle_path(notification.battle) %> moet je nog een fotouploaden om te kunnen beginnen
-      </p>
-      <%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
-    <% when "invited" %>
-	    <%= image_tag notification.sender.avatar, class: "facebookfoto" %>
-      <p>
-        <%= link_to notification.sender.name, user_path(notification.sender) %> heeft je uitgenodigd voor een <%= notification.battle.theme %> battle.
-      </p>
-      <%= link_to fa_icon("check", class:"notification_button_accept"), accept_notification_path(notification), method: :patch %>
-      <%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
-
-  	<% when "kick_request" %>
-	   <%= image_tag notification.sender.avatar, class: "facebookfoto" %>
-	
-      <p>
-        <%= link_to notification.sender.name, user_path(notification.sender) %> heeft je uit een <%= notification.battle.theme %> battle gekickt.
-      </p>
-      <%= link_to fa_icon("check", class:"notification_button_accept"), accept_notification_path(notification), method: :patch %>
-      <%= link_to fa_icon("times", class:"notification_button_decline"), notification, method: :delete, data: { confirm: 'Weet je het zeker?' } %>
-  <% end %>
+	<%= render "notifications/#{notification.notification_type}", notification: notification %>
 <% end %>

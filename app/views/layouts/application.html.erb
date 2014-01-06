@@ -13,41 +13,17 @@
   <script src="http://cdn.oesmith.co.uk/morris-0.4.3.min.js"></script>
   <%= csrf_meta_tags %>
 </head>
-  <body>
-	  <!-- ClickTale Top part -->
-	  <script type="text/javascript">
-	  var WRInitTime=(new Date()).getTime();
-	  </script>
-	  <!-- ClickTale end of Top part -->
-	  
+  <body <% if @current_user && @current_user.parental_approval %>class="without-background"<% end %>>
     <header></header>
     <nav>
       <%= render 'layouts/header' %>
     </nav>
     <div class="blanket"></div>
-      <%# flash.each do |key, value| %>
-        <!-- <div class="flash <%#= key %>"><%#= value %></div> -->
-      <%# end %>
+    <% flash.each do |key, value| %>
+      <div class="flash <%= key %>"><%= value %></div>
+    <% end %>
     <div class="container">
       <%= yield %>
     </div>
-  
-	<!-- ClickTale Bottom part -->
-
-	<script type='text/javascript'>
-	// The ClickTale Balkan Tracking Code may be programmatically customized using hooks:
-	// 
-	//   function ClickTalePreRecordingHook() { /* place your customized code here */  }
-	//
-	// For details about ClickTale hooks, please consult the wiki page http://wiki.clicktale.com/Article/Customizing_code_version_2
-
-	document.write(unescape("%3Cscript%20src='"+
-	(document.location.protocol=='https:'?
-	"https://clicktalecdn.sslcs.cdngc.net/www02/ptc/3632c354-b286-4686-84ca-f53cdffc7cb5.js":
-	"http://cdn.clicktale.net/www02/ptc/3632c354-b286-4686-84ca-f53cdffc7cb5.js")+"'%20type='text/javascript'%3E%3C/script%3E"));
-	</script>
-
-	<!-- ClickTale end of Bottom part -->
-	
   </body>
 </html>

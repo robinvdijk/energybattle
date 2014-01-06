@@ -14,7 +14,7 @@ class ReadingsController < ApplicationController
   end
 
   def create
-    @reading = Reading.new(reading_params)
+    @reading = Reading.create(reading_params)
 
     check_amount = @reading.amount >= current_user.readings.last.amount if current_user.readings.any?
     if check_amount
@@ -23,7 +23,6 @@ class ReadingsController < ApplicationController
     else
       flash[:error] = "Er is iets mis gegaan"
       redirect_to :back
-
     end
   end
 

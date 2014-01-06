@@ -19,10 +19,12 @@ gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'bourbon'
 gem 'neat'
-gem 'simple_form'
 gem 'timecop'
 gem "font-awesome-rails"
-gem 'faker'
+gem 'whenever', :require => false
+gem 'simple_form'
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -42,6 +44,7 @@ group :development, :test do
   gem 'sqlite3', '1.3.8'
   gem 'rspec-rails', '2.13.1'
   gem 'growl'
+  gem 'faker'
 end
 
 group :production do
@@ -61,6 +64,7 @@ end
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt-ruby', '~> 3.0.1'
+# gem 'split', require: 'split/dashboard'
 
 # Use unicorn as the app server
 # gem 'unicorn'
