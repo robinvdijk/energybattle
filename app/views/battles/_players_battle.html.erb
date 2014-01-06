@@ -5,14 +5,20 @@
 		  	<td>Naam</td>
 		  	<td>Level</td>
 		</tr>
+		<% if params[:result] == 'personal' %>
+		<tr>
+			<td><%= image_tag current_user.avatar %></td>
+			<td><%= current_user.name %></td>
+			<td>n.v.t</td>
+		</tr> 
+		<% else %>
         <% find_team_members(team).each do |team| %>
 		<tr>
 			<td><%= image_tag team.user.avatar %></td>
 			<td><%= team.user.name %></td>
-			<% if team.user.readings.where(battle_id: @battle.id) %>
-			<td><%= number_to_percentage 1 - ((team.user.readings.where(battle_id: @battle.id).sum(:amount).to_f) / 12500) %></td>
-			<% end %>
+			<td>n.v.t</td>
 		</tr>
         <% end %>
+		<% end %>
     </table>
 </div>

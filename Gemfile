@@ -23,6 +23,7 @@ gem 'timecop'
 gem "font-awesome-rails"
 gem 'whenever', :require => false
 gem 'simple_form'
+gem 'simple-navigation'
 
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
