@@ -45,7 +45,7 @@ class Battle < ActiveRecord::Base
 	end
 
 	def winning_player
-		User.find(self.winner_id) if self.status?('finished')
+    User.find(self.winner_id) if self.status?('finished')
 	end
 	
   def in_battle?(current_user)
