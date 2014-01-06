@@ -15,6 +15,10 @@
 <% else %>
 	<% provide(:title, "Dashboard") %>
 
+	<%= welcome_message %>
+	
+<% end %>
+
 	<% if @current_user_ended_battles.any? %>
 			<table>
 			<h1>Battles die ik heb gespeeld</h1>

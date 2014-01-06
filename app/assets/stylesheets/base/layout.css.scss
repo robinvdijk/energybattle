@@ -6,6 +6,7 @@
 }
 .box-padding{
   @extend .box;
+  background-color: $green;
   padding:1em;
   margin:0 0 1em 0;
   .primary-button{
