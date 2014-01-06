@@ -4,7 +4,7 @@
 </div>
 <% if @battle.status?('started') || @battle.status?('prepare') || @battle.status?('closing') %>
   <%= render 'battles/statistics/overview' %>
-  
+
 <% elsif @battle.status?('pending') %>
     <div class="col-8 omega-1 teams-header">
         <div class="col-4-of-8">
@@ -22,8 +22,8 @@
 		<h2>Besparing</h2>
 		<% readings = @battle.winning_player.readings.where(battle_id: @battle.id) %>
 		<% savings = number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) if readings.any? %>
-		
-		
+
+
 			<% if savings.to_f > 0 %>
 				<span class='savings positive'>+ <%= savings %></span>
 			<% elsif savings.to_f < 0 %>
