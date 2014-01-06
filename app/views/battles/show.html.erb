@@ -1,4 +1,13 @@
 <div class="heading"><%= @battle.title %> / <%= @battle.status %></div>
+
+<ul id="progressbar">
+	<li class="active">Pending</li>
+	<li class="<% if @battle.status?('prepare') %>active<% end %>">Prepare</li>
+	<li class="<% if @battle.status?('started') %>active<% end %>">Started</li>
+	<li class="<% if @battle.status?('closing') %>active<% end %>">Closing</li>
+	<li class="<% if @battle.status?('finished') %>active<% end %>">Finished</li>
+</ul>
+
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
@@ -15,9 +24,7 @@
         </div>
     </div>
 <% elsif @battle.status?("finished") %>
-
-	<%= image_tag('dirt.jpg', class: 'rotate') %>
-
+	<%= render 'battles/statistics/overview' %>
 	<div class="winner">
 		<h1>Winnaar</h1>
 	   <%= image_tag "#{@battle.winning_player.avatar}&height=130&width=130", class: 'rounded-img' %>
