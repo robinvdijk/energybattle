@@ -13,6 +13,8 @@
 <% else %>
 	<% provide(:title, "Dashboard") %>
 	<%= welcome_message %>
+	
+<% end %>
 
 <% if @current_user_ended_battles.any? %>
 		<table>
