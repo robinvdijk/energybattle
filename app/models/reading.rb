@@ -35,13 +35,15 @@ class Reading < ActiveRecord::Base
     growth = (personal_readings.last.amount - personal_readings.order("id DESC").offset(1).first.amount) / (personal_readings.last.created_at.to_date - personal_readings.order("id DESC").offset(1).first.created_at.to_date).to_i
 
     counter = 0
+    first_reading = current_user.readings.first
     (start_date.to_date..end_date.to_date).map do |date|
       if date > personal_readings.last.created_at.to_date
         counter+=1
         {
           original_date: date,
           personal: reading_by_day[date],
-          ideal: personal_readings.last.amount + growth.to_i * counter
+          ideal: personal_readings.last.amount + growth.to_i * counter,
+          expected: first_reading.amount + (first_reading.amount/365) * (date - first_reading.created_at.to_date).to_i
         }
       else
         counter = 0
