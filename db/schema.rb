@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20131218124858) do
     t.string   "theme"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "status"
     t.string   "title"
     t.date     "start_date"
     t.date     "end_date"
@@ -28,6 +27,7 @@ ActiveRecord::Schema.define(version: 20131218124858) do
     t.integer  "player_limit"
     t.boolean  "access"
     t.integer  "duration"
+    t.string   "status"
   end
 
   create_table "notifications", force: true do |t|
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20131218124858) do
   end
 
   create_table "readings", force: true do |t|
-    t.integer  "amount",        default: 0
+    t.integer  "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "meter"

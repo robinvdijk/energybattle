@@ -1,4 +1,14 @@
 <div class="heading"><%= @battle.title %> / <%= @battle.status %></div>
+
+<ul id="progressbar">
+	<li class="active">Nieuw</li>
+	<li>Pending</li>
+	<li>Prepare</li>
+	<li>Started</li>
+	<li>Closing</li>
+	<li>Finished</li>
+</ul>
+
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
