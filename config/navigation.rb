@@ -49,12 +49,12 @@ SimpleNavigation::Configuration.run do |navigation|
     #                            when the item should be highlighted, you can set a regexp which is matched
     #                            against the current URI.  You may also use a proc, or the symbol <tt>:subpath</tt>. 
     #
-    primary.item :key_1, 'Persoonlijk', battle_path(result: 'personal'), id: 'tab_navigation' 
+    primary.item :key_1, 'Overzicht &nbsp;&nbsp;&nbsp; |', battle_path(result: 'overview'), id: 'tab_navigation' 
 
     # Add an item which has a sub navigation (same params, but with block)
-    primary.item :key_2, 'Team', battle_path(result: 'team'), id: 'tab_navigation' 
+    primary.item :key_2, 'Persoonlijk &nbsp;&nbsp;&nbsp; |', battle_path(result: 'personal'), id: 'tab_navigation' 
       # Add an item to the sub navigation (same params again)
-    primary.item :key_3, 'Beste', battle_path(result: 'best'), id: 'tab_navigation' 
+    primary.item :key_3, 'Team', battle_path(result: 'team'), id: 'tab_navigation' 
     
     end
     

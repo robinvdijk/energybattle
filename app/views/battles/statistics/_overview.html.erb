@@ -1,3 +1,4 @@
+<% unless @battle.status == 'finished' %>
 <div class="col-8 omega-1 box">
   <div class="heading"> Battle: <%= @battle.title %> / Status: <%= @battle.status %></div>
   <div class="col-4-of-8">
@@ -9,15 +10,15 @@
     <div class="settings-item"><%= @battle.duration %> Dagen</div>
   </div>
 </div>
+<% end %>
 <% if @battle.status == 'finished' %>
-<%= render_navigation %>
 	<% if params[:result] == 'personal' %>
 		<%= render 'battles/statistics/personal_results' %>
-	<% elsif params[:result] == 'best' %>
+	<% elsif params[:result] == 'team' %>
 		<%= render 'battles/statistics/best_results' %>
 	<% end %>
 <% end %>
-<% unless params[:result] == 'personal' || params[:result] == 'best' %>
+<% unless params[:result] == 'personal' || params[:result] == 'team' %>
 <div class="col-8 omega-1 teams-header">
   <div class="subheading">Team 1</div>
   <%= render "battle_show_table", team: "host" %>
