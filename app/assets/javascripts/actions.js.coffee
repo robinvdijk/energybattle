@@ -9,7 +9,7 @@ $ ->
 		
 	# Progressbar
 	$('#progressbar li').each ->
-		if $(this).next().hasClass('active')
+		if $(this).nextAll().hasClass('active')
 			$(this).addClass('active')
 	 
 	 

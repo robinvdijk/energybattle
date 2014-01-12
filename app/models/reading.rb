@@ -21,7 +21,7 @@ class Reading < ActiveRecord::Base
 
   def closing_reading
     if self.battle.status == 'closing'
-      self.battle.update_attribute(:status, 'finished')
+      self.battle.update_attributes(:status, 'finished')
     end
   end
 
@@ -113,10 +113,12 @@ class Reading < ActiveRecord::Base
 
     output['data'] = data
     output['xkey'] = 'date'
-    output['element'] = 'line-example'
+    output['element'] = 'overall-graph'
+    output['ymin'] = 'auto'
+    output['ymax'] = 'auto'
+    output['hideHover'] = 'auto'
     output['ykeys'] = keys
     output['labels'] = labels
-    output['element'] = 'overall-graph'
     output['lineColors'] = lineColors
 
     output
@@ -168,10 +170,9 @@ class Reading < ActiveRecord::Base
 
     output['data'] = data
     output['xkey'] = 'date'
-    output['element'] = 'line-example'
+    output['element'] = 'team_vs_team-graph'
     output['ykeys'] = keys
     output['labels'] = labels
-    output['element'] = 'overall-graph'
     output['lineColors'] = lineColors
 
     output
