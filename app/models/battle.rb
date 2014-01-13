@@ -32,15 +32,15 @@ class Battle < ActiveRecord::Base
 	def host
 		User.find(self.host_id)
 	end
-	
+
 	def winning_team
 		'team' if self.status?('finished')
 	end
-		
+
 	def finish_battle
 		self.status = 'finished'
 		# self.winner_id =
-		
+
 		self.save
 	end
 
@@ -49,7 +49,7 @@ class Battle < ActiveRecord::Base
 #     User.find(self.winner_id) if self.status?('finished')
 #   end
 
-	
+
   def in_battle?(current_user)
     TeamRelation.where(battle_id: self.id, user_id: current_user.id).first
   end
@@ -74,27 +74,27 @@ class Battle < ActiveRecord::Base
   def end_date
     self.end_date = self.start_date + self.duration
   end
-	
+
 	def reading_notification
 		for battle in Battle.all
 			if battle.status == 'closing'
 				for user in battle.users
 					NotificationMailer.upload_reading(user).deliver
-					Notification.create!(notification_type: 'upload_reading', battle_id: battle.id, sender_id: 1, receiver_id: user.id)			
+					Notification.create!(notification_type: 'upload_reading', battle_id: battle.id, sender_id: 1, receiver_id: user.id)
 				end
 			end
 		end
 	end
-  
-  
+
+
   # CRON METHODS
-  
+
   def self.update_battles
     set_prepare
     set_started
     set_closing
   end
-  
+
   def self.set_prepare
     battles = Battle.where(status: "pending")
     for battle in battles do
@@ -103,7 +103,7 @@ class Battle < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.set_started
     battles = Battle.where(status: "prepare")
     for battle in battles do
@@ -112,14 +112,14 @@ class Battle < ActiveRecord::Base
       end
     end
   end
-  
+
   def self.set_closing
     battles = Battle.where(end_date: Date.today)
     for battle in battles do
       battle.update_attributes(status: "closing")
     end
   end
-  
+
   def self.remove_incomplete
     battles = Battle.where(status: "prepare")
     for battle in battles do
@@ -128,5 +128,5 @@ class Battle < ActiveRecord::Base
       end
     end
   end
-  
+
 end

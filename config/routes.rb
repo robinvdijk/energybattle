@@ -15,7 +15,7 @@ Energybattle::Application.routes.draw do
   end
 
   resources :battles do
-  	resources :readings
+  	#resources :readings
   	patch :kick_request, on: :member
   end
 
@@ -23,8 +23,8 @@ Energybattle::Application.routes.draw do
     patch :invite, on: :member
     patch :switch, on: :member
   end
-  
-      
+
+
 	# mount Split::Dashboard, :at => 'split'
 
   root to: "static_pages#homepage"
