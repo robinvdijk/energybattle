@@ -7,7 +7,17 @@
 	<li class="<% if @battle.status?('closing') %>active<% end %>">Closing</li>
 	<li class="<% if @battle.status?('finished') %>active<% end %>">Finished</li>
 </ul>
-
+<% if @battle.status == 'finished' %>
+<div class="col-12">
+	<%= render 'battle_info' %>
+</div>
+<div class="col-12">
+	<div class="col-4-of-12">&nbsp;</div>
+	<div class="col-8-of-12 tab-bar">
+		<%= render_navigation %>
+	</div>
+</div>
+<% end %>
 <div class="col-4">
     <%= render "battles/sidebar_battle" %>
 </div>
@@ -23,29 +33,27 @@
             <%= render "battles/users/team_members", team: "opponent" %>
         </div>
     </div>
+	
 <% elsif @battle.status?("finished") %>
 	<%= render 'battles/statistics/overview' %>
-	<div class="winner">
+	<!-- <div class="winner">
 		<h1>Winnaar</h1>
-	   <%= image_tag "#{@battle.winning_player.avatar}&height=130&width=130", class: 'rounded-img' %>
+	   <%#= image_tag "#{@battle.winning_player.avatar}&height=130&width=130", class: 'rounded-img' %>
 		<h2>Besparing</h2>
-		<% readings = @battle.winning_player.readings.where(battle_id: @battle.id) %>
-		<% savings = number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) if readings.any? %>
+		<%# readings = @battle.winning_player.readings.where(battle_id: @battle.id) %>
+		<%# savings = number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2) if readings.any? %>
 
 
-			<% if savings.to_f > 0 %>
-				<span class='savings positive'>+ <%= savings %></span>
-			<% elsif savings.to_f < 0 %>
-				<span class='savings negative'><%= savings %></span>
-			<% else %>
-				<span class='savings'><%= savings %></span>
-			<% end %>
+			<%# if savings.to_f > 0 %>
+				<span class='savings positive'>+ <%#= savings %></span>
+			<%# elsif savings.to_f < 0 %>
+				<span class='savings negative'><%#= savings %></span>
+			<%# else %>
+				<span class='savings'><%#= savings %></span>
+			<%# end %>
 		</span>
-	</div>
+	</div> -->
 
-<div class="heading">
-  <%= @battle.title %><%= @battle.status %>
-</div>
 
 <% end %>
 <div class="col-12">

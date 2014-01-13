@@ -1,0 +1,18 @@
+<div class="col-12 omega-1 box">
+  <div class="col-8-of-12">
+	  <div id="battle_story">
+		  <b>Gefeliciteerd team 1</b>, jullie hebben van team 2 gewonnen!<br>
+		  De gemiddelde besparing van team 1 was 12%.<br>
+		  De gemiddelde besparing van team 2 was 8%.<br>
+		  De beste speler was Robin met 22% besparing.
+	  </div>
+  </div>
+  <div class="col-4-of-12">
+	  <div id="battle_settings">
+		  <%= fa_icon("flag-o") %> &nbsp;<%= @battle.start_date.strftime("%d %B %Y") %><br>
+		  <%= fa_icon("flag-checkered") %> &nbsp;<%= @battle.end_date.strftime("%d %B %Y") %><br>
+		  <%= fa_icon("users") %> &nbsp;<%= @battle.player_limit %> Spelers<br>
+		  <%= fa_icon("clock-o") %> &nbsp;  <%= @battle.duration %> Dagen
+	  </div>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<% if current_user.readings.where(battle_id: @battle.id).count != 0 %>
+	<% if params[:result] == "personal" %>
+		<div class="subheading graph-margin">Persoonlijke grafiek
+			<%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)}, class: "active" %>
+			<%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle, current_user)}, class: "nonactive" %>
+			<%= content_tag :div, "", id: "team_vs_team-graph", data: {readings: Reading.team_vs_team_chart_data(@battle)}, class: "nonactive" %>
+		</div>
+	<% elsif params[:result] == "team" %>
+		<div class="subheading graph-margin">Team vs team grafiek
+			<%= content_tag :div, "", id: "team_vs_team-graph", data: {readings: Reading.team_vs_team_chart_data(@battle)}, class: "active" %>
+			<%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)}, class: "nonactive" %>
+			<%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle, current_user)}, class: "nonactive" %>
+		</div>
+	<% else %>
+		<div class="subheading graph-margin">Overall grafiek
+			<%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle, current_user)}, class: "active" %>
+			<%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)}, class: "nonactive" %>
+			<%= content_tag :div, "", id: "team_vs_team-graph", data: {readings: Reading.team_vs_team_chart_data(@battle)}, class: "nonactive" %>
+		</div>
+	<% end %>
+<% end %>

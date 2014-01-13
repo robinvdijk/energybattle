@@ -44,9 +44,11 @@ class Battle < ActiveRecord::Base
 		self.save
 	end
 
-	def winning_player
-		User.find(self.winner_id) if self.status?('finished')
-	end
+
+	# def winning_player
+#     User.find(self.winner_id) if self.status?('finished')
+#   end
+
 	
   def in_battle?(current_user)
     TeamRelation.where(battle_id: self.id, user_id: current_user.id).first

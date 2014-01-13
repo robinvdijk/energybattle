@@ -1,22 +1,24 @@
-<div class="battle_show">
+<div class="battle_show" id="team_margin">
 	<table>
 		<tr>
 			<td>Avatar</td>
 			<td>Naam</td>
 			<td>Score</td>
-			<td>Besparing</td>
 		</tr>
-
-		<% find_team_members(team).each do |team| %>
+		<% if params[:result] == 'personal' %>
 			<tr>
-				<td><%= image_tag team.user.avatar, class: 'avatar' if team.user.avatar? %></td>
-				<td><%= team.user.name %></td>
-				<% unless team.user.readings %>
-					<td><%= team.user.readings.where(:battle_id => @battle.id).first.amount %></td>
-				<% end %>
-				<td></td>
-				<td><%= number_to_percentage 1 - ((team.user.readings.sum(:amount).to_f) / 12500) %></td>
+				<td><%= image_tag current_user.avatar %></td>
+				<td><%= current_user.name %></td>
+				<td>n.v.t</td>
 			</tr>
+		<% else %>
+			<% find_team_members(team).each do |team| %>
+				<tr>
+					<td><%= image_tag team.user.avatar, class: 'avatar' if team.user.avatar? %></td>
+					<td><%= team.user.name %></td>
+					<td>n.v.t</td>
+				</tr>
+			<% end %>
 		<% end %>
 	</table>
   <td><%= render "team_relation/join_team_prepare", team: "#{team}_team" unless current_user_is_host && @battle.status == "prepare" %></td>

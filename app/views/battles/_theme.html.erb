@@ -4,11 +4,11 @@
     <% if theme == "energy" %>
       <%= link_to image_tag("#{theme}.jpg"), gametype_path(:theme => "#{theme}")%>
       <%= link_to "Battle creëren", gametype_path(:theme => "#{theme}"), class: "primary-button" %>
-      <%= link_to "Aan battle meedoen", battles_path(:theme => "#{theme}"), class: "primary-button" %>
+      <%= link_to "Aan battle deelnemen", battles_path(:theme => "#{theme}"), class: "primary-button" %>
     <% else %>
       <%= link_to image_tag("#{theme}.jpg"), "#" %>
       <button type="button" disabled class="primary-button">Battle creëren</button>
-      <button type="button" disabled class="primary-button">Aan battle meedoen</button>
+      <button type="button" disabled class="primary-button">Aan battle deelnemen</button>
     <% end %>
 	</div>
 </div>

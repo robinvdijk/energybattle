@@ -6,6 +6,7 @@
 }
 .box-padding{
   @extend .box;
+  background-color: $green;
   padding:1em;
   margin:0 0 1em 0;
   .primary-button{
@@ -124,4 +125,33 @@
   margin-bottom:10px;
 }.settings-item{
   padding:1em;
+}
+
+#team_margin {
+	margin-bottom: 4.2em;
+}
+
+#battle_story, #battle_settings{
+	margin: 2em 1em;
+	line-height: 120%;
+}
+
+.tab-bar {
+	height: 2em;
+}
+
+.graph-margin {
+	margin-top: 2em;
+}
+
+.active{
+	display:block;
+}
+
+.nonactive {
+	display:none;
+}
+
+.pull-right {
+	float:right;
 }

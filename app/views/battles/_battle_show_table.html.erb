@@ -18,7 +18,7 @@
          <% else %>
            <td><%= readings.first.amount %></td>
            <td><%= readings.last.amount %></td>
-           <td><%= number_to_percentage(100 - (readings.last.amount.to_f / 3500) * 100, :precision => 2)%></td>
+           <td><%= number_to_percentage(100 - (readings.last.amount.to_f / team.user.readings.first.amount.to_f) * 100, :precision => 2)%></td>
          <% end %>
          <td></td>
         </tr>
@@ -42,3 +42,6 @@
         </tr>
     <table>
 </div>
+
+
+

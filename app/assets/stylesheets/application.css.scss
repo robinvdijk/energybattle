@@ -85,7 +85,14 @@
 }
 
 #tab_navigation {
+	background-color: $blue;
+	padding: .5em 0.8em;
+	border-radius: 5px;
 	list-style-type: none;
 	display: inline;
-	margin-right: 1em;
+	margin-right: -.5em;
+	a {
+		text-decoration: none;
+		color: white;
+	}
 }

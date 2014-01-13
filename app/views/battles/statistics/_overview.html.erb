@@ -1,3 +1,4 @@
+<% unless @battle.status == 'finished' %>
 <div class="col-8 omega-1 box">
   <div class="heading"> Battle: <%= @battle.title %> / Status: <%= @battle.status %></div>
   <div class="col-4-of-8">
@@ -9,27 +10,32 @@
     <div class="settings-item"><%= @battle.duration %> Dagen</div>
   </div>
 </div>
+<% end %>
+
 <% if @battle.status == 'finished' %>
-<%= render_navigation %>
-	<% if params[:result] == 'personal' %>
+	<% if params[:result] == 'personal' %>  
+	<div class="col-8 omega-1 teams-header">
+		<div class="subheading">Persoonlijk</div>
 		<%= render 'battles/statistics/personal_results' %>
-	<% elsif params[:result] == 'best' %>
+	</div>
+	<div class="col-8 omega-1 teams-header pull-right graph-margin">
+		<%= render 'battles/statistics/graphs' %>
+	</div>
+	<% elsif params[:result] == 'team' %>
+		<div class="subheading">Eigen team</div>
 		<%= render 'battles/statistics/best_results' %>
+		<%= render 'battles/statistics/graphs' %>
 	<% end %>
 <% end %>
-<% unless params[:result] == 'personal' || params[:result] == 'best' %>
+
+<% unless params[:result] == 'personal' || params[:result] == 'team' %>
 <div class="col-8 omega-1 teams-header">
   <div class="subheading">Team 1</div>
   <%= render "battle_show_table", team: "host" %>
   <div class="subheading">Team 2</div>
   <%= render "battle_show_table", team: "opponent" %>
-
-<% end %>
-
-  <% if current_user.readings.where(battle_id: @battle.id).count != 0 %>
-    <%= content_tag :div, "", id: "personal-graph", data: {readings: Reading.personal_chart_data(@battle, current_user)} %>
-    <%= content_tag :div, "", id: "overall-graph", data: {readings: Reading.overall_chart_data(@battle, current_user)} %>
-    <%= content_tag :div, "", id: "team_vs_team-graph", data: {readings: Reading.team_vs_team_chart_data(@battle)} %>
-  <% end %>
-
 </div>
+<div class="col-8 omega-1 teams-header pull-right graph-margin">
+	<%= render 'battles/statistics/graphs' %>
+</div>
+<% end %>
