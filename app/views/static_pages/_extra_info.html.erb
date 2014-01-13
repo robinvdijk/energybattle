@@ -1,14 +1,63 @@
-
 <%= simple_form_for current_user do |f| %>
-	<%= f.input :house_type, prompt: "Selecteer je type woning", collection: ["2-onder-1-kapwoning", "Rijtjeshuis (hoek)", "Rijtjeshuis (tussenwoning)", "Flat / Appartement", "Vrijstaand", "Woonboot", "Anders"] %>
-	<%= f.input :family_size, prompt: "Selecteerd je gezinsgrootte", collection: 1..10 %>
-	<%= f.input :school, :label_html => {:class => 'simple_form'} %>
-	<%= f.input :grade, prompt: "Selecteerd je klas", collection: ["Eerste klas", "Tweede klas", "Derde klas", "Vierde klas", "Vijfde klas", "Zesde klas"]  %>
-	<%= f.input :company%>
+	<%= f.input :house_type, prompt: "Selecteer je type woning", collection: ["2-onder-1-kapwoning", "Rijtjeshuis (hoek)", "Rijtjeshuis (tussenwoning)", "Flat / Appartement", "Vrijstaand huis", "Woonboot", "Anders"] %>
+	<%= f.input :family_size, prompt: "Selecteerd je gezinsgrootte", label: "Gezinsgrootte <a class='fa fa-question-circle tooltip' href='#'><span class='custom'><i class='fa fa-question-circle fa-family-size'></i><h1>Gezinsgrootte</h1>De gezinsgrootte is inclusief jezelf. Woon je alleen met je beide ouders, dan is de gezinsgrootte 3. Woon je met alleen je moeder en twee zussen, dan is de gezinsgrootte 4.</span></a>".html_safe, collection: 1..10 %>
 	<%= f.simple_fields_for :readings do |r| %>
-		<%= r.input :amount, label: "Gemiddelde meterstand afgelopen jaar" %>
-		<%= r.file_field :meter, class: "primary-button" %>
-	<% end %><br><br>
+		<%= r.input :amount, label: "Gemiddelde meterstand van #{1.year.ago.year} <a class='fa fa-question-circle tooltip' href='#'><span class='custom'><i class='fa fa-question-circle fa-reading'></i><h1>Gemiddelde meterstand in kilowattuur (kWh)</h1>Vraag eerst aan je ouders of je de de gemiddelde meterstand van #{1.year.ago.year} mag gebruiken! Als dit mag van je ouders, bereken dan de gemiddelde meterstand door: <br/><br/>a) de totale meterstand van #{1.year.ago.year} te delen door 12<br/><br/>b) de meterstanden van alle maanden op te tellen en deze vervolgens door 12 te delen.<br/></br>Vul alleen getallen in.</span></a>".html_safe %>
+		<%= r.input :meter, label: false, :as => :file, :input_html => {:onchange => "readURL(this);"} %>
+		<img id="img_prev" src="#" alt="your image" />
+	<% end %>
+
+	<%= f.input :school %>
+	<%= f.input :grade, prompt: "Selecteerd je klas", collection: ["Eerste klas", "Tweede klas", "Derde klas", "Vierde klas", "Vijfde klas", "Zesde klas"], label:
+		"Klas <a class='fa fa-question-circle tooltip' href='#'><span class='custom'><i class='fa fa-question-circle fa-grade'></i><h1>Klas</h1>In welke klas zit je van het voortgezet onderwijs? De eerste vier klassen zijn voor iedere stroming (vmbo, havo, vwo) gelijk. De vijfde klas kan gehaald worden binnen havo of vwo en de zesde klas alleen wanneer je vwo volgt.
+		</span></a>".html_safe   %>
+	<%= f.input :company %>
+	
 	<%= f.input :parental_approval %>
-	<%= f.button :submit, "Opslaan", class: "primary-button" %>
+	<%= f.button :submit, "Verder naar Energybattle", class: "primary-button" %>
 <% end %>
+
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+<script type="text/javascript" src="https://rawgithub.com/javanto/jquery-fileinput/3.1.0/dist/jquery.fileinput.min.js"></script>
+
+
+
+
+<script type="text/javascript">
+//<![CDATA[
+$().ready(function() {
+  $("input[type=file]").fileinput($("button").remove());
+});
+//]]>
+</script>
+
+<button>Upload een foto van de meterstand <em class="fa fa-search"></em></button>
+
+<style>
+
+button{
+	color:rgb(52, 73, 94);
+	width: 300px;
+}
+
+
+</style>
+
+<script>
+function readURL(input) {
+if (input.files && input.files[0]) {
+var reader = new FileReader();
+
+reader.onload = function (e) {
+$('#img_prev')
+.attr('src', e.target.result)
+.width(300)
+.height(300);
+};
+
+reader.readAsDataURL(input.files[0]);
+}
+}
+</script>

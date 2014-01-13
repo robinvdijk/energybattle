@@ -1,12 +1,12 @@
 $(document).ready(function(){
     callFB();
-    $(".send_notifications").on("click", function(){
+    $("#send_notifications").on("click", function(){
       FB.ui({method: "send", to: "100003692456003", name: "Doe je mee met Energy Battle?", link: "www.Energybattle.com"});
     });
-    $(".invite_with_fb").on("click", function(){
+    $("#invite_with_fb").on("click", function(){
       FB.ui({method: "apprequests", message: "Energybattle de nieuwe ultime game"});
     });
-    $(".post_on_feed").on("click", function(){
+    $("#post_on_feed").on("click", function(){
       FB.ui({
         method: "feed",
         link: "www.energybattle.nl",

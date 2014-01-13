@@ -50,7 +50,8 @@ class Reading < ActiveRecord::Base
         {
           original_date: date,
           personal: reading_by_day[date],
-          ideal: reading_by_day[date]
+          ideal: reading_by_day[date],
+          expected: first_reading.amount + (first_reading.amount/365) * (date - first_reading.created_at.to_date).to_i
         }
       end
     end

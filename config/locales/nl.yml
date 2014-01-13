@@ -209,3 +209,9 @@ nl:
   activerecord:
     errors:
       <<: *errors
+    models:
+      battle: 'Battle'
+    attributes:
+      battle:
+        title: 'Titel'
+        theme: 'Thema'

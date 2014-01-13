@@ -1,0 +1,42 @@
+/*******************/
+/* BATTLE SETTINGS */
+/*******************/
+.battle_settings .simple_form input{
+	width: 200px;
+	margin-bottom: 1em;
+}
+
+.battle_settings .simple_form input[type='submit']{
+	width:300px;
+	margin-bottom: 1em;
+}
+
+
+/**************/
+/* EXTRA INFO */
+/**************/
+.extra_info .simple_form input{
+	width:300px; /*Doesn't work with 12.5em*/
+	margin-bottom: 1em;
+}
+
+.extra_info .simple_form input[type='submit']{
+	width:12.5em;
+	margin-bottom: 1em;
+	margin-left: 0.3em;
+}
+
+.extra_info .simple_form select{
+	display:block;
+	margin-bottom: 1em;
+	color: rgb(52, 73, 94);
+	width: 300px;
+}
+
+.extra_info input[type=checkbox]{
+	width:15px;
+}
+
+.extra_info .simple_form label{
+	display:block;
+}

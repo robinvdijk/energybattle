@@ -6,7 +6,7 @@ $(document).ready(function() {
     xkey: 'original_date',
     xLabels: ['day'],
     ykeys: ['personal', 'ideal', 'expected'],
-    labels: ['Meterstand', 'Uiteindelijke meterstand', 'Verwachte meterstand'],
+    labels: ['Meterstand', 'Uiteindelijke meterstand', 'Verwachte meterstand obv jaarverbruik'],
     ymin: 'auto',
     ymax: 'auto',
     hideHover: 'auto'

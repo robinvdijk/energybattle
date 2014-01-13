@@ -19,5 +19,5 @@
 			</tr>
 		<% end %>
 	</table>
-  <td><%= render "team_relation/join_team_prepare", team: "#{team}_team" unless current_user_is_host %></td>
+  <td><%= render "team_relation/join_team_prepare", team: "#{team}_team" unless current_user_is_host && @battle.status == "prepare" %></td>
 </div>

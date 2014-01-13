@@ -8,19 +8,19 @@
     </ul>
     <div class="rightmenu pull-right">
         <% if user_signed_in? && current_user.parental_approval == true %>
-            <%= image_tag current_user.avatar, class: "avatar" %>
+            <%= link_to image_tag(current_user.avatar, class: "avatar"), root_path %>
             <%= link_to fa_icon("bell", class: "icon"), '#' %>
             <% if current_user.notifications.any? %>
 	 	        <div class="badge"><%= current_user.notifications.count %></div>
             <% end %>
-				  
+
         	    <div class="notifications-center">
                 <div class="notch"></div>
                 <div class="notifications">
 						 <% if current_user.notifications.present? %>
 							 <%= render current_user.notifications %>
 						 <% else %>
-						 <p>Er zijn geen notificaties</p>
+							 <p>Er zijn geen notificaties</p>
 						 <% end %>
 					 </div>
     			</div>
@@ -35,7 +35,7 @@
 			 			<li>
 			 				<%= link_to '#', class: 'Facebook' do %>
 			 					<%= fa_icon('facebook-square', class: 'fa-fw') %> Facebook
-			 				<% end %>					
+			 				<% end %>
 			 				<ul>
 			 					<li>
 			 						<%= link_to destroy_user_session_path, :method => :delete, class: '' do %>
@@ -53,8 +53,8 @@
 			 						<% end %>
 			 					</li>
 			 					<li>
-			 						<%= link_to '#', class: 'post_on_feed' do %>
-			 							<%= fa_icon('comments', class: 'fa-fw') %> Plaats een bericht op je tijdlijn
+			 						<%= link_to '#', id: 'post_on_feed' do %>
+			 							<%= fa_icon('comments', class: 'post_on_feed', id: 'post_on_feed') %> Plaats een bericht op je tijdlijn
 			 						<% end %>
 			 					</li>
 			 				</ul>
@@ -63,7 +63,7 @@
 			    </div>
 			</div>
 	    </div>
-        </div>			
+        </div>
      </div>
   </div>
 </div>

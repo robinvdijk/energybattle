@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
   helper_method :sort_column, :sort_direction, :welcome_message
 
   def dashboard
+    @user = current_user
 		battles = Battle.all
     team_relations = TeamRelation.where(user_id: current_user.id)
 		@current_user_host_battles = Battle.where(host_id: current_user.id)
@@ -29,9 +30,9 @@ private
   def welcome_message
     case
     when current_user.sign_in_count == 1
-      "Welkom op Energybattle, #{current_user.name}. Veel plezier!"
+      flash[:notice] = "Welkom op Energybattle, #{current_user.name}. Veel plezier!"
     when current_user.sign_in_count > 1
-      "Welkom terug, #{current_user.name}."
+      flash[:notice] = "Welkom terug, #{current_user.name}."
     end
   end
 end
