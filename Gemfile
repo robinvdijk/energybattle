@@ -25,7 +25,7 @@ gem 'whenever', :require => false
 gem 'simple_form'
 gem 'simple-navigation'
 
-gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
+# gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
