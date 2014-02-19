@@ -30,7 +30,7 @@ gem 'simple-navigation'
 gem 'activerecord-session_store', github: 'rails/activerecord-session_store'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
 
@@ -50,8 +50,15 @@ group :development, :test do
   gem 'faker'
 end
 
+group :development do
+  gem 'capistrano', '~> 3.1.0'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rails'
+  gem 'capistrano-rbenv', '~> 2.0'
+end
+
 group :production do
-  #gem 'pg'
+  gem 'pg'
 end
 
 group :test do
