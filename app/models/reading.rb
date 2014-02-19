@@ -175,6 +175,8 @@ class Reading < ActiveRecord::Base
     output['ykeys'] = keys
     output['labels'] = labels
     output['lineColors'] = lineColors
+    output['ymin'] = 'auto'
+    output['ymax'] = 'auto'
 
     output
   end

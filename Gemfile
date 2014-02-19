@@ -7,6 +7,8 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 
+gem 'railroady'
+
 gem 'carrierwave'
 gem 'mini_magick'
 # Use SCSS for stylesheets

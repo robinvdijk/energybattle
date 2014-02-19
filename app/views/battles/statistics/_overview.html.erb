@@ -1,6 +1,5 @@
 <% unless @battle.status == 'finished' %>
 <div class="col-8 omega-1 box">
-  <div class="heading"> Battle: <%= @battle.title %> / Status: <%= @battle.status %></div>
   <div class="col-4-of-8">
     <div class="settings-item"><%= @battle.start_date.strftime("%d-%B-%Y") %></div>
     <div class="settings-item"><%= @battle.end_date.strftime("%d-%B-%Y") %></div>
@@ -13,7 +12,7 @@
 <% end %>
 
 <% if @battle.status == 'finished' %>
-	<% if params[:result] == 'personal' %>  
+	<% if params[:result] == 'personal' %>
 	<div class="col-8 omega-1 teams-header">
 		<div class="subheading">Persoonlijk</div>
 		<%= render 'battles/statistics/personal_results' %>

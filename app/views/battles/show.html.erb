@@ -1,4 +1,4 @@
-<div class="heading"><%= @battle.title %> / <%= @battle.status %></div>
+<div class="heading"><%= @battle.title %></div>
 
 <ul id="progressbar">
 	<li class="active">Pending</li>
@@ -33,7 +33,7 @@
             <%= render "battles/users/team_members", team: "opponent" %>
         </div>
     </div>
-	
+
 <% elsif @battle.status?("finished") %>
 	<%= render 'battles/statistics/overview' %>
 	<!-- <div class="winner">

@@ -20,8 +20,8 @@ $(document).ready(function(){
 function callFB(){
   window.fbAsyncInit = function() {
       FB.init({
-        //appId      : '533003410107372', // App ID Energybattle Development
-        appId      : '534518849970647', // App ID Pruts_app Production
+        appId      : '533003410107372', // App ID Energybattle Development
+        //appId      : '534518849970647', // App ID Pruts_app Production
       });
     // Additional initialization code here
   };

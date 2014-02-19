@@ -1,0 +1,14 @@
+digraph models_diagram {
+	graph[overlap=false, splines=true]
+	"Battle" [shape=Mrecord, label="{Battle|id :integer\lhost_id :integer\lopponent_id :integer\lwinner_id :integer\ltheme :string\lcreated_at :datetime\lupdated_at :datetime\ltitle :string\lstart_date :date\lend_date :date\lgame_type :string\lplayer_limit :integer\laccess :boolean\lduration :integer\lstatus :string\l}"]
+	"Notification" [shape=Mrecord, label="{Notification|id :integer\lnotification_type :string\lbattle_id :integer\lsender_id :integer\lreceiver_id :integer\lmessage :text\lcreated_at :datetime\lupdated_at :datetime\l}"]
+	"Reading" [shape=Mrecord, label="{Reading|id :integer\lamount :integer\lcreated_at :datetime\lupdated_at :datetime\lmeter :string\luser_id :integer\lbattle_id :integer\loriginal_date :datetime\l}"]
+	"TeamRelation" [shape=Mrecord, label="{TeamRelation|id :integer\luser_id :integer\lbattle_id :integer\lcreated_at :datetime\lupdated_at :datetime\lteam :string\lstatus :string\l}"]
+	"User" [shape=Mrecord, label="{User|id :integer\lcreated_at :datetime\lupdated_at :datetime\lemail :string\lencrypted_password :string\lreset_password_token :string\lreset_password_sent_at :datetime\lremember_created_at :datetime\lsign_in_count :integer\lcurrent_sign_in_at :datetime\llast_sign_in_at :datetime\lcurrent_sign_in_ip :string\llast_sign_in_ip :string\lprovider :string\luid :string\lname :string\lavatar :string\lhouse_type :string\lgrade :string\lfamily_size :integer\lparental_approval :boolean\lcompany :string\lschool :string\lbirthday :date\l}"]
+	"Battle" -> "User" [arrowtail=crow, arrowhead=crow, dir=both color="#E6203F"]
+	"Battle" -> "TeamRelation" [arrowtail=odot, arrowhead=crow, dir=both color="#BF3C69"]
+	"Battle" -> "Reading" [arrowtail=odot, arrowhead=crow, dir=both color="#0F4318"]
+	"User" -> "Reading" [arrowtail=odot, arrowhead=crow, dir=both color="#608353"]
+	"User" -> "TeamRelation" [arrowtail=odot, arrowhead=crow, dir=both color="#7C1E50"]
+	"User" -> "Notification" [arrowtail=odot, arrowhead=crow, dir=both color="#E38870"]
+}
